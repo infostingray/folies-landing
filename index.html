@@ -803,9 +803,14 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
   </div>
 
   <div class="hero-cta">
-    <a class="btn btn-fill" href="https://folies.resos.com" target="_blank" rel="noopener">Book a table</a>
+    <a class="btn btn-fill" href="https://ofolies.resos.com/" target="_blank" rel="noopener">Book a table</a>
     <a class="btn btn-ghost" href="#menu">See the menu</a>
   </div>
+
+  <div class="scroll-hint">Scroll</div>
+</header>
+
+<div class="tiles" aria-hidden="true"></div>
 <!-- ============ EVENTS ============ -->
 <section class="events wall" id="events">
   <div class="ev-head reveal">
@@ -814,7 +819,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
   </div>
   <div class="ev-list">
     <!-- TODO: keep these updated weekly — date / name / dj / tags -->
-    <a class="ev-card reveal" href="https://folies.resos.com" target="_blank" rel="noopener">
+    <a class="ev-card reveal" href="https://ofolies.resos.com/" target="_blank" rel="noopener">
       <div class="ev-date"><b>17</b><span>Fri Jul</span></div>
       <div class="ev-info">
         <div class="ev-name">Golden Hour Sessions</div>
@@ -823,7 +828,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
       </div>
       <div class="ev-go">→</div>
     </a>
-    <a class="ev-card reveal" href="hhttps://ofolies.resos.com/" target="_blank" rel="noopener">
+    <a class="ev-card reveal" href="https://ofolies.resos.com/" target="_blank" rel="noopener">
       <div class="ev-date"><b>18</b><span>Sat Jul</span></div>
       <div class="ev-info">
         <div class="ev-name">Sunset High</div>
@@ -832,7 +837,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
       </div>
       <div class="ev-go">→</div>
     </a>
-    <a class="ev-card reveal" href="https://ofolies.resos.com" target="_blank" rel="noopener">
+    <a class="ev-card reveal" href="https://ofolies.resos.com/" target="_blank" rel="noopener">
       <div class="ev-date"><b>19</b><span>Sun Jul</span></div>
       <div class="ev-info">
         <div class="ev-name">Acoustic Sundown</div>
@@ -842,7 +847,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
       <div class="ev-go">→</div>
     </a>
   </div>
-  <p class="ev-note reveal">Table fills fast at sunset,book ahead</p>
+  <p class="ev-note reveal">Table fills fast at sunset, book ahead</p>
 </section>
 
 <div class="tiles" aria-hidden="true"></div>
@@ -1056,7 +1061,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
 
 <!-- ============ DOCK ============ -->
 <nav class="dock" id="dock" aria-label="Quick actions">
-  <a class="d-reserve" href="https://https://ofolies.resos.com/" target="_blank" rel="noopener">
+  <a class="d-reserve" href="https://ofolies.resos.com/" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
     Book
   </a>
@@ -1557,11 +1562,11 @@ var secObserver = new IntersectionObserver(function(entries){
       chip.textContent = 'Sunset was ' + t + ' · see you tomorrow';
     }
     var hr = now.getHours();
-    var open = (hr >= 16 || hr < 2);
+    var open = (hr >= 17 || hr < 2);
     var st = document.getElementById('status');
     var stT = document.getElementById('statusText');
     if(open){ stT.textContent = 'Open now · until late'; }
-    else{ st.classList.add('closed'); stT.textContent = 'Opens today at 4 PM'; }
+    else{ st.classList.add('closed'); stT.textContent = 'Opens today at 5 PM'; }
   }catch(e){}
 })();
 </script>
