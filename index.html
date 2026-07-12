@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Fôlies — Sunset Lounge, Zaarour</title>
+<meta name="description" content="Fôlies sunset lounge in Zaarour, Lebanon. We are not far, we are just higher. Menu, reservations & directions.">
+<meta name="theme-color" content="#143128">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Italiana&family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pine:#143128;
+  --forest:#1E4437;
+  --forest-line:#2A5646;
+  --terracotta:#D9532F;
+  --coral:#EF7A4E;
+  --peach:#F5B78C;
+  --blush:#FBD9BC;
+  --cream:#F7EFE0;
+  --cream-deep:#F0E5D0;
+  --ink:#22201B;
+  --display:'Marcellus', serif;
+  --thin:'Italiana', serif;
+  --body:'Hanken Grotesk', system-ui, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  background:var(--pine);
+  color:var(--cream);
+  overflow-x:hidden;
+}
+body.locked{overflow:hidden;height:100svh}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ============================================================
+   PRELOADER — "SET THE SUN"
+   ============================================================ */
+#loader{
+  position:fixed;inset:0;z-index:1000;
+  overflow:hidden;
+  touch-action:none;
+  cursor:grab;
+  user-select:none;-webkit-user-select:none;
+  transition:opacity .9s ease, visibility .9s ease;
+}
+#loader:active{cursor:grabbing}
+#loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.ld-day,.ld-dusk{position:absolute;inset:0}
+.ld-day{
+  background:linear-gradient(180deg,#7FB2C9 0%,#BFD3C8 40%,#F2D9AE 78%,#F5C793 100%);
+}
+.ld-dusk{
+  background:linear-gradient(180deg,#3A2450 0%,#8A3C5C 30%,#D9532F 58%,#F59A55 78%,#FBD9BC 100%);
+  opacity:0;
+}
+.ld-stars{position:absolute;inset:0;pointer-events:none}
+.ld-star{
+  position:absolute;width:2px;height:2px;border-radius:50%;
+  background:#FFF3D6;opacity:0;
+  animation:twinkle 2.6s ease-in-out infinite;
+}
+.ld-sun{
+  position:absolute;left:50%;top:0;
+  width:96px;height:96px;margin-left:-48px;
+  border-radius:50%;
+  background:radial-gradient(circle at 42% 38%, #FFFBEE 0%, #FFE9BB 42%, #FBC377 72%, #F59A55 100%);
+  box-shadow:0 0 40px 14px rgba(255,222,150,.65), 0 0 120px 50px rgba(245,154,85,.35);
+  will-change:transform;
+  z-index:3;
+}
+.ld-sun::after{
+  content:"";position:absolute;inset:-26px;border-radius:50%;
+  border:1.5px dashed rgba(255,243,214,.65);
+  animation:spin 14s linear infinite;
+}
+#loader.grabbed .ld-sun{box-shadow:0 0 55px 20px rgba(255,222,150,.85), 0 0 150px 70px rgba(245,154,85,.5)}
+.ld-ridge{position:absolute;left:0;right:0;bottom:-2px;z-index:4;pointer-events:none}
+.ld-ridge svg{display:block;width:100%;height:auto}
+.ld-brand{
+  position:absolute;top:max(26px, env(safe-area-inset-top));left:0;right:0;
+  text-align:center;z-index:6;
+}
+.ld-brand .mark{
+  font-family:var(--display);
+  font-size:26px;letter-spacing:.4em;text-indent:.4em;
+  color:var(--pine);
+  transition:color .6s ease;
+}
+#loader.dusky .ld-brand .mark{color:var(--cream)}
+.ld-hint{
+  position:absolute;left:0;right:0;bottom:calc(30px + env(safe-area-inset-bottom));
+  text-align:center;z-index:6;
+  font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--cream);
+  text-shadow:0 1px 10px rgba(20,49,40,.5);
+  transition:opacity .4s ease;
+}
+.ld-hint .arrow{
+  display:block;margin:10px auto 0;width:14px;height:14px;
+  border-right:2px solid var(--cream);border-bottom:2px solid var(--cream);
+  transform:rotate(45deg);
+  animation:nudge 1.6s ease-in-out infinite;
+}
+#loader.grabbed .ld-hint{opacity:0}
+.ld-progress{
+  position:absolute;top:50%;right:18px;z-index:6;
+  width:2px;height:110px;margin-top:-55px;
+  background:rgba(255,255,255,.25);border-radius:2px;
+}
+.ld-progress i{
+  position:absolute;left:0;right:0;top:0;height:0%;
+  background:var(--cream);border-radius:2px;display:block;
+}
+.ld-higher{
+  position:absolute;inset:0;z-index:7;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;pointer-events:none;
+  opacity:0;transform:scale(.92);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1);
+}
+#loader.fin .ld-higher{opacity:1;transform:none}
+.ld-higher small{
+  font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--blush);
+}
+.ld-higher b{
+  display:block;margin-top:8px;
+  font-family:var(--thin);font-weight:400;
+  font-size:clamp(58px,18vw,110px);
+  letter-spacing:.14em;text-indent:.14em;
+  color:var(--cream);
+  text-shadow:0 0 60px rgba(245,154,85,.6);
+}
+#loader.fin .ld-hint,#loader.fin .ld-progress{opacity:0}
+
+/* ============================================================
+   ETCHED BOTANICAL WALL
+   ============================================================ */
+.wall{position:relative;background:var(--forest)}
+.wall::before{
+  content:"";position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='340' viewBox='0 0 340 340'%3E%3Cg fill='none' stroke='%232A5646' stroke-width='1.4' stroke-linecap='round'%3E%3Cpath d='M40 300 Q60 210 55 130 M55 130 Q30 150 22 185 M55 132 Q80 148 88 182 M53 160 Q34 172 30 200 M56 160 Q76 174 80 202 M52 195 Q38 205 36 228 M56 196 Q72 206 74 230'/%3E%3Cpath d='M250 60 Q248 130 260 190 M258 100 Q233 96 216 78 M259 100 Q283 94 297 74 M260 135 Q236 132 222 116 M261 135 Q285 130 297 112 M262 168 Q242 166 230 152 M263 168 Q283 164 293 148'/%3E%3Cpath d='M120 40 Q160 60 200 42 M132 46 Q140 30 136 18 M158 54 Q168 40 166 26 M184 50 Q196 38 196 24'/%3E%3Cpath d='M300 250 Q290 290 300 330 M298 272 Q282 268 274 256 M299 272 Q314 266 320 254 M297 300 Q283 297 276 286 M298 300 Q312 295 318 284'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:340px 340px;
+  opacity:.55;pointer-events:none;
+}
+.wall>*{position:relative}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  padding:clamp(20px,6vw,48px) 24px 56px;
+  text-align:center;
+}
+.hero-top,.hero-brand,.tagline,.hero-cta,.scroll-hint{opacity:0}
+.ready .hero-top{animation:fadeDown .9s .15s ease forwards}
+.ready .arch{animation:archIn 1.2s .3s cubic-bezier(.22,1,.36,1) forwards}
+.ready .hero-brand{animation:fadeUp 1s .7s ease forwards}
+.ready .tagline{animation:fadeUp 1s .95s ease forwards}
+.ready .hero-cta{animation:fadeUp 1s 1.2s ease forwards}
+.ready .scroll-hint{animation:fadeUp 1s 1.5s ease forwards}
+.hero-top{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--peach);
+  margin-bottom:clamp(20px,5vh,40px);
+}
+.hero-top span{color:var(--cream);opacity:.75}
+
+/* the arch — now a living 3D window */
+.arch{
+  width:min(78vw,340px);
+  aspect-ratio:5/7;
+  border-radius:50% 50% 14px 14px / 42% 42% 14px 14px;
+  overflow:hidden;position:relative;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.55), inset 0 0 0 1px rgba(247,239,224,.15);
+  opacity:0;transform:translateY(24px) scale(.97);
+  touch-action:pan-y;
+}
+.sky{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,#5b3a6e 0%,#a44a63 26%,#e2653f 52%,#f59a55 72%,#fbc98a 100%);
+  background-size:100% 160%;background-position:50% 30%;
+  animation:sunset 16s ease-in-out infinite alternate;
+}
+.sun{
+  position:absolute;left:50%;top:46%;
+  width:74px;height:74px;margin-left:-37px;border-radius:50%;
+  background:radial-gradient(circle,#FFF3D6 0%,#FBD08A 55%,rgba(251,208,138,0) 74%);
+  filter:blur(1px);
+}
+.arch.gl .sun{display:none}
+#scene3d{
+  position:absolute;inset:0;width:100%;height:100%;
+  display:block;z-index:2;
+}
+.ridge{position:absolute;left:0;right:0;bottom:-2px;z-index:1}
+.arch.gl .ridge{display:none}
+.ridge svg{display:block;width:100%;height:auto}
+.arch-badge{
+  position:absolute;left:0;right:0;bottom:10px;z-index:5;
+  text-align:center;
+  font-size:9px;letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(247,239,224,.85);
+  pointer-events:none;
+  text-shadow:0 1px 8px rgba(20,49,40,.6);
+}
+.hero-brand{margin-top:clamp(24px,4.5vh,40px)}
+.hero-brand h1{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(44px,13vw,64px);
+  letter-spacing:.32em;text-indent:.32em;
+  color:var(--cream);line-height:1;
+}
+.hero-brand .accent{color:var(--coral)}
+.hero-brand p.place{
+  margin-top:10px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--peach);text-indent:.34em;
+}
+.tagline{margin-top:clamp(26px,5vh,44px)}
+.tagline p{
+  font-size:13px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--cream);opacity:.8;
+}
+.tagline .higher{
+  font-family:var(--thin);
+  font-size:clamp(56px,17vw,88px);line-height:.95;
+  letter-spacing:.12em;text-indent:.12em;
+  display:block;margin-top:6px;
+  background:linear-gradient(100deg,var(--cream) 30%,var(--peach) 55%,var(--coral) 80%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero-cta{margin-top:clamp(28px,5vh,46px);display:flex;gap:12px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:15px 26px;border-radius:999px;
+  font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+}
+.btn:active{transform:scale(.96)}
+.btn-fill{
+  background:linear-gradient(120deg,var(--terracotta),var(--coral));
+  color:#fff;box-shadow:0 14px 30px -10px rgba(217,83,47,.55);
+}
+.btn-ghost{border:1px solid rgba(247,239,224,.35);color:var(--cream)}
+.scroll-hint{
+  margin-top:auto;padding-top:34px;
+  font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--peach);
+}
+.scroll-hint::after{
+  content:"";display:block;width:1px;height:34px;margin:10px auto 0;
+  background:linear-gradient(var(--peach),transparent);
+  animation:drip 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   TILE STRIP (bar counter)
+   ============================================================ */
+.tiles{
+  height:34px;
+  background-color:var(--cream);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' fill='%23F7EFE0'/%3E%3Cg fill='none' stroke='%23D9532F' stroke-width='1'%3E%3Cpath d='M17 3 L31 17 L17 31 L3 17 Z'/%3E%3Ccircle cx='17' cy='17' r='4.5'/%3E%3Cpath d='M17 0 V6 M17 28 V34 M0 17 H6 M28 17 H34'/%3E%3C/g%3E%3Cg fill='%231E4437'%3E%3Ccircle cx='0' cy='0' r='2.6'/%3E%3Ccircle cx='34' cy='0' r='2.6'/%3E%3Ccircle cx='0' cy='34' r='2.6'/%3E%3Ccircle cx='34' cy='34' r='2.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:34px 34px;
+  border-top:3px solid var(--terracotta);
+  border-bottom:3px solid var(--terracotta);
+}
+
+/* ============================================================
+   MENU
+   ============================================================ */
+.menu{background:var(--cream);color:var(--ink);padding:56px 0 88px;position:relative}
+.menu-head{text-align:center;padding:0 24px;margin-bottom:30px}
+.menu-head .eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--terracotta);font-weight:600}
+.menu-head h2{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(34px,9vw,46px);letter-spacing:.12em;
+  color:var(--forest);margin-top:10px;
+}
+.menu-head p{margin-top:10px;font-size:14px;color:#6b665c}
+.chips{
+  position:sticky;top:0;z-index:40;
+  display:flex;gap:10px;overflow-x:auto;
+  padding:14px 24px;
+  background:rgba(247,239,224,.92);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  scrollbar-width:none;
+  border-bottom:1px solid rgba(30,68,55,.12);
+}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;padding:10px 18px;border-radius:999px;
+  border:1px solid rgba(30,68,55,.3);color:var(--forest);
+  font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  background:transparent;transition:all .25s ease;cursor:pointer;
+  font-family:var(--body);
+}
+.chip.active{background:var(--forest);color:var(--cream);border-color:var(--forest)}
+.menu-section{max-width:620px;margin:0 auto;padding:44px 24px 0;scroll-margin-top:70px}
+.sec-title{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.sec-title h3{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(21px,6vw,26px);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--forest);white-space:nowrap;
+}
+.sec-title::before,.sec-title::after{
+  content:"";height:1px;flex:1;
+  background:linear-gradient(90deg,transparent,var(--terracotta));
+}
+.sec-title::after{background:linear-gradient(90deg,var(--terracotta),transparent)}
+.sec-note{text-align:center;font-size:12.5px;color:#8a8375;margin-bottom:26px;font-style:italic}
+.item{
+  display:flex;align-items:baseline;gap:12px;
+  padding:15px 0;border-bottom:1px dashed rgba(30,68,55,.18);
+  opacity:0;transform:translateY(14px);
+  transition:opacity .6s ease, transform .6s ease;
+}
+.item.in{opacity:1;transform:none}
+.item:last-child{border-bottom:none}
+.item-body{flex:1}
+.item-name{font-weight:600;font-size:15.5px;color:var(--ink);letter-spacing:.01em}
+.item-desc{margin-top:4px;font-size:13px;line-height:1.5;color:#7b7568}
+.item-price{font-family:var(--display);font-size:16px;color:var(--terracotta);white-space:nowrap}
+.badge{
+  display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--coral);border:1px solid var(--coral);border-radius:999px;
+  padding:2.5px 8px;margin-left:8px;vertical-align:2px;
+}
+.menu-wave{margin-top:70px;position:relative}
+.menu-wave svg{display:block;width:100%;height:auto}
+.menu-wave .quote{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  padding-bottom:26px;color:#fff;text-align:center;
+}
+.menu-wave .quote p{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.9;padding:0 24px}
+
+/* ============================================================
+   VISIT
+   ============================================================ */
+.visit{padding:64px 24px 80px;text-align:center}
+.visit h2{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(30px,8.5vw,42px);letter-spacing:.14em;color:var(--cream);
+}
+.visit .sub{margin-top:10px;font-size:13.5px;color:var(--peach);letter-spacing:.06em}
+.facts{
+  margin:36px auto 0;max-width:560px;
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+}
+.fact{
+  border:1px solid rgba(247,239,224,.16);border-radius:18px;
+  padding:20px 14px;background:rgba(20,49,40,.45);
+}
+.fact .k{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--peach)}
+.fact .v{
+  margin-top:8px;font-family:var(--display);
+  font-size:clamp(17px,4.6vw,21px);color:var(--cream);line-height:1.25;
+}
+.visit-actions{
+  margin-top:32px;display:flex;flex-direction:column;gap:12px;
+  max-width:420px;margin-left:auto;margin-right:auto;
+}
+.visit-actions .btn{width:100%}
+.socials{margin-top:36px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--peach)}
+.socials a{color:var(--cream);border-bottom:1px solid var(--coral);padding-bottom:2px}
+footer{
+  padding:26px 24px calc(96px + env(safe-area-inset-bottom));
+  text-align:center;font-size:11px;letter-spacing:.14em;
+  color:rgba(247,239,224,.45);
+  border-top:1px solid rgba(247,239,224,.1);
+}
+footer .credit{margin-top:12px;letter-spacing:.2em;text-transform:uppercase;font-size:10px}
+footer .credit a{
+  color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5);padding-bottom:1px;
+  transition:color .25s ease;
+}
+footer .credit a:hover{color:var(--coral)}
+
+/* ============================================================
+   STICKY DOCK
+   ============================================================ */
+.dock{
+  position:fixed;left:0;right:0;bottom:0;z-index:100;
+  display:flex;gap:10px;
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  background:rgba(20,49,40,.85);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-top:1px solid rgba(247,239,224,.12);
+  transform:translateY(110%);
+  transition:transform .45s cubic-bezier(.22,1,.36,1);
+}
+.dock.show{transform:none}
+.dock a{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:7px;
+  padding:14px 6px;border-radius:14px;
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+}
+.dock .d-reserve{background:linear-gradient(120deg,var(--terracotta),var(--coral));color:#fff}
+.dock .d-call,.dock .d-map{border:1px solid rgba(247,239,224,.3);color:var(--cream)}
+.dock svg{width:15px;height:15px;flex:none}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+@keyframes fadeUp{to{opacity:1;transform:none}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+@keyframes archIn{to{opacity:1;transform:none}}
+@keyframes sunset{0%{background-position:50% 10%}100%{background-position:50% 70%}}
+@keyframes drip{0%,100%{transform:scaleY(.4);transform-origin:top;opacity:.4}50%{transform:scaleY(1);opacity:1}}
+@keyframes twinkle{0%,100%{opacity:.1}50%{opacity:.9}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes nudge{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(4px,4px)}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  #loader{display:none}
+  .hero-top,.arch,.hero-brand,.tagline,.hero-cta,.scroll-hint{opacity:1;transform:none}
+  .item,.reveal{opacity:1;transform:none}
+  .dock{transform:none}
+}
+@media (min-width:700px){
+  .facts{grid-template-columns:repeat(4,1fr)}
+  .visit-actions{flex-direction:row}
+  .dock{max-width:560px;left:50%;transform:translate(-50%,110%);border-radius:20px 20px 0 0}
+  .dock.show{transform:translate(-50%,0)}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- ============ PRELOADER : SET THE SUN ============ -->
+<div id="loader" aria-label="Drag the sun down to enter">
+  <div class="ld-day"></div>
+  <div class="ld-dusk" id="ldDusk"></div>
+  <div class="ld-stars" id="ldStars"></div>
+  <div class="ld-sun" id="ldSun"></div>
+  <div class="ld-ridge">
+    <svg viewBox="0 0 375 170" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0 170 L0 96 L52 58 L96 88 L142 38 L188 74 L238 28 L290 78 L332 56 L375 92 L375 170 Z" fill="#0F2721" opacity=".6"/>
+      <path d="M0 170 L0 118 L64 84 L116 110 L168 68 L218 102 L272 62 L326 102 L375 82 L375 170 Z" fill="#0F2721"/>
+    </svg>
+  </div>
+  <div class="ld-brand"><div class="mark">FÔLIES</div></div>
+  <div class="ld-progress"><i id="ldBar"></i></div>
+  <div class="ld-hint" id="ldHint">Drag the sun into the mountains<span class="arrow"></span></div>
+  <div class="ld-higher">
+    <small>We are not far, we are just</small>
+    <b>HIGHER</b>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero wall" id="top">
+  <div class="hero-top">
+    <div>Zaarour · Mt&nbsp;Lebanon</div>
+    <span id="sunsetChip">Sunset lounge</span>
+  </div>
+
+  <!-- signature arch : live 3D sunset over the ridge -->
+  <div class="arch" id="arch" aria-hidden="true">
+    <div class="sky"></div>
+    <div class="sun"></div>
+    <canvas id="scene3d"></canvas>
+    <div class="ridge">
+      <svg viewBox="0 0 340 150" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 150 L0 96 L48 60 L86 88 L128 40 L170 74 L214 30 L262 78 L300 56 L340 92 L340 150 Z" fill="#14312B" opacity=".55"/>
+        <path d="M0 150 L0 116 L58 84 L104 108 L152 68 L198 100 L248 62 L296 100 L340 80 L340 150 Z" fill="#14312B"/>
+      </svg>
+    </div>
+    <div class="arch-badge" id="archBadge">Drag to look around</div>
+  </div>
+
+  <div class="hero-brand">
+    <h1>F<span class="accent">Ô</span>LIES</h1>
+    <p class="place">Sunset Lounge</p>
+  </div>
+
+  <div class="tagline">
+    <p>We are not far, we are just</p>
+    <span class="higher">HIGHER</span>
+  </div>
+
+  <div class="hero-cta">
+    <a class="btn btn-fill" href="https://folies.resos.com" target="_blank" rel="noopener">Book a table</a>
+    <a class="btn btn-ghost" href="#menu">See the menu</a>
+  </div>
+
+  <div class="scroll-hint">Scroll</div>
+</header>
+
+<div class="tiles" aria-hidden="true"></div>
+
+<!-- ============ MENU ============ -->
+<main class="menu" id="menu">
+  <div class="menu-head reveal">
+    <div class="eyebrow">The Menu</div>
+    <h2>Made to enjoy<br>at sunset</h2>
+    <p>Fresh ingredients, carefully selected.</p>
+  </div>
+
+  <nav class="chips" id="chips" aria-label="Menu categories">
+    <button class="chip active" data-target="salads">Trio Salads</button>
+    <button class="chip" data-target="raw">Raw Seafood</button>
+    <button class="chip" data-target="bites">Hot Bites</button>
+  </nav>
+
+  <section class="menu-section" id="salads">
+    <div class="sec-title"><h3>Choice of Trio Salads</h3></div>
+    <p class="sec-note">Crisp, cold, and made for golden hour</p>
+    <div class="item">
+      <div class="item-body">
+        <div class="item-name">Quinoa &amp; Smoked Salmon Salad</div>
+        <div class="item-desc">Quinoa, smoked salmon, avocado, cherry tomatoes, cucumber, lemon dressing</div>
+      </div>
+      <div class="item-price">$22</div>
+    </div>
+    <div class="item">
+      <div class="item-body">
+        <div class="item-name">Caesar Salad</div>
+        <div class="item-desc">Romaine lettuce, parmesan, croutons, caesar dressing</div>
+      </div>
+      <div class="item-price">Chicken $12 · Shrimp $15</div>
+    </div>
+    <div class="item">
+      <div class="item-body">
+        <div class="item-name">Goat Cheese Salad</div>
+        <div class="item-desc">Mixed greens, goat cheese, walnuts, beetroot, honey dressing</div>
+      </div>
+      <div class="item-price">$14</div>
+    </div>
+    <div class="item">
+      <div class="item-body">
+        <div class="item-name">Kani Crab Salad</div>
+        <div class="item-desc">Kani crab, mango, cucumber, avocado, sesame dressing</div>
+      </div>
+      <div class="item-price">$13</div>
+    </div>
+  </section>
+
+  <section class="menu-section" id="raw">
+    <div class="sec-title"><h3>Raw Seafood</h3></div>
+    <p class="sec-note">Bright, citrusy, straight from the cold bar</p>
+    <div class="item">
+      <div class="item-body">
+        <div class="item-name">Shrimp Ceviche</div>
+        <div class="item-desc">Shrimp, lime, red onion, cilantro, chili, leche de tigre</div>
+      </div>
+      <div class="item-price">$18</div>
+    </div>
+    <div class="item">
+      <div class="item-body">
+        <div class="item-name">Salmon Tataki</div>
+        <div class="item-desc">Seared salmon, ponzu sauce, sesame, micro greens</div>
+      </div>
+      <div class="item-price">$24</div>
+    </div>
+  </section>
+
+  <section class="menu-section" id="bites">
+    <div class="sec-title"><h3>Assortment of Hot Bites</h3></div>
+    <p class="sec-note">To share — or not</p>
+    <div class="item">
+      <div class="item-body"><div class="item-name">Fried Curly Corn</div></div>
+      <div class="item-price">$8</div>
+    </div>
+    <div class="item">
+      <div class="item-body"><div class="item-name">Spicy Edamame</div></div>
+      <div class="item-price">$9</div>
+    </div>
+    <div class="item">
+      <div class="item-body"><div class="item-name">Baked Baby Potatoes</div></div>
+      <div class="item-price">$8</div>
+    </div>
+    <div class="item">
+      <div class="item-body"><div class="item-name">Risotto Arancini</div></div>
+      <div class="item-price">$14</div>
+    </div>
+    <div class="item">
+      <div class="item-body"><div class="item-name">Crispy Chicken Fingers</div></div>
+      <div class="item-price">$12</div>
+    </div>
+    <div class="item">
+      <div class="item-body"><div class="item-name">Crispy Shrimp with Pineapple Chutney</div></div>
+      <div class="item-price">$15</div>
+    </div>
+    <div class="item">
+      <div class="item-body"><div class="item-name">Loaded Nachos</div></div>
+      <div class="item-price">$12</div>
+    </div>
+    <div class="item">
+      <div class="item-body">
+        <div class="item-name">Ribeye Bites with Red Caviar<span class="badge">Signature</span></div>
+      </div>
+      <div class="item-price">$34</div>
+    </div>
+    <div class="item">
+      <div class="item-body"><div class="item-name">Truffle Fries</div></div>
+      <div class="item-price">$9</div>
+    </div>
+    <div class="item">
+      <div class="item-body"><div class="item-name">Trio Slider Burgers</div></div>
+      <div class="item-price">$16</div>
+    </div>
+  </section>
+
+  <div class="menu-wave" aria-hidden="true">
+    <svg viewBox="0 0 375 190" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0 90 Q70 55 140 78 T280 70 T375 55 L375 190 L0 190 Z" fill="#F5B78C" opacity=".55"/>
+      <path d="M0 115 Q80 82 160 104 T310 96 T375 84 L375 190 L0 190 Z" fill="#EF7A4E" opacity=".8"/>
+      <path d="M0 142 Q90 112 180 132 T375 118 L375 190 L0 190 Z" fill="#D9532F"/>
+    </svg>
+    <div class="quote">
+      <p>Fresh ingredients · Made to enjoy at sunset · Good food, good vibes</p>
+    </div>
+  </div>
+</main>
+
+<div class="tiles" aria-hidden="true"></div>
+
+<!-- ============ VISIT ============ -->
+<section class="visit wall" id="reserve">
+  <h2 class="reveal">Find us up here</h2>
+  <p class="sub reveal">Zaarour, Mount Lebanon — 20 minutes above the noise.</p>
+
+  <div class="facts reveal">
+    <div class="fact"><div class="k">Altitude</div><div class="v">~1,700 m</div></div>
+    <div class="fact"><div class="k">Golden hour</div><div class="v" id="sunsetTime">Every evening</div></div>
+    <div class="fact"><div class="k">Open</div><div class="v">Daily · 4 PM — Late</div></div>
+    <div class="fact"><div class="k">Vibes</div><div class="v">Guaranteed</div></div>
+  </div>
+
+  <div class="visit-actions reveal">
+    <!-- TODO: replace with the exact Resos booking URL -->
+    <a class="btn btn-fill" href="https://folies.resos.com" target="_blank" rel="noopener">Book a table online</a>
+    <!-- TODO: replace 961XXXXXXXX with the real number -->
+    <a class="btn btn-ghost" href="tel:+961XXXXXXXX">Call us</a>
+    <a class="btn btn-ghost" href="https://maps.google.com/?q=Zaarour+Club+Lebanon" target="_blank" rel="noopener">Get directions</a>
+  </div>
+
+  <p class="socials reveal">Follow the sunset — <a href="https://www.instagram.com/ofoliesss/" target="_blank" rel="noopener">@ofoliesss</a></p>
+</section>
+
+<footer>
+  FÔLIES · SUNSET LOUNGE · ZAAROUR — WE ARE NOT FAR, WE ARE JUST HIGHER
+  <div class="credit">Website by <a href="https://swottm.com" target="_blank" rel="noopener">SWOT Creative Hub</a></div>
+</footer>
+
+<!-- ============ STICKY DOCK ============ -->
+<nav class="dock" id="dock" aria-label="Quick actions">
+  <a class="d-reserve" href="https://folies.resos.com" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+    Book
+  </a>
+  <a class="d-call" href="tel:+961XXXXXXXX">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.5 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>
+    Call
+  </a>
+  <a class="d-map" href="https://maps.google.com/?q=Zaarour+Club+Lebanon" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+    Map
+  </a>
+</nav>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ============================================================
+   PRELOADER : SET THE SUN
+   ============================================================ */
+(function(){
+  var loader = document.getElementById('loader');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced || !loader || getComputedStyle(loader).display === 'none'){
+    document.body.classList.remove('locked');
+    document.body.classList.add('ready');
+    initScene();
+    return;
+  }
+  var sun = document.getElementById('ldSun');
+  var dusk = document.getElementById('ldDusk');
+  var bar = document.getElementById('ldBar');
+  var stars = document.getElementById('ldStars');
+  var p = 0, done = false, lastInput = performance.now(), dragging = false;
+
+  // spawn stars
+  for(var i=0;i<34;i++){
+    var s = document.createElement('i');
+    s.className = 'ld-star';
+    s.style.left = (Math.random()*100)+'%';
+    s.style.top = (Math.random()*55)+'%';
+    s.style.animationDelay = (Math.random()*2.6)+'s';
+    s.style.width = s.style.height = (1.5+Math.random()*2)+'px';
+    stars.appendChild(s);
+  }
+
+  function yFor(prog){
+    var h = loader.clientHeight;
+    return h*0.14 + prog*(h*0.62);
+  }
+  function render(){
+    sun.style.transform = 'translateY(' + yFor(p) + 'px)';
+    dusk.style.opacity = Math.min(1, p*1.25);
+    stars.style.opacity = Math.max(0, (p-0.55)*2.2);
+    bar.style.height = (p*100)+'%';
+    loader.classList.toggle('dusky', p > 0.35);
+    if(p >= 1 && !done) complete();
+  }
+  function setP(v){
+    p = Math.max(0, Math.min(1, v));
+    render();
+  }
+  function complete(){
+    done = true;
+    loader.classList.add('fin');
+    if(navigator.vibrate) navigator.vibrate(30);
+    setTimeout(function(){
+      loader.classList.add('done');
+      document.body.classList.remove('locked');
+      document.body.classList.add('ready');
+      initScene();
+      setTimeout(function(){ loader.remove(); }, 1000);
+    }, 1200);
+  }
+
+  function progFromY(clientY){
+    var h = loader.clientHeight;
+    return (clientY - h*0.14 - 48) / (h*0.62);
+  }
+  loader.addEventListener('pointerdown', function(e){
+    if(done) return;
+    dragging = true;
+    lastInput = performance.now();
+    loader.classList.add('grabbed');
+    loader.setPointerCapture(e.pointerId);
+    setP(Math.max(p, progFromY(e.clientY)));
+  });
+  loader.addEventListener('pointermove', function(e){
+    if(!dragging || done) return;
+    lastInput = performance.now();
+    setP(Math.max(p, progFromY(e.clientY)));
+  });
+  loader.addEventListener('pointerup', function(){
+    dragging = false;
+    loader.classList.remove('grabbed');
+  });
+
+  // gentle auto-set if idle, so nobody is ever stuck
+  function tick(now){
+    if(done) return;
+    if(!dragging && now - lastInput > 3200){
+      setP(p + 0.0035);
+    }
+    requestAnimationFrame(tick);
+  }
+  render();
+  requestAnimationFrame(tick);
+})();
+
+/* ============================================================
+   3D SCENE IN THE ARCH — Three.js
+   ============================================================ */
+var sceneInited = false;
+function initScene(){
+  if(sceneInited) return;
+  sceneInited = true;
+  var arch = document.getElementById('arch');
+  var canvas = document.getElementById('scene3d');
+  if(!window.THREE || !canvas){ return; }
+  var renderer;
+  try{
+    renderer = new THREE.WebGLRenderer({canvas:canvas, alpha:true, antialias:true});
+  }catch(e){ return; }
+  arch.classList.add('gl');
+
+  var W = arch.clientWidth, H = arch.clientHeight;
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
+  renderer.setSize(W, H, false);
+
+  var scene = new THREE.Scene();
+  scene.fog = new THREE.Fog(0xE2653F, 9, 26);
+
+  var camera = new THREE.PerspectiveCamera(55, W/H, 0.1, 100);
+  camera.position.set(0, 1.6, 8);
+
+  // lights — warm sunset key + cool fill
+  var sunLight = new THREE.DirectionalLight(0xFFB877, 1.4);
+  sunLight.position.set(0, 3, -12);
+  scene.add(sunLight);
+  scene.add(new THREE.AmbientLight(0x4A3050, 0.9));
+  var rim = new THREE.DirectionalLight(0xF5B78C, 0.5);
+  rim.position.set(4, 6, 6);
+  scene.add(rim);
+
+  var world = new THREE.Group();
+  scene.add(world);
+
+  // ---- low-poly mountain ridges ----
+  function makeRidge(depth, height, color, seed){
+    var geo = new THREE.PlaneGeometry(46, 14, 64, 16);
+    var pos = geo.attributes.position;
+    for(var i=0;i<pos.count;i++){
+      var x = pos.getX(i), y = pos.getY(i);
+      var t = (y + 7) / 14; // 0 back -> 1 front
+      var h = Math.sin(x*0.42 + seed)*1.1
+            + Math.sin(x*0.93 + seed*2.3)*0.65
+            + Math.sin(x*2.1 + seed*4.1)*0.3;
+      h = (h + 2.05) * height * (0.35 + t*0.65);
+      h += (Math.sin(x*12.9+seed*7.7)*0.5+0.5) * 0.22 * height;
+      pos.setZ(i, h);
+    }
+    geo.computeVertexNormals();
+    var mat = new THREE.MeshLambertMaterial({color:color, flatShading:true});
+    var mesh = new THREE.Mesh(geo, mat);
+    mesh.rotation.x = -Math.PI/2;
+    mesh.position.set(0, 0, depth);
+    return mesh;
+  }
+  world.add(makeRidge(-14, 1.9, 0x1E4437, 1.7)); // far, lighter (fog does the rest)
+  world.add(makeRidge(-7,  1.5, 0x16382E, 4.2));
+  world.add(makeRidge(-1,  1.1, 0x0F2721, 8.9)); // near, darkest
+
+  // ---- the sun ----
+  var sunGroup = new THREE.Group();
+  var sunMesh = new THREE.Mesh(
+    new THREE.SphereGeometry(1.35, 32, 32),
+    new THREE.MeshBasicMaterial({color:0xFFEBC2})
+  );
+  sunGroup.add(sunMesh);
+  // glow sprite
+  var glowCanvas = document.createElement('canvas');
+  glowCanvas.width = glowCanvas.height = 128;
+  var g = glowCanvas.getContext('2d');
+  var grad = g.createRadialGradient(64,64,4,64,64,64);
+  grad.addColorStop(0,'rgba(255,240,205,0.95)');
+  grad.addColorStop(0.35,'rgba(251,195,119,0.55)');
+  grad.addColorStop(1,'rgba(245,154,85,0)');
+  g.fillStyle = grad;
+  g.fillRect(0,0,128,128);
+  var glowTex = new THREE.CanvasTexture(glowCanvas);
+  var glow = new THREE.Sprite(new THREE.SpriteMaterial({
+    map:glowTex, blending:THREE.AdditiveBlending, depthWrite:false, transparent:true
+  }));
+  glow.scale.set(11,11,1);
+  sunGroup.add(glow);
+  sunGroup.position.set(0, 2.4, -18);
+  world.add(sunGroup);
+
+  // ---- floating embers / fireflies ----
+  var N = 70;
+  var pGeo = new THREE.BufferGeometry();
+  var pArr = new Float32Array(N*3);
+  var speeds = new Float32Array(N);
+  for(var j=0;j<N;j++){
+    pArr[j*3]   = (Math.random()-0.5)*20;
+    pArr[j*3+1] = Math.random()*6;
+    pArr[j*3+2] = -Math.random()*16;
+    speeds[j] = 0.15 + Math.random()*0.45;
+  }
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pArr, 3));
+  var points = new THREE.Points(pGeo, new THREE.PointsMaterial({
+    color:0xFBD9BC, size:0.09, transparent:true, opacity:0.85,
+    blending:THREE.AdditiveBlending, depthWrite:false
+  }));
+  world.add(points);
+
+  // ---- interaction : drag to look, tilt parallax ----
+  var tx = 0, ty = 0, cx = 0, cy = 0, rotT = 0, rot = 0;
+  var down = false, lastX = 0;
+  arch.addEventListener('pointerdown', function(e){
+    down = true; lastX = e.clientX;
+  });
+  window.addEventListener('pointermove', function(e){
+    if(down){
+      rotT += (e.clientX - lastX) * 0.0035;
+      rotT = Math.max(-0.45, Math.min(0.45, rotT));
+      lastX = e.clientX;
+    }
+    var r = arch.getBoundingClientRect();
+    tx = ((e.clientX - r.left)/r.width - 0.5) * 2;
+    ty = ((e.clientY - r.top)/r.height - 0.5) * 2;
+  });
+  window.addEventListener('pointerup', function(){ down = false; });
+  window.addEventListener('deviceorientation', function(e){
+    if(e.gamma == null) return;
+    tx = Math.max(-1, Math.min(1, e.gamma/28));
+    ty = Math.max(-1, Math.min(1, (e.beta-45)/40));
+  });
+
+  // hide the hint after first interaction
+  var badge = document.getElementById('archBadge');
+  var hideBadge = function(){ if(badge){ badge.style.opacity = 0; badge.style.transition='opacity .6s'; } };
+  arch.addEventListener('pointerdown', hideBadge, {once:true});
+  setTimeout(hideBadge, 7000);
+
+  // pause rendering off-screen
+  var visible = true;
+  new IntersectionObserver(function(en){ visible = en[0].isIntersecting; },{threshold:0}).observe(arch);
+
+  var clock = new THREE.Clock();
+  function loop(){
+    requestAnimationFrame(loop);
+    if(!visible) return;
+    var t = clock.getElapsedTime();
+    // easing
+    cx += (tx - cx)*0.05;
+    cy += (ty - cy)*0.05;
+    rot += (rotT - rot)*0.06;
+    world.rotation.y = rot;
+    camera.position.x = cx * 0.9;
+    camera.position.y = 1.6 + cy * -0.35;
+    camera.lookAt(0, 1.4, -12);
+    // sun breathes on the horizon
+    sunGroup.position.y = 2.4 + Math.sin(t*0.35)*0.35;
+    glow.material.opacity = 0.85 + Math.sin(t*1.4)*0.15;
+    // embers drift up
+    var arr = pGeo.attributes.position.array;
+    for(var k=0;k<N;k++){
+      arr[k*3+1] += speeds[k]*0.008;
+      arr[k*3] += Math.sin(t*0.7 + k)*0.0012;
+      if(arr[k*3+1] > 6.5) arr[k*3+1] = -0.3;
+    }
+    pGeo.attributes.position.needsUpdate = true;
+    renderer.render(scene, camera);
+  }
+  loop();
+
+  window.addEventListener('resize', function(){
+    var w = arch.clientWidth, h = arch.clientHeight;
+    camera.aspect = w/h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h, false);
+  });
+}
+
+/* ============================================================
+   PAGE BEHAVIOUR
+   ============================================================ */
+// reveal on scroll
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal,.item').forEach(function(el){ io.observe(el); });
+
+// sticky dock appears after hero
+var dock = document.getElementById('dock');
+var hero = document.querySelector('.hero');
+new IntersectionObserver(function(en){
+  dock.classList.toggle('show', !en[0].isIntersecting);
+},{threshold:.25}).observe(hero);
+
+// chips: scroll + active state
+var chips = document.querySelectorAll('.chip');
+chips.forEach(function(c){
+  c.addEventListener('click', function(){
+    document.getElementById(c.dataset.target).scrollIntoView({behavior:'smooth'});
+  });
+});
+var secObserver = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      chips.forEach(function(c){ c.classList.toggle('active', c.dataset.target===e.target.id); });
+    }
+  });
+},{rootMargin:'-30% 0px -55% 0px'});
+['salads','raw','bites'].forEach(function(id){ secObserver.observe(document.getElementById(id)); });
+
+// live sunset time for Zaarour (lat 33.98, lng 35.72)
+(function(){
+  try{
+    var lat=33.98, lng=35.72;
+    var now=new Date();
+    var start=new Date(now.getFullYear(),0,0);
+    var day=Math.floor((now-start)/864e5);
+    var rad=Math.PI/180;
+    var decl=23.45*Math.sin(rad*(360/365)*(day-81));
+    var ha=Math.acos(-Math.tan(lat*rad)*Math.tan(decl*rad))/rad;
+    var solarNoonUTC=12-(lng/15);
+    var sunsetUTC=solarNoonUTC+ha/15;
+    var local=sunsetUTC+3; // Lebanon summer time UTC+3
+    var h=Math.floor(local), m=Math.round((local-h)*60);
+    if(m===60){h++;m=0;}
+    var hh=((h+11)%12)+1;
+    var t=hh+':'+String(m).padStart(2,'0')+' PM';
+    document.getElementById('sunsetTime').textContent='Sunset ~ '+t;
+    document.getElementById('sunsetChip').textContent='Sunset today · '+t;
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
