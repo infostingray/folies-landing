@@ -200,15 +200,17 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 }
 .arch-osvg img{display:block;width:100%;height:100%}
 .arch{
-  position:absolute;inset:0;
+  position:absolute;inset:2.5% 3.5%;
   overflow:hidden;
   touch-action:pan-y;cursor:ew-resize;
   background:linear-gradient(180deg,#5b3a6e,#e2653f 60%,#fbc98a);
-  border-radius:48% / 48%;
-  -webkit-mask-image:url('assets/o-hole.png');
-  mask-image:url('assets/o-hole.png');
-  -webkit-mask-size:100% 100%;
-  mask-size:100% 100%;
+  border-radius:47% / 47%;
+  -webkit-mask-image:url('assets/o-hole-x2.png');
+  mask-image:url('assets/o-hole-x2.png');
+  -webkit-mask-size:107.5% 105.3%;
+  mask-size:107.5% 105.3%;
+  -webkit-mask-position:center;
+  mask-position:center;
   -webkit-mask-repeat:no-repeat;
   mask-repeat:no-repeat;
 }
@@ -775,7 +777,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
     <div class="arch-badge" id="archBadge">Slide across the sky</div>
   </div>
   <div class="arch-osvg">
-    <img src="assets/o-ring.png" alt="">
+    <img src="assets/o-ring-x2.png" alt="">
   </div>
   </div>
 
