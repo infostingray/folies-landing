@@ -185,6 +185,15 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   to{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.2)}
 }
 
+#annc{
+  display:none;
+  background:linear-gradient(120deg,var(--terracotta),var(--coral));
+  color:#fff;text-align:center;
+  padding:12px 20px;
+  font-size:12.5px;font-weight:700;letter-spacing:.08em;
+}
+#annc.show{display:block}
+
 /* ============================================================
    ETCHED WALL
    ============================================================ */
@@ -847,6 +856,8 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
 
 </header>
 
+<div id="annc"></div>
+
 <div class="tiles" aria-hidden="true"></div>
 <!-- ============ EVENTS ============ -->
 <section class="events wall" id="events">
@@ -1480,17 +1491,21 @@ function initArch(){
     save(); sync(); syncDom();
   }
 
-  document.querySelectorAll('.item[data-price]').forEach(function(it){
-    it.addEventListener('click', function(){
-      toggle(it.dataset.name, parseInt(it.dataset.price,10), it);
+  function bindItems(){
+    document.querySelectorAll('.item[data-price]').forEach(function(it){
+      it.addEventListener('click', function(){
+        toggle(it.dataset.name, parseInt(it.dataset.price,10), it);
+      });
     });
-  });
-  document.querySelectorAll('.variant button').forEach(function(b){
-    b.addEventListener('click', function(e){
-      e.stopPropagation();
-      toggle(b.dataset.name, parseInt(b.dataset.price,10), b.closest('.item'));
+    document.querySelectorAll('.variant button').forEach(function(b){
+      b.addEventListener('click', function(e){
+        e.stopPropagation();
+        toggle(b.dataset.name, parseInt(b.dataset.price,10), b.closest('.item'));
+      });
     });
-  });
+  }
+  bindItems();
+  window.__menu = { bindItems: bindItems, refresh: function(){ sync(); syncDom(); } };
 
   function openSheet(){ sheet.classList.add('open'); veil.classList.add('open'); }
   function closeSheet(){ sheet.classList.remove('open'); veil.classList.remove('open'); }
@@ -1604,6 +1619,99 @@ var secObserver = new IntersectionObserver(function(entries){
     if(open){ stT.textContent = 'Open now · until late'; }
     else{ st.classList.add('closed'); stT.textContent = 'Opens today at 5 PM'; }
   }catch(e){}
+})();
+</script>
+
+<script>
+/* ============================================================
+   CONTENT HYDRATION — everything editable lives in content.json
+   (edited by the client via the Swot Portal dashboard)
+   ============================================================ */
+(function(){
+  function esc(s){ var d=document.createElement('div'); d.textContent=s==null?'':String(s); return d.innerHTML; }
+  fetch('content.json?t=' + Date.now())
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(C){
+      try{
+        // ---- contact ----
+        if(C.contact){
+          if(C.contact.phone && C.contact.phone.indexOf('X') === -1){
+            document.querySelectorAll('a[href^="tel:"]').forEach(function(a){ a.href='tel:'+C.contact.phone.replace(/\s/g,''); });
+          }
+          if(C.contact.resos) document.querySelectorAll('a[href*="resos.com"]').forEach(function(a){ a.href=C.contact.resos; });
+          if(C.contact.instagram) document.querySelectorAll('a[href*="instagram.com"]').forEach(function(a){ a.href=C.contact.instagram; });
+          if(C.contact.maps) document.querySelectorAll('a[href*="maps.google"]').forEach(function(a){ a.href=C.contact.maps; });
+        }
+        // ---- announcement ----
+        if(C.announcement && C.announcement.show && C.announcement.text){
+          var an = document.getElementById('annc');
+          an.textContent = C.announcement.text;
+          an.classList.add('show');
+        }
+        // ---- hours ----
+        if(C.hours){
+          document.querySelectorAll('.fact').forEach(function(f){
+            var k = f.querySelector('.k');
+            if(k && /open/i.test(k.textContent)) f.querySelector('.v').textContent = C.hours.openLabel || '';
+          });
+          var st = document.getElementById('status'), stT = document.getElementById('statusText');
+          if(st && stT){
+            var hr = new Date().getHours();
+            var o = C.hours.openHour!=null?C.hours.openHour:17, c = C.hours.closeHour!=null?C.hours.closeHour:2;
+            var open = c < o ? (hr >= o || hr < c) : (hr >= o && hr < c);
+            var disp = ((o+11)%12)+1;
+            st.classList.toggle('closed', !open);
+            stT.textContent = open ? 'Open now · until late' : ('Opens today at ' + disp + (o>=12?' PM':' AM'));
+          }
+        }
+        // ---- events ----
+        if(C.events && C.events.length){
+          var list = document.querySelector('.ev-list');
+          if(list){
+            list.innerHTML = C.events.map(function(e){
+              return '<a class="ev-card reveal in" href="'+esc(e.url||(C.contact&&C.contact.resos)||'#')+'" target="_blank" rel="noopener">'
+                + '<div class="ev-date"><b>'+esc(e.day)+'</b><span>'+esc(e.label)+'</span></div>'
+                + '<div class="ev-info"><div class="ev-name">'+esc(e.name)+'</div>'
+                + '<div class="ev-dj">'+esc(e.dj)+'</div>'
+                + '<div class="ev-tags">'+(e.tags||[]).map(function(t){return '<i>'+esc(t)+'</i>';}).join('')+'</div></div>'
+                + '<div class="ev-go">→</div></a>';
+            }).join('');
+          }
+        }
+        // ---- menu ----
+        if(C.menu && C.menu.length){
+          C.menu.forEach(function(sec){
+            var el = document.getElementById(sec.id);
+            if(!el) return;
+            var chip = document.querySelector('.chip[data-target="'+sec.id+'"]');
+            if(chip && sec.chip) chip.textContent = sec.chip;
+            var rows = (sec.items||[]).map(function(it){
+              if(it.variants && it.variants.length){
+                var vbtns = it.variants.map(function(v){
+                  return '<button data-name="'+esc(it.name)+' ('+esc(v.label)+')" data-price="'+(v.price|0)+'">'+esc(v.label)+' <span class="vp">$'+(v.price|0)+'</span></button>';
+                }).join('');
+                return '<div class="item no-toggle in" data-name="'+esc(it.name)+'" data-variant="1"><div class="item-body">'
+                  + '<div class="item-name">'+esc(it.name)+(it.badge?'<span class="badge">'+esc(it.badge)+'</span>':'')+'</div>'
+                  + (it.desc?'<div class="item-desc">'+esc(it.desc)+'</div>':'')
+                  + '<div class="variant">'+vbtns+'</div></div></div>';
+              }
+              return '<div class="item in" data-name="'+esc(it.name)+'" data-price="'+(it.price|0)+'"><div class="item-body">'
+                + '<div class="item-name">'+esc(it.name)+(it.badge?'<span class="badge">'+esc(it.badge)+'</span>':'')+'</div>'
+                + (it.desc?'<div class="item-desc">'+esc(it.desc)+'</div>':'')
+                + '</div><div class="item-price">$'+(it.price|0)+'</div><div class="pick-dot">✓</div></div>';
+            }).join('');
+            var titleEl = el.querySelector('.sec-title h3');
+            var noteEl = el.querySelector('.sec-note');
+            if(titleEl && sec.title) titleEl.textContent = sec.title;
+            if(noteEl && sec.note) noteEl.textContent = sec.note;
+            el.querySelectorAll('.item').forEach(function(n){ n.remove(); });
+            noteEl.insertAdjacentHTML('afterend', rows);
+          });
+          if(window.__menu){ window.__menu.bindItems(); window.__menu.refresh(); }
+        }
+      }catch(err){ console.warn('hydrate section failed', err); }
+    })
+    .catch(function(){ /* no content.json — static fallback stays */ });
 })();
 </script>
 </body>
