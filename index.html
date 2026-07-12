@@ -541,7 +541,8 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
    ============================================================ */
 #tray{
   position:fixed;left:50%;bottom:calc(88px + env(safe-area-inset-bottom));
-  transform:translate(-50%,140%);
+  transform:translate(-50%,30px);
+  opacity:0;visibility:hidden;pointer-events:none;
   z-index:120;
   display:flex;align-items:center;gap:10px;
   background:var(--forest);color:var(--cream);
@@ -549,10 +550,10 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   box-shadow:0 18px 40px -12px rgba(15,39,33,.6);
   border:1px solid rgba(247,239,224,.18);
   font-size:13px;font-weight:600;letter-spacing:.04em;
-  transition:transform .45s cubic-bezier(.22,1,.36,1);
+  transition:transform .45s cubic-bezier(.22,1,.36,1), opacity .35s ease, visibility .35s;
   white-space:nowrap;cursor:pointer;
 }
-#tray.show{transform:translate(-50%,0)}
+#tray.show{transform:translate(-50%,0);opacity:1;visibility:visible;pointer-events:auto}
 #tray.ready{background:linear-gradient(120deg,var(--terracotta),var(--coral));border-color:transparent}
 #tray b{font-family:var(--display);color:var(--peach);font-weight:400}
 #tray.ready b{color:#fff}
@@ -1050,7 +1051,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
 
 <footer>
   OFÔLIES · SUNSET LOUNGE · ZAAROUR
-  <div class="credit">© 2026 <a href="https://swottm.com" target="_blank" rel="noopener">SWOT Creative Hub</a></div>
+  <div class="credit">© 2026 <a href="https://swottm.com" target="_blank" rel="noopener">Swot Creative Hub</a></div>
 </footer>
 
 <!-- ============ ORDER TRAY & SHEET ============ -->
