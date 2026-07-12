@@ -191,24 +191,87 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   overflow:hidden;position:relative;
   box-shadow:0 30px 60px -20px rgba(0,0,0,.55), inset 0 0 0 1px rgba(247,239,224,.18);
   opacity:0;transform:translateY(24px) scale(.97);
-  touch-action:pan-y;
+  touch-action:pan-y;cursor:ew-resize;
   background:linear-gradient(180deg,#5b3a6e,#e2653f 60%,#fbc98a);
 }
 .arch-pan{
-  position:absolute;top:0;bottom:0;left:-18%;width:136%;
+  position:absolute;top:0;bottom:0;left:-6%;width:112%;
   will-change:transform;
 }
 .arch-pan img{
   width:100%;height:100%;object-fit:cover;object-position:50% 35%;
-  animation:kenburns 22s ease-in-out infinite alternate;
+  animation:kenburns 26s ease-in-out infinite alternate;
+  will-change:filter;
 }
+.arch-warmlayer,.arch-nightlayer,.arch-starlayer{
+  position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;
+}
+.arch-warmlayer{
+  background:
+    radial-gradient(110% 65% at 50% 38%, rgba(245,154,85,.42), transparent 62%),
+    linear-gradient(180deg, rgba(138,60,92,.25) 0%, rgba(217,83,47,.18) 55%, rgba(251,217,188,.12) 100%);
+  mix-blend-mode:screen;
+}
+.arch-nightlayer{
+  background:linear-gradient(180deg, rgba(12,16,44,.75) 0%, rgba(26,22,58,.55) 45%, rgba(20,49,40,.35) 100%);
+}
+.arch-starlayer{
+  background-image:radial-gradient(1.5px 1.5px at 20% 15%, #FFF3D6 50%, transparent 51%),
+    radial-gradient(1px 1px at 65% 8%, #FFF3D6 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 82% 22%, #FFF3D6 50%, transparent 51%),
+    radial-gradient(1px 1px at 38% 26%, #FFF3D6 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 50% 12%, #FFF3D6 50%, transparent 51%),
+    radial-gradient(1px 1px at 10% 30%, #FFF3D6 50%, transparent 51%),
+    radial-gradient(1px 1px at 90% 35%, #FFF3D6 50%, transparent 51%);
+  animation:twinkle 3.2s ease-in-out infinite;
+}
+.arch-neon{
+  position:absolute;top:13%;left:0;right:0;z-index:4;
+  text-align:center;pointer-events:none;
+  font-family:var(--thin);font-size:clamp(26px,8vw,36px);
+  letter-spacing:.32em;text-indent:.32em;
+  color:#FFDFAE;opacity:0;
+  text-shadow:0 0 6px #FBC377, 0 0 18px #EF7A4E, 0 0 38px #D9532F, 0 0 70px #D9532F;
+}
+.arch-neon.flick{animation:neonflick .9s steps(2,jump-none) 1}
+@keyframes neonflick{0%{opacity:.1}25%{opacity:.9}40%{opacity:.2}60%{opacity:1}75%{opacity:.5}100%{opacity:1}}
+.arch-time{
+  position:absolute;top:12px;right:14px;z-index:5;
+  font-size:10px;font-weight:700;letter-spacing:.18em;
+  color:var(--cream);
+  background:rgba(15,39,33,.45);
+  border:1px solid rgba(247,239,224,.25);
+  padding:6px 11px;border-radius:999px;
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  pointer-events:none;
+}
+.arch-track{
+  position:absolute;left:14%;right:14%;bottom:26px;z-index:5;height:22px;
+  pointer-events:none;
+}
+.arch-track::before{
+  content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;
+  background:linear-gradient(90deg, rgba(247,239,224,.7), rgba(245,154,85,.8), rgba(12,16,44,.9));
+  border-radius:2px;
+}
+.arch-knob{
+  position:absolute;top:50%;left:0;width:18px;height:18px;
+  margin:-9px 0 0 -9px;border-radius:50%;
+  background:radial-gradient(circle at 40% 35%, #FFFBEE, #FBC377);
+  box-shadow:0 0 12px rgba(255,222,150,.9), 0 0 26px rgba(245,154,85,.5);
+}
+.arch-track .sunicon,.arch-track .moonicon{
+  position:absolute;top:-16px;font-size:11px;color:rgba(247,239,224,.9);
+}
+.arch-track .sunicon{left:-4px}
+.arch-track .moonicon{right:-4px}
 #emberCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
 .arch-grad{
   position:absolute;inset:0;z-index:2;pointer-events:none;
   background:linear-gradient(180deg, rgba(20,49,40,.15) 0%, transparent 30%, transparent 70%, rgba(15,39,33,.45) 100%);
 }
 .arch-badge{
-  position:absolute;left:0;right:0;bottom:10px;z-index:5;text-align:center;
+  position:absolute;left:0;right:0;bottom:52px;z-index:5;text-align:center;
   font-size:9px;letter-spacing:.3em;text-transform:uppercase;
   color:rgba(247,239,224,.9);pointer-events:none;
   text-shadow:0 1px 8px rgba(20,49,40,.8);
@@ -417,7 +480,7 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .menu-wave svg{display:block;width:100%;height:auto}
 
 /* ============================================================
-   SHORTLIST TRAY, SHEET & WAITER MODE
+   ORDER TRAY & SHEET
    ============================================================ */
 #tray{
   position:fixed;left:50%;bottom:calc(88px + env(safe-area-inset-bottom));
@@ -480,64 +543,6 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .sh-actions .btn{flex:1;padding:14px 10px;font-size:12px}
 .sh-links{display:flex;justify-content:center;gap:18px;margin-top:14px}
 .sh-links button, .sh-links a{color:#8a8375;text-decoration:underline;font-size:12px}
-
-/* waiter mode — raise your phone */
-#waiter{
-  position:fixed;inset:0;z-index:300;
-  background:var(--cream);color:var(--ink);
-  display:flex;flex-direction:column;
-  padding:0 0 calc(20px + env(safe-area-inset-bottom));
-  transform:translateY(105%);
-  transition:transform .5s cubic-bezier(.22,1,.36,1);
-  overflow-y:auto;
-}
-#waiter.open{transform:none}
-.wt-tiles{height:24px;flex:none;background-color:var(--cream);
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23F7EFE0'/%3E%3Cg fill='none' stroke='%23D9532F' stroke-width='.8'%3E%3Cpath d='M12 2 L22 12 L12 22 L2 12 Z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/g%3E%3C/svg%3E");
-  background-size:24px 24px;border-bottom:2px solid var(--terracotta);
-}
-.wt-body{flex:1;display:flex;flex-direction:column;align-items:center;padding:26px 24px 10px;text-align:center}
-.wt-hand{
-  font-size:52px;line-height:1;
-  animation:wave 1.6s ease-in-out infinite;
-  transform-origin:70% 80%;
-}
-@keyframes wave{0%,100%{transform:rotate(0)}25%{transform:rotate(16deg)}50%{transform:rotate(-6deg)}75%{transform:rotate(12deg)}}
-.wt-title{
-  font-family:var(--display);font-size:clamp(26px,8vw,34px);
-  letter-spacing:.12em;color:var(--forest);margin-top:14px;
-}
-.wt-sub{font-size:13px;color:#8a8375;margin-top:6px}
-.wt-card{
-  width:100%;max-width:440px;margin-top:22px;
-  border:2px solid var(--terracotta);border-radius:20px;
-  padding:18px 20px;
-  background:#fff;
-  box-shadow:0 16px 40px -18px rgba(217,83,47,.35);
-  animation:cardpulse 2.4s ease-in-out infinite;
-}
-@keyframes cardpulse{0%,100%{box-shadow:0 16px 40px -18px rgba(217,83,47,.35)}50%{box-shadow:0 16px 46px -12px rgba(217,83,47,.55)}}
-.wt-row{
-  display:flex;justify-content:space-between;gap:12px;
-  padding:10px 0;border-bottom:1px dashed rgba(30,68,55,.15);
-  font-size:15.5px;font-weight:600;text-align:left;
-}
-.wt-row .p{font-family:var(--display);color:var(--terracotta);font-weight:400}
-.wt-total{
-  display:flex;justify-content:space-between;padding-top:14px;
-  font-size:15px;font-weight:700;color:var(--forest);
-}
-.wt-total .p{font-family:var(--display);font-size:24px;color:var(--terracotta);font-weight:400}
-.wt-brand{
-  margin-top:18px;font-family:var(--display);font-size:13px;
-  letter-spacing:.4em;text-indent:.4em;color:var(--forest);opacity:.6;
-}
-.wt-back{
-  margin:18px auto 0;display:block;
-  color:var(--forest);border:1px solid rgba(30,68,55,.35);
-  padding:13px 30px;border-radius:999px;
-  font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-}
 
 /* ============================================================
    VISIT
@@ -644,7 +649,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
 <div id="sunbar"></div>
 
 <!-- ============ PRELOADER : LIGHT THE TERRACE ============ -->
-<div id="loader" aria-label="Drag the sun down to light the terrace">
+<div id="loader" aria-label="Drag the sun down to set it">
   <div class="ld-photo" id="ldPhoto"></div>
   <div class="ld-warm" id="ldWarm"></div>
   <div class="ld-vig"></div>
@@ -655,7 +660,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
     <div class="sub">Zaarour · Sunset Lounge</div>
   </div>
   <div class="ld-progress"><i id="ldBar"></i></div>
-  <div class="ld-hint" id="ldHint">Drag the sun · light the terrace<span class="arrow"></span></div>
+  <div class="ld-hint" id="ldHint">Drag the sun up &amp; down · set it to enter<span class="arrow"></span></div>
   <div class="ld-higher">
     <small>We are not far, we are just</small>
     <b>HIGHER</b>
@@ -671,11 +676,17 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
 
   <div class="arch" id="arch" aria-hidden="true">
     <div class="arch-pan" id="archPan">
-      <img src="assets/sunset.jpg" alt="">
+      <img src="assets/sunset.jpg" alt="" id="archImg">
     </div>
+    <div class="arch-warmlayer" id="archWarm"></div>
+    <div class="arch-nightlayer" id="archNight"></div>
+    <div class="arch-starlayer" id="archStars"></div>
+    <div class="arch-neon" id="archNeon">FÔLIES</div>
     <div class="arch-grad"></div>
     <canvas id="emberCanvas"></canvas>
-    <div class="arch-badge" id="archBadge">Drag to pan · tilt your phone</div>
+    <div class="arch-time" id="archTime">5:00 PM</div>
+    <div class="arch-track"><span class="sunicon">☀</span><span class="moonicon">☾</span><i class="arch-knob" id="archKnob"></i></div>
+    <div class="arch-badge" id="archBadge">Slide across the sky</div>
   </div>
 
   <div class="hero-brand">
@@ -886,7 +897,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
   <div class="credit">Website by <a href="https://swottm.com" target="_blank" rel="noopener">SWOT Creative Hub</a></div>
 </footer>
 
-<!-- ============ SHORTLIST TRAY, SHEET, WAITER MODE ============ -->
+<!-- ============ ORDER TRAY & SHEET ============ -->
 <div id="tray"><span class="star">✦</span>&nbsp;<span id="trayLabel"><span id="trayCount">0</span> picks · <b id="trayTotal">$0</b></span></div>
 <div id="sheetveil"></div>
 <div id="sheet" role="dialog" aria-label="Your order">
@@ -896,27 +907,13 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
   <div class="sh-list" id="shList"></div>
   <div class="sh-total"><span>Total</span><span class="p" id="shTotal">$0</span></div>
   <div class="sh-actions">
-    <button class="btn btn-fill" id="shWaiter">🙋 I'm ready — call the waiter</button>
+    <!-- TODO: replace 961XXXXXXXX with the real WhatsApp number -->
+    <a class="btn btn-fill" id="shWa" href="#" target="_blank" rel="noopener">Send order on WhatsApp</a>
+    <button class="btn btn-ghost" id="shShare" style="color:var(--forest);border-color:rgba(30,68,55,.35)">Share</button>
   </div>
   <div class="sh-links">
     <button id="shClose">Keep browsing</button>
     <button id="shClear">Clear all</button>
-  </div>
-</div>
-
-<!-- waiter mode -->
-<div id="waiter" role="dialog" aria-label="Ready to order">
-  <div class="wt-tiles"></div>
-  <div class="wt-body">
-    <div class="wt-hand">✋</div>
-    <div class="wt-title">Ready to Order</div>
-    <div class="wt-sub">Raise your phone — the team will take it from here</div>
-    <div class="wt-card">
-      <div id="wtList"></div>
-      <div class="wt-total"><span>Total</span><span class="p" id="wtTotal">$0</span></div>
-    </div>
-    <div class="wt-brand">FÔLIES</div>
-    <button class="wt-back" id="wtBack">Back to menu</button>
   </div>
 </div>
 
@@ -1031,12 +1028,12 @@ setTimeout(function(){
     lastInput = performance.now();
     loader.classList.add('grabbed');
     try{ loader.setPointerCapture(e.pointerId); }catch(err){}
-    setP(Math.max(p + 0.1, progFromY(e.clientY)));
+    setP(progFromY(e.clientY));
   });
   loader.addEventListener('pointermove', function(e){
     if(!dragging || done) return;
     lastInput = performance.now();
-    setP(Math.max(p, progFromY(e.clientY)));
+    setP(progFromY(e.clientY));
   });
   loader.addEventListener('pointerup', function(){
     dragging = false;
@@ -1063,28 +1060,74 @@ function initArch(){
   var pan = document.getElementById('archPan');
   var canvas = document.getElementById('emberCanvas');
 
-  // --- pan & tilt ---
-  var panX = 0, panT = 0, tiltY = 0, tiltT = 0;
-  var down = false, lastX = 0;
-  var MAX = 9; // % of pan travel
-  arch.addEventListener('pointerdown', function(e){ down = true; lastX = e.clientX; hideBadge(); });
+  // --- scrub the sky : afternoon -> sunset -> night ---
+  var img = document.getElementById('archImg');
+  var warm = document.getElementById('archWarm');
+  var night = document.getElementById('archNight');
+  var starsL = document.getElementById('archStars');
+  var neon = document.getElementById('archNeon');
+  var timeChip = document.getElementById('archTime');
+  var knob = document.getElementById('archKnob');
+  var track = arch.querySelector('.arch-track');
+  var ph = 0, phT = 0, neonOn = false;
+  var tiltT = 0, tiltY = 0;
+
+  function fmtTime(ph){
+    var mins = 17*60 + ph*6*60; // 5:00 PM -> 11:00 PM
+    var h = Math.floor(mins/60), m = Math.round(mins%60);
+    if(m===60){h++;m=0;}
+    var hh = ((h+11)%12)+1;
+    return hh + ':' + String(m).padStart(2,'0') + ' PM';
+  }
+  function renderSky(){
+    var golden = Math.max(0, 1 - Math.abs(ph-0.55)*2.6);
+    img.style.filter = 'brightness(' + (1.12 - ph*0.6).toFixed(3) + ')'
+      + ' saturate(' + (0.95 + golden*0.35).toFixed(3) + ')'
+      + ' contrast(' + (1 + ph*0.08).toFixed(3) + ')';
+    warm.style.opacity = golden.toFixed(3);
+    night.style.opacity = Math.max(0,(ph-0.6)*2.2).toFixed(3);
+    starsL.style.opacity = Math.max(0,(ph-0.65)*2.6).toFixed(3);
+    var nv = Math.max(0,(ph-0.72)*3.4);
+    neon.style.opacity = Math.min(1,nv).toFixed(3);
+    if(nv > 0.4 && !neonOn){ neonOn = true; neon.classList.add('flick'); }
+    if(nv <= 0.05) { neonOn = false; neon.classList.remove('flick'); }
+    timeChip.textContent = fmtTime(ph);
+    if(track){ knob.style.left = (ph*100)+'%'; }
+  }
+
+  var scrubbing = false;
+  function phFromX(clientX){
+    var r = arch.getBoundingClientRect();
+    return (clientX - r.left) / r.width;
+  }
+  arch.addEventListener('pointerdown', function(e){
+    scrubbing = true;
+    phT = Math.max(0, Math.min(1, phFromX(e.clientX)));
+    hideBadge();
+  });
   window.addEventListener('pointermove', function(e){
-    if(!down) return;
-    var w = arch.clientWidth || 320;
-    panT += (e.clientX - lastX) / w * 22;
-    panT = Math.max(-MAX, Math.min(MAX, panT));
-    lastX = e.clientX;
+    if(!scrubbing) return;
+    phT = Math.max(0, Math.min(1, phFromX(e.clientX)));
   });
-  window.addEventListener('pointerup', function(){ down = false; });
+  window.addEventListener('pointerup', function(){ scrubbing = false; });
   window.addEventListener('deviceorientation', function(e){
-    if(e.gamma == null) return;
-    panT = Math.max(-MAX, Math.min(MAX, -e.gamma/45*MAX));
-    tiltT = Math.max(-3, Math.min(3, (e.beta-45)/45*3));
+    if(e.beta == null) return;
+    tiltT = Math.max(-2.5, Math.min(2.5, (e.beta-45)/45*2.5));
   });
+
+  // cinematic intro: the sky drifts to golden hour by itself
+  var introT0 = performance.now();
+  function intro(now){
+    var k = Math.min(1, (now-introT0)/2600);
+    var e = 1-Math.pow(1-k,3);
+    if(!scrubbing) phT = e*0.55;
+    if(k < 1) requestAnimationFrame(intro);
+  }
+  requestAnimationFrame(intro);
 
   var badge = document.getElementById('archBadge');
   function hideBadge(){ if(badge){ badge.style.opacity = 0; } }
-  setTimeout(hideBadge, 7000);
+  setTimeout(hideBadge, 8000);
 
   // --- embers over the photo ---
   var ctx = canvas.getContext('2d');
@@ -1115,15 +1158,17 @@ function initArch(){
     requestAnimationFrame(loop);
     if(!visible) return;
     t += 0.016;
-    // ease pan/tilt
-    panX += (panT - panX)*0.07;
+    // ease the sky phase & tilt
+    ph += (phT - ph)*0.09;
     tiltY += (tiltT - tiltY)*0.07;
-    pan.style.transform = 'translateX(' + panX + '%) translateY(' + tiltY + '%)';
+    pan.style.transform = 'translateY(' + tiltY + '%)';
+    renderSky();
 
     ctx.clearRect(0,0,W,H);
-    // pulsing warm glow where the real sun sits in the photo
-    var gx = W*0.5 + panX/100*W*0.9, gy = H*0.40;
-    var pulse = 0.32 + Math.sin(t*1.3)*0.08;
+    // pulsing warm glow where the real sun sits — strongest at golden hour
+    var golden = Math.max(0, 1 - Math.abs(ph-0.55)*2.6);
+    var gx = W*0.5, gy = H*0.40;
+    var pulse = (0.12 + golden*0.3) + Math.sin(t*1.3)*0.07;
     var grad = ctx.createRadialGradient(gx,gy,4,gx,gy,W*0.42);
     grad.addColorStop(0,'rgba(255,235,190,'+pulse+')');
     grad.addColorStop(0.4,'rgba(245,154,85,'+(pulse*0.4)+')');
@@ -1138,7 +1183,7 @@ function initArch(){
       if(e.y < -0.05){ e.y = 1.05; e.x = Math.random(); }
       var ex = (e.x + Math.sin(e.w)*0.012)*W + panX/100*W*0.5;
       var ey = e.y*H;
-      var tw = e.o * (0.6 + Math.sin(t*2 + i)*0.4);
+      var tw = e.o * (0.35 + Math.sin(t*2 + i)*0.35) * (0.5 + ph*0.9);
       ctx.beginPath();
       ctx.arc(ex, ey, e.r, 0, Math.PI*2);
       ctx.fillStyle = 'rgba(251,217,188,'+tw.toFixed(3)+')';
@@ -1149,7 +1194,7 @@ function initArch(){
 }
 
 /* ============================================================
-   ORDER FLOW — tap dishes → ready → call the waiter
+   ORDER FLOW — tap dishes → send on WhatsApp / share
    ============================================================ */
 (function(){
   var picks = {};
@@ -1163,10 +1208,8 @@ function initArch(){
   var shList = document.getElementById('shList');
   var shTotal = document.getElementById('shTotal');
   var shHint = document.getElementById('shHint');
-  var waiter = document.getElementById('waiter');
-  var wtList = document.getElementById('wtList');
-  var wtTotal = document.getElementById('wtTotal');
 
+  var syncWa = null;
   function save(){ try{ sessionStorage.setItem('foliesPicks', JSON.stringify(picks)); }catch(e){} }
   function count(){ return Object.keys(picks).length; }
   function total(){ var t=0; for(var k in picks) t += picks[k]; return t; }
@@ -1185,7 +1228,7 @@ function initArch(){
     tray.classList.toggle('show', n > 0);
     tray.classList.toggle('ready', n >= 2);
     trayLabel.innerHTML = n >= 2
-      ? '<span id="trayCount">'+n+'</span> picks · <b id="trayTotal">$'+t+'</b> — ready to order?'
+      ? '<span id="trayCount">'+n+'</span> picks · <b id="trayTotal">$'+t+'</b> — send it? 🌅'
       : '<span id="trayCount">'+n+'</span> pick'+(n===1?'':'s')+' · <b id="trayTotal">$'+t+'</b>';
     shHint.textContent = hintFor(n, t);
     shList.innerHTML = '';
@@ -1202,6 +1245,7 @@ function initArch(){
       shList.appendChild(row);
     });
     shTotal.textContent = '$' + t;
+    if(typeof syncWa === 'function') syncWa();
   }
   function syncDom(){
     document.querySelectorAll('.item[data-price]').forEach(function(it){
@@ -1254,23 +1298,33 @@ function initArch(){
     picks = {}; save(); sync(); syncDom(); closeSheet();
   });
 
-  // waiter mode
-  document.getElementById('shWaiter').addEventListener('click', function(){
-    wtList.innerHTML = '';
+  // whatsapp + share
+  var shWa = document.getElementById('shWa');
+  function orderText(){
+    var lines = ['Hello Fôlies! 🌅 Our order:'];
     Object.keys(picks).forEach(function(name){
-      var row = document.createElement('div');
-      row.className = 'wt-row';
-      row.innerHTML = '<span class="n"></span><span class="p">$'+picks[name]+'</span>';
-      row.querySelector('.n').textContent = name;
-      wtList.appendChild(row);
+      lines.push('• ' + name + ' — $' + picks[name]);
     });
-    wtTotal.textContent = '$' + total();
-    closeSheet();
-    waiter.classList.add('open');
-    if(navigator.vibrate) navigator.vibrate([20,30,20]);
-  });
-  document.getElementById('wtBack').addEventListener('click', function(){
-    waiter.classList.remove('open');
+    lines.push('Total: $' + total());
+    return lines.join('\n');
+  }
+  syncWa = function(){
+    shWa.href = 'https://wa.me/961XXXXXXXX?text=' + encodeURIComponent(orderText());
+  };
+  syncWa();
+  document.getElementById('shShare').addEventListener('click', function(){
+    var text = orderText() + '\n' + location.href;
+    if(navigator.share){
+      navigator.share({title:'Fôlies — our sunset order', text:text}).catch(function(){});
+    }else{
+      try{
+        navigator.clipboard.writeText(text);
+        var b = document.getElementById('shShare');
+        var old = b.textContent;
+        b.textContent = 'Copied!';
+        setTimeout(function(){ b.textContent = old; }, 1400);
+      }catch(e){}
+    }
   });
 
   sync(); syncDom();
