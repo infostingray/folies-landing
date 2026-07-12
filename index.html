@@ -189,7 +189,7 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 /* the arch — a live window onto the real terrace */
 .arch-wrap{
   width:min(80vw,335px);
-  aspect-ratio:720/957;
+  aspect-ratio:720/960;
   min-height:400px;
   position:relative;
   opacity:0;transform:translateY(24px) scale(.97);
@@ -799,27 +799,43 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
 
 <div class="tiles" aria-hidden="true"></div>
 
-<!-- ============ GALLERY ============ -->
-<section class="gallery wall">
-  <div class="g-head reveal">
-    <div class="eyebrow">The Terrace</div>
-    <h2>Real place. Real sunsets.</h2>
+<!-- ============ EVENTS ============ -->
+<section class="events wall" id="events">
+  <div class="ev-head reveal">
+    <div class="eyebrow">Events &amp; DJs</div>
+    <h2>Upcoming Sunsets</h2>
   </div>
-  <div class="g-track" id="gtrack">
-    <figure class="g-card">
-      <img src="assets/sunset.jpg" alt="Sunset evening at Fôlies terrace" loading="lazy">
-      <figcaption>Golden hour · every evening</figcaption>
-    </figure>
-    <figure class="g-card">
-      <img src="assets/bar.jpg" alt="The tiled bar at Fôlies" loading="lazy">
-      <figcaption>The tile bar · front row to the sky</figcaption>
-    </figure>
-    <figure class="g-card">
-      <img src="assets/terrace.jpg" alt="Fôlies terrace wide view" loading="lazy">
-      <figcaption>1,700 m above the noise</figcaption>
-    </figure>
+  <div class="ev-list">
+    <!-- TODO: keep these updated weekly — date / name / dj / tags -->
+    <a class="ev-card reveal" href="https://folies.resos.com" target="_blank" rel="noopener">
+      <div class="ev-date"><b>17</b><span>Fri Jul</span></div>
+      <div class="ev-info">
+        <div class="ev-name">Golden Hour Sessions</div>
+        <div class="ev-dj">DJ Karl B2B Nour</div>
+        <div class="ev-tags"><i>Melodic House</i><i>6 PM — Late</i></div>
+      </div>
+      <div class="ev-go">→</div>
+    </a>
+    <a class="ev-card reveal" href="https://folies.resos.com" target="_blank" rel="noopener">
+      <div class="ev-date"><b>18</b><span>Sat Jul</span></div>
+      <div class="ev-info">
+        <div class="ev-name">Sunset High</div>
+        <div class="ev-dj">DJ Rita</div>
+        <div class="ev-tags"><i>Afro House</i><i>7 PM — Late</i></div>
+      </div>
+      <div class="ev-go">→</div>
+    </a>
+    <a class="ev-card reveal" href="https://folies.resos.com" target="_blank" rel="noopener">
+      <div class="ev-date"><b>19</b><span>Sun Jul</span></div>
+      <div class="ev-info">
+        <div class="ev-name">Acoustic Sundown</div>
+        <div class="ev-dj">Live Band · Unplugged</div>
+        <div class="ev-tags"><i>Live Music</i><i>Chill</i></div>
+      </div>
+      <div class="ev-go">→</div>
+    </a>
   </div>
-  <div class="g-dots" id="gdots"><i class="on"></i><i></i><i></i></div>
+  <p class="ev-note reveal">Table fills fast at sunset — book ahead</p>
 </section>
 
 <div class="tiles" aria-hidden="true"></div>
@@ -961,43 +977,27 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
 
 <div class="tiles" aria-hidden="true"></div>
 
-<!-- ============ EVENTS ============ -->
-<section class="events wall" id="events">
-  <div class="ev-head reveal">
-    <div class="eyebrow">Events &amp; DJs</div>
-    <h2>Upcoming Sunsets</h2>
+<!-- ============ GALLERY ============ -->
+<section class="gallery wall">
+  <div class="g-head reveal">
+    <div class="eyebrow">The Terrace</div>
+    <h2>Real place. Real sunsets.</h2>
   </div>
-  <div class="ev-list">
-    <!-- TODO: keep these updated weekly — date / name / dj / tags -->
-    <a class="ev-card reveal" href="https://folies.resos.com" target="_blank" rel="noopener">
-      <div class="ev-date"><b>17</b><span>Fri Jul</span></div>
-      <div class="ev-info">
-        <div class="ev-name">Golden Hour Sessions</div>
-        <div class="ev-dj">DJ Karl B2B Nour</div>
-        <div class="ev-tags"><i>Melodic House</i><i>6 PM — Late</i></div>
-      </div>
-      <div class="ev-go">→</div>
-    </a>
-    <a class="ev-card reveal" href="https://folies.resos.com" target="_blank" rel="noopener">
-      <div class="ev-date"><b>18</b><span>Sat Jul</span></div>
-      <div class="ev-info">
-        <div class="ev-name">Sunset High</div>
-        <div class="ev-dj">DJ Rita</div>
-        <div class="ev-tags"><i>Afro House</i><i>7 PM — Late</i></div>
-      </div>
-      <div class="ev-go">→</div>
-    </a>
-    <a class="ev-card reveal" href="https://folies.resos.com" target="_blank" rel="noopener">
-      <div class="ev-date"><b>19</b><span>Sun Jul</span></div>
-      <div class="ev-info">
-        <div class="ev-name">Acoustic Sundown</div>
-        <div class="ev-dj">Live Band · Unplugged</div>
-        <div class="ev-tags"><i>Live Music</i><i>Chill</i></div>
-      </div>
-      <div class="ev-go">→</div>
-    </a>
+  <div class="g-track" id="gtrack">
+    <figure class="g-card">
+      <img src="assets/sunset.jpg" alt="Sunset evening at Fôlies terrace" loading="lazy">
+      <figcaption>Golden hour · every evening</figcaption>
+    </figure>
+    <figure class="g-card">
+      <img src="assets/bar.jpg" alt="The tiled bar at Fôlies" loading="lazy">
+      <figcaption>The tile bar · front row to the sky</figcaption>
+    </figure>
+    <figure class="g-card">
+      <img src="assets/terrace.jpg" alt="Fôlies terrace wide view" loading="lazy">
+      <figcaption>1,700 m above the noise</figcaption>
+    </figure>
   </div>
-  <p class="ev-note reveal">Table fills fast at sunset — book ahead</p>
+  <div class="g-dots" id="gdots"><i class="on"></i><i></i><i></i></div>
 </section>
 
 <!-- ============ VISIT ============ -->
