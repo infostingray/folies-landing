@@ -170,7 +170,7 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 }
 .hero-top,.hero-brand,.tagline,.hero-cta,.scroll-hint{opacity:0}
 .ready .hero-top{animation:fadeDown .9s .15s ease forwards}
-.ready .arch{animation:archIn 1.2s .3s cubic-bezier(.22,1,.36,1) forwards}
+.ready .arch-ring{animation:archIn 1.2s .3s cubic-bezier(.22,1,.36,1) forwards}
 .ready .hero-brand{animation:fadeUp 1s .7s ease forwards}
 .ready .tagline{animation:fadeUp 1s .95s ease forwards}
 .ready .hero-cta{animation:fadeUp 1s 1.2s ease forwards}
@@ -183,14 +183,21 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .hero-top span{color:var(--cream);opacity:.75}
 
 /* the arch — a live window onto the real terrace */
-.arch{
-  width:min(78vw,340px);
+.arch-ring{
+  width:min(80vw,350px);
   aspect-ratio:5/7;
-  min-height:380px;
-  border-radius:50% 50% 14px 14px / 42% 42% 14px 14px;
-  overflow:hidden;position:relative;
-  box-shadow:0 30px 60px -20px rgba(0,0,0,.55), inset 0 0 0 1px rgba(247,239,224,.18);
+  min-height:390px;
+  padding:8px 13px 13px 8px;
+  background:linear-gradient(150deg,#F7C9A0 0%,#F09A63 35%,#EF7A4E 62%,#E2492A 100%);
+  border-radius:52% 48% 50% 50% / 44% 44% 56% 56%;
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.55);
   opacity:0;transform:translateY(24px) scale(.97);
+}
+.arch{
+  width:100%;height:100%;
+  border-radius:50% 50% 48% 52% / 42% 42% 58% 58%;
+  overflow:hidden;position:relative;
+  box-shadow:inset 0 0 0 1px rgba(247,239,224,.14);
   touch-action:pan-y;cursor:ew-resize;
   background:linear-gradient(180deg,#5b3a6e,#e2653f 60%,#fbc98a);
 }
@@ -226,7 +233,7 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   animation:twinkle 3.2s ease-in-out infinite;
 }
 .arch-neon{
-  position:absolute;top:13%;left:0;right:0;z-index:4;
+  position:absolute;top:20%;left:0;right:0;z-index:4;
   text-align:center;pointer-events:none;
   font-family:var(--thin);font-size:clamp(26px,8vw,36px);
   letter-spacing:.32em;text-indent:.32em;
@@ -236,14 +243,16 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .arch-neon.flick{animation:neonflick .9s steps(2,jump-none) 1}
 @keyframes neonflick{0%{opacity:.1}25%{opacity:.9}40%{opacity:.2}60%{opacity:1}75%{opacity:.5}100%{opacity:1}}
 .arch-time{
-  position:absolute;top:12px;right:14px;z-index:5;
-  font-size:10px;font-weight:700;letter-spacing:.18em;
+  position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:6;
+  font-family:var(--display);
+  font-size:15px;letter-spacing:.16em;
   color:var(--cream);
-  background:rgba(15,39,33,.45);
-  border:1px solid rgba(247,239,224,.25);
-  padding:6px 11px;border-radius:999px;
-  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
-  pointer-events:none;
+  background:rgba(15,39,33,.55);
+  border:1px solid rgba(247,239,224,.3);
+  padding:8px 16px;border-radius:999px;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  pointer-events:none;white-space:nowrap;
+  text-shadow:0 1px 8px rgba(15,39,33,.8);
 }
 .arch-track{
   position:absolute;left:14%;right:14%;bottom:26px;z-index:5;height:22px;
@@ -453,6 +462,15 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   background:var(--terracotta);border-color:var(--terracotta);
   color:#fff;transform:scale(1.1);
 }
+.spark{
+  position:fixed;width:7px;height:7px;border-radius:50%;z-index:400;
+  pointer-events:none;
+  animation:sparkfly .7s ease-out forwards;
+}
+@keyframes sparkfly{
+  from{opacity:1;transform:translate(0,0) scale(1)}
+  to{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.1)}
+}
 .float-price{
   position:absolute;right:44px;top:6px;
   font-size:12px;font-weight:700;color:var(--terracotta);
@@ -541,6 +559,13 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .sh-total .p{font-family:var(--display);font-size:22px;color:var(--terracotta);font-weight:400}
 .sh-actions{display:flex;gap:10px;margin-top:10px}
 .sh-actions .btn{flex:1;padding:14px 10px;font-size:12px}
+.sh-note{
+  margin-top:14px;text-align:center;
+  font-size:13px;color:var(--forest);
+  background:rgba(30,68,55,.07);
+  border:1px dashed rgba(30,68,55,.28);
+  border-radius:14px;padding:12px 14px;
+}
 .sh-links{display:flex;justify-content:center;gap:18px;margin-top:14px}
 .sh-links button, .sh-links a{color:#8a8375;text-decoration:underline;font-size:12px}
 
@@ -674,7 +699,8 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
     <span id="sunsetChip">Sunset lounge</span>
   </div>
 
-  <div class="arch" id="arch" aria-hidden="true">
+  <div class="arch-ring" aria-hidden="true">
+  <div class="arch" id="arch">
     <div class="arch-pan" id="archPan">
       <img src="assets/sunset.jpg" alt="" id="archImg">
     </div>
@@ -687,6 +713,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
     <div class="arch-time" id="archTime">5:00 PM</div>
     <div class="arch-track"><span class="sunicon">☀</span><span class="moonicon">☾</span><i class="arch-knob" id="archKnob"></i></div>
     <div class="arch-badge" id="archBadge">Slide across the sky</div>
+  </div>
   </div>
 
   <div class="hero-brand">
@@ -740,7 +767,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
     <div class="eyebrow">The Menu</div>
     <h2>Made to enjoy<br>at sunset</h2>
     <p>Fresh ingredients, carefully selected.</p>
-    <div class="menu-tip">✦&nbsp; Tap dishes to build your order</div>
+    <div class="menu-tip">✦&nbsp; Tap what tempts you — build your shortlist</div>
   </div>
 
   <nav class="chips" id="chips" aria-label="Menu categories">
@@ -902,17 +929,15 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
 <div id="sheetveil"></div>
 <div id="sheet" role="dialog" aria-label="Your order">
   <div class="sh-grip"></div>
-  <div class="sh-title">Your Sunset Order</div>
+  <div class="sh-title">Your Sunset Shortlist</div>
   <div class="sh-sub" id="shHint"></div>
   <div class="sh-list" id="shList"></div>
   <div class="sh-total"><span>Total</span><span class="p" id="shTotal">$0</span></div>
+  <div class="sh-note">📸 Keep this open — when the waiter comes, you're ready.</div>
   <div class="sh-actions">
-    <!-- TODO: replace 961XXXXXXXX with the real WhatsApp number -->
-    <a class="btn btn-fill" id="shWa" href="#" target="_blank" rel="noopener">Send order on WhatsApp</a>
-    <button class="btn btn-ghost" id="shShare" style="color:var(--forest);border-color:rgba(30,68,55,.35)">Share</button>
+    <button class="btn btn-fill" id="shClose">Got it 👌</button>
   </div>
   <div class="sh-links">
-    <button id="shClose">Keep browsing</button>
     <button id="shClear">Clear all</button>
   </div>
 </div>
@@ -1123,6 +1148,7 @@ function initArch(){
     if(!scrubbing) phT = e*0.55;
     if(k < 1) requestAnimationFrame(intro);
   }
+  renderSky();
   requestAnimationFrame(intro);
 
   var badge = document.getElementById('archBadge');
@@ -1153,7 +1179,7 @@ function initArch(){
   var visible = true;
   new IntersectionObserver(function(en){ visible = en[0].isIntersecting; },{threshold:0}).observe(arch);
 
-  var t = 0;
+  var t = 0, shoot = null;
   function loop(){
     requestAnimationFrame(loop);
     if(!visible) return;
@@ -1189,6 +1215,27 @@ function initArch(){
       ctx.fillStyle = 'rgba(251,217,188,'+tw.toFixed(3)+')';
       ctx.fill();
     }
+    // shooting star at night
+    if(ph > 0.72){
+      if(!shoot && Math.random() < 0.004){
+        shoot = {x: 0.15+Math.random()*0.5, y: 0.06+Math.random()*0.14, k: 0};
+      }
+      if(shoot){
+        shoot.k += 0.035;
+        var sx = shoot.x*W + shoot.k*W*0.5;
+        var sy = shoot.y*H + shoot.k*H*0.22;
+        var fade = Math.sin(Math.min(1,shoot.k)*Math.PI);
+        ctx.strokeStyle = 'rgba(255,243,214,'+(0.85*fade).toFixed(3)+')';
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        ctx.moveTo(sx, sy);
+        ctx.lineTo(sx - W*0.09, sy - H*0.038);
+        ctx.stroke();
+        if(shoot.k >= 1) shoot = null;
+      }
+    }else{
+      shoot = null;
+    }
   }
   loop();
 }
@@ -1209,13 +1256,12 @@ function initArch(){
   var shTotal = document.getElementById('shTotal');
   var shHint = document.getElementById('shHint');
 
-  var syncWa = null;
   function save(){ try{ sessionStorage.setItem('foliesPicks', JSON.stringify(picks)); }catch(e){} }
   function count(){ return Object.keys(picks).length; }
   function total(){ var t=0; for(var k in picks) t += picks[k]; return t; }
 
   function hintFor(n, t){
-    if(n === 0) return 'Tap dishes on the menu to add them';
+    if(n === 0) return 'Tap what tempts you — the list builds itself';
     if(n === 1) return 'Solo bite — add something to share?';
     if(t >= 60) return 'Now THAT is a sunset feast 🌅';
     if(t >= 35) return 'A proper golden-hour spread';
@@ -1228,7 +1274,7 @@ function initArch(){
     tray.classList.toggle('show', n > 0);
     tray.classList.toggle('ready', n >= 2);
     trayLabel.innerHTML = n >= 2
-      ? '<span id="trayCount">'+n+'</span> picks · <b id="trayTotal">$'+t+'</b> — send it? 🌅'
+      ? '<span id="trayCount">'+n+'</span> picks · <b id="trayTotal">$'+t+'</b> — tell your waiter 😄'
       : '<span id="trayCount">'+n+'</span> pick'+(n===1?'':'s')+' · <b id="trayTotal">$'+t+'</b>';
     shHint.textContent = hintFor(n, t);
     shList.innerHTML = '';
@@ -1245,7 +1291,6 @@ function initArch(){
       shList.appendChild(row);
     });
     shTotal.textContent = '$' + t;
-    if(typeof syncWa === 'function') syncWa();
   }
   function syncDom(){
     document.querySelectorAll('.item[data-price]').forEach(function(it){
@@ -1267,11 +1312,28 @@ function initArch(){
     item.appendChild(f);
     setTimeout(function(){ f.remove(); }, 850);
   }
+  function sparkle(x, y){
+    var colors = ['#D9532F','#EF7A4E','#F5B78C','#1E4437'];
+    for(var i=0;i<10;i++){
+      var s = document.createElement('span');
+      s.className = 'spark';
+      s.style.left = x+'px'; s.style.top = y+'px';
+      s.style.background = colors[i%4];
+      var a = Math.random()*Math.PI*2, d = 26+Math.random()*44;
+      s.style.setProperty('--dx', (Math.cos(a)*d)+'px');
+      s.style.setProperty('--dy', (Math.sin(a)*d)+'px');
+      document.body.appendChild(s);
+      setTimeout(function(el){ return function(){ el.remove(); }; }(s), 750);
+    }
+  }
+  var lastTap = {x:0,y:0};
+  document.addEventListener('pointerdown', function(e){ lastTap.x = e.clientX; lastTap.y = e.clientY; }, {passive:true});
   function toggle(name, price, el){
     if(picks[name]){ delete picks[name]; }
     else{
       picks[name] = price;
       if(el) floatPrice(el, price);
+      sparkle(lastTap.x, lastTap.y);
       if(navigator.vibrate) navigator.vibrate(12);
     }
     save(); sync(); syncDom();
@@ -1298,34 +1360,7 @@ function initArch(){
     picks = {}; save(); sync(); syncDom(); closeSheet();
   });
 
-  // whatsapp + share
-  var shWa = document.getElementById('shWa');
-  function orderText(){
-    var lines = ['Hello Fôlies! 🌅 Our order:'];
-    Object.keys(picks).forEach(function(name){
-      lines.push('• ' + name + ' — $' + picks[name]);
-    });
-    lines.push('Total: $' + total());
-    return lines.join('\n');
-  }
-  syncWa = function(){
-    shWa.href = 'https://wa.me/961XXXXXXXX?text=' + encodeURIComponent(orderText());
-  };
-  syncWa();
-  document.getElementById('shShare').addEventListener('click', function(){
-    var text = orderText() + '\n' + location.href;
-    if(navigator.share){
-      navigator.share({title:'Fôlies — our sunset order', text:text}).catch(function(){});
-    }else{
-      try{
-        navigator.clipboard.writeText(text);
-        var b = document.getElementById('shShare');
-        var old = b.textContent;
-        b.textContent = 'Copied!';
-        setTimeout(function(){ b.textContent = old; }, 1400);
-      }catch(e){}
-    }
-  });
+
 
   sync(); syncDom();
 })();
@@ -1408,7 +1443,19 @@ var secObserver = new IntersectionObserver(function(entries){
     var hh=((h+11)%12)+1;
     var t=hh+':'+String(m).padStart(2,'0')+' PM';
     document.getElementById('sunsetTime').textContent='Sunset ~ '+t;
-    document.getElementById('sunsetChip').textContent='Sunset today · '+t;
+    // golden hour countdown
+    var sunsetMins = Math.floor(local*60);
+    var nowMins = now.getHours()*60 + now.getMinutes();
+    var diff = sunsetMins - nowMins;
+    var chip = document.getElementById('sunsetChip');
+    if(diff > 45){
+      var hh2 = Math.floor(diff/60), mm2 = diff%60;
+      chip.textContent = 'Golden hour in ' + (hh2>0? hh2+'h ' : '') + mm2 + 'm';
+    }else if(diff > -40){
+      chip.textContent = 'Golden hour now 🌅';
+    }else{
+      chip.textContent = 'Sunset was ' + t + ' · see you tomorrow';
+    }
     var hr = now.getHours();
     var open = (hr >= 16 || hr < 2);
     var st = document.getElementById('status');
