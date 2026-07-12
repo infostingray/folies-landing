@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>O Fôlies — Sunset Lounge, Zaarour</title>
-<meta name="description" content="O Fôlies sunset lounge in Zaarour, Lebanon. We are not far, we are just higher. Menu, reservations & directions.">
+<title>OFôlies — Sunset Lounge, Zaarour</title>
+<meta name="description" content="OFôlies sunset lounge in Zaarour, Lebanon. We are not far, we are just higher. Menu, reservations & directions.">
 <meta name="theme-color" content="#143128">
-<meta property="og:title" content="O Fôlies — Sunset Lounge, Zaarour">
+<meta property="og:title" content="OFôlies — Sunset Lounge, Zaarour">
 <meta property="og:description" content="We are not far, we are just HIGHER. Menu & reservations.">
 <meta property="og:image" content="assets/sunset.jpg">
 <link rel="preload" as="image" href="assets/sunset.jpg">
@@ -107,16 +107,28 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   color:var(--peach);text-indent:.4em;
 }
 .ld-hint{
-  position:absolute;left:0;right:0;bottom:calc(34px + env(safe-area-inset-bottom));
+  position:absolute;left:50%;bottom:calc(38px + env(safe-area-inset-bottom));
+  transform:translateX(-50%);
   text-align:center;z-index:6;
-  font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;
-  color:var(--cream);text-shadow:0 1px 12px rgba(15,39,33,.9);
+  font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:#fff;
+  background:linear-gradient(120deg,var(--terracotta),var(--coral));
+  padding:14px 22px;border-radius:999px;
+  box-shadow:0 10px 30px -6px rgba(217,83,47,.7), 0 0 0 0 rgba(239,122,78,.5);
+  animation:hintpulse 2s ease-in-out infinite;
+  white-space:nowrap;
   transition:opacity .4s ease;
 }
+@keyframes hintpulse{
+  0%,100%{box-shadow:0 10px 30px -6px rgba(217,83,47,.7), 0 0 0 0 rgba(239,122,78,.55)}
+  50%{box-shadow:0 10px 30px -6px rgba(217,83,47,.7), 0 0 0 14px rgba(239,122,78,0)}
+}
 .ld-hint .arrow{
-  display:block;margin:10px auto 0;width:14px;height:14px;
-  border-right:2px solid var(--cream);border-bottom:2px solid var(--cream);
-  transform:rotate(45deg);animation:nudge 1.6s ease-in-out infinite;
+  display:inline-block;margin-left:10px;width:11px;height:11px;
+  border-right:2.5px solid #fff;border-bottom:2.5px solid #fff;
+  transform:rotate(45deg) translate(-1px,-1px);
+  animation:nudge 1.4s ease-in-out infinite;
+  vertical-align:2px;
 }
 #loader.grabbed .ld-hint{opacity:0}
 .ld-progress{
@@ -307,7 +319,6 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   color:var(--cream);line-height:1;
 }
 .hero-brand .accent{color:var(--coral)}
-.hero-brand .oo{letter-spacing:0;margin-right:.08em}
 .hero-brand p.place{
   margin-top:10px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;
   color:var(--peach);text-indent:.34em;
@@ -743,11 +754,11 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
   <div class="ld-stars" id="ldStars"></div>
   <div class="ld-sun" id="ldSun"></div>
   <div class="ld-brand">
-    <div class="mark"><span style="letter-spacing:0;margin-right:.1em">O</span>FÔLIES</div>
+    <div class="mark">OFÔLIES</div>
     <div class="sub">Zaarour · Sunset Lounge</div>
   </div>
   <div class="ld-progress"><i id="ldBar"></i></div>
-  <div class="ld-hint" id="ldHint">Drag the sun up &amp; down · set it to enter<span class="arrow"></span></div>
+  <div class="ld-hint" id="ldHint">👆 Drag the sun down to enter<span class="arrow"></span></div>
   <div class="ld-higher">
     <small>We are not far, we are just</small>
     <b>HIGHER</b>
@@ -782,7 +793,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
   </div>
 
   <div class="hero-brand">
-    <h1><span class="oo">O</span>F<span class="accent">Ô</span>LIES</h1>
+    <h1>OF<span class="accent">Ô</span>LIES</h1>
     <p class="place">Sunset Lounge</p>
   </div>
 
@@ -813,7 +824,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
       <div class="ev-date"><b>17</b><span>Fri Jul</span></div>
       <div class="ev-info">
         <div class="ev-name">Golden Hour Sessions</div>
-        <div class="ev-dj">Yussef K</div>
+        <div class="ev-dj">DJ Karl B2B Nour</div>
         <div class="ev-tags"><i>Melodic House</i><i>6 PM — Late</i></div>
       </div>
       <div class="ev-go">→</div>
@@ -822,7 +833,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
       <div class="ev-date"><b>18</b><span>Sat Jul</span></div>
       <div class="ev-info">
         <div class="ev-name">Sunset High</div>
-        <div class="ev-dj">DJ Nino</div>
+        <div class="ev-dj">DJ Rita</div>
         <div class="ev-tags"><i>Afro House</i><i>7 PM — Late</i></div>
       </div>
       <div class="ev-go">→</div>
@@ -831,7 +842,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
       <div class="ev-date"><b>19</b><span>Sun Jul</span></div>
       <div class="ev-info">
         <div class="ev-name">Acoustic Sundown</div>
-        <div class="ev-dj">Live Band </div>
+        <div class="ev-dj">Live Band · Unplugged</div>
         <div class="ev-tags"><i>Live Music</i><i>Chill</i></div>
       </div>
       <div class="ev-go">→</div>
@@ -1027,7 +1038,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
 </section>
 
 <footer>
-  O FÔLIES · SUNSET LOUNGE · ZAAROUR — WE ARE NOT FAR, WE ARE JUST HIGHER
+  OFÔLIES · SUNSET LOUNGE · ZAAROUR — WE ARE NOT FAR, WE ARE JUST HIGHER
   <div class="credit">Website by <a href="https://swottm.com" target="_blank" rel="noopener">SWOT Creative Hub</a></div>
 </footer>
 
