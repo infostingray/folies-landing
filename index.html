@@ -1633,6 +1633,17 @@ var secObserver = new IntersectionObserver(function(entries){
     .then(function(r){ if(!r.ok) throw 0; return r.json(); })
     .then(function(C){
       try{
+        // ---- photo cache-busting ----
+        if(C.photosVersion){
+          var pv = '?v=' + C.photosVersion;
+          document.querySelectorAll('img[src^="assets/sunset.jpg"], img[src^="assets/bar.jpg"], img[src^="assets/terrace.jpg"]').forEach(function(im){
+            im.src = im.src.split('?')[0] + pv;
+          });
+          var vs = document.querySelector('.visit');
+          if(vs) vs.style.backgroundImage = 'linear-gradient(rgba(15,39,33,.82), rgba(20,49,40,.94)), url(assets/terrace.jpg' + pv + ')';
+          var lp = document.querySelector('.ld-photo');
+          if(lp) lp.style.backgroundImage = 'url(assets/sunset.jpg' + pv + ')';
+        }
         // ---- contact ----
         if(C.contact){
           if(C.contact.phone && C.contact.phone.indexOf('X') === -1){
