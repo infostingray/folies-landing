@@ -188,8 +188,8 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 
 /* the arch — a live window onto the real terrace */
 .arch-wrap{
-  width:min(82vw,345px);
-  aspect-ratio:410/570;
+  width:min(80vw,335px);
+  aspect-ratio:720/957;
   min-height:400px;
   position:relative;
   opacity:0;transform:translateY(24px) scale(.97);
@@ -198,14 +198,19 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .arch-osvg{
   position:absolute;inset:0;z-index:10;pointer-events:none;
 }
-.arch-osvg svg{display:block;width:100%;height:100%}
+.arch-osvg img{display:block;width:100%;height:100%}
 .arch{
-  position:absolute;
-  left:11.2%;right:15.6%;top:8.4%;bottom:11.6%;
-  border-radius:50% / 50%;
+  position:absolute;inset:0;
   overflow:hidden;
   touch-action:pan-y;cursor:ew-resize;
   background:linear-gradient(180deg,#5b3a6e,#e2653f 60%,#fbc98a);
+  border-radius:48% / 48%;
+  -webkit-mask-image:url('assets/o-hole.png');
+  mask-image:url('assets/o-hole.png');
+  -webkit-mask-size:100% 100%;
+  mask-size:100% 100%;
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
 }
 .arch-pan{
   position:absolute;top:0;bottom:0;left:-6%;width:112%;
@@ -249,7 +254,7 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .arch-neon.flick{animation:neonflick .9s steps(2,jump-none) 1}
 @keyframes neonflick{0%{opacity:.1}25%{opacity:.9}40%{opacity:.2}60%{opacity:1}75%{opacity:.5}100%{opacity:1}}
 .arch-time{
-  position:absolute;top:7%;left:50%;transform:translateX(-50%);z-index:6;
+  position:absolute;top:9%;left:50%;transform:translateX(-50%);z-index:6;
   font-family:var(--display);
   font-size:15px;letter-spacing:.16em;
   color:var(--cream);
@@ -261,7 +266,7 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   text-shadow:0 1px 8px rgba(15,39,33,.8);
 }
 .arch-track{
-  position:absolute;left:22%;right:22%;bottom:11%;z-index:5;height:22px;
+  position:absolute;left:25%;right:25%;bottom:12%;z-index:5;height:22px;
   pointer-events:none;
 }
 .arch-track::before{
@@ -286,7 +291,7 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   background:linear-gradient(180deg, rgba(20,49,40,.15) 0%, transparent 30%, transparent 70%, rgba(15,39,33,.45) 100%);
 }
 .arch-badge{
-  position:absolute;left:0;right:0;bottom:19%;z-index:5;text-align:center;
+  position:absolute;left:0;right:0;bottom:20%;z-index:5;text-align:center;
   font-size:9px;letter-spacing:.3em;text-transform:uppercase;
   color:rgba(247,239,224,.9);pointer-events:none;
   text-shadow:0 1px 8px rgba(20,49,40,.8);
@@ -300,6 +305,7 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   color:var(--cream);line-height:1;
 }
 .hero-brand .accent{color:var(--coral)}
+.hero-brand .oo{letter-spacing:0;margin-right:.08em}
 .hero-brand p.place{
   margin-top:10px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;
   color:var(--peach);text-indent:.34em;
@@ -575,6 +581,53 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .sh-links{display:flex;justify-content:center;gap:18px;margin-top:14px}
 .sh-links button, .sh-links a{color:#8a8375;text-decoration:underline;font-size:12px}
 
+
+/* ============================================================
+   EVENTS — upcoming sunsets & DJs
+   ============================================================ */
+.events{padding:64px 0 70px}
+.ev-head{text-align:center;padding:0 24px;margin-bottom:30px}
+.ev-head .eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--coral);font-weight:600}
+.ev-head h2{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(28px,8vw,40px);letter-spacing:.1em;color:var(--cream);margin-top:10px;
+}
+.ev-list{max-width:560px;margin:0 auto;padding:0 20px;display:flex;flex-direction:column;gap:14px}
+.ev-card{
+  display:flex;align-items:center;gap:16px;
+  border:1px solid rgba(247,239,224,.16);
+  background:rgba(15,39,33,.5);
+  border-radius:20px;padding:16px 18px;
+  position:relative;overflow:hidden;
+}
+.ev-card::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(var(--peach),var(--terracotta));
+}
+.ev-date{
+  flex:none;text-align:center;min-width:52px;
+  padding-right:14px;border-right:1px dashed rgba(247,239,224,.2);
+}
+.ev-date b{display:block;font-family:var(--display);font-size:26px;font-weight:400;color:var(--peach);line-height:1}
+.ev-date span{display:block;margin-top:4px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(247,239,224,.65)}
+.ev-info{flex:1;text-align:left}
+.ev-name{font-weight:700;font-size:15px;color:var(--cream);letter-spacing:.02em}
+.ev-dj{margin-top:4px;font-size:12.5px;color:var(--peach)}
+.ev-tags{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+.ev-tags i{
+  font-style:normal;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid rgba(245,183,140,.45);color:var(--peach);
+  border-radius:999px;padding:3px 9px;
+}
+.ev-go{
+  flex:none;width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(120deg,var(--terracotta),var(--coral));
+  color:#fff;font-size:16px;
+  box-shadow:0 8px 20px -8px rgba(217,83,47,.6);
+}
+.ev-note{text-align:center;margin-top:22px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(247,239,224,.5)}
+
 /* ============================================================
    VISIT
    ============================================================ */
@@ -688,7 +741,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
   <div class="ld-stars" id="ldStars"></div>
   <div class="ld-sun" id="ldSun"></div>
   <div class="ld-brand">
-    <div class="mark">O&nbsp;FÔLIES</div>
+    <div class="mark"><span style="letter-spacing:0;margin-right:.1em">O</span>FÔLIES</div>
     <div class="sub">Zaarour · Sunset Lounge</div>
   </div>
   <div class="ld-progress"><i id="ldBar"></i></div>
@@ -722,22 +775,12 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
     <div class="arch-badge" id="archBadge">Slide across the sky</div>
   </div>
   <div class="arch-osvg">
-    <svg viewBox="0 0 410 570" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="oring" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#F9D2AC"/>
-          <stop offset="40%" stop-color="#F09A63"/>
-          <stop offset="70%" stop-color="#EF6A3C"/>
-          <stop offset="100%" stop-color="#E13F1F"/>
-        </linearGradient>
-      </defs>
-      <path fill="url(#oring)" fill-rule="evenodd" d="M21,287 a186,268 0 1,0 372,0 a186,268 0 1,0 -372,0 Z M46,276 a150,228 0 1,0 300,0 a150,228 0 1,0 -300,0 Z"/>
-    </svg>
+    <img src="assets/o-ring.png" alt="">
   </div>
   </div>
 
   <div class="hero-brand">
-    <h1>O&nbsp;F<span class="accent">Ô</span>LIES</h1>
+    <h1><span class="oo">O</span>F<span class="accent">Ô</span>LIES</h1>
     <p class="place">Sunset Lounge</p>
   </div>
 
@@ -915,6 +958,48 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
   </div>
 </main>
 
+
+<div class="tiles" aria-hidden="true"></div>
+
+<!-- ============ EVENTS ============ -->
+<section class="events wall" id="events">
+  <div class="ev-head reveal">
+    <div class="eyebrow">Events &amp; DJs</div>
+    <h2>Upcoming Sunsets</h2>
+  </div>
+  <div class="ev-list">
+    <!-- TODO: keep these updated weekly — date / name / dj / tags -->
+    <a class="ev-card reveal" href="https://folies.resos.com" target="_blank" rel="noopener">
+      <div class="ev-date"><b>17</b><span>Fri Jul</span></div>
+      <div class="ev-info">
+        <div class="ev-name">Golden Hour Sessions</div>
+        <div class="ev-dj">DJ Karl B2B Nour</div>
+        <div class="ev-tags"><i>Melodic House</i><i>6 PM — Late</i></div>
+      </div>
+      <div class="ev-go">→</div>
+    </a>
+    <a class="ev-card reveal" href="https://folies.resos.com" target="_blank" rel="noopener">
+      <div class="ev-date"><b>18</b><span>Sat Jul</span></div>
+      <div class="ev-info">
+        <div class="ev-name">Sunset High</div>
+        <div class="ev-dj">DJ Rita</div>
+        <div class="ev-tags"><i>Afro House</i><i>7 PM — Late</i></div>
+      </div>
+      <div class="ev-go">→</div>
+    </a>
+    <a class="ev-card reveal" href="https://folies.resos.com" target="_blank" rel="noopener">
+      <div class="ev-date"><b>19</b><span>Sun Jul</span></div>
+      <div class="ev-info">
+        <div class="ev-name">Acoustic Sundown</div>
+        <div class="ev-dj">Live Band · Unplugged</div>
+        <div class="ev-tags"><i>Live Music</i><i>Chill</i></div>
+      </div>
+      <div class="ev-go">→</div>
+    </a>
+  </div>
+  <p class="ev-note reveal">Table fills fast at sunset — book ahead</p>
+</section>
+
 <!-- ============ VISIT ============ -->
 <section class="visit" id="reserve">
   <h2 class="reveal">Find us up here</h2>
@@ -1041,24 +1126,9 @@ setTimeout(function(){
   }
   function setP(v){ p = Math.max(0, Math.min(1, v)); render(); }
 
-  function emberBurst(){
-    var y = yFor(1);
-    for(var i=0;i<22;i++){
-      var e = document.createElement('span');
-      e.className = 'burst';
-      e.style.left = '50%';
-      e.style.top = y+'px';
-      var a = Math.random()*Math.PI*2, d = 60+Math.random()*130;
-      e.style.setProperty('--dx', (Math.cos(a)*d)+'px');
-      e.style.setProperty('--dy', (Math.sin(a)*d - 40)+'px');
-      e.style.background = Math.random()>0.5 ? '#FBD9BC' : '#F59A55';
-      loader.appendChild(e);
-    }
-  }
   function complete(){
     done = true;
     loader.classList.add('fin');
-    emberBurst();
     if(navigator.vibrate) navigator.vibrate([25,40,25]);
     setTimeout(function(){
       loader.classList.add('done');
