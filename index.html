@@ -86,17 +86,38 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 }
 .ld-sun{
   position:absolute;left:50%;top:0;
-  width:92px;height:92px;margin-left:-46px;border-radius:50%;
-  background:radial-gradient(circle at 42% 38%, #FFFBEE 0%, #FFE9BB 42%, #FBC377 72%, #F59A55 100%);
-  box-shadow:0 0 40px 14px rgba(255,222,150,.6), 0 0 130px 55px rgba(245,154,85,.32);
+  width:96px;height:96px;margin-left:-48px;border-radius:50%;
+  background:radial-gradient(circle at 36% 30%, #FFFFF6 0%, #FFF2CC 26%, #FFD98F 54%, #FBAA5C 78%, #F0813F 100%);
+  box-shadow:
+    inset -8px -12px 24px rgba(224,100,45,.5),
+    inset 6px 8px 16px rgba(255,255,240,.6),
+    0 0 34px 12px rgba(255,224,150,.8),
+    0 0 100px 45px rgba(245,154,85,.4);
   will-change:transform;z-index:5;
 }
-.ld-sun::after{
-  content:"";position:absolute;inset:-26px;border-radius:50%;
-  border:1.5px dashed rgba(255,243,214,.6);
-  animation:spin 14s linear infinite;
+.ld-sun::before{
+  content:"";position:absolute;inset:-46px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,236,180,.5) 0%, rgba(255,200,120,.18) 45%, transparent 70%);
+  animation:halo 3s ease-in-out infinite;
+  pointer-events:none;
 }
-#loader.grabbed .ld-sun{box-shadow:0 0 60px 22px rgba(255,222,150,.85), 0 0 170px 80px rgba(245,154,85,.5)}
+.ld-sun::after{
+  content:"";position:absolute;inset:-40px;border-radius:50%;
+  background:repeating-conic-gradient(rgba(255,240,200,.4) 0deg 5deg, transparent 5deg 26deg);
+  -webkit-mask:radial-gradient(circle, transparent 44%, #000 50%, transparent 74%);
+  mask:radial-gradient(circle, transparent 44%, #000 50%, transparent 74%);
+  animation:spin 26s linear infinite;
+  pointer-events:none;
+}
+@keyframes halo{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.12);opacity:1}}
+#loader.grabbed .ld-sun{
+  box-shadow:
+    inset -8px -12px 24px rgba(224,100,45,.5),
+    inset 6px 8px 16px rgba(255,255,240,.7),
+    0 0 55px 20px rgba(255,224,150,.95),
+    0 0 160px 75px rgba(245,154,85,.55);
+}
+#loader.grabbed .ld-sun::before{animation-duration:1.2s}
 .ld-brand{position:absolute;top:max(26px, env(safe-area-inset-top));left:0;right:0;text-align:center;z-index:6}
 .ld-brand .mark{
   font-family:var(--display);font-size:26px;letter-spacing:.4em;text-indent:.4em;
@@ -274,8 +295,8 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .arch-neon{
   position:absolute;top:20%;left:0;right:0;z-index:4;
   text-align:center;pointer-events:none;
-  font-family:var(--thin);font-size:clamp(26px,8vw,36px);
-  letter-spacing:.32em;text-indent:.32em;
+  font-family:var(--thin);font-size:clamp(22px,6.8vw,32px);
+  letter-spacing:.28em;text-indent:.28em;
   color:#FFDFAE;opacity:0;
   text-shadow:0 0 6px #FBC377, 0 0 18px #EF7A4E, 0 0 38px #D9532F, 0 0 70px #D9532F;
 }
@@ -797,7 +818,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
     <div class="arch-warmlayer" id="archWarm"></div>
     <div class="arch-nightlayer" id="archNight"></div>
     <div class="arch-starlayer" id="archStars"></div>
-    <div class="arch-neon" id="archNeon">FÔLIES</div>
+    <div class="arch-neon" id="archNeon">OFÔLIES</div>
     <div class="arch-grad"></div>
     <canvas id="emberCanvas"></canvas>
     <div class="arch-time" id="archTime">5:00 PM</div>
