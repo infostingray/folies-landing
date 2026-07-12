@@ -9,6 +9,7 @@
 <meta property="og:title" content="Fôlies — Sunset Lounge, Zaarour">
 <meta property="og:description" content="We are not far, we are just HIGHER. Menu & reservations.">
 <meta property="og:image" content="assets/sunset.jpg">
+<link rel="preload" as="image" href="assets/sunset.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Italiana&family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -30,18 +31,12 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
-body{
-  font-family:var(--body);
-  background:var(--pine);
-  color:var(--cream);
-  overflow-x:hidden;
-}
+body{font-family:var(--body);background:var(--pine);color:var(--cream);overflow-x:hidden}
 body.locked{overflow:hidden}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button{font-family:var(--body);border:none;background:none;cursor:pointer;color:inherit}
 
-/* scroll progress — a sunset filling the top edge */
 #sunbar{
   position:fixed;top:0;left:0;height:3px;width:0%;z-index:900;
   background:linear-gradient(90deg,var(--peach),var(--coral),var(--terracotta));
@@ -50,21 +45,34 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 }
 
 /* ============================================================
-   PRELOADER — "SET THE SUN"
+   PRELOADER — LIGHT THE TERRACE (real photo comes alive)
    ============================================================ */
 #loader{
   position:fixed;inset:0;z-index:1000;
   overflow:hidden;touch-action:none;cursor:grab;
   user-select:none;-webkit-user-select:none;
+  background:var(--pine);
   transition:opacity .9s ease, visibility .9s ease;
 }
 #loader:active{cursor:grabbing}
 #loader.done{opacity:0;visibility:hidden;pointer-events:none}
-.ld-day,.ld-dusk{position:absolute;inset:0}
-.ld-day{background:linear-gradient(180deg,#7FB2C9 0%,#BFD3C8 40%,#F2D9AE 78%,#F5C793 100%)}
-.ld-dusk{
-  background:linear-gradient(180deg,#3A2450 0%,#8A3C5C 30%,#D9532F 58%,#F59A55 78%,#FBD9BC 100%);
-  opacity:0;
+.ld-photo{
+  position:absolute;inset:0;
+  background:url('assets/sunset.jpg') center 38%/cover no-repeat;
+  filter:grayscale(.9) brightness(.42) contrast(1.05);
+  transform:scale(1.06);
+  will-change:filter, transform;
+}
+.ld-warm{
+  position:absolute;inset:0;opacity:0;
+  background:
+    radial-gradient(120% 70% at 50% 30%, rgba(245,154,85,.35), transparent 60%),
+    linear-gradient(180deg, rgba(58,36,80,.35) 0%, rgba(217,83,47,.18) 55%, rgba(251,217,188,.15) 100%);
+  mix-blend-mode:screen;pointer-events:none;
+}
+.ld-vig{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 100% at 50% 45%, transparent 55%, rgba(15,39,33,.75) 100%);
 }
 .ld-stars{position:absolute;inset:0;pointer-events:none}
 .ld-star{
@@ -74,30 +82,31 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 }
 .ld-sun{
   position:absolute;left:50%;top:0;
-  width:96px;height:96px;margin-left:-48px;border-radius:50%;
+  width:92px;height:92px;margin-left:-46px;border-radius:50%;
   background:radial-gradient(circle at 42% 38%, #FFFBEE 0%, #FFE9BB 42%, #FBC377 72%, #F59A55 100%);
-  box-shadow:0 0 40px 14px rgba(255,222,150,.65), 0 0 120px 50px rgba(245,154,85,.35);
-  will-change:transform;z-index:3;
+  box-shadow:0 0 40px 14px rgba(255,222,150,.6), 0 0 130px 55px rgba(245,154,85,.32);
+  will-change:transform;z-index:5;
 }
 .ld-sun::after{
   content:"";position:absolute;inset:-26px;border-radius:50%;
-  border:1.5px dashed rgba(255,243,214,.65);
+  border:1.5px dashed rgba(255,243,214,.6);
   animation:spin 14s linear infinite;
 }
-#loader.grabbed .ld-sun{box-shadow:0 0 55px 20px rgba(255,222,150,.85), 0 0 150px 70px rgba(245,154,85,.5)}
-.ld-ridge{position:absolute;left:0;right:0;bottom:-2px;z-index:4;pointer-events:none}
-.ld-ridge svg{display:block;width:100%;height:auto}
+#loader.grabbed .ld-sun{box-shadow:0 0 60px 22px rgba(255,222,150,.85), 0 0 170px 80px rgba(245,154,85,.5)}
 .ld-brand{position:absolute;top:max(26px, env(safe-area-inset-top));left:0;right:0;text-align:center;z-index:6}
 .ld-brand .mark{
   font-family:var(--display);font-size:26px;letter-spacing:.4em;text-indent:.4em;
-  color:var(--pine);transition:color .6s ease;
+  color:var(--cream);text-shadow:0 2px 20px rgba(15,39,33,.8);
 }
-#loader.dusky .ld-brand .mark{color:var(--cream)}
+.ld-brand .sub{
+  margin-top:6px;font-size:9px;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--peach);text-indent:.4em;
+}
 .ld-hint{
-  position:absolute;left:0;right:0;bottom:calc(30px + env(safe-area-inset-bottom));
+  position:absolute;left:0;right:0;bottom:calc(34px + env(safe-area-inset-bottom));
   text-align:center;z-index:6;
-  font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;
-  color:var(--cream);text-shadow:0 1px 10px rgba(20,49,40,.5);
+  font-size:11px;font-weight:600;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--cream);text-shadow:0 1px 12px rgba(15,39,33,.9);
   transition:opacity .4s ease;
 }
 .ld-hint .arrow{
@@ -109,7 +118,7 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .ld-progress{
   position:absolute;top:50%;right:18px;z-index:6;
   width:2px;height:110px;margin-top:-55px;
-  background:rgba(255,255,255,.25);border-radius:2px;
+  background:rgba(255,255,255,.22);border-radius:2px;
 }
 .ld-progress i{position:absolute;left:0;right:0;top:0;height:0%;background:var(--cream);border-radius:2px;display:block}
 .ld-higher{
@@ -120,13 +129,13 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   transition:opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1);
 }
 #loader.fin .ld-higher{opacity:1;transform:none}
-.ld-higher small{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--blush)}
+.ld-higher small{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--blush);text-shadow:0 1px 14px rgba(15,39,33,.9)}
 .ld-higher b{
   display:block;margin-top:8px;
   font-family:var(--thin);font-weight:400;
   font-size:clamp(58px,18vw,110px);
   letter-spacing:.14em;text-indent:.14em;
-  color:var(--cream);text-shadow:0 0 60px rgba(245,154,85,.6);
+  color:var(--cream);text-shadow:0 0 60px rgba(245,154,85,.8), 0 2px 20px rgba(15,39,33,.6);
 }
 #loader.fin .ld-hint,#loader.fin .ld-progress{opacity:0}
 .burst{
@@ -140,7 +149,7 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 }
 
 /* ============================================================
-   ETCHED BOTANICAL WALL
+   ETCHED WALL
    ============================================================ */
 .wall{position:relative;background:var(--forest)}
 .wall::before{
@@ -172,38 +181,38 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   color:var(--peach);margin-bottom:clamp(20px,5vh,40px);
 }
 .hero-top span{color:var(--cream);opacity:.75}
+
+/* the arch — a live window onto the real terrace */
 .arch{
   width:min(78vw,340px);
   aspect-ratio:5/7;
   min-height:380px;
   border-radius:50% 50% 14px 14px / 42% 42% 14px 14px;
   overflow:hidden;position:relative;
-  box-shadow:0 30px 60px -20px rgba(0,0,0,.55), inset 0 0 0 1px rgba(247,239,224,.15);
+  box-shadow:0 30px 60px -20px rgba(0,0,0,.55), inset 0 0 0 1px rgba(247,239,224,.18);
   opacity:0;transform:translateY(24px) scale(.97);
   touch-action:pan-y;
+  background:linear-gradient(180deg,#5b3a6e,#e2653f 60%,#fbc98a);
 }
-.sky{
-  position:absolute;inset:0;
-  background:linear-gradient(180deg,#5b3a6e 0%,#a44a63 26%,#e2653f 52%,#f59a55 72%,#fbc98a 100%);
-  background-size:100% 160%;background-position:50% 30%;
-  animation:sunset 16s ease-in-out infinite alternate;
+.arch-pan{
+  position:absolute;top:0;bottom:0;left:-18%;width:136%;
+  will-change:transform;
 }
-.sun{
-  position:absolute;left:50%;top:46%;
-  width:74px;height:74px;margin-left:-37px;border-radius:50%;
-  background:radial-gradient(circle,#FFF3D6 0%,#FBD08A 55%,rgba(251,208,138,0) 74%);
-  filter:blur(1px);
+.arch-pan img{
+  width:100%;height:100%;object-fit:cover;object-position:50% 35%;
+  animation:kenburns 22s ease-in-out infinite alternate;
 }
-.arch.gl .sun{display:none}
-#scene3d{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:2}
-.ridge{position:absolute;left:0;right:0;bottom:-2px;z-index:1}
-.arch.gl .ridge{display:none}
-.ridge svg{display:block;width:100%;height:auto}
+#emberCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+.arch-grad{
+  position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg, rgba(20,49,40,.15) 0%, transparent 30%, transparent 70%, rgba(15,39,33,.45) 100%);
+}
 .arch-badge{
   position:absolute;left:0;right:0;bottom:10px;z-index:5;text-align:center;
   font-size:9px;letter-spacing:.3em;text-transform:uppercase;
-  color:rgba(247,239,224,.85);pointer-events:none;
-  text-shadow:0 1px 8px rgba(20,49,40,.6);
+  color:rgba(247,239,224,.9);pointer-events:none;
+  text-shadow:0 1px 8px rgba(20,49,40,.8);
+  transition:opacity .6s ease;
 }
 .hero-brand{margin-top:clamp(24px,4.5vh,40px)}
 .hero-brand h1{
@@ -263,7 +272,7 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 }
 
 /* ============================================================
-   GALLERY — THE REAL PLACE
+   GALLERY
    ============================================================ */
 .gallery{padding:60px 0 64px}
 .g-head{text-align:center;padding:0 24px;margin-bottom:28px}
@@ -273,11 +282,9 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   font-size:clamp(28px,8vw,40px);letter-spacing:.1em;color:var(--cream);margin-top:10px;
 }
 .g-track{
-  display:flex;gap:16px;
-  overflow-x:auto;
+  display:flex;gap:16px;overflow-x:auto;
   padding:10px 24px 26px;
-  scroll-snap-type:x mandatory;
-  scrollbar-width:none;
+  scroll-snap-type:x mandatory;scrollbar-width:none;
   -webkit-overflow-scrolling:touch;
 }
 .g-track::-webkit-scrollbar{display:none}
@@ -352,7 +359,6 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 }
 .sec-title::after{background:linear-gradient(90deg,var(--terracotta),transparent)}
 .sec-note{text-align:center;font-size:12.5px;color:#8a8375;margin-bottom:22px;font-style:italic}
-
 .item{
   display:flex;align-items:center;gap:12px;
   padding:14px 12px;margin:0 -12px;
@@ -411,7 +417,7 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .menu-wave svg{display:block;width:100%;height:auto}
 
 /* ============================================================
-   SHORTLIST TRAY
+   SHORTLIST TRAY, SHEET & WAITER MODE
    ============================================================ */
 #tray{
   position:fixed;left:50%;bottom:calc(88px + env(safe-area-inset-bottom));
@@ -427,8 +433,11 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   white-space:nowrap;cursor:pointer;
 }
 #tray.show{transform:translate(-50%,0)}
+#tray.ready{background:linear-gradient(120deg,var(--terracotta),var(--coral));border-color:transparent}
 #tray b{font-family:var(--display);color:var(--peach);font-weight:400}
+#tray.ready b{color:#fff}
 #tray .star{color:var(--coral)}
+#tray.ready .star{color:#fff}
 #sheet{
   position:fixed;left:0;right:0;bottom:0;z-index:200;
   background:var(--cream);color:var(--ink);
@@ -437,7 +446,7 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   transform:translateY(105%);
   transition:transform .45s cubic-bezier(.22,1,.36,1);
   box-shadow:0 -20px 60px rgba(15,39,33,.35);
-  max-height:72vh;display:flex;flex-direction:column;
+  max-height:76vh;display:flex;flex-direction:column;
 }
 #sheet.open{transform:none}
 #sheetveil{
@@ -446,11 +455,8 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 }
 #sheetveil.open{opacity:1;visibility:visible}
 .sh-grip{width:44px;height:4px;border-radius:4px;background:rgba(30,68,55,.25);margin:0 auto 16px}
-.sh-title{
-  font-family:var(--display);font-size:20px;letter-spacing:.08em;
-  color:var(--forest);text-align:center;
-}
-.sh-sub{text-align:center;font-size:12px;color:#8a8375;margin-top:4px}
+.sh-title{font-family:var(--display);font-size:20px;letter-spacing:.08em;color:var(--forest);text-align:center}
+.sh-sub{text-align:center;font-size:12px;color:#8a8375;margin-top:4px;min-height:16px}
 .sh-list{margin-top:16px;overflow-y:auto;flex:1}
 .sh-row{
   display:flex;align-items:center;gap:10px;
@@ -472,14 +478,72 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .sh-total .p{font-family:var(--display);font-size:22px;color:var(--terracotta);font-weight:400}
 .sh-actions{display:flex;gap:10px;margin-top:10px}
 .sh-actions .btn{flex:1;padding:14px 10px;font-size:12px}
-.sh-clear{color:#8a8375;text-decoration:underline;font-size:12px;text-align:center;margin-top:14px}
+.sh-links{display:flex;justify-content:center;gap:18px;margin-top:14px}
+.sh-links button, .sh-links a{color:#8a8375;text-decoration:underline;font-size:12px}
+
+/* waiter mode — raise your phone */
+#waiter{
+  position:fixed;inset:0;z-index:300;
+  background:var(--cream);color:var(--ink);
+  display:flex;flex-direction:column;
+  padding:0 0 calc(20px + env(safe-area-inset-bottom));
+  transform:translateY(105%);
+  transition:transform .5s cubic-bezier(.22,1,.36,1);
+  overflow-y:auto;
+}
+#waiter.open{transform:none}
+.wt-tiles{height:24px;flex:none;background-color:var(--cream);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23F7EFE0'/%3E%3Cg fill='none' stroke='%23D9532F' stroke-width='.8'%3E%3Cpath d='M12 2 L22 12 L12 22 L2 12 Z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:24px 24px;border-bottom:2px solid var(--terracotta);
+}
+.wt-body{flex:1;display:flex;flex-direction:column;align-items:center;padding:26px 24px 10px;text-align:center}
+.wt-hand{
+  font-size:52px;line-height:1;
+  animation:wave 1.6s ease-in-out infinite;
+  transform-origin:70% 80%;
+}
+@keyframes wave{0%,100%{transform:rotate(0)}25%{transform:rotate(16deg)}50%{transform:rotate(-6deg)}75%{transform:rotate(12deg)}}
+.wt-title{
+  font-family:var(--display);font-size:clamp(26px,8vw,34px);
+  letter-spacing:.12em;color:var(--forest);margin-top:14px;
+}
+.wt-sub{font-size:13px;color:#8a8375;margin-top:6px}
+.wt-card{
+  width:100%;max-width:440px;margin-top:22px;
+  border:2px solid var(--terracotta);border-radius:20px;
+  padding:18px 20px;
+  background:#fff;
+  box-shadow:0 16px 40px -18px rgba(217,83,47,.35);
+  animation:cardpulse 2.4s ease-in-out infinite;
+}
+@keyframes cardpulse{0%,100%{box-shadow:0 16px 40px -18px rgba(217,83,47,.35)}50%{box-shadow:0 16px 46px -12px rgba(217,83,47,.55)}}
+.wt-row{
+  display:flex;justify-content:space-between;gap:12px;
+  padding:10px 0;border-bottom:1px dashed rgba(30,68,55,.15);
+  font-size:15.5px;font-weight:600;text-align:left;
+}
+.wt-row .p{font-family:var(--display);color:var(--terracotta);font-weight:400}
+.wt-total{
+  display:flex;justify-content:space-between;padding-top:14px;
+  font-size:15px;font-weight:700;color:var(--forest);
+}
+.wt-total .p{font-family:var(--display);font-size:24px;color:var(--terracotta);font-weight:400}
+.wt-brand{
+  margin-top:18px;font-family:var(--display);font-size:13px;
+  letter-spacing:.4em;text-indent:.4em;color:var(--forest);opacity:.6;
+}
+.wt-back{
+  margin:18px auto 0;display:block;
+  color:var(--forest);border:1px solid rgba(30,68,55,.35);
+  padding:13px 30px;border-radius:999px;
+  font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+}
 
 /* ============================================================
-   VISIT — on the real terrace photo
+   VISIT
    ============================================================ */
 .visit{
-  padding:70px 24px 84px;text-align:center;
-  position:relative;
+  padding:70px 24px 84px;text-align:center;position:relative;
   background:linear-gradient(rgba(15,39,33,.82), rgba(20,49,40,.94)), url('assets/terrace.jpg') center 30%/cover no-repeat;
 }
 .visit h2{
@@ -497,20 +561,14 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .status .led{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulse 1.8s ease-in-out infinite}
 .status.closed .led{background:var(--coral);animation:none}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}50%{box-shadow:0 0 0 7px rgba(74,222,128,0)}}
-.facts{
-  margin:34px auto 0;max-width:560px;
-  display:grid;grid-template-columns:1fr 1fr;gap:12px;
-}
+.facts{margin:34px auto 0;max-width:560px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .fact{
   border:1px solid rgba(247,239,224,.16);border-radius:18px;
   padding:20px 14px;background:rgba(15,39,33,.55);
   backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
 }
 .fact .k{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--peach)}
-.fact .v{
-  margin-top:8px;font-family:var(--display);
-  font-size:clamp(17px,4.6vw,21px);color:var(--cream);line-height:1.25;
-}
+.fact .v{margin-top:8px;font-family:var(--display);font-size:clamp(17px,4.6vw,21px);color:var(--cream);line-height:1.25}
 .visit-actions{
   margin-top:32px;display:flex;flex-direction:column;gap:12px;
   max-width:420px;margin-left:auto;margin-right:auto;
@@ -529,7 +587,7 @@ footer .credit{margin-top:12px;letter-spacing:.2em;text-transform:uppercase;font
 footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5);padding-bottom:1px}
 
 /* ============================================================
-   STICKY DOCK
+   DOCK
    ============================================================ */
 .dock{
   position:fixed;left:0;right:0;bottom:0;z-index:100;
@@ -557,7 +615,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
 @keyframes fadeUp{to{opacity:1;transform:none}}
 @keyframes fadeDown{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
 @keyframes archIn{to{opacity:1;transform:none}}
-@keyframes sunset{0%{background-position:50% 10%}100%{background-position:50% 70%}}
+@keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.14)}}
 @keyframes drip{0%,100%{transform:scaleY(.4);transform-origin:top;opacity:.4}50%{transform:scaleY(1);opacity:1}}
 @keyframes twinkle{0%,100%{opacity:.1}50%{opacity:.9}}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -585,21 +643,19 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
 
 <div id="sunbar"></div>
 
-<!-- ============ PRELOADER ============ -->
-<div id="loader" aria-label="Drag the sun down to enter">
-  <div class="ld-day"></div>
-  <div class="ld-dusk" id="ldDusk"></div>
+<!-- ============ PRELOADER : LIGHT THE TERRACE ============ -->
+<div id="loader" aria-label="Drag the sun down to light the terrace">
+  <div class="ld-photo" id="ldPhoto"></div>
+  <div class="ld-warm" id="ldWarm"></div>
+  <div class="ld-vig"></div>
   <div class="ld-stars" id="ldStars"></div>
   <div class="ld-sun" id="ldSun"></div>
-  <div class="ld-ridge">
-    <svg viewBox="0 0 375 170" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-      <path d="M0 170 L0 96 L52 58 L96 88 L142 38 L188 74 L238 28 L290 78 L332 56 L375 92 L375 170 Z" fill="#0F2721" opacity=".6"/>
-      <path d="M0 170 L0 118 L64 84 L116 110 L168 68 L218 102 L272 62 L326 102 L375 82 L375 170 Z" fill="#0F2721"/>
-    </svg>
+  <div class="ld-brand">
+    <div class="mark">FÔLIES</div>
+    <div class="sub">Zaarour · Sunset Lounge</div>
   </div>
-  <div class="ld-brand"><div class="mark">FÔLIES</div></div>
   <div class="ld-progress"><i id="ldBar"></i></div>
-  <div class="ld-hint" id="ldHint">Drag the sun into the mountains<span class="arrow"></span></div>
+  <div class="ld-hint" id="ldHint">Drag the sun · light the terrace<span class="arrow"></span></div>
   <div class="ld-higher">
     <small>We are not far, we are just</small>
     <b>HIGHER</b>
@@ -614,16 +670,12 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
   </div>
 
   <div class="arch" id="arch" aria-hidden="true">
-    <div class="sky"></div>
-    <div class="sun"></div>
-    <canvas id="scene3d"></canvas>
-    <div class="ridge">
-      <svg viewBox="0 0 340 150" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 150 L0 96 L48 60 L86 88 L128 40 L170 74 L214 30 L262 78 L300 56 L340 92 L340 150 Z" fill="#14312B" opacity=".55"/>
-        <path d="M0 150 L0 116 L58 84 L104 108 L152 68 L198 100 L248 62 L296 100 L340 80 L340 150 Z" fill="#14312B"/>
-      </svg>
+    <div class="arch-pan" id="archPan">
+      <img src="assets/sunset.jpg" alt="">
     </div>
-    <div class="arch-badge" id="archBadge">Drag to look around</div>
+    <div class="arch-grad"></div>
+    <canvas id="emberCanvas"></canvas>
+    <div class="arch-badge" id="archBadge">Drag to pan · tilt your phone</div>
   </div>
 
   <div class="hero-brand">
@@ -677,7 +729,7 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
     <div class="eyebrow">The Menu</div>
     <h2>Made to enjoy<br>at sunset</h2>
     <p>Fresh ingredients, carefully selected.</p>
-    <div class="menu-tip">✦&nbsp; Tap dishes to build your shortlist</div>
+    <div class="menu-tip">✦&nbsp; Tap dishes to build your order</div>
   </div>
 
   <nav class="chips" id="chips" aria-label="Menu categories">
@@ -834,23 +886,41 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
   <div class="credit">Website by <a href="https://swottm.com" target="_blank" rel="noopener">SWOT Creative Hub</a></div>
 </footer>
 
-<!-- ============ SHORTLIST TRAY & SHEET ============ -->
-<div id="tray"><span class="star">✦</span> <span id="trayCount">0</span> picks · <b id="trayTotal">$0</b></div>
+<!-- ============ SHORTLIST TRAY, SHEET, WAITER MODE ============ -->
+<div id="tray"><span class="star">✦</span>&nbsp;<span id="trayLabel"><span id="trayCount">0</span> picks · <b id="trayTotal">$0</b></span></div>
 <div id="sheetveil"></div>
-<div id="sheet" role="dialog" aria-label="Your sunset shortlist">
+<div id="sheet" role="dialog" aria-label="Your order">
   <div class="sh-grip"></div>
-  <div class="sh-title">Your Sunset Shortlist</div>
-  <div class="sh-sub">Show this to your waiter — or just dream about it</div>
+  <div class="sh-title">Your Sunset Order</div>
+  <div class="sh-sub" id="shHint"></div>
   <div class="sh-list" id="shList"></div>
   <div class="sh-total"><span>Total</span><span class="p" id="shTotal">$0</span></div>
   <div class="sh-actions">
-    <a class="btn btn-fill" href="https://folies.resos.com" target="_blank" rel="noopener">Book &amp; come taste it</a>
-    <button class="btn btn-ghost" id="shClose" style="color:var(--forest);border-color:rgba(30,68,55,.35)">Keep browsing</button>
+    <button class="btn btn-fill" id="shWaiter">🙋 I'm ready — call the waiter</button>
   </div>
-  <button class="sh-clear" id="shClear">Clear shortlist</button>
+  <div class="sh-links">
+    <button id="shClose">Keep browsing</button>
+    <button id="shClear">Clear all</button>
+  </div>
 </div>
 
-<!-- ============ STICKY DOCK ============ -->
+<!-- waiter mode -->
+<div id="waiter" role="dialog" aria-label="Ready to order">
+  <div class="wt-tiles"></div>
+  <div class="wt-body">
+    <div class="wt-hand">✋</div>
+    <div class="wt-title">Ready to Order</div>
+    <div class="wt-sub">Raise your phone — the team will take it from here</div>
+    <div class="wt-card">
+      <div id="wtList"></div>
+      <div class="wt-total"><span>Total</span><span class="p" id="wtTotal">$0</span></div>
+    </div>
+    <div class="wt-brand">FÔLIES</div>
+    <button class="wt-back" id="wtBack">Back to menu</button>
+  </div>
+</div>
+
+<!-- ============ DOCK ============ -->
 <nav class="dock" id="dock" aria-label="Quick actions">
   <a class="d-reserve" href="https://folies.resos.com" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
@@ -866,16 +936,15 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
   </a>
 </nav>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-/* failsafe: never leave the page locked, even if anything below throws */
+/* failsafe: never leave the page locked */
 setTimeout(function(){
   document.body.classList.remove('locked');
   document.body.classList.add('ready');
 }, 8000);
 
 /* ============================================================
-   PRELOADER : SET THE SUN
+   PRELOADER : LIGHT THE TERRACE
    ============================================================ */
 (function(){
   var loader = document.getElementById('loader');
@@ -883,7 +952,7 @@ setTimeout(function(){
   function unlock(){
     document.body.classList.remove('locked');
     document.body.classList.add('ready');
-    try{ initScene(); }catch(e){}
+    try{ initArch(); }catch(e){}
   }
   if(reduced || !loader || getComputedStyle(loader).display === 'none'){
     if(loader) loader.remove();
@@ -891,17 +960,18 @@ setTimeout(function(){
     return;
   }
   var sun = document.getElementById('ldSun');
-  var dusk = document.getElementById('ldDusk');
+  var photo = document.getElementById('ldPhoto');
+  var warm = document.getElementById('ldWarm');
   var bar = document.getElementById('ldBar');
   var stars = document.getElementById('ldStars');
   var p = 0, done = false, lastInput = performance.now(), dragging = false;
   var t0 = performance.now();
 
-  for(var i=0;i<34;i++){
+  for(var i=0;i<30;i++){
     var s = document.createElement('i');
     s.className = 'ld-star';
     s.style.left = (Math.random()*100)+'%';
-    s.style.top = (Math.random()*55)+'%';
+    s.style.top = (Math.random()*40)+'%';
     s.style.animationDelay = (Math.random()*2.6)+'s';
     s.style.width = s.style.height = (1.5+Math.random()*2)+'px';
     stars.appendChild(s);
@@ -909,20 +979,25 @@ setTimeout(function(){
 
   function yFor(prog){
     var h = loader.clientHeight;
-    return h*0.14 + prog*(h*0.62);
+    return h*0.13 + prog*(h*0.52);
   }
   function render(){
-    sun.style.transform = 'translateY(' + yFor(p) + 'px)';
-    dusk.style.opacity = Math.min(1, p*1.25);
-    stars.style.opacity = Math.max(0, (p-0.55)*2.2);
+    sun.style.transform = 'translateY(' + yFor(p) + 'px) scale(' + (1 - p*0.25) + ')';
+    // the photo comes alive: cold & dim -> warm & golden
+    var gray = 0.9*(1-p);
+    var bright = 0.42 + p*0.62;
+    var sat = 1 + p*0.18;
+    photo.style.filter = 'grayscale('+gray.toFixed(3)+') brightness('+bright.toFixed(3)+') contrast(1.05) saturate('+sat.toFixed(3)+')';
+    photo.style.transform = 'scale(' + (1.06 - p*0.04) + ')';
+    warm.style.opacity = Math.min(1, p*1.15);
+    stars.style.opacity = Math.max(0, (p-0.6)*2.5);
     bar.style.height = (p*100)+'%';
-    loader.classList.toggle('dusky', p > 0.35);
     if(p >= 1 && !done) complete();
   }
   function setP(v){ p = Math.max(0, Math.min(1, v)); render(); }
 
   function emberBurst(){
-    var h = loader.clientHeight, y = yFor(1);
+    var y = yFor(1);
     for(var i=0;i<22;i++){
       var e = document.createElement('span');
       e.className = 'burst';
@@ -948,7 +1023,7 @@ setTimeout(function(){
   }
   function progFromY(clientY){
     var h = loader.clientHeight;
-    return (clientY - h*0.14 - 48) / (h*0.62);
+    return (clientY - h*0.13 - 46) / (h*0.52);
   }
   loader.addEventListener('pointerdown', function(e){
     if(done) return;
@@ -956,7 +1031,6 @@ setTimeout(function(){
     lastInput = performance.now();
     loader.classList.add('grabbed');
     try{ loader.setPointerCapture(e.pointerId); }catch(err){}
-    // tap anywhere also pulls the sun a step down
     setP(Math.max(p + 0.1, progFromY(e.clientY)));
   });
   loader.addEventListener('pointermove', function(e){
@@ -968,10 +1042,9 @@ setTimeout(function(){
     dragging = false;
     loader.classList.remove('grabbed');
   });
-
   function tick(now){
     if(done) return;
-    if(now - t0 > 8000){ setP(1); return; } // never trap anyone
+    if(now - t0 > 8000){ setP(1); return; }
     if(!dragging && now - lastInput > 3000){ setP(p + 0.004); }
     requestAnimationFrame(tick);
   }
@@ -980,168 +1053,103 @@ setTimeout(function(){
 })();
 
 /* ============================================================
-   3D SCENE IN THE ARCH
+   HERO ARCH — real photo, pan / tilt / embers
    ============================================================ */
-var sceneInited = false;
-function initScene(){
-  if(sceneInited) return;
-  sceneInited = true;
+var archInited = false;
+function initArch(){
+  if(archInited) return;
+  archInited = true;
   var arch = document.getElementById('arch');
-  var canvas = document.getElementById('scene3d');
-  if(!window.THREE || !canvas) return;
-  var renderer;
-  try{
-    renderer = new THREE.WebGLRenderer({canvas:canvas, alpha:true, antialias:true});
-  }catch(e){ return; }
-  arch.classList.add('gl');
+  var pan = document.getElementById('archPan');
+  var canvas = document.getElementById('emberCanvas');
 
-  var W = arch.clientWidth || 320, H = arch.clientHeight || 450;
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
-  renderer.setSize(W, H, false);
-
-  var scene = new THREE.Scene();
-  scene.fog = new THREE.Fog(0xE2653F, 9, 26);
-  var camera = new THREE.PerspectiveCamera(55, W/H, 0.1, 100);
-  camera.position.set(0, 1.6, 8);
-
-  var sunLight = new THREE.DirectionalLight(0xFFB877, 1.4);
-  sunLight.position.set(0, 3, -12);
-  scene.add(sunLight);
-  scene.add(new THREE.AmbientLight(0x4A3050, 0.9));
-  var rim = new THREE.DirectionalLight(0xF5B78C, 0.5);
-  rim.position.set(4, 6, 6);
-  scene.add(rim);
-
-  var world = new THREE.Group();
-  scene.add(world);
-
-  function makeRidge(depth, height, color, seed){
-    var geo = new THREE.PlaneGeometry(46, 14, 64, 16);
-    var pos = geo.attributes.position;
-    for(var i=0;i<pos.count;i++){
-      var x = pos.getX(i), y = pos.getY(i);
-      var t = (y + 7) / 14;
-      var h = Math.sin(x*0.42 + seed)*1.1
-            + Math.sin(x*0.93 + seed*2.3)*0.65
-            + Math.sin(x*2.1 + seed*4.1)*0.3;
-      h = (h + 2.05) * height * (0.35 + t*0.65);
-      h += (Math.sin(x*12.9+seed*7.7)*0.5+0.5) * 0.22 * height;
-      pos.setZ(i, h);
-    }
-    geo.computeVertexNormals();
-    var mesh = new THREE.Mesh(geo, new THREE.MeshLambertMaterial({color:color, flatShading:true}));
-    mesh.rotation.x = -Math.PI/2;
-    mesh.position.set(0, 0, depth);
-    return mesh;
-  }
-  world.add(makeRidge(-14, 1.9, 0x1E4437, 1.7));
-  world.add(makeRidge(-7,  1.5, 0x16382E, 4.2));
-  world.add(makeRidge(-1,  1.1, 0x0F2721, 8.9));
-
-  var sunGroup = new THREE.Group();
-  sunGroup.add(new THREE.Mesh(
-    new THREE.SphereGeometry(1.35, 32, 32),
-    new THREE.MeshBasicMaterial({color:0xFFEBC2})
-  ));
-  var glowCanvas = document.createElement('canvas');
-  glowCanvas.width = glowCanvas.height = 128;
-  var g = glowCanvas.getContext('2d');
-  var grad = g.createRadialGradient(64,64,4,64,64,64);
-  grad.addColorStop(0,'rgba(255,240,205,0.95)');
-  grad.addColorStop(0.35,'rgba(251,195,119,0.55)');
-  grad.addColorStop(1,'rgba(245,154,85,0)');
-  g.fillStyle = grad;
-  g.fillRect(0,0,128,128);
-  var glow = new THREE.Sprite(new THREE.SpriteMaterial({
-    map:new THREE.CanvasTexture(glowCanvas),
-    blending:THREE.AdditiveBlending, depthWrite:false, transparent:true
-  }));
-  glow.scale.set(11,11,1);
-  sunGroup.add(glow);
-  sunGroup.position.set(0, 2.4, -18);
-  world.add(sunGroup);
-
-  var N = 70;
-  var pGeo = new THREE.BufferGeometry();
-  var pArr = new Float32Array(N*3);
-  var speeds = new Float32Array(N);
-  for(var j=0;j<N;j++){
-    pArr[j*3]   = (Math.random()-0.5)*20;
-    pArr[j*3+1] = Math.random()*6;
-    pArr[j*3+2] = -Math.random()*16;
-    speeds[j] = 0.15 + Math.random()*0.45;
-  }
-  pGeo.setAttribute('position', new THREE.BufferAttribute(pArr, 3));
-  world.add(new THREE.Points(pGeo, new THREE.PointsMaterial({
-    color:0xFBD9BC, size:0.09, transparent:true, opacity:0.85,
-    blending:THREE.AdditiveBlending, depthWrite:false
-  })));
-
-  var tx=0, ty=0, cx=0, cy=0, rotT=0, rot=0, down=false, lastX=0;
-  arch.addEventListener('pointerdown', function(e){ down=true; lastX=e.clientX; });
+  // --- pan & tilt ---
+  var panX = 0, panT = 0, tiltY = 0, tiltT = 0;
+  var down = false, lastX = 0;
+  var MAX = 9; // % of pan travel
+  arch.addEventListener('pointerdown', function(e){ down = true; lastX = e.clientX; hideBadge(); });
   window.addEventListener('pointermove', function(e){
-    if(down){
-      rotT += (e.clientX - lastX) * 0.0035;
-      rotT = Math.max(-0.45, Math.min(0.45, rotT));
-      lastX = e.clientX;
-    }
-    var r = arch.getBoundingClientRect();
-    if(r.width){
-      tx = ((e.clientX - r.left)/r.width - 0.5) * 2;
-      ty = ((e.clientY - r.top)/r.height - 0.5) * 2;
-    }
+    if(!down) return;
+    var w = arch.clientWidth || 320;
+    panT += (e.clientX - lastX) / w * 22;
+    panT = Math.max(-MAX, Math.min(MAX, panT));
+    lastX = e.clientX;
   });
-  window.addEventListener('pointerup', function(){ down=false; });
+  window.addEventListener('pointerup', function(){ down = false; });
   window.addEventListener('deviceorientation', function(e){
     if(e.gamma == null) return;
-    tx = Math.max(-1, Math.min(1, e.gamma/28));
-    ty = Math.max(-1, Math.min(1, (e.beta-45)/40));
+    panT = Math.max(-MAX, Math.min(MAX, -e.gamma/45*MAX));
+    tiltT = Math.max(-3, Math.min(3, (e.beta-45)/45*3));
   });
 
   var badge = document.getElementById('archBadge');
-  var hideBadge = function(){ if(badge){ badge.style.opacity=0; badge.style.transition='opacity .6s'; } };
-  arch.addEventListener('pointerdown', hideBadge, {once:true});
+  function hideBadge(){ if(badge){ badge.style.opacity = 0; } }
   setTimeout(hideBadge, 7000);
 
+  // --- embers over the photo ---
+  var ctx = canvas.getContext('2d');
+  var W, H, DPR = Math.min(window.devicePixelRatio || 1, 2);
+  function size(){
+    W = arch.clientWidth; H = arch.clientHeight;
+    canvas.width = W*DPR; canvas.height = H*DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+  }
+  size();
+  window.addEventListener('resize', size);
+
+  var N = 34, embers = [];
+  for(var i=0;i<N;i++){
+    embers.push({
+      x: Math.random(), y: Math.random(),
+      r: 0.8 + Math.random()*1.8,
+      s: 0.0004 + Math.random()*0.0011,
+      w: Math.random()*Math.PI*2,
+      o: 0.3 + Math.random()*0.6
+    });
+  }
   var visible = true;
   new IntersectionObserver(function(en){ visible = en[0].isIntersecting; },{threshold:0}).observe(arch);
 
-  var clock = new THREE.Clock();
+  var t = 0;
   function loop(){
     requestAnimationFrame(loop);
     if(!visible) return;
-    var t = clock.getElapsedTime();
-    cx += (tx - cx)*0.05;
-    cy += (ty - cy)*0.05;
-    rot += (rotT - rot)*0.06;
-    world.rotation.y = rot;
-    camera.position.x = cx * 0.9;
-    camera.position.y = 1.6 + cy * -0.35;
-    camera.lookAt(0, 1.4, -12);
-    sunGroup.position.y = 2.4 + Math.sin(t*0.35)*0.35;
-    glow.material.opacity = 0.85 + Math.sin(t*1.4)*0.15;
-    var arr = pGeo.attributes.position.array;
-    for(var k=0;k<N;k++){
-      arr[k*3+1] += speeds[k]*0.008;
-      arr[k*3] += Math.sin(t*0.7 + k)*0.0012;
-      if(arr[k*3+1] > 6.5) arr[k*3+1] = -0.3;
+    t += 0.016;
+    // ease pan/tilt
+    panX += (panT - panX)*0.07;
+    tiltY += (tiltT - tiltY)*0.07;
+    pan.style.transform = 'translateX(' + panX + '%) translateY(' + tiltY + '%)';
+
+    ctx.clearRect(0,0,W,H);
+    // pulsing warm glow where the real sun sits in the photo
+    var gx = W*0.5 + panX/100*W*0.9, gy = H*0.40;
+    var pulse = 0.32 + Math.sin(t*1.3)*0.08;
+    var grad = ctx.createRadialGradient(gx,gy,4,gx,gy,W*0.42);
+    grad.addColorStop(0,'rgba(255,235,190,'+pulse+')');
+    grad.addColorStop(0.4,'rgba(245,154,85,'+(pulse*0.4)+')');
+    grad.addColorStop(1,'rgba(245,154,85,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0,0,W,H);
+    // embers
+    for(var i=0;i<N;i++){
+      var e = embers[i];
+      e.y -= e.s;
+      e.w += 0.02;
+      if(e.y < -0.05){ e.y = 1.05; e.x = Math.random(); }
+      var ex = (e.x + Math.sin(e.w)*0.012)*W + panX/100*W*0.5;
+      var ey = e.y*H;
+      var tw = e.o * (0.6 + Math.sin(t*2 + i)*0.4);
+      ctx.beginPath();
+      ctx.arc(ex, ey, e.r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(251,217,188,'+tw.toFixed(3)+')';
+      ctx.fill();
     }
-    pGeo.attributes.position.needsUpdate = true;
-    renderer.render(scene, camera);
   }
   loop();
-
-  window.addEventListener('resize', function(){
-    var w = arch.clientWidth, h = arch.clientHeight;
-    if(!w || !h) return;
-    camera.aspect = w/h;
-    camera.updateProjectionMatrix();
-    renderer.setSize(w, h, false);
-  });
 }
 
 /* ============================================================
-   SHORTLIST — tap dishes, build your sunset order
+   ORDER FLOW — tap dishes → ready → call the waiter
    ============================================================ */
 (function(){
   var picks = {};
@@ -1149,21 +1157,37 @@ function initScene(){
   var tray = document.getElementById('tray');
   var trayCount = document.getElementById('trayCount');
   var trayTotal = document.getElementById('trayTotal');
+  var trayLabel = document.getElementById('trayLabel');
   var sheet = document.getElementById('sheet');
   var veil = document.getElementById('sheetveil');
   var shList = document.getElementById('shList');
   var shTotal = document.getElementById('shTotal');
+  var shHint = document.getElementById('shHint');
+  var waiter = document.getElementById('waiter');
+  var wtList = document.getElementById('wtList');
+  var wtTotal = document.getElementById('wtTotal');
 
   function save(){ try{ sessionStorage.setItem('foliesPicks', JSON.stringify(picks)); }catch(e){} }
   function count(){ return Object.keys(picks).length; }
-  function total(){
-    var t=0; for(var k in picks) t += picks[k];
-    return t;
+  function total(){ var t=0; for(var k in picks) t += picks[k]; return t; }
+
+  function hintFor(n, t){
+    if(n === 0) return 'Tap dishes on the menu to add them';
+    if(n === 1) return 'Solo bite — add something to share?';
+    if(t >= 60) return 'Now THAT is a sunset feast 🌅';
+    if(t >= 35) return 'A proper golden-hour spread';
+    return 'Good start — the sunset approves';
   }
   function sync(){
-    trayCount.textContent = count();
-    trayTotal.textContent = '$' + total();
-    tray.classList.toggle('show', count() > 0);
+    var n = count(), t = total();
+    trayCount.textContent = n;
+    trayTotal.textContent = '$' + t;
+    tray.classList.toggle('show', n > 0);
+    tray.classList.toggle('ready', n >= 2);
+    trayLabel.innerHTML = n >= 2
+      ? '<span id="trayCount">'+n+'</span> picks · <b id="trayTotal">$'+t+'</b> — ready to order?'
+      : '<span id="trayCount">'+n+'</span> pick'+(n===1?'':'s')+' · <b id="trayTotal">$'+t+'</b>';
+    shHint.textContent = hintFor(n, t);
     shList.innerHTML = '';
     Object.keys(picks).forEach(function(name){
       var row = document.createElement('div');
@@ -1177,11 +1201,12 @@ function initScene(){
       });
       shList.appendChild(row);
     });
-    shTotal.textContent = '$' + total();
+    shTotal.textContent = '$' + t;
   }
   function syncDom(){
     document.querySelectorAll('.item[data-price]').forEach(function(it){
-      it.classList.toggle('picked', !!picks[it.dataset.name.replace(/&amp;/g,'&')] || !!picks[it.dataset.name]);
+      var nm = it.dataset.name;
+      it.classList.toggle('picked', !!picks[nm]);
     });
     document.querySelectorAll('.variant button').forEach(function(b){
       b.classList.toggle('on', !!picks[b.dataset.name]);
@@ -1229,6 +1254,25 @@ function initScene(){
     picks = {}; save(); sync(); syncDom(); closeSheet();
   });
 
+  // waiter mode
+  document.getElementById('shWaiter').addEventListener('click', function(){
+    wtList.innerHTML = '';
+    Object.keys(picks).forEach(function(name){
+      var row = document.createElement('div');
+      row.className = 'wt-row';
+      row.innerHTML = '<span class="n"></span><span class="p">$'+picks[name]+'</span>';
+      row.querySelector('.n').textContent = name;
+      wtList.appendChild(row);
+    });
+    wtTotal.textContent = '$' + total();
+    closeSheet();
+    waiter.classList.add('open');
+    if(navigator.vibrate) navigator.vibrate([20,30,20]);
+  });
+  document.getElementById('wtBack').addEventListener('click', function(){
+    waiter.classList.remove('open');
+  });
+
   sync(); syncDom();
 })();
 
@@ -1263,7 +1307,6 @@ var secObserver = new IntersectionObserver(function(entries){
 },{rootMargin:'-30% 0px -55% 0px'});
 ['salads','raw','bites'].forEach(function(id){ secObserver.observe(document.getElementById(id)); });
 
-// gallery dots
 (function(){
   var track = document.getElementById('gtrack');
   var cards = track.querySelectorAll('.g-card');
@@ -1280,7 +1323,6 @@ var secObserver = new IntersectionObserver(function(entries){
   cards.forEach(function(c){ cio.observe(c); });
 })();
 
-// scroll progress sunset bar
 (function(){
   var bar = document.getElementById('sunbar');
   var ticking = false;
@@ -1296,7 +1338,6 @@ var secObserver = new IntersectionObserver(function(entries){
   },{passive:true});
 })();
 
-// live sunset + open status for Zaarour
 (function(){
   try{
     var lat=33.98, lng=35.72;
@@ -1314,8 +1355,6 @@ var secObserver = new IntersectionObserver(function(entries){
     var t=hh+':'+String(m).padStart(2,'0')+' PM';
     document.getElementById('sunsetTime').textContent='Sunset ~ '+t;
     document.getElementById('sunsetChip').textContent='Sunset today · '+t;
-
-    // open daily 16:00 — 02:00
     var hr = now.getHours();
     var open = (hr >= 16 || hr < 2);
     var st = document.getElementById('status');
