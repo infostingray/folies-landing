@@ -1552,7 +1552,7 @@ var secObserver = new IntersectionObserver(function(entries){
 },{rootMargin:'-30% 0px -55% 0px'});
 ['salads','raw','bites'].forEach(function(id){ secObserver.observe(document.getElementById(id)); });
 
-(function(){
+window.__initGallery = function(){
   var track = document.getElementById('gtrack');
   var cards = track.querySelectorAll('.g-card');
   var dots = document.getElementById('gdots').querySelectorAll('i');
@@ -1566,7 +1566,8 @@ var secObserver = new IntersectionObserver(function(entries){
     });
   },{root:track, threshold:[0.7]});
   cards.forEach(function(c){ cio.observe(c); });
-})();
+};
+window.__initGallery();
 
 (function(){
   var bar = document.getElementById('sunbar');
@@ -1673,6 +1674,20 @@ var secObserver = new IntersectionObserver(function(entries){
             var disp = ((o+11)%12)+1;
             st.classList.toggle('closed', !open);
             stT.textContent = open ? 'Open now · until late' : ('Opens today at ' + disp + (o>=12?' PM':' AM'));
+          }
+        }
+        // ---- gallery ----
+        if(C.gallery && C.gallery.length){
+          var pv2 = C.photosVersion ? ('?v='+C.photosVersion) : '';
+          var gt = document.getElementById('gtrack');
+          var gd = document.getElementById('gdots');
+          if(gt && gd){
+            gt.innerHTML = C.gallery.map(function(g){
+              return '<figure class="g-card"><img src="'+esc(g.file)+pv2+'" alt="" loading="lazy">'
+                + '<figcaption>'+esc(g.caption||'')+'</figcaption></figure>';
+            }).join('');
+            gd.innerHTML = C.gallery.map(function(_,i){ return '<i'+(i===0?' class="on"':'')+'></i>'; }).join('');
+            if(window.__initGallery) window.__initGallery();
           }
         }
         // ---- events ----
