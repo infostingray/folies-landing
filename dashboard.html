@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swot Portal · OFôlies</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pine:#143128; --forest:#1E4437; --terracotta:#D9532F; --coral:#EF7A4E;
+  --peach:#F5B78C; --cream:#F7EFE0; --ink:#22201B;
+  --display:'Marcellus',serif; --body:'Hanken Grotesk',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--body);background:var(--pine);color:var(--cream);min-height:100vh}
+a{color:inherit}
+button,input,textarea{font-family:var(--body)}
+
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 22px;border-bottom:1px solid rgba(247,239,224,.12);
+  position:sticky;top:0;background:rgba(20,49,40,.92);backdrop-filter:blur(10px);z-index:50;
+}
+.topbar .brand{font-family:var(--display);letter-spacing:.18em;font-size:15px}
+.topbar .brand span{color:var(--coral)}
+.topbar .site{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--peach)}
+
+.wrap{max-width:680px;margin:0 auto;padding:26px 18px 120px}
+
+/* login */
+#gate{max-width:380px;margin:14vh auto 0;text-align:center;padding:0 22px}
+#gate h1{font-family:var(--display);font-weight:400;font-size:26px;letter-spacing:.14em}
+#gate p{margin-top:10px;font-size:13px;color:var(--peach)}
+#gate input{
+  margin-top:26px;width:100%;padding:16px 18px;border-radius:14px;
+  border:1px solid rgba(247,239,224,.25);background:rgba(15,39,33,.6);
+  color:var(--cream);font-size:16px;text-align:center;letter-spacing:.3em;
+}
+#gate input:focus{outline:none;border-color:var(--coral)}
+#gate button{margin-top:16px;width:100%}
+
+.card{
+  background:rgba(15,39,33,.55);
+  border:1px solid rgba(247,239,224,.14);
+  border-radius:20px;padding:20px;margin-top:18px;
+}
+.card h2{
+  font-family:var(--display);font-weight:400;font-size:18px;letter-spacing:.14em;
+  color:var(--peach);display:flex;align-items:center;gap:10px;
+}
+.card h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(245,183,140,.4),transparent)}
+.hintline{font-size:11.5px;color:rgba(247,239,224,.55);margin-top:6px}
+
+.field{margin-top:14px}
+.field label{display:block;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--peach);margin-bottom:7px}
+.field input,.field textarea{
+  width:100%;padding:13px 14px;border-radius:12px;
+  border:1px solid rgba(247,239,224,.2);background:rgba(20,49,40,.7);
+  color:var(--cream);font-size:14px;
+}
+.field textarea{min-height:70px;resize:vertical}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--coral)}
+.row{display:flex;gap:10px}
+.row .field{flex:1}
+.row .field.sm{flex:0 0 84px}
+
+.switch{display:flex;align-items:center;gap:10px;margin-top:14px;cursor:pointer;user-select:none}
+.switch i{
+  width:44px;height:24px;border-radius:99px;background:rgba(247,239,224,.2);position:relative;transition:.25s;flex:none;
+}
+.switch i::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--cream);transition:.25s}
+.switch.on i{background:var(--coral)}
+.switch.on i::after{left:23px}
+.switch span{font-size:13px}
+
+.subcard{
+  border:1px dashed rgba(247,239,224,.22);border-radius:14px;
+  padding:14px;margin-top:12px;position:relative;
+}
+.subcard .del{
+  position:absolute;top:10px;right:10px;
+  width:26px;height:26px;border-radius:50%;border:1px solid rgba(247,239,224,.3);
+  background:none;color:var(--peach);cursor:pointer;font-size:12px;
+}
+.add{
+  margin-top:12px;width:100%;padding:12px;border-radius:12px;
+  border:1px dashed rgba(245,183,140,.5);background:none;color:var(--peach);
+  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+}
+.add:hover{border-color:var(--coral);color:var(--coral)}
+
+.menu-sec-title{
+  margin-top:18px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);
+  padding-bottom:8px;border-bottom:1px solid rgba(247,239,224,.12);
+}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:15px 24px;border-radius:999px;border:none;cursor:pointer;
+  font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  background:linear-gradient(120deg,var(--terracotta),var(--coral));color:#fff;
+  box-shadow:0 12px 26px -10px rgba(217,83,47,.6);
+  transition:transform .2s;
+}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:none;border:1px solid rgba(247,239,224,.35);color:var(--cream);box-shadow:none}
+.btn[disabled]{opacity:.5;pointer-events:none}
+
+.savebar{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  display:flex;gap:10px;justify-content:center;
+  padding:14px 18px calc(14px + env(safe-area-inset-bottom));
+  background:rgba(20,49,40,.92);backdrop-filter:blur(12px);
+  border-top:1px solid rgba(247,239,224,.12);
+}
+.savebar .btn{flex:1;max-width:340px}
+
+#toast{
+  position:fixed;left:50%;bottom:96px;transform:translate(-50%,20px);
+  background:var(--cream);color:var(--ink);
+  padding:13px 22px;border-radius:999px;font-size:13px;font-weight:700;
+  opacity:0;pointer-events:none;transition:.35s;z-index:100;
+  box-shadow:0 16px 40px rgba(0,0,0,.4);white-space:nowrap;
+}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+#toast.err{background:#8f2b18;color:#fff}
+.hidden{display:none!important}
+.preview{
+  display:block;text-align:center;margin-top:16px;font-size:12px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--peach);
+  text-decoration:underline;
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN GATE ============ -->
+<div id="gate">
+  <h1>SW<span style="color:var(--coral)">O</span>T PORTAL</h1>
+  <p>OFôlies · Sunset Lounge — content manager</p>
+  <input id="pass" type="password" placeholder="••••••" autocomplete="current-password" inputmode="text">
+  <button class="btn" id="loginBtn" style="width:100%">Enter</button>
+  <p id="gateMsg" style="color:var(--coral);min-height:18px;margin-top:12px;font-size:12px"></p>
+</div>
+
+<!-- ============ EDITOR ============ -->
+<div id="app" class="hidden">
+  <div class="topbar">
+    <div class="brand">SW<span>O</span>T&nbsp;PORTAL</div>
+    <div class="site">OFôlies · Zaarour</div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="card">
+      <h2>Announcement</h2>
+      <p class="hintline">A banner at the top of the site — closures, private events, weather, specials.</p>
+      <div class="switch" id="anncSwitch"><i></i><span>Show the banner</span></div>
+      <div class="field"><label>Banner text</label>
+        <input id="anncText" placeholder="e.g. Closed this Tuesday for a private event 🌅">
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Contact & Links</h2>
+      <div class="field"><label>Phone (with country code)</label><input id="phone" placeholder="+961 70 123 456"></div>
+      <div class="field"><label>Reservation link (Resos)</label><input id="resos"></div>
+      <div class="field"><label>Instagram</label><input id="instagram"></div>
+      <div class="field"><label>Google Maps link</label><input id="maps"></div>
+    </div>
+
+    <div class="card">
+      <h2>Opening Hours</h2>
+      <div class="field"><label>Display text</label><input id="openLabel" placeholder="Daily · 5 PM — Late"></div>
+      <div class="row">
+        <div class="field"><label>Opens at (0–23)</label><input id="openHour" type="number" min="0" max="23"></div>
+        <div class="field"><label>Closes at (0–23)</label><input id="closeHour" type="number" min="0" max="23"></div>
+      </div>
+      <p class="hintline">These two numbers control the live "Open now" green dot.</p>
+    </div>
+
+    <div class="card">
+      <h2>Events & DJs</h2>
+      <p class="hintline">These appear under "Upcoming Sunsets". Keep 2–4 for best look.</p>
+      <div id="evList"></div>
+      <button class="add" id="evAdd">+ Add event</button>
+    </div>
+
+    <div class="card">
+      <h2>Menu</h2>
+      <p class="hintline">Edit names, descriptions and prices. Prices are numbers only (no $).</p>
+      <div id="menuList"></div>
+    </div>
+
+    <a class="preview" href="index.html" target="_blank" rel="noopener">↗ Open the live site</a>
+  </div>
+
+  <div class="savebar">
+    <button class="btn ghost" id="reloadBtn">Discard changes</button>
+    <button class="btn" id="saveBtn">Publish changes</button>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+/* ================================================================
+   CONFIG — set after deploying the Cloudflare Worker (see SETUP.md)
+   ================================================================ */
+var WORKER_URL = "REPLACE_WITH_YOUR_WORKER_URL"; // e.g. https://ofolies-portal.YOURNAME.workers.dev
+
+var C = null;          // content being edited
+var passcode = "";
+
+function $(id){ return document.getElementById(id); }
+function toast(msg, err){
+  var t = $('toast');
+  t.textContent = msg;
+  t.classList.toggle('err', !!err);
+  t.classList.add('show');
+  clearTimeout(t._h);
+  t._h = setTimeout(function(){ t.classList.remove('show'); }, 2600);
+}
+
+/* ---------- login ---------- */
+$('loginBtn').addEventListener('click', login);
+$('pass').addEventListener('keydown', function(e){ if(e.key==='Enter') login(); });
+function login(){
+  passcode = $('pass').value.trim();
+  if(!passcode){ $('gateMsg').textContent = 'Enter the passcode'; return; }
+  $('loginBtn').disabled = true;
+  $('gateMsg').textContent = '';
+  fetch(WORKER_URL + '/auth', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({passcode: passcode})
+  }).then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d.ok){
+        $('gate').classList.add('hidden');
+        $('app').classList.remove('hidden');
+        loadContent();
+      }else{
+        $('gateMsg').textContent = 'Wrong passcode';
+      }
+    })
+    .catch(function(){ $('gateMsg').textContent = 'Portal not reachable — check WORKER_URL'; })
+    .finally(function(){ $('loginBtn').disabled = false; });
+}
+
+/* ---------- load ---------- */
+function loadContent(){
+  fetch('content.json?t=' + Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(data){ C = data; renderAll(); })
+    .catch(function(){ toast('Could not load content.json', true); });
+}
+$('reloadBtn').addEventListener('click', function(){ loadContent(); toast('Changes discarded'); });
+
+/* ---------- render ---------- */
+function renderAll(){
+  // announcement
+  $('anncSwitch').classList.toggle('on', !!(C.announcement && C.announcement.show));
+  $('anncText').value = (C.announcement && C.announcement.text) || '';
+  // contact
+  $('phone').value = C.contact.phone || '';
+  $('resos').value = C.contact.resos || '';
+  $('instagram').value = C.contact.instagram || '';
+  $('maps').value = C.contact.maps || '';
+  // hours
+  $('openLabel').value = C.hours.openLabel || '';
+  $('openHour').value = C.hours.openHour;
+  $('closeHour').value = C.hours.closeHour;
+  renderEvents();
+  renderMenu();
+}
+$('anncSwitch').addEventListener('click', function(){ this.classList.toggle('on'); });
+
+function evCard(e, i){
+  return '<div class="subcard" data-i="'+i+'">'
+    + '<button class="del" data-del="'+i+'">✕</button>'
+    + '<div class="row">'
+    + '<div class="field sm"><label>Day</label><input data-k="day" value="'+esc(e.day)+'"></div>'
+    + '<div class="field"><label>Label</label><input data-k="label" value="'+esc(e.label)+'" placeholder="Sat Jul"></div>'
+    + '</div>'
+    + '<div class="field"><label>Event name</label><input data-k="name" value="'+esc(e.name)+'"></div>'
+    + '<div class="field"><label>DJ / Act</label><input data-k="dj" value="'+esc(e.dj)+'"></div>'
+    + '<div class="field"><label>Tags (comma separated)</label><input data-k="tags" value="'+esc((e.tags||[]).join(', '))+'"></div>'
+    + '</div>';
+}
+function renderEvents(){
+  $('evList').innerHTML = C.events.map(evCard).join('');
+}
+$('evAdd').addEventListener('click', function(){
+  C.events.push({day:'', label:'', name:'', dj:'', tags:[], url: C.contact.resos});
+  syncEventsFromDom(); renderEvents();
+});
+$('evList').addEventListener('click', function(e){
+  var del = e.target.getAttribute('data-del');
+  if(del !== null){ syncEventsFromDom(); C.events.splice(+del,1); renderEvents(); }
+});
+function syncEventsFromDom(){
+  $('evList').querySelectorAll('.subcard').forEach(function(card, i){
+    if(!C.events[i]) return;
+    card.querySelectorAll('input[data-k]').forEach(function(inp){
+      var k = inp.dataset.k;
+      if(k === 'tags') C.events[i].tags = inp.value.split(',').map(function(s){return s.trim();}).filter(Boolean);
+      else C.events[i][k] = inp.value.trim();
+    });
+    C.events[i].url = C.events[i].url || $('resos').value.trim();
+  });
+}
+
+function renderMenu(){
+  var out = '';
+  C.menu.forEach(function(sec, si){
+    out += '<div class="menu-sec-title">'+esc(sec.title)+'</div>';
+    sec.items.forEach(function(it, ii){
+      out += '<div class="subcard" data-si="'+si+'" data-ii="'+ii+'">';
+      out += '<div class="field"><label>Dish</label><input data-k="name" value="'+esc(it.name)+'"></div>';
+      out += '<div class="field"><label>Description</label><input data-k="desc" value="'+esc(it.desc||'')+'"></div>';
+      if(it.variants){
+        out += '<div class="row">';
+        it.variants.forEach(function(v, vi){
+          out += '<div class="field"><label>'+esc(v.label)+' price $</label><input type="number" data-vk="'+vi+'" value="'+v.price+'"></div>';
+        });
+        out += '</div>';
+      }else{
+        out += '<div class="row"><div class="field sm"><label>Price $</label><input type="number" data-k="price" value="'+it.price+'"></div>'
+             + '<div class="field"><label>Badge (optional)</label><input data-k="badge" value="'+esc(it.badge||'')+'" placeholder="Signature"></div></div>';
+      }
+      out += '</div>';
+    });
+  });
+  $('menuList').innerHTML = out;
+}
+function syncMenuFromDom(){
+  $('menuList').querySelectorAll('.subcard').forEach(function(card){
+    var it = C.menu[+card.dataset.si].items[+card.dataset.ii];
+    card.querySelectorAll('input[data-k]').forEach(function(inp){
+      var k = inp.dataset.k;
+      if(k === 'price') it.price = parseInt(inp.value,10) || 0;
+      else if(k === 'badge'){ if(inp.value.trim()) it.badge = inp.value.trim(); else delete it.badge; }
+      else it[k] = inp.value.trim();
+    });
+    card.querySelectorAll('input[data-vk]').forEach(function(inp){
+      it.variants[+inp.dataset.vk].price = parseInt(inp.value,10) || 0;
+    });
+  });
+}
+
+/* ---------- save ---------- */
+$('saveBtn').addEventListener('click', function(){
+  syncEventsFromDom();
+  syncMenuFromDom();
+  C.announcement = { show: $('anncSwitch').classList.contains('on'), text: $('anncText').value.trim() };
+  C.contact = { phone: $('phone').value.trim(), resos: $('resos').value.trim(),
+                instagram: $('instagram').value.trim(), maps: $('maps').value.trim() };
+  C.hours = { openLabel: $('openLabel').value.trim(),
+              openHour: parseInt($('openHour').value,10),
+              closeHour: parseInt($('closeHour').value,10) };
+  var btn = $('saveBtn');
+  btn.disabled = true; btn.textContent = 'Publishing…';
+  fetch(WORKER_URL + '/save', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ passcode: passcode, content: C })
+  }).then(function(r){ return r.json(); })
+    .then(function(d){
+      if(d.ok) toast('Published ✓ Live in ~1 minute');
+      else toast(d.error || 'Save failed', true);
+    })
+    .catch(function(){ toast('Network error', true); })
+    .finally(function(){ btn.disabled = false; btn.textContent = 'Publish changes'; });
+});
+
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+</script>
+</body>
+</html>
