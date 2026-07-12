@@ -10,7 +10,7 @@
     "maps": "https://maps.google.com/?q=Zaarour+Club+Lebanon"
   },
   "hours": {
-    "openLabel": "Daily · 5 PM - Late",
+    "openLabel": "Daily · 5 PM — Late",
     "openHour": 17,
     "closeHour": 2
   },
@@ -113,57 +113,61 @@
       "items": [
         {
           "name": "Fried Curly Corn",
-          "price": 8,
-          "desc": ""
+          "price": 8
         },
         {
           "name": "Spicy Edamame",
-          "price": 9,
-          "desc": ""
+          "price": 9
         },
         {
           "name": "Baked Baby Potatoes",
-          "price": 8,
-          "desc": ""
+          "price": 8
         },
         {
           "name": "Risotto Arancini",
-          "price": 14,
-          "desc": ""
+          "price": 14
         },
         {
           "name": "Crispy Chicken Fingers",
-          "price": 12,
-          "desc": ""
+          "price": 12
         },
         {
           "name": "Crispy Shrimp with Pineapple Chutney",
-          "price": 15,
-          "desc": ""
+          "price": 15
         },
         {
           "name": "Loaded Nachos",
-          "price": 12,
-          "desc": ""
+          "price": 12
         },
         {
           "name": "Ribeye Bites with Red Caviar",
           "price": 34,
-          "badge": "Signature",
-          "desc": ""
+          "badge": "Signature"
         },
         {
           "name": "Truffle Fries",
-          "price": 9,
-          "desc": ""
+          "price": 9
         },
         {
           "name": "Trio Slider Burgers",
-          "price": 16,
-          "desc": ""
+          "price": 16
         }
       ]
     }
   ],
-  "photosVersion": 1
+  "photosVersion": 1,
+  "gallery": [
+    {
+      "file": "assets/sunset.jpg",
+      "caption": "Golden hour · every evening"
+    },
+    {
+      "file": "assets/bar.jpg",
+      "caption": "The tile bar · front row to the sky"
+    },
+    {
+      "file": "assets/terrace.jpg",
+      "caption": "1,700 m above the noise"
+    }
+  ]
 }
