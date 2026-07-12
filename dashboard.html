@@ -7,165 +7,239 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --pine:#143128; --forest:#1E4437; --terracotta:#D9532F; --coral:#EF7A4E;
-  --peach:#F5B78C; --cream:#F7EFE0; --ink:#22201B;
-  --display:'Marcellus',serif; --body:'Hanken Grotesk',system-ui,sans-serif;
+  --bg:#0A0A0B; --panel:#131315; --panel2:#18181B; --line:#2A2A2E;
+  --txt:#F4F4F2; --mut:#9A9AA0; --white:#FFFFFF;
+  --serif:'Instrument Serif',serif; --body:'Hanken Grotesk',system-ui,sans-serif;
 }
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--body);background:var(--pine);color:var(--cream);min-height:100vh}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:var(--body);background:var(--bg);color:var(--txt);min-height:100vh}
 a{color:inherit}
 button,input,textarea{font-family:var(--body)}
+::selection{background:#fff;color:#000}
 
 .topbar{
   display:flex;align-items:center;justify-content:space-between;
-  padding:18px 22px;border-bottom:1px solid rgba(247,239,224,.12);
-  position:sticky;top:0;background:rgba(20,49,40,.92);backdrop-filter:blur(10px);z-index:50;
+  padding:16px 22px;border-bottom:1px solid var(--line);
+  position:sticky;top:0;background:rgba(10,10,11,.9);backdrop-filter:blur(12px);z-index:50;
 }
-.topbar .brand{font-family:var(--display);letter-spacing:.18em;font-size:15px}
-.topbar .brand span{color:var(--coral)}
-.topbar .site{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--peach)}
+.tb-left{display:flex;align-items:center;gap:14px}
+.tb-left img{height:20px;display:block}
+.tb-left .fallback{font-weight:700;letter-spacing:.28em;font-size:14px}
+.tb-left .divider{width:1px;height:18px;background:var(--line)}
+.tb-left .portal{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--txt)}
+.client-chip{
+  font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mut);
+  border:1px solid var(--line);border-radius:999px;padding:8px 14px;
+}
 
-.wrap{max-width:680px;margin:0 auto;padding:26px 18px 120px}
+.wrap{max-width:680px;margin:0 auto;padding:26px 18px 130px}
 
 /* login */
-#gate{max-width:380px;margin:14vh auto 0;text-align:center;padding:0 22px}
-#gate h1{font-family:var(--display);font-weight:400;font-size:26px;letter-spacing:.14em}
-#gate p{margin-top:10px;font-size:13px;color:var(--peach)}
+#gate{max-width:380px;margin:16vh auto 0;text-align:center;padding:0 22px}
+#gate img{height:26px;margin:0 auto 8px;display:block}
+#gate .fallback{font-weight:700;letter-spacing:.3em;font-size:18px;display:none}
+#gate h1{font-family:var(--serif);font-style:italic;font-weight:400;font-size:34px;margin-top:6px}
+#gate p{margin-top:10px;font-size:13px;color:var(--mut)}
 #gate input{
-  margin-top:26px;width:100%;padding:16px 18px;border-radius:14px;
-  border:1px solid rgba(247,239,224,.25);background:rgba(15,39,33,.6);
-  color:var(--cream);font-size:16px;text-align:center;letter-spacing:.3em;
+  margin-top:28px;width:100%;padding:16px 18px;border-radius:12px;
+  border:1px solid var(--line);background:var(--panel);
+  color:var(--txt);font-size:16px;text-align:center;letter-spacing:.3em;
 }
-#gate input:focus{outline:none;border-color:var(--coral)}
-#gate button{margin-top:16px;width:100%}
+#gate input:focus{outline:none;border-color:#555}
+#gate .btn{margin-top:14px;width:100%}
+#gateMsg{color:#FF6B57;min-height:18px;margin-top:12px;font-size:12px}
 
 .card{
-  background:rgba(15,39,33,.55);
-  border:1px solid rgba(247,239,224,.14);
-  border-radius:20px;padding:20px;margin-top:18px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:18px;padding:20px;margin-top:16px;
 }
 .card h2{
-  font-family:var(--display);font-weight:400;font-size:18px;letter-spacing:.14em;
-  color:var(--peach);display:flex;align-items:center;gap:10px;
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:22px;color:var(--txt);
+  display:flex;align-items:baseline;gap:12px;
 }
-.card h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(245,183,140,.4),transparent)}
-.hintline{font-size:11.5px;color:rgba(247,239,224,.55);margin-top:6px}
+.card h2 .n{font-family:var(--body);font-style:normal;font-size:10px;letter-spacing:.24em;color:var(--mut)}
+.card h2::after{content:"";flex:1;height:1px;background:var(--line);align-self:center}
+.hintline{font-size:11.5px;color:var(--mut);margin-top:6px;line-height:1.5}
 
 .field{margin-top:14px}
-.field label{display:block;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--peach);margin-bottom:7px}
+.field label{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin-bottom:7px}
 .field input,.field textarea{
-  width:100%;padding:13px 14px;border-radius:12px;
-  border:1px solid rgba(247,239,224,.2);background:rgba(20,49,40,.7);
-  color:var(--cream);font-size:14px;
+  width:100%;padding:13px 14px;border-radius:10px;
+  border:1px solid var(--line);background:var(--panel2);
+  color:var(--txt);font-size:14px;
 }
-.field textarea{min-height:70px;resize:vertical}
-.field input:focus,.field textarea:focus{outline:none;border-color:var(--coral)}
+.field input:focus,.field textarea:focus{outline:none;border-color:#4a4a52}
 .row{display:flex;gap:10px}
 .row .field{flex:1}
-.row .field.sm{flex:0 0 84px}
+.row .field.sm{flex:0 0 90px}
 
 .switch{display:flex;align-items:center;gap:10px;margin-top:14px;cursor:pointer;user-select:none}
-.switch i{
-  width:44px;height:24px;border-radius:99px;background:rgba(247,239,224,.2);position:relative;transition:.25s;flex:none;
-}
-.switch i::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--cream);transition:.25s}
-.switch.on i{background:var(--coral)}
-.switch.on i::after{left:23px}
+.switch i{width:44px;height:24px;border-radius:99px;background:var(--line);position:relative;transition:.25s;flex:none}
+.switch i::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--txt);transition:.25s}
+.switch.on i{background:var(--white)}
+.switch.on i::after{left:23px;background:#000}
 .switch span{font-size:13px}
 
 .subcard{
-  border:1px dashed rgba(247,239,224,.22);border-radius:14px;
+  border:1px solid var(--line);border-radius:12px;
+  background:var(--panel2);
   padding:14px;margin-top:12px;position:relative;
 }
 .subcard .del{
   position:absolute;top:10px;right:10px;
-  width:26px;height:26px;border-radius:50%;border:1px solid rgba(247,239,224,.3);
-  background:none;color:var(--peach);cursor:pointer;font-size:12px;
+  width:26px;height:26px;border-radius:50%;border:1px solid var(--line);
+  background:none;color:var(--mut);cursor:pointer;font-size:12px;
 }
+.subcard .del:hover{color:#FF6B57;border-color:#FF6B57}
 .add{
-  margin-top:12px;width:100%;padding:12px;border-radius:12px;
-  border:1px dashed rgba(245,183,140,.5);background:none;color:var(--peach);
-  font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+  margin-top:12px;width:100%;padding:12px;border-radius:10px;
+  border:1px dashed var(--line);background:none;color:var(--mut);
+  font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;
 }
-.add:hover{border-color:var(--coral);color:var(--coral)}
+.add:hover{border-color:#666;color:var(--txt)}
 
 .menu-sec-title{
-  margin-top:18px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);
-  padding-bottom:8px;border-bottom:1px solid rgba(247,239,224,.12);
+  margin-top:20px;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--txt);
+  padding-bottom:8px;border-bottom:1px solid var(--line);
 }
+
+/* photos */
+.photo-slot{
+  display:flex;gap:14px;align-items:center;
+  border:1px solid var(--line);border-radius:12px;background:var(--panel2);
+  padding:12px;margin-top:12px;
+}
+.photo-slot img{
+  width:74px;height:74px;object-fit:cover;border-radius:10px;flex:none;
+  border:1px solid var(--line);background:#000;
+}
+.photo-info{flex:1;min-width:0}
+.photo-info b{font-size:13.5px;display:block}
+.photo-info span{font-size:11px;color:var(--mut);display:block;margin-top:3px;line-height:1.45}
+.photo-actions{display:flex;flex-direction:column;gap:8px;flex:none}
+.pbtn{
+  padding:10px 16px;border-radius:999px;cursor:pointer;
+  font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--white);color:#000;border:none;
+}
+.pbtn[disabled]{opacity:.4;pointer-events:none}
+.photo-status{font-size:10.5px;color:var(--mut);text-align:center;min-height:14px}
+input[type=file]{display:none}
 
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
   padding:15px 24px;border-radius:999px;border:none;cursor:pointer;
-  font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  background:linear-gradient(120deg,var(--terracotta),var(--coral));color:#fff;
-  box-shadow:0 12px 26px -10px rgba(217,83,47,.6);
-  transition:transform .2s;
+  font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--white);color:#000;
+  transition:transform .2s, opacity .2s;
 }
+.btn:hover{opacity:.9}
 .btn:active{transform:scale(.97)}
-.btn.ghost{background:none;border:1px solid rgba(247,239,224,.35);color:var(--cream);box-shadow:none}
-.btn[disabled]{opacity:.5;pointer-events:none}
+.btn.ghost{background:none;border:1px solid var(--line);color:var(--txt)}
+.btn[disabled]{opacity:.45;pointer-events:none}
 
 .savebar{
   position:fixed;left:0;right:0;bottom:0;z-index:60;
   display:flex;gap:10px;justify-content:center;
   padding:14px 18px calc(14px + env(safe-area-inset-bottom));
-  background:rgba(20,49,40,.92);backdrop-filter:blur(12px);
-  border-top:1px solid rgba(247,239,224,.12);
+  background:rgba(10,10,11,.92);backdrop-filter:blur(12px);
+  border-top:1px solid var(--line);
 }
 .savebar .btn{flex:1;max-width:340px}
 
 #toast{
   position:fixed;left:50%;bottom:96px;transform:translate(-50%,20px);
-  background:var(--cream);color:var(--ink);
+  background:var(--white);color:#000;
   padding:13px 22px;border-radius:999px;font-size:13px;font-weight:700;
   opacity:0;pointer-events:none;transition:.35s;z-index:100;
-  box-shadow:0 16px 40px rgba(0,0,0,.4);white-space:nowrap;
+  box-shadow:0 16px 40px rgba(0,0,0,.6);white-space:nowrap;
 }
 #toast.show{opacity:1;transform:translate(-50%,0)}
-#toast.err{background:#8f2b18;color:#fff}
+#toast.err{background:#FF6B57;color:#fff}
 .hidden{display:none!important}
 .preview{
-  display:block;text-align:center;margin-top:16px;font-size:12px;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--peach);
-  text-decoration:underline;
+  display:block;text-align:center;margin-top:18px;font-size:11px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--mut);
+  text-decoration:underline;text-underline-offset:4px;
 }
+.preview:hover{color:var(--txt)}
+footer{margin-top:26px;text-align:center;font-size:10px;letter-spacing:.18em;color:#5a5a60;text-transform:uppercase}
 </style>
 </head>
 <body>
 
 <!-- ============ LOGIN GATE ============ -->
 <div id="gate">
-  <h1>SW<span style="color:var(--coral)">O</span>T PORTAL</h1>
+  <img src="https://swottm.com/assets/images/logo-white.svg" alt="Swot" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+  <div class="fallback">SWOT</div>
+  <h1>Portal</h1>
   <p>OFôlies · Sunset Lounge — content manager</p>
-  <input id="pass" type="password" placeholder="••••••" autocomplete="current-password" inputmode="text">
-  <button class="btn" id="loginBtn" style="width:100%">Enter</button>
-  <p id="gateMsg" style="color:var(--coral);min-height:18px;margin-top:12px;font-size:12px"></p>
+  <input id="pass" type="password" placeholder="••••••" autocomplete="current-password">
+  <button class="btn" id="loginBtn">Enter</button>
+  <p id="gateMsg"></p>
 </div>
 
 <!-- ============ EDITOR ============ -->
 <div id="app" class="hidden">
   <div class="topbar">
-    <div class="brand">SW<span>O</span>T&nbsp;PORTAL</div>
-    <div class="site">OFôlies · Zaarour</div>
+    <div class="tb-left">
+      <img src="https://swottm.com/assets/images/logo-white.svg" alt="Swot" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="fallback" style="display:none">SWOT</div>
+      <div class="divider"></div>
+      <div class="portal">Portal</div>
+    </div>
+    <div class="client-chip">OFôlies</div>
   </div>
 
   <div class="wrap">
 
     <div class="card">
-      <h2>Announcement</h2>
+      <h2>Announcement <span class="n">01</span></h2>
       <p class="hintline">A banner at the top of the site — closures, private events, weather, specials.</p>
       <div class="switch" id="anncSwitch"><i></i><span>Show the banner</span></div>
       <div class="field"><label>Banner text</label>
-        <input id="anncText" placeholder="e.g. Closed this Tuesday for a private event 🌅">
+        <input id="anncText" placeholder="e.g. Closed this Tuesday for a private event">
       </div>
     </div>
 
     <div class="card">
-      <h2>Contact & Links</h2>
+      <h2>Photos <span class="n">02</span></h2>
+      <p class="hintline">JPG or PNG, landscape or portrait — they're resized automatically. New photos appear on the site within ~10 minutes (image caching).</p>
+
+      <div class="photo-slot">
+        <img id="pv-sunset" src="assets/sunset.jpg" alt="">
+        <div class="photo-info"><b>Hero & Sunset photo</b><span>The star — preloader, the O, first gallery card. Best: terrace at golden hour.</span></div>
+        <div class="photo-actions">
+          <button class="pbtn" data-slot="sunset">Replace</button>
+          <div class="photo-status" id="st-sunset"></div>
+        </div>
+      </div>
+      <div class="photo-slot">
+        <img id="pv-bar" src="assets/bar.jpg" alt="">
+        <div class="photo-info"><b>Bar photo</b><span>Second gallery card.</span></div>
+        <div class="photo-actions">
+          <button class="pbtn" data-slot="bar">Replace</button>
+          <div class="photo-status" id="st-bar"></div>
+        </div>
+      </div>
+      <div class="photo-slot">
+        <img id="pv-terrace" src="assets/terrace.jpg" alt="">
+        <div class="photo-info"><b>Terrace wide photo</b><span>Third gallery card + the "Find us" background.</span></div>
+        <div class="photo-actions">
+          <button class="pbtn" data-slot="terrace">Replace</button>
+          <div class="photo-status" id="st-terrace"></div>
+        </div>
+      </div>
+      <input type="file" id="photoFile" accept="image/jpeg,image/png,image/webp">
+    </div>
+
+    <div class="card">
+      <h2>Contact & Links <span class="n">03</span></h2>
       <div class="field"><label>Phone (with country code)</label><input id="phone" placeholder="+961 70 123 456"></div>
       <div class="field"><label>Reservation link (Resos)</label><input id="resos"></div>
       <div class="field"><label>Instagram</label><input id="instagram"></div>
@@ -173,33 +247,34 @@ button,input,textarea{font-family:var(--body)}
     </div>
 
     <div class="card">
-      <h2>Opening Hours</h2>
+      <h2>Opening Hours <span class="n">04</span></h2>
       <div class="field"><label>Display text</label><input id="openLabel" placeholder="Daily · 5 PM — Late"></div>
       <div class="row">
         <div class="field"><label>Opens at (0–23)</label><input id="openHour" type="number" min="0" max="23"></div>
         <div class="field"><label>Closes at (0–23)</label><input id="closeHour" type="number" min="0" max="23"></div>
       </div>
-      <p class="hintline">These two numbers control the live "Open now" green dot.</p>
+      <p class="hintline">These two numbers drive the live "Open now" indicator.</p>
     </div>
 
     <div class="card">
-      <h2>Events & DJs</h2>
-      <p class="hintline">These appear under "Upcoming Sunsets". Keep 2–4 for best look.</p>
+      <h2>Events & DJs <span class="n">05</span></h2>
+      <p class="hintline">Shown under "Upcoming Sunsets". 2–4 events look best.</p>
       <div id="evList"></div>
       <button class="add" id="evAdd">+ Add event</button>
     </div>
 
     <div class="card">
-      <h2>Menu</h2>
-      <p class="hintline">Edit names, descriptions and prices. Prices are numbers only (no $).</p>
+      <h2>Menu <span class="n">06</span></h2>
+      <p class="hintline">Names, descriptions, prices. Prices are numbers only — no $.</p>
       <div id="menuList"></div>
     </div>
 
     <a class="preview" href="index.html" target="_blank" rel="noopener">↗ Open the live site</a>
+    <footer>Swot Creative Hub — Portal v2</footer>
   </div>
 
   <div class="savebar">
-    <button class="btn ghost" id="reloadBtn">Discard changes</button>
+    <button class="btn ghost" id="reloadBtn">Discard</button>
     <button class="btn" id="saveBtn">Publish changes</button>
   </div>
 </div>
@@ -207,13 +282,11 @@ button,input,textarea{font-family:var(--body)}
 <div id="toast"></div>
 
 <script>
-/* ================================================================
-   CONFIG — set after deploying the Cloudflare Worker (see SETUP.md)
-   ================================================================ */
-var WORKER_URL = "https://ofolies-dash.silent-snowflake-d859.workers.dev"; // e.g. https://ofolies-portal.YOURNAME.workers.dev
+var WORKER_URL = "https://ofolies-dash.silent-snowflake-d859.workers.dev";
 
-var C = null;          // content being edited
+var C = null;
 var passcode = "";
+var PHOTO_PATHS = { sunset: "assets/sunset.jpg", bar: "assets/bar.jpg", terrace: "assets/terrace.jpg" };
 
 function $(id){ return document.getElementById(id); }
 function toast(msg, err){
@@ -222,8 +295,9 @@ function toast(msg, err){
   t.classList.toggle('err', !!err);
   t.classList.add('show');
   clearTimeout(t._h);
-  t._h = setTimeout(function(){ t.classList.remove('show'); }, 2600);
+  t._h = setTimeout(function(){ t.classList.remove('show'); }, 2800);
 }
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
 
 /* ---------- login ---------- */
 $('loginBtn').addEventListener('click', login);
@@ -234,20 +308,14 @@ function login(){
   $('loginBtn').disabled = true;
   $('gateMsg').textContent = '';
   fetch(WORKER_URL + '/auth', {
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
+    method:'POST', headers:{'Content-Type':'application/json'},
     body: JSON.stringify({passcode: passcode})
   }).then(function(r){ return r.json(); })
     .then(function(d){
-      if(d.ok){
-        $('gate').classList.add('hidden');
-        $('app').classList.remove('hidden');
-        loadContent();
-      }else{
-        $('gateMsg').textContent = 'Wrong passcode';
-      }
+      if(d.ok){ $('gate').classList.add('hidden'); $('app').classList.remove('hidden'); loadContent(); }
+      else $('gateMsg').textContent = 'Wrong passcode';
     })
-    .catch(function(){ $('gateMsg').textContent = 'Portal not reachable — check WORKER_URL'; })
+    .catch(function(){ $('gateMsg').textContent = 'Portal not reachable'; })
     .finally(function(){ $('loginBtn').disabled = false; });
 }
 
@@ -262,18 +330,17 @@ $('reloadBtn').addEventListener('click', function(){ loadContent(); toast('Chang
 
 /* ---------- render ---------- */
 function renderAll(){
-  // announcement
   $('anncSwitch').classList.toggle('on', !!(C.announcement && C.announcement.show));
   $('anncText').value = (C.announcement && C.announcement.text) || '';
-  // contact
   $('phone').value = C.contact.phone || '';
   $('resos').value = C.contact.resos || '';
   $('instagram').value = C.contact.instagram || '';
   $('maps').value = C.contact.maps || '';
-  // hours
   $('openLabel').value = C.hours.openLabel || '';
   $('openHour').value = C.hours.openHour;
   $('closeHour').value = C.hours.closeHour;
+  var v = C.photosVersion || 1;
+  ['sunset','bar','terrace'].forEach(function(k){ $('pv-'+k).src = PHOTO_PATHS[k] + '?v=' + v + '&t=' + Date.now(); });
   renderEvents();
   renderMenu();
 }
@@ -291,12 +358,11 @@ function evCard(e, i){
     + '<div class="field"><label>Tags (comma separated)</label><input data-k="tags" value="'+esc((e.tags||[]).join(', '))+'"></div>'
     + '</div>';
 }
-function renderEvents(){
-  $('evList').innerHTML = C.events.map(evCard).join('');
-}
+function renderEvents(){ $('evList').innerHTML = C.events.map(evCard).join(''); }
 $('evAdd').addEventListener('click', function(){
-  C.events.push({day:'', label:'', name:'', dj:'', tags:[], url: C.contact.resos});
-  syncEventsFromDom(); renderEvents();
+  syncEventsFromDom();
+  C.events.push({day:'', label:'', name:'', dj:'', tags:[], url: $('resos').value.trim()});
+  renderEvents();
 });
 $('evList').addEventListener('click', function(e){
   var del = e.target.getAttribute('data-del');
@@ -352,6 +418,73 @@ function syncMenuFromDom(){
   });
 }
 
+/* ---------- photos ---------- */
+var activeSlot = null;
+document.querySelectorAll('.pbtn[data-slot]').forEach(function(b){
+  b.addEventListener('click', function(){
+    activeSlot = b.dataset.slot;
+    $('photoFile').click();
+  });
+});
+$('photoFile').addEventListener('change', function(){
+  var file = this.files[0];
+  this.value = '';
+  if(!file || !activeSlot) return;
+  var slot = activeSlot;
+  var st = $('st-'+slot);
+  st.textContent = 'Processing…';
+  resizeImage(file, 1400, 0.82).then(function(b64){
+    st.textContent = 'Uploading…';
+    var btn = document.querySelector('.pbtn[data-slot="'+slot+'"]');
+    btn.disabled = true;
+    return fetch(WORKER_URL + '/upload', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ passcode: passcode, path: PHOTO_PATHS[slot], base64: b64 })
+    }).then(function(r){ return r.json(); })
+      .then(function(d){
+        if(!d.ok) throw new Error(d.error || 'Upload failed');
+        // bump version + silently publish so the site cache-busts
+        C.photosVersion = Date.now();
+        return fetch(WORKER_URL + '/save', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ passcode: passcode, content: C })
+        });
+      })
+      .then(function(){
+        st.textContent = 'Done ✓';
+        $('pv-'+slot).src = PHOTO_PATHS[slot] + '?v=' + C.photosVersion + '&t=' + Date.now();
+        toast('Photo published ✓ Live in ~1–10 min');
+      })
+      .finally(function(){ btn.disabled = false; });
+  }).catch(function(e){
+    st.textContent = '';
+    toast(e.message || 'Photo failed', true);
+  });
+});
+
+function resizeImage(file, maxDim, quality){
+  return new Promise(function(res, rej){
+    if(file.size > 15*1024*1024) return rej(new Error('Image too large (max 15MB)'));
+    var img = new Image();
+    var url = URL.createObjectURL(file);
+    img.onload = function(){
+      URL.revokeObjectURL(url);
+      var w = img.width, h = img.height;
+      var scale = Math.min(1, maxDim / Math.max(w,h));
+      var cw = Math.round(w*scale), ch = Math.round(h*scale);
+      var cnv = document.createElement('canvas');
+      cnv.width = cw; cnv.height = ch;
+      cnv.getContext('2d').drawImage(img, 0, 0, cw, ch);
+      var dataUrl = cnv.toDataURL('image/jpeg', quality);
+      var b64 = dataUrl.split(',')[1];
+      if(b64.length > 4.2e6) return rej(new Error('Image still too large after resize'));
+      res(b64);
+    };
+    img.onerror = function(){ URL.revokeObjectURL(url); rej(new Error('Could not read image')); };
+    img.src = url;
+  });
+}
+
 /* ---------- save ---------- */
 $('saveBtn').addEventListener('click', function(){
   syncEventsFromDom();
@@ -365,8 +498,7 @@ $('saveBtn').addEventListener('click', function(){
   var btn = $('saveBtn');
   btn.disabled = true; btn.textContent = 'Publishing…';
   fetch(WORKER_URL + '/save', {
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
+    method:'POST', headers:{'Content-Type':'application/json'},
     body: JSON.stringify({ passcode: passcode, content: C })
   }).then(function(r){ return r.json(); })
     .then(function(d){
@@ -376,8 +508,6 @@ $('saveBtn').addEventListener('click', function(){
     .catch(function(){ toast('Network error', true); })
     .finally(function(){ btn.disabled = false; btn.textContent = 'Publish changes'; });
 });
-
-function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
 </script>
 </body>
 </html>
