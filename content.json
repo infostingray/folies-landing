@@ -1,0 +1,88 @@
+{
+  "announcement": {
+    "show": false,
+    "text": ""
+  },
+  "contact": {
+    "phone": "+961XXXXXXXX",
+    "resos": "https://ofolies.resos.com/",
+    "instagram": "https://www.instagram.com/ofoliesss/",
+    "maps": "https://maps.google.com/?q=Zaarour+Club+Lebanon"
+  },
+  "hours": {
+    "openLabel": "Daily · 5 PM — Late",
+    "openHour": 17,
+    "closeHour": 2
+  },
+  "events": [
+    {
+      "day": "18",
+      "label": "Sat Jul",
+      "name": "Golden Hour Sessions",
+      "dj": "Yussef K",
+      "tags": ["Melodic House", "6 PM — Late"],
+      "url": "https://ofolies.resos.com/"
+    },
+    {
+      "day": "19",
+      "label": "Sun Jul",
+      "name": "Sunset High",
+      "dj": "DJ Nino",
+      "tags": ["Afro House", "7 PM — Late"],
+      "url": "https://ofolies.resos.com/"
+    },
+    {
+      "day": "20",
+      "label": "Mon Jul",
+      "name": "Acoustic Sundown",
+      "dj": "Live Band · Unplugged",
+      "tags": ["Live Music", "Chill"],
+      "url": "https://ofolies.resos.com/"
+    }
+  ],
+  "menu": [
+    {
+      "id": "salads",
+      "chip": "Trio Salads",
+      "title": "Choice of Trio Salads",
+      "note": "Crisp, cold, and made for golden hour",
+      "items": [
+        {"name": "Quinoa & Smoked Salmon Salad", "desc": "Quinoa, smoked salmon, avocado, cherry tomatoes, cucumber, lemon dressing", "price": 22},
+        {"name": "Caesar Salad", "desc": "Romaine lettuce, parmesan, croutons, caesar dressing", "variants": [
+          {"label": "Chicken", "price": 12},
+          {"label": "Shrimp", "price": 15}
+        ]},
+        {"name": "Goat Cheese Salad", "desc": "Mixed greens, goat cheese, walnuts, beetroot, honey dressing", "price": 14},
+        {"name": "Kani Crab Salad", "desc": "Kani crab, mango, cucumber, avocado, sesame dressing", "price": 13}
+      ]
+    },
+    {
+      "id": "raw",
+      "chip": "Raw Seafood",
+      "title": "Raw Seafood",
+      "note": "Bright, citrusy, straight from the cold bar",
+      "items": [
+        {"name": "Shrimp Ceviche", "desc": "Shrimp, lime, red onion, cilantro, chili, leche de tigre", "price": 18},
+        {"name": "Salmon Tataki", "desc": "Seared salmon, ponzu sauce, sesame, micro greens", "price": 24}
+      ]
+    },
+    {
+      "id": "bites",
+      "chip": "Hot Bites",
+      "title": "Assortment of Hot Bites",
+      "note": "To share — or not",
+      "items": [
+        {"name": "Fried Curly Corn", "price": 8},
+        {"name": "Spicy Edamame", "price": 9},
+        {"name": "Baked Baby Potatoes", "price": 8},
+        {"name": "Risotto Arancini", "price": 14},
+        {"name": "Crispy Chicken Fingers", "price": 12},
+        {"name": "Crispy Shrimp with Pineapple Chutney", "price": 15},
+        {"name": "Loaded Nachos", "price": 12},
+        {"name": "Ribeye Bites with Red Caviar", "price": 34, "badge": "Signature"},
+        {"name": "Truffle Fries", "price": 9},
+        {"name": "Trio Slider Burgers", "price": 16}
+      ]
+    }
+  ]
+}
