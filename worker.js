@@ -47,6 +47,43 @@ export default {
       return json({ ok: true });
     }
 
+    if (url.pathname.endsWith("/upload")) {
+      const ALLOWED = ["assets/sunset.jpg", "assets/bar.jpg", "assets/terrace.jpg"];
+      if (!ALLOWED.includes(body.path)) return json({ ok: false, error: "Path not allowed" }, 400);
+      if (typeof body.base64 !== "string" || body.base64.length < 100) return json({ ok: false, error: "No image" }, 400);
+      if (body.base64.length > 4_500_000) return json({ ok: false, error: "Image too large" }, 400);
+
+      const gh2 = (path, init = {}) =>
+        fetch(`https://api.github.com/repos/${REPO}/${path}`, {
+          ...init,
+          headers: {
+            Authorization: `token ${env.GH_TOKEN}`,
+            "Content-Type": "application/json",
+            "User-Agent": "swot-portal-worker",
+            ...(init.headers || {}),
+          },
+        });
+
+      let psha = undefined;
+      const pcur = await gh2(`contents/${body.path}`);
+      if (pcur.ok) psha = (await pcur.json()).sha;
+
+      const pput = await gh2(`contents/${body.path}`, {
+        method: "PUT",
+        body: JSON.stringify({
+          message: `Photo update via Swot Portal: ${body.path}`,
+          content: body.base64,
+          branch: "main",
+          ...(psha ? { sha: psha } : {}),
+        }),
+      });
+      if (!pput.ok) {
+        const err = await pput.text();
+        return json({ ok: false, error: "GitHub error: " + err.slice(0, 140) }, 502);
+      }
+      return json({ ok: true });
+    }
+
     if (url.pathname.endsWith("/save")) {
       if (!body.content || typeof body.content !== "object") {
         return json({ ok: false, error: "No content" }, 400);
