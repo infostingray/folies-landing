@@ -1369,7 +1369,7 @@ function initArch(){
     if(n === 1) return 'Solo bite? Bold. Add something to share, maybe';
     if(t >= 60) return 'Now THAT is a sunset feast — the waiter will be impressed 🌅';
     if(t >= 35) return 'A proper golden-hour spread';
-    return 'Good start — the sunset approves';
+    return 'Good start, the sunset approves';
   }
   function sync(){
     var n = count(), t = total();
@@ -1378,7 +1378,7 @@ function initArch(){
     tray.classList.toggle('show', n > 0);
     tray.classList.toggle('ready', n >= 2);
     trayLabel.innerHTML = n >= 2
-      ? '<span id="trayCount">'+n+'</span> picks · <b id="trayTotal">$'+t+'</b> — tell your waiter 😄'
+      ? '<span id="trayCount">'+n+'</span> picks · <b id="trayTotal">$'+t+'</b> tell your waiter'
       : '<span id="trayCount">'+n+'</span> pick'+(n===1?'':'s')+' · <b id="trayTotal">$'+t+'</b>';
     shHint.textContent = hintFor(n, t);
     shList.innerHTML = '';
