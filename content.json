@@ -10,7 +10,7 @@
     "maps": "https://maps.google.com/?q=Zaarour+Club+Lebanon"
   },
   "hours": {
-    "openLabel": "Daily · 5 PM — Late",
+    "openLabel": "Daily · 5 PM - Late",
     "openHour": 17,
     "closeHour": 2
   },
@@ -113,44 +113,54 @@
       "items": [
         {
           "name": "Fried Curly Corn",
-          "price": 8
+          "price": 8,
+          "desc": ""
         },
         {
           "name": "Spicy Edamame",
-          "price": 9
+          "price": 9,
+          "desc": ""
         },
         {
           "name": "Baked Baby Potatoes",
-          "price": 8
+          "price": 8,
+          "desc": ""
         },
         {
           "name": "Risotto Arancini",
-          "price": 14
+          "price": 14,
+          "desc": ""
         },
         {
           "name": "Crispy Chicken Fingers",
-          "price": 12
+          "price": 12,
+          "desc": ""
         },
         {
           "name": "Crispy Shrimp with Pineapple Chutney",
-          "price": 15
+          "price": 15,
+          "desc": ""
         },
         {
           "name": "Loaded Nachos",
-          "price": 12
+          "price": 12,
+          "desc": ""
         },
         {
           "name": "Ribeye Bites with Red Caviar",
           "price": 34,
-          "badge": "Signature"
+          "badge": "Signature",
+          "desc": ""
         },
         {
           "name": "Truffle Fries",
-          "price": 9
+          "price": 9,
+          "desc": ""
         },
         {
           "name": "Trio Slider Burgers",
-          "price": 16
+          "price": 16,
+          "desc": ""
         }
       ]
     }
