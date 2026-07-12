@@ -29,7 +29,7 @@ button,input,textarea{font-family:var(--body)}
 .tb-left img{height:20px;display:block}
 .tb-left .fallback{font-weight:700;letter-spacing:.28em;font-size:14px}
 .tb-left .divider{width:1px;height:18px;background:var(--line)}
-.tb-left .portal{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--txt)}
+.tb-left .portal{font-weight:600;letter-spacing:.24em;text-transform:uppercase;font-size:13px;color:var(--txt)}
 .client-chip{
   font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--mut);
   border:1px solid var(--line);border-radius:999px;padding:8px 14px;
@@ -41,7 +41,7 @@ button,input,textarea{font-family:var(--body)}
 #gate{max-width:380px;margin:16vh auto 0;text-align:center;padding:0 22px}
 #gate img{height:26px;margin:0 auto 8px;display:block}
 #gate .fallback{font-weight:700;letter-spacing:.3em;font-size:18px;display:none}
-#gate h1{font-family:var(--serif);font-style:italic;font-weight:400;font-size:34px;margin-top:6px}
+#gate h1{font-weight:600;letter-spacing:.3em;text-transform:uppercase;font-size:20px;margin-top:10px}
 #gate p{margin-top:10px;font-size:13px;color:var(--mut)}
 #gate input{
   margin-top:28px;width:100%;padding:16px 18px;border-radius:12px;
@@ -209,32 +209,31 @@ footer{margin-top:26px;text-align:center;font-size:10px;letter-spacing:.18em;col
 
     <div class="card">
       <h2>Photos <span class="n">02</span></h2>
-      <p class="hintline">JPG or PNG, landscape or portrait — they're resized automatically. New photos appear on the site within ~10 minutes (image caching).</p>
+      <p class="hintline">JPG or PNG — resized automatically. New photos appear on the site within ~1–10 minutes.</p>
 
+      <div class="menu-sec-title" style="margin-top:14px">Core photos</div>
       <div class="photo-slot">
         <img id="pv-sunset" src="assets/sunset.jpg" alt="">
-        <div class="photo-info"><b>Hero & Sunset photo</b><span>The star — preloader, the O, first gallery card. Best: terrace at golden hour.</span></div>
+        <div class="photo-info"><b>Hero & Sunset photo</b><span>The star — preloader and inside the O. Best: terrace at golden hour.</span></div>
         <div class="photo-actions">
           <button class="pbtn" data-slot="sunset">Replace</button>
           <div class="photo-status" id="st-sunset"></div>
         </div>
       </div>
       <div class="photo-slot">
-        <img id="pv-bar" src="assets/bar.jpg" alt="">
-        <div class="photo-info"><b>Bar photo</b><span>Second gallery card.</span></div>
-        <div class="photo-actions">
-          <button class="pbtn" data-slot="bar">Replace</button>
-          <div class="photo-status" id="st-bar"></div>
-        </div>
-      </div>
-      <div class="photo-slot">
         <img id="pv-terrace" src="assets/terrace.jpg" alt="">
-        <div class="photo-info"><b>Terrace wide photo</b><span>Third gallery card + the "Find us" background.</span></div>
+        <div class="photo-info"><b>"Find us" background</b><span>Wide terrace shot behind the visit section.</span></div>
         <div class="photo-actions">
           <button class="pbtn" data-slot="terrace">Replace</button>
           <div class="photo-status" id="st-terrace"></div>
         </div>
       </div>
+
+      <div class="menu-sec-title">Gallery <span style="font-family:var(--body);font-style:normal;font-size:10px;color:var(--mut);letter-spacing:.14em"> · SWIPEABLE ON THE SITE</span></div>
+      <div id="galList"></div>
+      <button class="add" id="galAdd">+ Add gallery photo</button>
+      <div class="photo-status" id="st-gal" style="text-align:left;margin-top:6px"></div>
+
       <input type="file" id="photoFile" accept="image/jpeg,image/png,image/webp">
     </div>
 
@@ -340,7 +339,9 @@ function renderAll(){
   $('openHour').value = C.hours.openHour;
   $('closeHour').value = C.hours.closeHour;
   var v = C.photosVersion || 1;
-  ['sunset','bar','terrace'].forEach(function(k){ $('pv-'+k).src = PHOTO_PATHS[k] + '?v=' + v + '&t=' + Date.now(); });
+  ['sunset','terrace'].forEach(function(k){ $('pv-'+k).src = PHOTO_PATHS[k] + '?v=' + v + '&t=' + Date.now(); });
+  if(!C.gallery) C.gallery = [];
+  renderGallery();
   renderEvents();
   renderMenu();
 }
@@ -386,6 +387,7 @@ function renderMenu(){
     out += '<div class="menu-sec-title">'+esc(sec.title)+'</div>';
     sec.items.forEach(function(it, ii){
       out += '<div class="subcard" data-si="'+si+'" data-ii="'+ii+'">';
+      out += '<button class="del" data-mdel="'+si+':'+ii+'">✕</button>';
       out += '<div class="field"><label>Dish</label><input data-k="name" value="'+esc(it.name)+'"></div>';
       out += '<div class="field"><label>Description</label><input data-k="desc" value="'+esc(it.desc||'')+'"></div>';
       if(it.variants){
@@ -400,9 +402,27 @@ function renderMenu(){
       }
       out += '</div>';
     });
+    out += '<button class="add" data-madd="'+si+'">+ Add dish to '+esc(sec.chip||sec.title)+'</button>';
   });
   $('menuList').innerHTML = out;
 }
+$('menuList').addEventListener('click', function(e){
+  var madd = e.target.getAttribute('data-madd');
+  if(madd !== null){
+    syncMenuFromDom();
+    C.menu[+madd].items.push({ name: 'New dish', desc: '', price: 0 });
+    renderMenu();
+    return;
+  }
+  var mdel = e.target.getAttribute('data-mdel');
+  if(mdel !== null){
+    syncMenuFromDom();
+    var p = mdel.split(':');
+    C.menu[+p[0]].items.splice(+p[1], 1);
+    renderMenu();
+    toast('Removed — hit Publish to make it live');
+  }
+});
 function syncMenuFromDom(){
   $('menuList').querySelectorAll('.subcard').forEach(function(card){
     var it = C.menu[+card.dataset.si].items[+card.dataset.ii];
@@ -419,47 +439,84 @@ function syncMenuFromDom(){
 }
 
 /* ---------- photos ---------- */
-var activeSlot = null;
-document.querySelectorAll('.pbtn[data-slot]').forEach(function(b){
-  b.addEventListener('click', function(){
-    activeSlot = b.dataset.slot;
-    $('photoFile').click();
-  });
-});
-$('photoFile').addEventListener('change', function(){
-  var file = this.files[0];
-  this.value = '';
-  if(!file || !activeSlot) return;
-  var slot = activeSlot;
-  var st = $('st-'+slot);
-  st.textContent = 'Processing…';
+var pendingUpload = null; // {path, onDone, statusEl}
+
+function uploadFlow(file, path, statusEl, onDone){
+  statusEl.textContent = 'Processing…';
   resizeImage(file, 1400, 0.82).then(function(b64){
-    st.textContent = 'Uploading…';
-    var btn = document.querySelector('.pbtn[data-slot="'+slot+'"]');
-    btn.disabled = true;
+    statusEl.textContent = 'Uploading…';
     return fetch(WORKER_URL + '/upload', {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ passcode: passcode, path: PHOTO_PATHS[slot], base64: b64 })
+      body: JSON.stringify({ passcode: passcode, path: path, base64: b64 })
     }).then(function(r){ return r.json(); })
       .then(function(d){
         if(!d.ok) throw new Error(d.error || 'Upload failed');
-        // bump version + silently publish so the site cache-busts
         C.photosVersion = Date.now();
+        if(onDone) onDone();
         return fetch(WORKER_URL + '/save', {
           method:'POST', headers:{'Content-Type':'application/json'},
           body: JSON.stringify({ passcode: passcode, content: C })
         });
       })
       .then(function(){
-        st.textContent = 'Done ✓';
-        $('pv-'+slot).src = PHOTO_PATHS[slot] + '?v=' + C.photosVersion + '&t=' + Date.now();
+        statusEl.textContent = 'Done ✓';
         toast('Photo published ✓ Live in ~1–10 min');
-      })
-      .finally(function(){ btn.disabled = false; });
+        renderAll();
+      });
   }).catch(function(e){
-    st.textContent = '';
+    statusEl.textContent = '';
     toast(e.message || 'Photo failed', true);
   });
+}
+
+document.querySelectorAll('.pbtn[data-slot]').forEach(function(b){
+  b.addEventListener('click', function(){
+    pendingUpload = { path: PHOTO_PATHS[b.dataset.slot], statusEl: $('st-'+b.dataset.slot), onDone: null };
+    $('photoFile').click();
+  });
+});
+$('galAdd').addEventListener('click', function(){
+  syncGalleryFromDom();
+  var path = 'assets/gallery-' + Date.now() + '.jpg';
+  pendingUpload = { path: path, statusEl: $('st-gal'), onDone: function(){
+    C.gallery.push({ file: path, caption: 'New photo — edit this caption' });
+  }};
+  $('photoFile').click();
+});
+$('photoFile').addEventListener('change', function(){
+  var file = this.files[0];
+  this.value = '';
+  if(!file || !pendingUpload) return;
+  var p = pendingUpload; pendingUpload = null;
+  uploadFlow(file, p.path, p.statusEl, p.onDone);
+});
+
+function renderGallery(){
+  var v = C.photosVersion || 1;
+  $('galList').innerHTML = (C.gallery||[]).map(function(g, i){
+    return '<div class="photo-slot" data-gi="'+i+'">'
+      + '<img src="'+esc(g.file)+'?v='+v+'" alt="">'
+      + '<div class="photo-info" style="width:100%"><div class="field" style="margin-top:0"><label>Caption</label>'
+      + '<input data-gk="caption" value="'+esc(g.caption||'')+'"></div></div>'
+      + '<div class="photo-actions"><button class="pbtn" data-gdel="'+i+'" style="background:none;border:1px solid var(--line);color:var(--mut)">Remove</button></div>'
+      + '</div>';
+  }).join('');
+}
+function syncGalleryFromDom(){
+  $('galList').querySelectorAll('.photo-slot').forEach(function(row, i){
+    if(!C.gallery[i]) return;
+    var inp = row.querySelector('input[data-gk]');
+    if(inp) C.gallery[i].caption = inp.value.trim();
+  });
+}
+$('galList').addEventListener('click', function(e){
+  var del = e.target.getAttribute('data-gdel');
+  if(del !== null){
+    syncGalleryFromDom();
+    C.gallery.splice(+del, 1);
+    renderGallery();
+    toast('Removed — hit Publish to make it live');
+  }
 });
 
 function resizeImage(file, maxDim, quality){
@@ -489,6 +546,7 @@ function resizeImage(file, maxDim, quality){
 $('saveBtn').addEventListener('click', function(){
   syncEventsFromDom();
   syncMenuFromDom();
+  syncGalleryFromDom();
   C.announcement = { show: $('anncSwitch').classList.contains('on'), text: $('anncText').value.trim() };
   C.contact = { phone: $('phone').value.trim(), resos: $('resos').value.trim(),
                 instagram: $('instagram').value.trim(), maps: $('maps').value.trim() };
