@@ -49,7 +49,9 @@ export default {
 
     if (url.pathname.endsWith("/upload")) {
       const ALLOWED = ["assets/sunset.jpg", "assets/bar.jpg", "assets/terrace.jpg"];
-      if (!ALLOWED.includes(body.path)) return json({ ok: false, error: "Path not allowed" }, 400);
+      const GALLERY_RE = /^assets\/gallery-\d{10,16}\.jpg$/;
+      if (!ALLOWED.includes(body.path) && !GALLERY_RE.test(body.path))
+        return json({ ok: false, error: "Path not allowed" }, 400);
       if (typeof body.base64 !== "string" || body.base64.length < 100) return json({ ok: false, error: "No image" }, 400);
       if (body.base64.length > 4_500_000) return json({ ok: false, error: "Image too large" }, 400);
 
