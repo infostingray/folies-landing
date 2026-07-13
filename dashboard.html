@@ -384,7 +384,14 @@ function syncEventsFromDom(){
 function renderMenu(){
   var out = '';
   C.menu.forEach(function(sec, si){
-    out += '<div class="menu-sec-title">'+esc(sec.title)+'</div>';
+    out += '<div class="subcard" style="background:transparent;border-style:dashed" data-shead="'+si+'">'
+        + '<button class="del" data-sdel="'+si+'" title="Remove section">✕</button>'
+        + '<div class="row">'
+        + '<div class="field" style="margin-top:0"><label>Section title</label><input data-sk="title" value="'+esc(sec.title)+'"></div>'
+        + '<div class="field sm" style="margin-top:0;flex-basis:130px"><label>Tab name</label><input data-sk="chip" value="'+esc(sec.chip||'')+'"></div>'
+        + '</div>'
+        + '<div class="field"><label>Section note (optional)</label><input data-sk="note" value="'+esc(sec.note||'')+'"></div>'
+        + '</div>';
     sec.items.forEach(function(it, ii){
       out += '<div class="subcard" data-si="'+si+'" data-ii="'+ii+'">';
       out += '<button class="del" data-mdel="'+si+':'+ii+'">✕</button>';
@@ -404,9 +411,25 @@ function renderMenu(){
     });
     out += '<button class="add" data-madd="'+si+'">+ Add dish to '+esc(sec.chip||sec.title)+'</button>';
   });
+  out += '<button class="add" id="secAdd" style="border-style:solid;margin-top:18px">+ Add menu section</button>';
   $('menuList').innerHTML = out;
+  document.getElementById('secAdd').addEventListener('click', function(){
+    syncMenuFromDom();
+    C.menu.push({ id: 'sec-' + Date.now(), chip: 'New', title: 'New Section', note: '', items: [] });
+    renderMenu();
+  });
 }
 $('menuList').addEventListener('click', function(e){
+  var sdel = e.target.getAttribute('data-sdel');
+  if(sdel !== null){
+    syncMenuFromDom();
+    var sec = C.menu[+sdel];
+    if(sec.items.length && !confirm('Remove "'+sec.title+'" and its '+sec.items.length+' dishes?')) return;
+    C.menu.splice(+sdel, 1);
+    renderMenu();
+    toast('Section removed — hit Publish to make it live');
+    return;
+  }
   var madd = e.target.getAttribute('data-madd');
   if(madd !== null){
     syncMenuFromDom();
@@ -424,8 +447,16 @@ $('menuList').addEventListener('click', function(e){
   }
 });
 function syncMenuFromDom(){
-  $('menuList').querySelectorAll('.subcard').forEach(function(card){
+  $('menuList').querySelectorAll('[data-shead]').forEach(function(head){
+    var sec = C.menu[+head.dataset.shead];
+    if(!sec) return;
+    head.querySelectorAll('input[data-sk]').forEach(function(inp){
+      sec[inp.dataset.sk] = inp.value.trim();
+    });
+  });
+  $('menuList').querySelectorAll('.subcard[data-si]').forEach(function(card){
     var it = C.menu[+card.dataset.si].items[+card.dataset.ii];
+    if(!it) return;
     card.querySelectorAll('input[data-k]').forEach(function(inp){
       var k = inp.dataset.k;
       if(k === 'price') it.price = parseInt(inp.value,10) || 0;
