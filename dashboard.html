@@ -247,7 +247,7 @@ footer{margin-top:26px;text-align:center;font-size:10px;letter-spacing:.18em;col
 
     <div class="card">
       <h2>Opening Hours <span class="n">04</span></h2>
-      <div class="field"><label>Display text</label><input id="openLabel" placeholder="Daily · 5 PM — Late"></div>
+      <div class="field"><label>Display text</label><input id="openLabel" placeholder="Daily · 5 PM - Late"></div>
       <div class="row">
         <div class="field"><label>Opens at (0–23)</label><input id="openHour" type="number" min="0" max="23"></div>
         <div class="field"><label>Closes at (0–23)</label><input id="closeHour" type="number" min="0" max="23"></div>
@@ -264,12 +264,12 @@ footer{margin-top:26px;text-align:center;font-size:10px;letter-spacing:.18em;col
 
     <div class="card">
       <h2>Menu <span class="n">06</span></h2>
-      <p class="hintline">Names, descriptions, prices. Prices are numbers only — no $.</p>
+      <p class="hintline">Names, descriptions, prices. Prices are numbers only, no $.</p>
       <div id="menuList"></div>
     </div>
 
     <a class="preview" href="index.html" target="_blank" rel="noopener">↗ Open the live site</a>
-    <footer>Swot Creative Hub — Portal v2</footer>
+    <footer>Swot Creative Hub · Portal v2</footer>
   </div>
 
   <div class="savebar">
@@ -510,7 +510,7 @@ $('galAdd').addEventListener('click', function(){
   syncGalleryFromDom();
   var path = 'assets/gallery-' + Date.now() + '.jpg';
   pendingUpload = { path: path, statusEl: $('st-gal'), onDone: function(){
-    C.gallery.push({ file: path, caption: 'New photo — edit this caption' });
+    C.gallery.push({ file: path, caption: 'New photo; edit this caption' });
   }};
   $('photoFile').click();
 });
