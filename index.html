@@ -1716,14 +1716,14 @@ function initArch(){
     if(!box) return;
     if(upsellMuted()){ box.classList.remove('show'); return; }
     if(currentSugg && picks[currentSugg.name]) currentSugg = null;
-    if(!currentSugg){
-      currentSugg = pickSuggestion();
-    } else {
-      var f = countGroup('food'), dr = countGroup('drinks');
-      var stillValid = (f > 0 && dr === 0 && DRINK_SUGG.indexOf(currentSugg.name) > -1)
-                    || (dr > 0 && f === 0 && FOOD_SUGG.indexOf(currentSugg.name) > -1);
-      if(!stillValid) currentSugg = pickSuggestion();
+    if(currentSugg){
+      var secEl = currentSugg.el && currentSugg.el.closest ? currentSugg.el.closest('.menu-section') : null;
+      var sg = secEl ? secEl.getAttribute('data-group') : 'food';
+      var f0 = countGroup('food'), d0 = countGroup('drinks');
+      var wantG = (f0 > 0 && d0 === 0) ? 'drinks' : (d0 > 0 && f0 === 0) ? 'food' : null;
+      if(!wantG || sg !== wantG) currentSugg = null;
     }
+    if(!currentSugg) currentSugg = pickSuggestion();
     if(!currentSugg){ box.classList.remove('show'); return; }
     var f2 = countGroup('food'), dr2 = countGroup('drinks');
     var qty = 1, lbl = currentSugg.lbl;
