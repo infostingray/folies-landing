@@ -890,6 +890,12 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
 </style>
 </head>
 <body class="locked">
+<script>
+/* always open at the top — no hash jumps, no scroll restoration */
+if('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if(location.hash){ history.replaceState(null, '', location.pathname + location.search); }
+window.scrollTo(0,0);
+</script>
 
 <div id="sunbar"></div>
 
@@ -1260,6 +1266,7 @@ setTimeout(function(){
   function unlock(){
     document.body.classList.remove('locked');
     document.body.classList.add('ready');
+    window.scrollTo(0,0);
     try{ initArch(); }catch(e){}
   }
   if(reduced || !loader || getComputedStyle(loader).display === 'none'){
@@ -1740,8 +1747,11 @@ window.__initMenuNav = function(){
 window.__initMenuNav();
 // hero Food / Drinks buttons
 document.querySelectorAll('[data-menugroup]').forEach(function(a){
-  a.addEventListener('click', function(){
+  a.addEventListener('click', function(e){
+    e.preventDefault();
     if(window.__setMenuGroup) window.__setMenuGroup(a.dataset.menugroup, false);
+    var m = document.getElementById('menu');
+    if(m) m.scrollIntoView({behavior:'smooth'});
     if(window.track) track('menu_group', {group: a.dataset.menugroup});
   });
 });
