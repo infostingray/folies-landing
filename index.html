@@ -1565,6 +1565,9 @@ function initArch(){
 (function(){
   var picks = {};
   try{ picks = JSON.parse(sessionStorage.getItem('foliesPicks')||'{}'); }catch(e){ picks={}; }
+  Object.keys(picks).forEach(function(k){
+    if(typeof picks[k] === 'number') picks[k] = {p: picks[k], g: 'food'};
+  });
   var tray = document.getElementById('tray');
   var trayCount = document.getElementById('trayCount');
   var trayTotal = document.getElementById('trayTotal');
@@ -1577,14 +1580,23 @@ function initArch(){
 
   function save(){ try{ sessionStorage.setItem('foliesPicks', JSON.stringify(picks)); }catch(e){} }
   function count(){ return Object.keys(picks).length; }
-  function total(){ var t=0; for(var k in picks) t += picks[k]; return t; }
+  function total(){ var t=0; for(var k in picks) t += picks[k].p; return t; }
+  function countGroup(g){ var n=0; for(var k in picks) if(picks[k].g === g) n++; return n; }
 
   function hintFor(n, t){
     if(n === 0) return 'Tap what tempts you — the list builds itself';
-    if(n === 1) return 'Solo bite? Bold. Add something to share, maybe';
-    if(t >= 60) return 'Now THAT is a sunset feast — the waiter will be impressed 🌅';
-    if(t >= 35) return 'A proper golden-hour spread';
-    return 'Good start, the sunset approves';
+    var f = countGroup('food'), dr = countGroup('drinks');
+    if(dr > 0 && f === 0){
+      if(n === 1) return 'One for the sunset — add a bite to go with it?';
+      return 'Liquid golden hour — some bites on the side?';
+    }
+    if(f > 0 && dr === 0){
+      if(n === 1) return 'Solo bite? Bold. Add something to share, maybe';
+      if(t >= 60) return 'Now THAT is a sunset feast — the waiter will be impressed';
+      return 'Good start, something to sip with that?';
+    }
+    if(t >= 60) return 'Food, drinks, altitude — a full sunset production';
+    return 'Balanced. Food, drinks, sunset — you know what you\u2019re doing';
   }
   function sync(){
     var n = count(), t = total();
@@ -1600,7 +1612,7 @@ function initArch(){
     Object.keys(picks).forEach(function(name){
       var row = document.createElement('div');
       row.className = 'sh-row';
-      row.innerHTML = '<span class="n"></span><span class="p">$'+picks[name]+'</span><button class="x" aria-label="Remove">✕</button>';
+      row.innerHTML = '<span class="n"></span><span class="p">$'+picks[name].p+'</span><button class="x" aria-label="Remove">✕</button>';
       row.querySelector('.n').textContent = name;
       row.querySelector('.x').addEventListener('click', function(){
         delete picks[name];
@@ -1650,7 +1662,9 @@ function initArch(){
   function toggle(name, price, el){
     if(picks[name]){ delete picks[name]; }
     else{
-      picks[name] = price;
+      var sec = el && el.closest ? el.closest('.menu-section') : null;
+      var grp = (sec && sec.getAttribute('data-group')) || 'food';
+      picks[name] = {p: price, g: grp};
       if(el) floatPrice(el, price);
       sparkle(lastTap.x, lastTap.y);
       if(window.track) track('dish_picked', {dish: name, price: price});
