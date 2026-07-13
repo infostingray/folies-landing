@@ -498,6 +498,10 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 }
 .chip.active{background:var(--forest);color:var(--cream);border-color:var(--forest)}
 .menu-section{max-width:620px;margin:0 auto;padding:44px 20px 0;scroll-margin-top:70px}
+.menu.tabbed .menu-section{display:none}
+.menu.tabbed .menu-section.active{display:block;animation:secIn .45s ease}
+@keyframes secIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.chip-divider{flex:0 0 auto;width:1px;align-self:stretch;margin:4px 6px;background:rgba(30,68,55,.25)}
 .sec-title{display:flex;align-items:center;gap:14px;margin-bottom:6px}
 .sec-title h3{
   font-family:var(--display);font-weight:400;
@@ -1559,21 +1563,31 @@ new IntersectionObserver(function(en){
 },{threshold:.2}).observe(hero);
 
 window.__initMenuNav = function(){
+  var menu = document.querySelector('.menu');
   var chips = document.querySelectorAll('.chip');
-  chips.forEach(function(c){
-    c.onclick = function(){
-      var t = document.getElementById(c.dataset.target);
-      if(t) t.scrollIntoView({behavior:'smooth'});
-    };
-  });
-  var secObserver = new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if(e.isIntersecting){
-        chips.forEach(function(c){ c.classList.toggle('active', c.dataset.target===e.target.id); });
-      }
+  var secs = document.querySelectorAll('.menu-section');
+  if(!secs.length) return;
+  menu.classList.add('tabbed');
+  function activate(id, scroll){
+    secs.forEach(function(s){
+      var on = s.id === id;
+      s.classList.toggle('active', on);
+      if(on) s.querySelectorAll('.item').forEach(function(it){ it.classList.add('in'); });
     });
-  },{rootMargin:'-30% 0px -55% 0px'});
-  document.querySelectorAll('.menu-section').forEach(function(s){ secObserver.observe(s); });
+    chips.forEach(function(c){
+      c.classList.toggle('active', c.dataset.target === id);
+      if(c.dataset.target === id && c.scrollIntoView) c.scrollIntoView({inline:'center', block:'nearest', behavior:'smooth'});
+    });
+    if(scroll){
+      var top = document.getElementById('menu').getBoundingClientRect().top + window.scrollY;
+      if(window.scrollY > top) window.scrollTo({top: top, behavior:'smooth'});
+    }
+  }
+  chips.forEach(function(c){
+    c.onclick = function(){ activate(c.dataset.target, true); };
+  });
+  var current = document.querySelector('.menu-section.active');
+  activate(current ? current.id : secs[0].id, false);
 };
 window.__initMenuNav();
 
@@ -1733,8 +1747,10 @@ window.__initGallery();
         if(C.menu && C.menu.length){
           var chipsNav = document.getElementById('chips');
           if(chipsNav){
+            var firstDrink = C.menu.findIndex(function(s){ return /cocktail|beer|wine|bubbl|gin|vodka|whiskey|rum|tequila|soft/i.test(s.id); });
             chipsNav.innerHTML = C.menu.map(function(sec, i){
-              return '<button class="chip'+(i===0?' active':'')+'" data-target="'+esc(sec.id)+'">'+esc(sec.chip||sec.title)+'</button>';
+              return (i === firstDrink && i > 0 ? '<span class="chip-divider"></span>' : '')
+                + '<button class="chip'+(i===0?' active':'')+'" data-target="'+esc(sec.id)+'">'+esc(sec.chip||sec.title)+'</button>';
             }).join('');
           }
           var itemHTML = function(it){
