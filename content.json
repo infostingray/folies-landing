@@ -109,7 +109,7 @@
       "id": "bites",
       "chip": "Hot Bites",
       "title": "Assortment of Hot Bites",
-      "note": "To share — or not",
+      "note": "To share, or not",
       "items": [
         {
           "name": "Fried Curly Corn",
@@ -168,7 +168,7 @@
       "id": "house-cocktails",
       "chip": "House Cocktails",
       "title": "House Cocktails",
-      "note": "Summer ’26 — created up here, for up here",
+      "note": "Summer ’26, created up here for up here",
       "items": [
         {
           "name": "Golden Peach",
@@ -185,7 +185,7 @@
         {
           "name": "Cuba Cigar",
           "price": 14,
-          "desc": "The bartender’s secret — ask for it",
+          "desc": "The bartender’s secret; ask for it",
           "badge": "House"
         },
         {
@@ -197,13 +197,13 @@
         {
           "name": "Mango Mai Kai",
           "price": 14,
-          "desc": "Two rums, mango & orgeat — tiki at altitude",
+          "desc": "Two rums, mango & orgeat; tiki at altitude",
           "badge": "House"
         },
         {
           "name": "O Sommet Kumquat",
           "price": 14,
-          "desc": "Vodka, kumquat & watermelon — the summit serve",
+          "desc": "Vodka, kumquat & watermelon; the summit serve",
           "badge": "House"
         }
       ]
