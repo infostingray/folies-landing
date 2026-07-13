@@ -10,6 +10,15 @@
 <meta property="og:description" content="We are not far, we are just HIGHER. Menu & reservations.">
 <meta property="og:url" content="https://ofolies.com/">
 <meta property="og:image" content="https://ofolies.com/assets/sunset.jpg">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-91BVYFY215"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-91BVYFY215');
+function track(n,p){ try{ gtag('event', n, p||{}); }catch(e){} }
+</script>
 <link rel="preload" as="image" href="assets/sunset.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1195,6 +1204,7 @@ setTimeout(function(){
 
   function complete(){
     done = true;
+    if(window.track) track('sun_set_complete');
     loader.classList.add('fin');
     if(navigator.vibrate) navigator.vibrate([25,40,25]);
     setTimeout(function(){
@@ -1285,7 +1295,9 @@ function initArch(){
     var r = arch.getBoundingClientRect();
     return (clientX - r.left) / r.width;
   }
+  var scrubTracked = false;
   arch.addEventListener('pointerdown', function(e){
+    if(!scrubTracked){ scrubTracked = true; if(window.track) track('sky_scrub'); }
     scrubbing = true;
     phT = Math.max(0, Math.min(1, phFromX(e.clientX)));
     hideBadge();
@@ -1494,6 +1506,7 @@ function initArch(){
       picks[name] = price;
       if(el) floatPrice(el, price);
       sparkle(lastTap.x, lastTap.y);
+      if(window.track) track('dish_picked', {dish: name, price: price});
       if(navigator.vibrate) navigator.vibrate(12);
     }
     save(); sync(); syncDom();
@@ -1756,6 +1769,24 @@ window.__initGallery();
     })
     .catch(function(){ /* no content.json — static fallback stays */ });
 })();
+</script>
+
+<script>
+/* ---- GA4 conversion events ---- */
+document.addEventListener('click', function(e){
+  var a = e.target.closest('a');
+  if(!a || !a.href) return;
+  var loc = a.closest('.dock') ? 'dock'
+          : a.closest('.hero') ? 'hero'
+          : a.closest('.events') ? 'events'
+          : a.closest('#sheet') ? 'order_sheet'
+          : a.closest('.visit') ? 'visit'
+          : 'other';
+  if(a.href.indexOf('resos.com') > -1) track('reserve_click', {location: loc});
+  else if(a.href.indexOf('tel:') === 0) track('call_click', {location: loc});
+  else if(a.href.indexOf('maps.google') > -1) track('map_click', {location: loc});
+  else if(a.href.indexOf('instagram.com') > -1) track('instagram_click', {location: loc});
+}, {passive:true});
 </script>
 </body>
 </html>
