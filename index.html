@@ -1823,7 +1823,7 @@ window.__initGallery();
     var diff = sunsetMins - nowMins;
     var chip = document.getElementById('sunsetChip');
     var hrNow = now.getHours();
-    if(hrNow < 5){
+    if(hrNow >= 1 && hrNow < 5){
       chip.textContent = 'After hours · under the stars';
     }else if(diff > 45){
       var hh2 = Math.floor(diff/60), mm2 = diff%60;
@@ -1834,7 +1834,7 @@ window.__initGallery();
       chip.textContent = 'Sunset was ' + t + ' · the night is just warming up';
     }
     var hr = now.getHours();
-    var open = (hr >= 17 || hr < 2);
+    var open = (hr >= 17 || hr < 1);
     var st = document.getElementById('status');
     var stT = document.getElementById('statusText');
     if(open){ stT.textContent = 'Open now · until late'; }
