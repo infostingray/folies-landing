@@ -480,15 +480,33 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   border:1px dashed rgba(30,68,55,.3);
   padding:9px 16px;border-radius:999px;
 }
-.chips{
+.menu-nav{
   position:sticky;top:0;z-index:40;
-  display:flex;gap:10px;overflow-x:auto;
-  padding:14px 24px;
-  background:rgba(247,239,224,.92);
+  background:rgba(247,239,224,.94);
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  scrollbar-width:none;
   border-bottom:1px solid rgba(30,68,55,.12);
+  padding-top:12px;
 }
+.seg{
+  display:flex;max-width:340px;margin:0 20px;margin-left:auto;margin-right:auto;width:calc(100% - 40px);
+  border:1.5px solid rgba(30,68,55,.35);border-radius:999px;
+  padding:4px;background:rgba(30,68,55,.05);
+}
+.seg button{
+  flex:1;padding:11px 10px;border-radius:999px;
+  font-family:var(--display);font-size:14px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--forest);transition:all .3s ease;
+}
+.seg button.on{
+  background:var(--forest);color:var(--cream);
+  box-shadow:0 6px 16px -6px rgba(30,68,55,.5);
+}
+.chips{
+  display:flex;gap:10px;overflow-x:auto;
+  padding:12px 24px 14px;
+  scrollbar-width:none;
+}
+.chip[data-hidden]{display:none}
 .chips::-webkit-scrollbar{display:none}
 .chip{
   flex:0 0 auto;padding:10px 18px;border-radius:999px;
@@ -501,7 +519,6 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .menu.tabbed .menu-section{display:none}
 .menu.tabbed .menu-section.active{display:block;animation:secIn .45s ease}
 @keyframes secIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.chip-divider{flex:0 0 auto;width:1px;align-self:stretch;margin:4px 6px;background:rgba(30,68,55,.25)}
 .sec-title{display:flex;align-items:center;gap:14px;margin-bottom:6px}
 .sec-title h3{
   font-family:var(--display);font-weight:400;
@@ -867,8 +884,9 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
   </div>
 
   <div class="hero-cta">
-      <a class="btn btn-ghost" href="#menu">Explore the menu</a>
     <a class="btn btn-fill" href="https://ofolies.resos.com/" target="_blank" rel="noopener">Book a table</a>
+    <a class="btn btn-ghost" href="#menu" data-menugroup="food">Food</a>
+    <a class="btn btn-ghost" href="#menu" data-menugroup="drinks">Drinks</a>
   </div>
 
 </header>
@@ -926,11 +944,17 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
     <div class="menu-tip">✦&nbsp; Tap what tempts you, build your shortlist</div>
   </div>
 
+  <div class="menu-nav" id="menuNav">
+  <div class="seg" id="seg" role="tablist" aria-label="Food or drinks">
+    <button class="on" data-group="food">Food</button>
+    <button data-group="drinks">Drinks</button>
+  </div>
   <nav class="chips" id="chips" aria-label="Menu categories">
     <button class="chip active" data-target="salads">Trio Salads</button>
     <button class="chip" data-target="raw">Raw Seafood</button>
     <button class="chip" data-target="bites">Hot Bites</button>
   </nav>
+  </div>
 
   <section class="menu-section" id="salads">
     <div class="sec-title"><h3>Choice of Trio Salads</h3></div>
@@ -1562,12 +1586,18 @@ new IntersectionObserver(function(en){
   dock.classList.toggle('show', !en[0].isIntersecting);
 },{threshold:.2}).observe(hero);
 
+var DRINK_RE = /cocktail|mocktail|beer|wine|bubbl|gin|vodka|whiskey|rum|tequila|soft|shisha|coffee|tea/i;
+window.__menuGroup = 'food';
 window.__initMenuNav = function(){
   var menu = document.querySelector('.menu');
   var chips = document.querySelectorAll('.chip');
   var secs = document.querySelectorAll('.menu-section');
+  var segBtns = document.querySelectorAll('.seg button');
   if(!secs.length) return;
   menu.classList.add('tabbed');
+  function groupOf(el){
+    return el.getAttribute('data-group') || (DRINK_RE.test(el.id || el.dataset.target || '') ? 'drinks' : 'food');
+  }
   function activate(id, scroll){
     secs.forEach(function(s){
       var on = s.id === id;
@@ -1583,13 +1613,39 @@ window.__initMenuNav = function(){
       if(window.scrollY > top) window.scrollTo({top: top, behavior:'smooth'});
     }
   }
+  function setGroup(g, scroll){
+    window.__menuGroup = g;
+    segBtns.forEach(function(b){ b.classList.toggle('on', b.dataset.group === g); });
+    var first = null;
+    chips.forEach(function(c){
+      var inG = groupOf(c) === g;
+      if(inG) c.removeAttribute('data-hidden'); else c.setAttribute('data-hidden','1');
+      if(inG && !first) first = c.dataset.target;
+    });
+    var activeSec = document.querySelector('.menu-section.active');
+    if(!activeSec || groupOf(activeSec) !== g){
+      if(first) activate(first, !!scroll);
+    } else if(scroll){
+      activate(activeSec.id, true);
+    }
+  }
   chips.forEach(function(c){
     c.onclick = function(){ activate(c.dataset.target, true); };
   });
-  var current = document.querySelector('.menu-section.active');
-  activate(current ? current.id : secs[0].id, false);
+  segBtns.forEach(function(b){
+    b.onclick = function(){ setGroup(b.dataset.group, false); };
+  });
+  window.__setMenuGroup = setGroup;
+  setGroup(window.__menuGroup, false);
 };
 window.__initMenuNav();
+// hero Food / Drinks buttons
+document.querySelectorAll('[data-menugroup]').forEach(function(a){
+  a.addEventListener('click', function(){
+    if(window.__setMenuGroup) window.__setMenuGroup(a.dataset.menugroup, false);
+    if(window.track) track('menu_group', {group: a.dataset.menugroup});
+  });
+});
 
 window.__initGallery = function(){
   var track = document.getElementById('gtrack');
@@ -1747,10 +1803,9 @@ window.__initGallery();
         if(C.menu && C.menu.length){
           var chipsNav = document.getElementById('chips');
           if(chipsNav){
-            var firstDrink = C.menu.findIndex(function(s){ return /cocktail|beer|wine|bubbl|gin|vodka|whiskey|rum|tequila|soft/i.test(s.id); });
+            var grpOf = function(sec){ return sec.group || (/cocktail|mocktail|beer|wine|bubbl|gin|vodka|whiskey|rum|tequila|soft|shisha|coffee|tea/i.test(sec.id) ? 'drinks' : 'food'); };
             chipsNav.innerHTML = C.menu.map(function(sec, i){
-              return (i === firstDrink && i > 0 ? '<span class="chip-divider"></span>' : '')
-                + '<button class="chip'+(i===0?' active':'')+'" data-target="'+esc(sec.id)+'">'+esc(sec.chip||sec.title)+'</button>';
+              return '<button class="chip'+(i===0?' active':'')+'" data-target="'+esc(sec.id)+'" data-group="'+grpOf(sec)+'">'+esc(sec.chip||sec.title)+'</button>';
             }).join('');
           }
           var itemHTML = function(it){
@@ -1769,7 +1824,7 @@ window.__initGallery();
               + '</div><div class="item-price">$'+(it.price|0)+'</div><div class="pick-dot">✓</div></div>';
           };
           var secsHTML = C.menu.map(function(sec){
-            return '<section class="menu-section" id="'+esc(sec.id)+'">'
+            return '<section class="menu-section" id="'+esc(sec.id)+'" data-group="'+grpOf(sec)+'">'
               + '<div class="sec-title"><h3>'+esc(sec.title)+'</h3></div>'
               + (sec.note?'<p class="sec-note">'+esc(sec.note)+'</p>':'')
               + (sec.items||[]).map(itemHTML).join('')
