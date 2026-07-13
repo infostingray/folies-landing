@@ -729,6 +729,26 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .sh-total .p{font-family:var(--display);font-size:22px;color:var(--terracotta);font-weight:400}
 .sh-actions{display:flex;gap:10px;margin-top:10px}
 .sh-actions .btn{flex:1;padding:14px 10px;font-size:12px}
+.sh-upsell{
+  display:none;align-items:center;gap:12px;
+  margin-top:12px;padding:12px 14px;
+  border:1.5px dashed rgba(217,83,47,.5);
+  background:rgba(245,183,140,.14);
+  border-radius:16px;
+}
+.sh-upsell.show{display:flex}
+.sh-upsell .u-body{flex:1;min-width:0}
+.sh-upsell .u-lbl{font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--terracotta)}
+.sh-upsell .u-name{margin-top:3px;font-weight:700;font-size:14px;color:var(--ink)}
+.sh-upsell .u-name span{font-family:var(--display);font-weight:400;color:var(--terracotta);margin-left:6px}
+.sh-upsell .u-add{
+  flex:none;padding:11px 18px;border-radius:999px;
+  background:linear-gradient(120deg,var(--terracotta),var(--coral));color:#fff;
+  font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  box-shadow:0 8px 18px -8px rgba(217,83,47,.6);
+  transition:transform .2s;
+}
+.sh-upsell .u-add:active{transform:scale(.94)}
 .sh-note{
   margin-top:14px;text-align:center;
   font-size:13px;color:var(--forest);
@@ -1239,6 +1259,13 @@ window.addEventListener('pageshow', window.__pinTop);
   <div class="sh-list" id="shList"></div>
   <div class="sh-total"><span>Total</span><span class="p" id="shTotal">$0</span></div>
   <div class="sh-note">Keep this screen open; when the waiter arrives, you'll order before the sun even moves</div>
+  <div class="sh-upsell" id="shUpsell">
+    <div class="u-body">
+      <div class="u-lbl" id="uLbl">Goes well with</div>
+      <div class="u-name" id="uName"></div>
+    </div>
+    <button class="u-add" id="uAdd">Add</button>
+  </div>
   <div class="sh-actions">
     <button class="btn btn-fill" id="shClose">I'll keep it open </button>
   </div>
@@ -1583,6 +1610,54 @@ function initArch(){
   function total(){ var t=0; for(var k in picks) t += picks[k].p; return t; }
   function countGroup(g){ var n=0; for(var k in picks) if(picks[k].g === g) n++; return n; }
 
+  var DRINK_SUGG = ['Golden Peach','Island Lightning','Lady Pink','Mango Mai Kai','O Sommet Kumquat','Cuba Cigar'];
+  var FOOD_SUGG = ['Truffle Fries','Spicy Edamame','Loaded Nachos','Risotto Arancini','Crispy Chicken Fingers'];
+  var currentSugg = null;
+  function findItem(name){
+    var items = document.querySelectorAll('.item[data-price]');
+    for(var i=0;i<items.length;i++){ if(items[i].dataset.name === name) return items[i]; }
+    return null;
+  }
+  function pickSuggestion(){
+    var f = countGroup('food'), dr = countGroup('drinks');
+    if(count() === 0) return null;
+    var pool, lbl;
+    if(f > 0 && dr === 0){ pool = DRINK_SUGG; lbl = 'Goes well with a drink'; }
+    else if(dr > 0 && f === 0){ pool = FOOD_SUGG; lbl = 'Goes well with a bite'; }
+    else return null;
+    var names = pool.filter(function(nm){ return !picks[nm] && findItem(nm); });
+    if(!names.length) return null;
+    var nm = names[Math.floor(Math.random()*names.length)];
+    var el = findItem(nm);
+    return { name: nm, price: parseInt(el.dataset.price,10), lbl: lbl, el: el };
+  }
+  function upsell(){
+    var box = document.getElementById('shUpsell');
+    if(!box) return;
+    if(currentSugg && picks[currentSugg.name]) currentSugg = null;
+    if(!currentSugg){
+      currentSugg = pickSuggestion();
+    } else {
+      var f = countGroup('food'), dr = countGroup('drinks');
+      var stillValid = (f > 0 && dr === 0 && DRINK_SUGG.indexOf(currentSugg.name) > -1)
+                    || (dr > 0 && f === 0 && FOOD_SUGG.indexOf(currentSugg.name) > -1);
+      if(!stillValid) currentSugg = pickSuggestion();
+    }
+    if(!currentSugg){ box.classList.remove('show'); return; }
+    document.getElementById('uLbl').textContent = currentSugg.lbl;
+    var un = document.getElementById('uName');
+    un.innerHTML = '';
+    var nEl = document.createElement('b'); nEl.textContent = currentSugg.name;
+    var pEl = document.createElement('span'); pEl.textContent = '$' + currentSugg.price;
+    un.appendChild(nEl); un.appendChild(pEl);
+    box.classList.add('show');
+  }
+  document.getElementById('uAdd').addEventListener('click', function(){
+    if(!currentSugg) return;
+    var s = currentSugg; currentSugg = null;
+    toggle(s.name, s.price, s.el);
+    if(window.track) track('upsell_add', {dish: s.name, price: s.price});
+  });
   function hintFor(n, t){
     if(n === 0) return 'Tap what tempts you, the list builds itself';
     var f = countGroup('food'), dr = countGroup('drinks');
@@ -1608,6 +1683,7 @@ function initArch(){
       ? '<span id="trayCount">'+n+'</span> picks · <b id="trayTotal">$'+t+'</b> tell your waiter'
       : '<span id="trayCount">'+n+'</span> pick'+(n===1?'':'s')+' · <b id="trayTotal">$'+t+'</b>';
     shHint.textContent = hintFor(n, t);
+    upsell();
     shList.innerHTML = '';
     Object.keys(picks).forEach(function(name){
       var row = document.createElement('div');
