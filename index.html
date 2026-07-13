@@ -228,8 +228,8 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .ready .hero-top{animation:fadeDown .9s .15s ease forwards}
 .ready .arch-wrap{animation:archIn 1.2s .3s cubic-bezier(.22,1,.36,1) forwards}
 .ready .hero-brand{animation:fadeUp 1s .7s ease forwards}
-.ready .tagline{animation:fadeUp 1s .95s ease forwards}
-.ready .hero-cta{animation:fadeUp 1s 1.2s ease forwards}
+.ready .tagline{animation:fadeUp 1s 1.2s ease forwards}
+.ready .hero-cta{animation:fadeUp 1s .95s ease forwards}
 .ready .scroll-hint{animation:fadeUp 1s 1.5s ease forwards}
 .hero-top{
   width:100%;display:flex;align-items:center;justify-content:center;
@@ -377,7 +377,7 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   margin-top:10px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;
   color:var(--peach);text-indent:.34em;
 }
-.tagline{margin-top:clamp(26px,5vh,44px)}
+.tagline{margin-top:clamp(24px,4.5vh,40px)}
 .tagline p{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);opacity:.8}
 .tagline .higher{
   font-family:var(--thin);
@@ -389,7 +389,7 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   -webkit-text-fill-color:transparent;
 }
 .hero-cta{
-  margin-top:clamp(26px,4.5vh,42px);
+  margin-top:clamp(22px,4vh,36px);
   display:flex;flex-direction:column;align-items:center;gap:14px;
   width:100%;
 }
@@ -923,11 +923,6 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
     <p class="place">Sunset Lounge</p>
   </div>
 
-  <div class="tagline">
-    <p>We are not far, we are just</p>
-    <span class="higher">HIGHER</span>
-  </div>
-
   <div class="hero-cta">
     <div class="menu-duo">
       <a class="duo duo-food" href="#menu" data-menugroup="food">
@@ -943,6 +938,11 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
       Book a table
     </a>
+  </div>
+
+  <div class="tagline">
+    <p>We are not far, we are just</p>
+    <span class="higher">HIGHER</span>
   </div>
 
 </header>
