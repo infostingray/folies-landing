@@ -891,10 +891,23 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
 </head>
 <body class="locked">
 <script>
-/* always open at the top — no hash jumps, no scroll restoration */
+/* always open at the top — no hash jumps, no scroll restoration, no smooth animation */
 if('scrollRestoration' in history) history.scrollRestoration = 'manual';
 if(location.hash){ history.replaceState(null, '', location.pathname + location.search); }
-window.scrollTo(0,0);
+window.__pinTop = function(){
+  var h = document.documentElement;
+  var prev = h.style.scrollBehavior;
+  h.style.scrollBehavior = 'auto';
+  window.scrollTo(0,0);
+  h.style.scrollBehavior = prev;
+};
+window.__pinTop();
+window.addEventListener('pageshow', window.__pinTop);
+(function guardLoop(t0){
+  t0 = t0 || performance.now();
+  if(document.body && document.body.classList.contains('locked')) window.__pinTop();
+  if(performance.now() - t0 < 2500) requestAnimationFrame(function(){ guardLoop(t0); });
+})();
 </script>
 
 <div id="sunbar"></div>
@@ -1266,7 +1279,7 @@ setTimeout(function(){
   function unlock(){
     document.body.classList.remove('locked');
     document.body.classList.add('ready');
-    window.scrollTo(0,0);
+    if(window.__pinTop) window.__pinTop();
     try{ initArch(); }catch(e){}
   }
   if(reduced || !loader || getComputedStyle(loader).display === 'none'){
