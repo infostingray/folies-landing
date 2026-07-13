@@ -1610,26 +1610,67 @@ function initArch(){
   function total(){ var t=0; for(var k in picks) t += picks[k].p; return t; }
   function countGroup(g){ var n=0; for(var k in picks) if(picks[k].g === g) n++; return n; }
 
-  var DRINK_SUGG = ['Golden Peach','Island Lightning','Lady Pink','Mango Mai Kai','O Sommet Kumquat','Cuba Cigar'];
-  var FOOD_SUGG = ['Truffle Fries','Spicy Edamame','Loaded Nachos','Risotto Arancini','Crispy Chicken Fingers'];
-  var currentSugg = null;
+  // ---- pairing brain: suggest what actually works together ----
   function findItem(name){
     var items = document.querySelectorAll('.item[data-price]');
     for(var i=0;i<items.length;i++){ if(items[i].dataset.name === name) return items[i]; }
     return null;
   }
+  function lastPickOf(group){
+    var keys = Object.keys(picks);
+    for(var i=keys.length-1;i>=0;i--){ if(picks[keys[i]].g === group) return keys[i]; }
+    return null;
+  }
+  function secOf(name){
+    if(picks[name] && picks[name].s) return picks[name].s;
+    var el = findItem(name);
+    var sec = el && el.closest('.menu-section');
+    return sec ? sec.id : '';
+  }
+  function shortName(name){
+    return name.replace(/\s*\(.*\)$/,'').split(' ').slice(0,3).join(' ');
+  }
+  var SPIRIT_SECS = ['gin','vodka','whiskey','rum','tequila'];
+  function pairFor(name, group){
+    var sec = secOf(name) || '';
+    var n = name.toLowerCase();
+    if(group === 'food'){
+      if(n.indexOf('ribeye') > -1) return ['Cuba Cigar','Mango Mai Kai','Island Lightning'];
+      if(sec === 'raw') return ['Lady Pink','Island Lightning','Golden Peach'];
+      if(sec === 'salads') return ['Golden Peach','Lady Pink','O Sommet Kumquat'];
+      // hot bites: beer first, then bright cocktails
+      return ['Almaza','Beirut Beer','Heineken','Corona','Island Lightning','Mango Mai Kai'];
+    }
+    // drinks -> food
+    if(sec === 'beer') return ['Loaded Nachos','Trio Slider Burgers','Crispy Chicken Fingers'];
+    if(sec === 'bubbles') return ['Shrimp Ceviche','Salmon Tataki','Kani Crab Salad'];
+    if(sec === 'wine') return ['Goat Cheese Salad','Salmon Tataki','Ribeye Bites with Red Caviar'];
+    if(SPIRIT_SECS.indexOf(sec) > -1) return ['Ribeye Bites with Red Caviar','Loaded Nachos','Spicy Edamame'];
+    if(sec === 'soft' || sec === 'mocktails') return ['Trio Slider Burgers','Loaded Nachos','Truffle Fries'];
+    // cocktails & house cocktails
+    return ['Spicy Edamame','Truffle Fries','Crispy Shrimp with Pineapple Chutney','Shrimp Ceviche'];
+  }
+  var currentSugg = null;
   function pickSuggestion(){
     var f = countGroup('food'), dr = countGroup('drinks');
     if(count() === 0) return null;
-    var pool, lbl;
-    if(f > 0 && dr === 0){ pool = DRINK_SUGG; lbl = 'Goes well with a drink'; }
-    else if(dr > 0 && f === 0){ pool = FOOD_SUGG; lbl = 'Goes well with a bite'; }
+    var anchor, wantGroup, lbl;
+    if(f > 0 && dr === 0){ anchor = lastPickOf('food'); wantGroup = 'drinks'; }
+    else if(dr > 0 && f === 0){ anchor = lastPickOf('drinks'); wantGroup = 'food'; }
     else return null;
-    var names = pool.filter(function(nm){ return !picks[nm] && findItem(nm); });
-    if(!names.length) return null;
-    var nm = names[Math.floor(Math.random()*names.length)];
-    var el = findItem(nm);
-    return { name: nm, price: parseInt(el.dataset.price,10), lbl: lbl, el: el };
+    if(!anchor) return null;
+    var cands = pairFor(anchor, wantGroup === 'drinks' ? 'food' : 'drinks');
+    for(var i=0;i<cands.length;i++){
+      var nm = cands[i];
+      if(picks[nm]) continue;
+      var el = findItem(nm);
+      if(!el) continue;
+      var sec2 = el.closest('.menu-section');
+      if(sec2 && sec2.getAttribute('data-group') !== wantGroup) continue;
+      return { name: nm, price: parseInt(el.dataset.price,10),
+               lbl: 'Pairs with the ' + shortName(anchor), el: el };
+    }
+    return null;
   }
   function upsell(){
     var box = document.getElementById('shUpsell');
@@ -1740,7 +1781,7 @@ function initArch(){
     else{
       var sec = el && el.closest ? el.closest('.menu-section') : null;
       var grp = (sec && sec.getAttribute('data-group')) || 'food';
-      picks[name] = {p: price, g: grp};
+      picks[name] = {p: price, g: grp, s: sec ? sec.id : ''};
       if(el) floatPrice(el, price);
       sparkle(lastTap.x, lastTap.y);
       if(window.track) track('dish_picked', {dish: name, price: price});
