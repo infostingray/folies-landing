@@ -1799,13 +1799,16 @@ window.__initGallery();
     var nowMins = now.getHours()*60 + now.getMinutes();
     var diff = sunsetMins - nowMins;
     var chip = document.getElementById('sunsetChip');
-    if(diff > 45){
+    var hrNow = now.getHours();
+    if(hrNow < 5){
+      chip.textContent = 'After hours · under the stars';
+    }else if(diff > 45){
       var hh2 = Math.floor(diff/60), mm2 = diff%60;
       chip.textContent = 'Golden hour in ' + (hh2>0? hh2+'h ' : '') + mm2 + 'm';
     }else if(diff > -40){
-      chip.textContent = 'Golden hour now 🌅';
+      chip.textContent = 'Golden hour now';
     }else{
-      chip.textContent = 'Sunset was ' + t + ' · see you tomorrow';
+      chip.textContent = 'Sunset was ' + t + ' · the night is just warming up';
     }
     var hr = now.getHours();
     var open = (hr >= 17 || hr < 2);
