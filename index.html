@@ -741,6 +741,10 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .sh-upsell .u-lbl{font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--terracotta)}
 .sh-upsell .u-name{margin-top:3px;font-weight:700;font-size:14px;color:var(--ink)}
 .sh-upsell .u-name span{font-family:var(--display);font-weight:400;color:var(--terracotta);margin-left:6px}
+.sh-upsell .u-desc{
+  margin-top:3px;font-size:11.5px;line-height:1.45;color:#7b7568;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
 .sh-upsell .u-add{
   flex:none;padding:11px 18px;border-radius:999px;
   background:linear-gradient(120deg,var(--terracotta),var(--coral));color:#fff;
@@ -1262,6 +1266,7 @@ window.addEventListener('pageshow', window.__pinTop);
     <div class="u-body">
       <div class="u-lbl" id="uLbl">Goes well with</div>
       <div class="u-name" id="uName"></div>
+      <div class="u-desc" id="uDesc"></div>
     </div>
     <button class="u-add" id="uAdd">Add</button>
   </div>
@@ -1606,8 +1611,8 @@ function initArch(){
   var shHint = document.getElementById('shHint');
 
   function save(){ try{ sessionStorage.setItem('foliesPicks', JSON.stringify(picks)); }catch(e){} }
-  function count(){ return Object.keys(picks).length; }
-  function total(){ var t=0; for(var k in picks) t += picks[k].p; return t; }
+  function count(){ var n=0; for(var k in picks) n += (picks[k].q || 1); return n; }
+  function total(){ var t=0; for(var k in picks) t += picks[k].p * (picks[k].q || 1); return t; }
   function countGroup(g){ var n=0; for(var k in picks) if(picks[k].g === g) n++; return n; }
 
   // ---- pairing brain: suggest what actually works together ----
@@ -1685,19 +1690,33 @@ function initArch(){
       if(!stillValid) currentSugg = pickSuggestion();
     }
     if(!currentSugg){ box.classList.remove('show'); return; }
-    document.getElementById('uLbl').textContent = currentSugg.lbl;
+    var f2 = countGroup('food'), dr2 = countGroup('drinks');
+    var qty = 1, lbl = currentSugg.lbl;
+    if(dr2 === 0 && f2 >= 2){
+      qty = Math.min(f2, 4);
+      lbl = 'For the table; one each?';
+    }
+    currentSugg.qty = qty;
+    document.getElementById('uLbl').textContent = lbl;
     var un = document.getElementById('uName');
     un.innerHTML = '';
-    var nEl = document.createElement('b'); nEl.textContent = currentSugg.name;
-    var pEl = document.createElement('span'); pEl.textContent = '$' + currentSugg.price;
+    var nEl = document.createElement('b');
+    nEl.textContent = (qty > 1 ? qty + '\u00d7 ' : '') + currentSugg.name;
+    var pEl = document.createElement('span'); pEl.textContent = '$' + (currentSugg.price * qty);
     un.appendChild(nEl); un.appendChild(pEl);
+    var descEl = currentSugg.el.querySelector('.item-desc');
+    document.getElementById('uDesc').textContent = descEl ? descEl.textContent : '';
+    document.getElementById('uDesc').style.display = descEl ? '' : 'none';
+    document.getElementById('uAdd').textContent = qty > 1 ? 'Add ' + qty : 'Add';
     box.classList.add('show');
   }
   document.getElementById('uAdd').addEventListener('click', function(){
     if(!currentSugg) return;
     var s = currentSugg; currentSugg = null;
     toggle(s.name, s.price, s.el);
-    if(window.track) track('upsell_add', {dish: s.name, price: s.price});
+    if(picks[s.name] && s.qty > 1) picks[s.name].q = s.qty;
+    save(); sync(); syncDom();
+    if(window.track) track('upsell_add', {dish: s.name, price: s.price, qty: s.qty || 1});
   });
   function hintFor(n, t){
     if(n === 0) return 'Tap what tempts you, the list builds itself';
@@ -1729,8 +1748,9 @@ function initArch(){
     Object.keys(picks).forEach(function(name){
       var row = document.createElement('div');
       row.className = 'sh-row';
-      row.innerHTML = '<span class="n"></span><span class="p">$'+picks[name].p+'</span><button class="x" aria-label="Remove">✕</button>';
-      row.querySelector('.n').textContent = name;
+      var q = picks[name].q || 1;
+      row.innerHTML = '<span class="n"></span><span class="p">$'+(picks[name].p*q)+'</span><button class="x" aria-label="Remove">✕</button>';
+      row.querySelector('.n').textContent = (q > 1 ? q + '\u00d7 ' : '') + name;
       row.querySelector('.x').addEventListener('click', function(){
         delete picks[name];
         save(); sync(); syncDom();
