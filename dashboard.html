@@ -178,7 +178,7 @@ footer{margin-top:26px;text-align:center;font-size:10px;letter-spacing:.18em;col
   <img src="https://swottm.com/assets/images/logo-white.svg" alt="Swot" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
   <div class="fallback">SWOT</div>
   <h1>Portal</h1>
-  <p>OFôlies · Sunset Lounge — content manager</p>
+  <p>OFôlies · Sunset Lounge, content manager</p>
   <input id="pass" type="password" placeholder="••••••" autocomplete="current-password">
   <button class="btn" id="loginBtn">Enter</button>
   <p id="gateMsg"></p>
@@ -200,7 +200,7 @@ footer{margin-top:26px;text-align:center;font-size:10px;letter-spacing:.18em;col
 
     <div class="card">
       <h2>Announcement <span class="n">01</span></h2>
-      <p class="hintline">A banner at the top of the site — closures, private events, weather, specials.</p>
+      <p class="hintline">A banner at the top of the site: closures, private events, weather, specials.</p>
       <div class="switch" id="anncSwitch"><i></i><span>Show the banner</span></div>
       <div class="field"><label>Banner text</label>
         <input id="anncText" placeholder="e.g. Closed this Tuesday for a private event">
@@ -209,12 +209,12 @@ footer{margin-top:26px;text-align:center;font-size:10px;letter-spacing:.18em;col
 
     <div class="card">
       <h2>Photos <span class="n">02</span></h2>
-      <p class="hintline">JPG or PNG — resized automatically. New photos appear on the site within ~1–10 minutes.</p>
+      <p class="hintline">JPG or PNG, resized automatically. New photos appear on the site within ~1–10 minutes.</p>
 
       <div class="menu-sec-title" style="margin-top:14px">Core photos</div>
       <div class="photo-slot">
         <img id="pv-sunset" src="assets/sunset.jpg" alt="">
-        <div class="photo-info"><b>Hero & Sunset photo</b><span>The star — preloader and inside the O. Best: terrace at golden hour.</span></div>
+        <div class="photo-info"><b>Hero & Sunset photo</b><span>The star: preloader and inside the O. Best: terrace at golden hour.</span></div>
         <div class="photo-actions">
           <button class="pbtn" data-slot="sunset">Replace</button>
           <div class="photo-status" id="st-sunset"></div>
@@ -427,7 +427,7 @@ $('menuList').addEventListener('click', function(e){
     if(sec.items.length && !confirm('Remove "'+sec.title+'" and its '+sec.items.length+' dishes?')) return;
     C.menu.splice(+sdel, 1);
     renderMenu();
-    toast('Section removed — hit Publish to make it live');
+    toast('Section removed; hit Publish to make it live');
     return;
   }
   var madd = e.target.getAttribute('data-madd');
@@ -443,7 +443,7 @@ $('menuList').addEventListener('click', function(e){
     var p = mdel.split(':');
     C.menu[+p[0]].items.splice(+p[1], 1);
     renderMenu();
-    toast('Removed — hit Publish to make it live');
+    toast('Removed; hit Publish to make it live');
   }
 });
 function syncMenuFromDom(){
@@ -546,7 +546,7 @@ $('galList').addEventListener('click', function(e){
     syncGalleryFromDom();
     C.gallery.splice(+del, 1);
     renderGallery();
-    toast('Removed — hit Publish to make it live');
+    toast('Removed; hit Publish to make it live');
   }
 });
 
