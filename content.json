@@ -12,7 +12,7 @@
   "hours": {
     "openLabel": "Daily · 5 PM - Late",
     "openHour": 17,
-    "closeHour": 2
+    "closeHour": 1
   },
   "events": [
     {
