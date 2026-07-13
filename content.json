@@ -163,6 +163,1055 @@
           "desc": ""
         }
       ]
+    },
+    {
+      "id": "house-cocktails",
+      "chip": "House Cocktails",
+      "title": "House Cocktails",
+      "note": "Summer ’26 — created up here, for up here",
+      "items": [
+        {
+          "name": "Golden Peach",
+          "price": 14,
+          "desc": "Vodka, peach & fresh orange with a citrus kiss",
+          "badge": "House"
+        },
+        {
+          "name": "Island Lightning",
+          "price": 14,
+          "desc": "White rum struck with pineapple, lime & lemon",
+          "badge": "House"
+        },
+        {
+          "name": "Cuba Cigar",
+          "price": 14,
+          "desc": "The bartender’s secret — ask for it",
+          "badge": "House"
+        },
+        {
+          "name": "Lady Pink",
+          "price": 14,
+          "desc": "Gin & prosecco under a grapefruit sparkle",
+          "badge": "House"
+        },
+        {
+          "name": "Mango Mai Kai",
+          "price": 14,
+          "desc": "Two rums, mango & orgeat — tiki at altitude",
+          "badge": "House"
+        },
+        {
+          "name": "O Sommet Kumquat",
+          "price": 14,
+          "desc": "Vodka, kumquat & watermelon — the summit serve",
+          "badge": "House"
+        }
+      ]
+    },
+    {
+      "id": "cocktails",
+      "chip": "Cocktails",
+      "title": "Classic Cocktails",
+      "note": "The ones you know, with the view you don’t",
+      "items": [
+        {
+          "name": "Aperol Spritz",
+          "price": 11
+        },
+        {
+          "name": "Negroni",
+          "price": 11
+        },
+        {
+          "name": "Paloma",
+          "price": 11
+        },
+        {
+          "name": "Classic Margarita",
+          "price": 11
+        },
+        {
+          "name": "Spicy Margarita",
+          "price": 11
+        },
+        {
+          "name": "Tommy Margarita",
+          "price": 11
+        },
+        {
+          "name": "Espresso Martini",
+          "price": 11
+        },
+        {
+          "name": "Tomatini",
+          "price": 11
+        },
+        {
+          "name": "Hugo Spritz",
+          "price": 11
+        },
+        {
+          "name": "Sangria Rose",
+          "price": 11
+        },
+        {
+          "name": "Mojito",
+          "price": 11
+        },
+        {
+          "name": "Moscow Mule",
+          "price": 11
+        },
+        {
+          "name": "Old Fashioned",
+          "price": 11
+        },
+        {
+          "name": "Dry Martini",
+          "price": 11
+        },
+        {
+          "name": "Dirty Martini",
+          "price": 11
+        },
+        {
+          "name": "Bloody Mary",
+          "price": 11
+        },
+        {
+          "name": "Daiquiri",
+          "price": 11
+        },
+        {
+          "name": "Gin Basil",
+          "price": 11
+        },
+        {
+          "name": "Passion Martini",
+          "price": 11
+        }
+      ]
+    },
+    {
+      "id": "mocktails",
+      "chip": "Mocktails",
+      "title": "Virgin Cocktails",
+      "note": "All the sunset, none of the spirits",
+      "items": [
+        {
+          "name": "Virgin Jamaica",
+          "price": 7
+        },
+        {
+          "name": "Virgin Mary",
+          "price": 7
+        },
+        {
+          "name": "Virgin Mojito",
+          "price": 7
+        },
+        {
+          "name": "Virgin Piña Colada",
+          "price": 7
+        },
+        {
+          "name": "Passion Fruit",
+          "price": 7
+        },
+        {
+          "name": "Minted Lemonadee",
+          "price": 7
+        },
+        {
+          "name": "Lemonadee",
+          "price": 7
+        }
+      ]
+    },
+    {
+      "id": "beer",
+      "chip": "Beer",
+      "title": "Beer",
+      "note": "",
+      "items": [
+        {
+          "name": "Almaza",
+          "price": 6,
+          "desc": "Bottle"
+        },
+        {
+          "name": "Almaza Light",
+          "price": 6,
+          "desc": "Bottle"
+        },
+        {
+          "name": "Heineken",
+          "price": 7,
+          "desc": "Bottle"
+        },
+        {
+          "name": "Almaza Rose",
+          "price": 6,
+          "desc": "Bottle"
+        },
+        {
+          "name": "Corona",
+          "price": 8,
+          "desc": "Bottle"
+        }
+      ]
+    },
+    {
+      "id": "wine",
+      "chip": "Wine",
+      "title": "Wine",
+      "note": "Lebanese soil & beyond",
+      "items": [
+        {
+          "name": "Ksara Blanc De Blanc",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 6
+            },
+            {
+              "label": "Bottle",
+              "price": 30
+            }
+          ],
+          "desc": "White"
+        },
+        {
+          "name": "Ksara Chardonnay 2022",
+          "price": 40,
+          "desc": "White · Bottle"
+        },
+        {
+          "name": "Ixsir Grand Reserve White Wine",
+          "price": 45,
+          "desc": "White · Bottle"
+        },
+        {
+          "name": "Ixsir Altitude",
+          "price": 40,
+          "desc": "Rosé · Bottle"
+        },
+        {
+          "name": "Ksara Reserve Du Couvent",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 6
+            },
+            {
+              "label": "Bottle",
+              "price": 30
+            }
+          ],
+          "desc": "Red"
+        },
+        {
+          "name": "Ksara Cuvee Du Eme Millenaire 2022",
+          "price": 45,
+          "desc": "Red · Bottle"
+        },
+        {
+          "name": "Ixsir Grande Reserve Red",
+          "price": 45,
+          "desc": "Red · Bottle"
+        },
+        {
+          "name": "Ixsir Altitude Red",
+          "price": 40,
+          "desc": "Red · Bottle"
+        },
+        {
+          "name": "Ksara Sunset",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 6
+            },
+            {
+              "label": "Bottle",
+              "price": 30
+            }
+          ],
+          "desc": "Rosé"
+        },
+        {
+          "name": "Ixsir Grand Reserve Rose Wine",
+          "price": 45,
+          "desc": "Rosé · Bottle"
+        },
+        {
+          "name": "La Foret Bourgogne Chardonnay",
+          "price": 75,
+          "desc": "White · Bottle"
+        },
+        {
+          "name": "Marchesi Di Barolo Gavi De Gavi",
+          "price": 95,
+          "desc": "White · Bottle"
+        },
+        {
+          "name": "Astoria Pinot Grigio",
+          "price": 55,
+          "desc": "White · Bottle"
+        },
+        {
+          "name": "Astoria Mina Rose",
+          "price": 55,
+          "desc": "Rosé · Bottle"
+        },
+        {
+          "name": "Parallel 45 Rose",
+          "price": 60,
+          "desc": "Rosé · Bottle"
+        }
+      ]
+    },
+    {
+      "id": "bubbles",
+      "chip": "Bubbles",
+      "title": "Champagne & Prosecco",
+      "note": "",
+      "items": [
+        {
+          "name": "Laurent Perrier Brut",
+          "price": 190,
+          "desc": "Bottle"
+        },
+        {
+          "name": "Moët Brut",
+          "price": 175,
+          "desc": "Bottle"
+        },
+        {
+          "name": "Moët Rose",
+          "price": 190,
+          "desc": "Bottle"
+        },
+        {
+          "name": "Astoria Lounge",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 9
+            },
+            {
+              "label": "Bottle",
+              "price": 45
+            }
+          ]
+        },
+        {
+          "name": "Astoria Tiamo- White",
+          "price": 50,
+          "desc": "Bottle"
+        },
+        {
+          "name": "Astoria Fashion Victim-rose",
+          "price": 50,
+          "desc": "Bottle"
+        }
+      ]
+    },
+    {
+      "id": "gin",
+      "chip": "Gin",
+      "title": "Gin",
+      "note": "",
+      "items": [
+        {
+          "name": "Tanqueray 10",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 13
+            },
+            {
+              "label": "Bottle",
+              "price": 140
+            }
+          ],
+          "desc": "75cl"
+        },
+        {
+          "name": "Tanqueray",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 11
+            },
+            {
+              "label": "Bottle",
+              "price": 120
+            }
+          ],
+          "desc": "75cl"
+        },
+        {
+          "name": "Monkey 47",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 25
+            },
+            {
+              "label": "Bottle",
+              "price": 120
+            }
+          ],
+          "desc": "50cl"
+        },
+        {
+          "name": "Hendrick's",
+          "price": 140,
+          "desc": "70cl · Bottle"
+        },
+        {
+          "name": "Hendrick's Glasss",
+          "price": 14,
+          "desc": "70cl · Glass"
+        },
+        {
+          "name": "Star Of Bombay",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 10
+            },
+            {
+              "label": "Bottle",
+              "price": 120
+            }
+          ]
+        },
+        {
+          "name": "Gordon’s",
+          "price": 9,
+          "desc": "Glass"
+        }
+      ]
+    },
+    {
+      "id": "vodka",
+      "chip": "Vodka",
+      "title": "Vodka",
+      "note": "",
+      "items": [
+        {
+          "name": "Stoli Red",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 9
+            },
+            {
+              "label": "Bottle",
+              "price": 90
+            }
+          ]
+        },
+        {
+          "name": "Beluga",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 13
+            },
+            {
+              "label": "Bottle",
+              "price": 140
+            }
+          ],
+          "desc": "70cl"
+        },
+        {
+          "name": "Belvederee",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 16
+            },
+            {
+              "label": "Bottle",
+              "price": 180
+            }
+          ],
+          "desc": "70cl"
+        },
+        {
+          "name": "Grey Goose",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 16
+            },
+            {
+              "label": "Bottle",
+              "price": 180
+            }
+          ],
+          "desc": "70cl"
+        },
+        {
+          "name": "Ketel One",
+          "price": 130,
+          "desc": "75cl · Bottle"
+        },
+        {
+          "name": "Ketel One 75clglass",
+          "price": 12,
+          "desc": "Glass"
+        },
+        {
+          "name": "Ciroc",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 18
+            },
+            {
+              "label": "Bottle",
+              "price": 200
+            }
+          ]
+        },
+        {
+          "name": "Tito's",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 12
+            },
+            {
+              "label": "Bottle",
+              "price": 130
+            }
+          ],
+          "desc": "75cl"
+        }
+      ]
+    },
+    {
+      "id": "whiskey",
+      "chip": "Whiskey",
+      "title": "Whiskey & Cognac",
+      "note": "",
+      "items": [
+        {
+          "name": "Camus VSOP",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 16
+            },
+            {
+              "label": "Bottle",
+              "price": 160
+            }
+          ]
+        },
+        {
+          "name": "Camus XO",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 35
+            },
+            {
+              "label": "Bottle",
+              "price": 350
+            }
+          ]
+        },
+        {
+          "name": "Chivas 12",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 11
+            },
+            {
+              "label": "Bottle",
+              "price": 140
+            }
+          ],
+          "desc": "75cl"
+        },
+        {
+          "name": "Chivas 18",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 17
+            },
+            {
+              "label": "Bottle",
+              "price": 170
+            }
+          ],
+          "desc": "75cl"
+        },
+        {
+          "name": "Johnnie Walker Black Label",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 11
+            },
+            {
+              "label": "Bottle",
+              "price": 140
+            }
+          ],
+          "desc": "75cl"
+        },
+        {
+          "name": "Johnnie Walker Gold Label",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 17
+            },
+            {
+              "label": "Bottle",
+              "price": 220
+            }
+          ],
+          "desc": "75cl"
+        },
+        {
+          "name": "Jameson",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 9
+            },
+            {
+              "label": "Bottle",
+              "price": 100
+            }
+          ],
+          "desc": "70cl"
+        },
+        {
+          "name": "Dewars 12",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 10
+            },
+            {
+              "label": "Bottle",
+              "price": 120
+            }
+          ]
+        },
+        {
+          "name": "Macallan 12",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 22
+            },
+            {
+              "label": "Bottle",
+              "price": 220
+            }
+          ],
+          "desc": "70cl"
+        },
+        {
+          "name": "Old Par",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 13
+            },
+            {
+              "label": "Bottle",
+              "price": 155
+            }
+          ],
+          "desc": "75cl"
+        },
+        {
+          "name": "The Singleton 15",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 13
+            },
+            {
+              "label": "Bottle",
+              "price": 130
+            }
+          ]
+        },
+        {
+          "name": "The Singleton 12",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 12
+            },
+            {
+              "label": "Bottle",
+              "price": 120
+            }
+          ]
+        },
+        {
+          "name": "Glenfiddich 12",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 12
+            },
+            {
+              "label": "Bottle",
+              "price": 125
+            }
+          ]
+        },
+        {
+          "name": "Glenfiddich 15",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 17
+            },
+            {
+              "label": "Bottle",
+              "price": 170
+            }
+          ]
+        },
+        {
+          "name": "Jack Daniel's",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 10
+            },
+            {
+              "label": "Bottle",
+              "price": 100
+            }
+          ],
+          "desc": "1l"
+        },
+        {
+          "name": "Laphroaig 10 Y",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 14
+            },
+            {
+              "label": "Bottle",
+              "price": 135
+            }
+          ]
+        },
+        {
+          "name": "J&B",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 10
+            },
+            {
+              "label": "Bottle",
+              "price": 100
+            }
+          ],
+          "desc": "75cl"
+        },
+        {
+          "name": "Glenfiddich 18",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 22
+            },
+            {
+              "label": "Bottle",
+              "price": 220
+            }
+          ]
+        },
+        {
+          "name": "Monkey Shoulder",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 10
+            },
+            {
+              "label": "Bottle",
+              "price": 130
+            }
+          ],
+          "desc": "70cl"
+        }
+      ]
+    },
+    {
+      "id": "rum",
+      "chip": "Rum",
+      "title": "Rum",
+      "note": "",
+      "items": [
+        {
+          "name": "Captain Morgan White",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 8
+            },
+            {
+              "label": "Bottle",
+              "price": 80
+            }
+          ],
+          "desc": "75cl"
+        },
+        {
+          "name": "Captain Morgan Spiced",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 9
+            },
+            {
+              "label": "Bottle",
+              "price": 90
+            }
+          ],
+          "desc": "75cl"
+        },
+        {
+          "name": "Captain Morgan Dark Rum",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 10
+            },
+            {
+              "label": "Bottle",
+              "price": 100
+            }
+          ],
+          "desc": "75cl"
+        },
+        {
+          "name": "Zacapa 23",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 18
+            },
+            {
+              "label": "Bottle",
+              "price": 180
+            }
+          ],
+          "desc": "75cl"
+        }
+      ]
+    },
+    {
+      "id": "tequila",
+      "chip": "Tequila",
+      "title": "Tequila & Shots",
+      "note": "",
+      "items": [
+        {
+          "name": "1800 Añejo",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 16
+            },
+            {
+              "label": "Bottle",
+              "price": 180
+            }
+          ],
+          "desc": "70cl"
+        },
+        {
+          "name": "1800 Reposado",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 16
+            },
+            {
+              "label": "Bottle",
+              "price": 160
+            }
+          ],
+          "desc": "70cl"
+        },
+        {
+          "name": "1800 Silver",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 14
+            },
+            {
+              "label": "Bottle",
+              "price": 140
+            }
+          ],
+          "desc": "70cl"
+        },
+        {
+          "name": "Don Julio Reposado",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 18
+            },
+            {
+              "label": "Bottle",
+              "price": 220
+            }
+          ],
+          "desc": "70cl"
+        },
+        {
+          "name": "Don Julio Añejo",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 20
+            },
+            {
+              "label": "Bottle",
+              "price": 240
+            }
+          ],
+          "desc": "70cl"
+        },
+        {
+          "name": "Don Julio Blanco 70",
+          "price": 220,
+          "desc": "Bottle"
+        },
+        {
+          "name": "Don Julio Blanco",
+          "price": 18,
+          "desc": "Glass"
+        },
+        {
+          "name": "Don Julio 1942",
+          "price": 600,
+          "desc": "Bottle"
+        },
+        {
+          "name": "Clase Azul Reposado",
+          "price": 600,
+          "desc": "70cl · Bottle"
+        },
+        {
+          "name": "Patron Reposado",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 18
+            },
+            {
+              "label": "Bottle",
+              "price": 220
+            }
+          ]
+        },
+        {
+          "name": "Patron Añejo",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 20
+            },
+            {
+              "label": "Bottle",
+              "price": 240
+            }
+          ]
+        },
+        {
+          "name": "Patron XO Café",
+          "variants": [
+            {
+              "label": "Glass",
+              "price": 14
+            },
+            {
+              "label": "Bottle",
+              "price": 150
+            }
+          ]
+        },
+        {
+          "name": "Jose Cuervo Gold",
+          "price": 10,
+          "desc": "70cl · Glass"
+        },
+        {
+          "name": "Jose Cuervo Silver",
+          "price": 9,
+          "desc": "70cl · Glass"
+        },
+        {
+          "name": "Jägermeister",
+          "price": 110,
+          "desc": "Liqueur · Bottle"
+        },
+        {
+          "name": "Goldschläger",
+          "price": 110,
+          "desc": "Liqueur · Bottle"
+        }
+      ]
+    },
+    {
+      "id": "soft",
+      "chip": "Soft",
+      "title": "Soft Drinks & Water",
+      "note": "",
+      "items": [
+        {
+          "name": "Soft Drink",
+          "price": 4
+        },
+        {
+          "name": "Pink Grape Fruit Soda",
+          "price": 5
+        },
+        {
+          "name": "Red Bull",
+          "price": 7
+        },
+        {
+          "name": "S Pellegrino",
+          "price": 4
+        },
+        {
+          "name": "Water Big",
+          "price": 4
+        },
+        {
+          "name": "Water Small",
+          "price": 2
+        }
+      ]
     }
   ],
   "photosVersion": 1783945705898,
