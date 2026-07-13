@@ -1584,18 +1584,18 @@ function initArch(){
   function countGroup(g){ var n=0; for(var k in picks) if(picks[k].g === g) n++; return n; }
 
   function hintFor(n, t){
-    if(n === 0) return 'Tap what tempts you — the list builds itself';
+    if(n === 0) return 'Tap what tempts you, the list builds itself';
     var f = countGroup('food'), dr = countGroup('drinks');
     if(dr > 0 && f === 0){
-      if(n === 1) return 'One for the sunset — add a bite to go with it?';
-      return 'Liquid golden hour — some bites on the side?';
+      if(n === 1) return 'One for the sunset; add a bite to go with it?';
+      return 'Liquid golden hour; some bites on the side?';
     }
     if(f > 0 && dr === 0){
       if(n === 1) return 'Solo bite? Bold. Add something to share, maybe';
-      if(t >= 60) return 'Now THAT is a sunset feast — the waiter will be impressed';
+      if(t >= 60) return 'Now THAT is a sunset feast; the waiter will be impressed';
       return 'Good start, something to sip with that?';
     }
-    if(t >= 60) return 'Food, drinks, altitude — a full sunset production';
+    if(t >= 60) return 'Food, drinks, altitude; a full sunset production';
     return 'Balanced. Food, drinks, sunset — you know what you\u2019re doing';
   }
   function sync(){
