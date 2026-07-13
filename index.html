@@ -733,7 +733,10 @@ footer{
   border-top:1px solid rgba(247,239,224,.1);
   background:var(--pine);
 }
-footer .credit{margin-top:12px;letter-spacing:.14em;font-size:11px}
+footer .credit{margin-top:14px;letter-spacing:.14em;font-size:11px;display:flex;align-items:center;justify-content:center;gap:8px}
+footer .credit img{height:13px;display:block;opacity:.6;transition:opacity .25s}
+footer .credit a:hover img{opacity:1}
+footer .credit a{border:none;padding:0}
 footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5);padding-bottom:1px}
 
 /* ============================================================
@@ -1085,7 +1088,11 @@ footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5)
 
 <footer>
   OFÔLIES · SUNSET LOUNGE · ZAAROUR
-  <div class="credit">© 2026 <a href="https://swottm.com" target="_blank" rel="noopener">Swot Creative Hub</a></div>
+  <div class="credit">© 2026
+    <a href="https://swottm.com" target="_blank" rel="noopener" aria-label="Swot Creative Hub">
+      <img src="https://swottm.com/assets/images/logo-white.svg" alt="Swot Creative Hub" onerror="this.outerHTML='Swot Creative Hub'">
+    </a>
+  </div>
 </footer>
 
 <!-- ============ ORDER TRAY & SHEET ============ -->
@@ -1537,20 +1544,24 @@ new IntersectionObserver(function(en){
   dock.classList.toggle('show', !en[0].isIntersecting);
 },{threshold:.2}).observe(hero);
 
-var chips = document.querySelectorAll('.chip');
-chips.forEach(function(c){
-  c.addEventListener('click', function(){
-    document.getElementById(c.dataset.target).scrollIntoView({behavior:'smooth'});
+window.__initMenuNav = function(){
+  var chips = document.querySelectorAll('.chip');
+  chips.forEach(function(c){
+    c.onclick = function(){
+      var t = document.getElementById(c.dataset.target);
+      if(t) t.scrollIntoView({behavior:'smooth'});
+    };
   });
-});
-var secObserver = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){
-      chips.forEach(function(c){ c.classList.toggle('active', c.dataset.target===e.target.id); });
-    }
-  });
-},{rootMargin:'-30% 0px -55% 0px'});
-['salads','raw','bites'].forEach(function(id){ secObserver.observe(document.getElementById(id)); });
+  var secObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        chips.forEach(function(c){ c.classList.toggle('active', c.dataset.target===e.target.id); });
+      }
+    });
+  },{rootMargin:'-30% 0px -55% 0px'});
+  document.querySelectorAll('.menu-section').forEach(function(s){ secObserver.observe(s); });
+};
+window.__initMenuNav();
 
 window.__initGallery = function(){
   var track = document.getElementById('gtrack');
@@ -1704,35 +1715,40 @@ window.__initGallery();
             }).join('');
           }
         }
-        // ---- menu ----
+        // ---- menu (sections fully dynamic) ----
         if(C.menu && C.menu.length){
-          C.menu.forEach(function(sec){
-            var el = document.getElementById(sec.id);
-            if(!el) return;
-            var chip = document.querySelector('.chip[data-target="'+sec.id+'"]');
-            if(chip && sec.chip) chip.textContent = sec.chip;
-            var rows = (sec.items||[]).map(function(it){
-              if(it.variants && it.variants.length){
-                var vbtns = it.variants.map(function(v){
-                  return '<button data-name="'+esc(it.name)+' ('+esc(v.label)+')" data-price="'+(v.price|0)+'">'+esc(v.label)+' <span class="vp">$'+(v.price|0)+'</span></button>';
-                }).join('');
-                return '<div class="item no-toggle in" data-name="'+esc(it.name)+'" data-variant="1"><div class="item-body">'
-                  + '<div class="item-name">'+esc(it.name)+(it.badge?'<span class="badge">'+esc(it.badge)+'</span>':'')+'</div>'
-                  + (it.desc?'<div class="item-desc">'+esc(it.desc)+'</div>':'')
-                  + '<div class="variant">'+vbtns+'</div></div></div>';
-              }
-              return '<div class="item in" data-name="'+esc(it.name)+'" data-price="'+(it.price|0)+'"><div class="item-body">'
+          var chipsNav = document.getElementById('chips');
+          if(chipsNav){
+            chipsNav.innerHTML = C.menu.map(function(sec, i){
+              return '<button class="chip'+(i===0?' active':'')+'" data-target="'+esc(sec.id)+'">'+esc(sec.chip||sec.title)+'</button>';
+            }).join('');
+          }
+          var itemHTML = function(it){
+            if(it.variants && it.variants.length){
+              var vbtns = it.variants.map(function(v){
+                return '<button data-name="'+esc(it.name)+' ('+esc(v.label)+')" data-price="'+(v.price|0)+'">'+esc(v.label)+' <span class="vp">$'+(v.price|0)+'</span></button>';
+              }).join('');
+              return '<div class="item no-toggle in" data-name="'+esc(it.name)+'" data-variant="1"><div class="item-body">'
                 + '<div class="item-name">'+esc(it.name)+(it.badge?'<span class="badge">'+esc(it.badge)+'</span>':'')+'</div>'
                 + (it.desc?'<div class="item-desc">'+esc(it.desc)+'</div>':'')
-                + '</div><div class="item-price">$'+(it.price|0)+'</div><div class="pick-dot">✓</div></div>';
-            }).join('');
-            var titleEl = el.querySelector('.sec-title h3');
-            var noteEl = el.querySelector('.sec-note');
-            if(titleEl && sec.title) titleEl.textContent = sec.title;
-            if(noteEl && sec.note) noteEl.textContent = sec.note;
-            el.querySelectorAll('.item').forEach(function(n){ n.remove(); });
-            noteEl.insertAdjacentHTML('afterend', rows);
-          });
+                + '<div class="variant">'+vbtns+'</div></div></div>';
+            }
+            return '<div class="item in" data-name="'+esc(it.name)+'" data-price="'+(it.price|0)+'"><div class="item-body">'
+              + '<div class="item-name">'+esc(it.name)+(it.badge?'<span class="badge">'+esc(it.badge)+'</span>':'')+'</div>'
+              + (it.desc?'<div class="item-desc">'+esc(it.desc)+'</div>':'')
+              + '</div><div class="item-price">$'+(it.price|0)+'</div><div class="pick-dot">✓</div></div>';
+          };
+          var secsHTML = C.menu.map(function(sec){
+            return '<section class="menu-section" id="'+esc(sec.id)+'">'
+              + '<div class="sec-title"><h3>'+esc(sec.title)+'</h3></div>'
+              + (sec.note?'<p class="sec-note">'+esc(sec.note)+'</p>':'')
+              + (sec.items||[]).map(itemHTML).join('')
+              + '</section>';
+          }).join('');
+          document.querySelectorAll('.menu-section').forEach(function(s){ s.remove(); });
+          var outro = document.querySelector('.menu-outro');
+          if(outro) outro.insertAdjacentHTML('beforebegin', secsHTML);
+          if(window.__initMenuNav) window.__initMenuNav();
           if(window.__menu){ window.__menu.bindItems(); window.__menu.refresh(); }
         }
       }catch(err){ console.warn('hydrate section failed', err); }
