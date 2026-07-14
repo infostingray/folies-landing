@@ -628,6 +628,46 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   background:var(--terracotta);border-color:var(--terracotta);
   color:#fff;transform:scale(1.1);
 }
+.trio-bar{
+  position:sticky;top:118px;z-index:30;
+  display:flex;align-items:center;gap:10px;
+  margin:14px 0 4px;padding:11px 14px;
+  background:var(--forest);color:var(--cream);
+  border-radius:16px;
+  box-shadow:0 10px 24px -12px rgba(20,49,40,.55);
+}
+.trio-bar .tb-txt{flex:1;min-width:0}
+.trio-bar .tb-t{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.trio-bar .tb-s{font-size:10.5px;color:rgba(247,239,224,.75);margin-top:2px}
+.trio-slots{display:flex;gap:6px}
+.trio-slot{
+  width:26px;height:26px;border-radius:50%;
+  border:1.5px dashed rgba(247,239,224,.5);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:11px;
+}
+.trio-slot.f{border-style:solid;background:var(--terracotta);border-color:var(--terracotta);color:#fff}
+.trio-x{
+  flex:none;width:24px;height:24px;border-radius:50%;
+  border:1px solid rgba(247,239,224,.4);color:var(--cream);font-size:11px;
+  display:none;
+}
+.trio-bar.has .trio-x{display:block}
+.trio-n{
+  flex:none;display:none;align-items:center;gap:5px;
+  background:var(--terracotta);color:#fff;
+  border-radius:999px;padding:4px 8px 4px 10px;
+  font-size:12px;font-weight:700;
+}
+.item.in-trio .trio-n{display:inline-flex}
+.item.in-trio .pick-dot{display:none}
+.trio-n button{
+  width:16px;height:16px;border-radius:50%;
+  background:rgba(255,255,255,.25);color:#fff;
+  font-size:10px;line-height:1;
+}
+@keyframes trioshake{0%,100%{transform:none}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.item.shake{animation:trioshake .3s ease}
 .qty-step{
   display:none;align-items:center;gap:2px;flex:none;
 }
@@ -1887,21 +1927,109 @@ function initArch(){
     save(); sync(); syncDom();
   }
 
+  var trio = [];
+  function trioCount(name){ var c=0; trio.forEach(function(x){ if(x.name===name) c++; }); return c; }
+  function trioBar(){
+    var sec = document.getElementById('salads');
+    if(!sec) return null;
+    var bar = sec.querySelector('.trio-bar');
+    if(!bar){
+      bar = document.createElement('div');
+      bar.className = 'trio-bar';
+      bar.innerHTML = '<div class="tb-txt"><div class="tb-t">Build your trio</div><div class="tb-s"></div></div>'
+        + '<div class="trio-slots"><span class="trio-slot"></span><span class="trio-slot"></span><span class="trio-slot"></span></div>'
+        + '<button class="trio-x" aria-label="Reset trio">✕</button>';
+      var note = sec.querySelector('.sec-note');
+      (note || sec.querySelector('.sec-title')).insertAdjacentElement('afterend', bar);
+      bar.querySelector('.trio-x').addEventListener('click', function(e){
+        e.stopPropagation();
+        trio = [];
+        trioRender();
+      });
+    }
+    return bar;
+  }
+  function trioRender(){
+    var bar = trioBar();
+    if(!bar) return;
+    var slots = bar.querySelectorAll('.trio-slot');
+    slots.forEach(function(s, i){
+      var p = trio[i];
+      s.classList.toggle('f', !!p);
+      s.textContent = p ? p.name.charAt(0) : '';
+    });
+    var t = 0; trio.forEach(function(x){ t += x.price; });
+    bar.querySelector('.tb-s').textContent = trio.length === 0
+      ? 'Pick any 3 salads; same one max twice'
+      : trio.length + ' of 3 · $' + t + ' so far';
+    bar.classList.toggle('has', trio.length > 0);
+    document.querySelectorAll('#salads .item').forEach(function(it){
+      var names = [it.dataset.name];
+      it.querySelectorAll('.variant button').forEach(function(b){ names.push(b.dataset.name); });
+      var c = 0; names.forEach(function(nm){ c += trioCount(nm); });
+      it.classList.toggle('in-trio', c > 0);
+      var badge = it.querySelector('.trio-n');
+      if(c > 0){
+        if(!badge){
+          badge = document.createElement('span');
+          badge.className = 'trio-n';
+          badge.innerHTML = '<span class="tn-c"></span><button aria-label="Remove one">−</button>';
+          badge.querySelector('button').addEventListener('click', function(e){
+            e.stopPropagation();
+            for(var i=trio.length-1;i>=0;i--){
+              if(names.indexOf(trio[i].name) > -1){ trio.splice(i,1); break; }
+            }
+            trioRender();
+          });
+          var dot = it.querySelector('.pick-dot');
+          if(dot) it.insertBefore(badge, dot); else it.appendChild(badge);
+        }
+        badge.querySelector('.tn-c').textContent = '\u00d7' + c;
+      } else if(badge){ badge.remove(); }
+    });
+  }
+  function trioTap(name, price, el){
+    if(trioCount(name) >= 2){
+      el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake');
+      return;
+    }
+    trio.push({name: name, price: price});
+    if(el) floatPrice(el, price);
+    sparkle(lastTap.x, lastTap.y);
+    if(navigator.vibrate) navigator.vibrate(12);
+    if(trio.length >= 3){
+      var parts = {}, t = 0;
+      trio.forEach(function(x){ t += x.price; parts[x.name] = (parts[x.name]||0) + 1; });
+      var label = 'Trio: ' + Object.keys(parts).map(function(k){
+        return k.replace(/ Salad$/,'').replace('Caesar Salad ','Caesar ') + (parts[k]>1 ? ' \u00d7'+parts[k] : '');
+      }).join(', ');
+      if(picks[label]) picks[label].q = (picks[label].q || 1) + 1;
+      else picks[label] = {p: t, g: 'food', s: 'salads', q: 1};
+      trio = [];
+      if(window.track) track('dish_picked', {dish: label, price: t});
+      save(); sync(); syncDom();
+    }
+    trioRender();
+  }
   function bindItems(){
     document.querySelectorAll('.item[data-price]').forEach(function(it){
       it.addEventListener('click', function(){
-        toggle(it.dataset.name, parseInt(it.dataset.price,10), it);
+        if(it.closest('#salads')) trioTap(it.dataset.name, parseInt(it.dataset.price,10), it);
+        else toggle(it.dataset.name, parseInt(it.dataset.price,10), it);
       });
     });
     document.querySelectorAll('.variant button').forEach(function(b){
       b.addEventListener('click', function(e){
         e.stopPropagation();
-        toggle(b.dataset.name, parseInt(b.dataset.price,10), b.closest('.item'));
+        var host = b.closest('.item');
+        if(b.closest('#salads')) trioTap(b.dataset.name, parseInt(b.dataset.price,10), host);
+        else toggle(b.dataset.name, parseInt(b.dataset.price,10), host);
       });
     });
   }
   bindItems();
-  window.__menu = { bindItems: bindItems, refresh: function(){ sync(); syncDom(); } };
+  trioRender();
+  window.__menu = { bindItems: function(){ bindItems(); trioRender(); }, refresh: function(){ sync(); syncDom(); } };
 
   function openSheet(){
     try{
