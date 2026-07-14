@@ -628,6 +628,8 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
   background:var(--terracotta);border-color:var(--terracotta);
   color:#fff;transform:scale(1.1);
 }
+#salads .item-price{display:none}
+#salads .vp{display:none}
 .trio-bar{
   position:sticky;top:118px;z-index:30;
   display:flex;align-items:center;gap:10px;
@@ -1936,7 +1938,7 @@ function initArch(){
     if(!bar){
       bar = document.createElement('div');
       bar.className = 'trio-bar';
-      bar.innerHTML = '<div class="tb-txt"><div class="tb-t">Build your trio</div><div class="tb-s"></div></div>'
+      bar.innerHTML = '<div class="tb-txt"><div class="tb-t">Build your trio · $18</div><div class="tb-s"></div></div>'
         + '<div class="trio-slots"><span class="trio-slot"></span><span class="trio-slot"></span><span class="trio-slot"></span></div>'
         + '<button class="trio-x" aria-label="Reset trio">✕</button>';
       var note = sec.querySelector('.sec-note');
@@ -1958,10 +1960,9 @@ function initArch(){
       s.classList.toggle('f', !!p);
       s.textContent = p ? p.name.charAt(0) : '';
     });
-    var t = 0; trio.forEach(function(x){ t += x.price; });
     bar.querySelector('.tb-s').textContent = trio.length === 0
       ? 'Pick any 3 salads; same one max twice'
-      : trio.length + ' of 3 · $' + t + ' so far';
+      : trio.length + ' of 3 picked';
     bar.classList.toggle('has', trio.length > 0);
     document.querySelectorAll('#salads .item').forEach(function(it){
       var names = [it.dataset.name];
@@ -1993,13 +1994,12 @@ function initArch(){
       el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake');
       return;
     }
-    trio.push({name: name, price: price});
-    if(el) floatPrice(el, price);
+    trio.push({name: name});
     sparkle(lastTap.x, lastTap.y);
     if(navigator.vibrate) navigator.vibrate(12);
     if(trio.length >= 3){
-      var parts = {}, t = 0;
-      trio.forEach(function(x){ t += x.price; parts[x.name] = (parts[x.name]||0) + 1; });
+      var parts = {}, t = 18;
+      trio.forEach(function(x){ parts[x.name] = (parts[x.name]||0) + 1; });
       var label = 'Trio: ' + Object.keys(parts).map(function(k){
         return k.replace(/ Salad$/,'').replace('Caesar Salad ','Caesar ') + (parts[k]>1 ? ' \u00d7'+parts[k] : '');
       }).join(', ');
