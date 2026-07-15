@@ -11,6 +11,7 @@
 
 const REPO = "infostingray/folies-landing";
 const FILE = "content.json";
+const META_PIXEL_ID = "1644172166643880";
 
 const CORS = {
   "Access-Control-Allow-Origin": "*",
@@ -36,6 +37,38 @@ export default {
       body = await request.json();
     } catch {
       return json({ ok: false, error: "Bad JSON" }, 400);
+    }
+
+    // ---- Meta Conversions API relay (public; no passcode) ----
+    if (url.pathname.endsWith("/fb")) {
+      const ALLOWED_EVENTS = ["PageView", "MenuView", "ViewContent", "Schedule", "AddToWishlist"];
+      if (!ALLOWED_EVENTS.includes(body.event_name)) return json({ ok: false, error: "Event not allowed" }, 400);
+      if (!env.META_CAPI_TOKEN) return json({ ok: false, error: "CAPI not configured" }, 500);
+      const payload = {
+        data: [{
+          event_name: body.event_name,
+          event_time: Math.floor(Date.now() / 1000),
+          event_id: body.event_id ? String(body.event_id).slice(0, 64) : undefined,
+          event_source_url: String(body.url || "https://ofolies.com/").slice(0, 512),
+          action_source: "website",
+          user_data: {
+            client_ip_address: request.headers.get("CF-Connecting-IP") || undefined,
+            client_user_agent: request.headers.get("User-Agent") || undefined,
+            fbp: body.fbp || undefined,
+            fbc: body.fbc || undefined,
+          },
+          custom_data: body.custom_data && typeof body.custom_data === "object" ? body.custom_data : undefined,
+        }],
+      };
+      const fb = await fetch(
+        `https://graph.facebook.com/v21.0/${META_PIXEL_ID}/events?access_token=${env.META_CAPI_TOKEN}`,
+        { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) }
+      );
+      if (!fb.ok) {
+        const err = await fb.text();
+        return json({ ok: false, error: "Meta error: " + err.slice(0, 140) }, 502);
+      }
+      return json({ ok: true });
     }
 
     // constant-ish comparison
