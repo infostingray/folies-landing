@@ -52,7 +52,16 @@ function fbTrack(n, p, custom){
   }catch(e){}
 }
 fbTrack('PageView');
-if(/[?&]src=qr(&|$)/.test(location.search)) fbTrack('QRScanWebsite', {}, true);
+if(/[?&]src=qr(&|$)/.test(location.search)){
+  fbTrack('QRScanWebsite', {}, true);
+  /* tracking captured; clean the address bar so copies/shares are the bare URL */
+  try{
+    var _sp = new URLSearchParams(location.search);
+    _sp.delete('src');
+    var _q = _sp.toString();
+    history.replaceState(null, '', location.pathname + (_q ? '?' + _q : ''));
+  }catch(e){}
+}
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1644172166643880&ev=PageView&noscript=1"
