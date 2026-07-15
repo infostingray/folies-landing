@@ -30,10 +30,28 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1644172166643880');
-fbq('track', 'PageView');
 function fbTrack(n, p, custom){
-  try{ if(window.fbq){ custom ? fbq('trackCustom', n, p||{}) : fbq('track', n, p||{}); } }catch(e){}
+  try{
+    var evid = Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
+    if(window.fbq){
+      custom ? fbq('trackCustom', n, p||{}, {eventID: evid})
+             : fbq('track', n, p||{}, {eventID: evid});
+    }
+    var ck = function(k){
+      var m = document.cookie.match(new RegExp('(?:^|; )' + k + '=([^;]*)'));
+      return m ? decodeURIComponent(m[1]) : undefined;
+    };
+    fetch('https://ofolies-dash.silent-snowflake-d859.workers.dev/fb', {
+      method: 'POST', keepalive: true,
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        event_name: n, event_id: evid, url: location.href,
+        fbp: ck('_fbp'), fbc: ck('_fbc'), custom_data: p || {}
+      })
+    }).catch(function(){});
+  }catch(e){}
 }
+fbTrack('PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1644172166643880&ev=PageView&noscript=1"
