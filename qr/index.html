@@ -27,11 +27,9 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1644172166643880');
 
 (function(){
-  var evid1 = Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,8);
   var evid2 = Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,8);
 
   // browser channel (queued; sent once the library loads)
-  fbq('trackCustom', 'QRScanWebsite', {src: 'qr'}, {eventID: evid1});
   fbq('trackCustom', 'QRScanWebsiteOffline', {src: 'qr', currency: 'USD'}, {eventID: evid2});
 
   // server channel (fires immediately; keepalive survives the redirect)
@@ -49,7 +47,6 @@ fbq('init', '1644172166643880');
       }).catch(function(){});
     }catch(e){}
   };
-  send('QRScanWebsite', evid1, {src: 'qr'});
   send('QRScanWebsiteOffline', evid2, {src: 'qr', currency: 'USD'});
 
   // forward to the site once the pixel library has flushed (max 1.6s)
