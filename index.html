@@ -19,6 +19,27 @@ gtag('js', new Date());
 gtag('config', 'G-91BVYFY215');
 function track(n,p){ try{ gtag('event', n, p||{}); }catch(e){} }
 </script>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1644172166643880');
+fbq('track', 'PageView');
+function fbTrack(n, p, custom){
+  try{ if(window.fbq){ custom ? fbq('trackCustom', n, p||{}) : fbq('track', n, p||{}); } }catch(e){}
+}
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1644172166643880&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel -->
+
 <script type="application/ld+json" id="ldjson">
 {
   "@context": "https://schema.org",
@@ -1951,6 +1972,7 @@ function initArch(){
       if(el) floatPrice(el, price);
       sparkle(lastTap.x, lastTap.y);
       if(window.track) track('dish_picked', {dish: name, price: price});
+      if(window.fbTrack) fbTrack('AddToWishlist', {content_name: name, value: price, currency: 'USD'});
       if(navigator.vibrate) navigator.vibrate(12);
     }
     save(); sync(); syncDom();
@@ -2034,6 +2056,7 @@ function initArch(){
       else picks[label] = {p: t, g: 'food', s: 'salads', q: 1};
       trio = [];
       if(window.track) track('dish_picked', {dish: label, price: t});
+      if(window.fbTrack) fbTrack('AddToWishlist', {content_name: label, value: t, currency: 'USD'});
       save(); sync(); syncDom();
     }
     trioRender();
@@ -2140,7 +2163,14 @@ window.__initMenuNav = function(){
     c.onclick = function(){ activate(c.dataset.target, true); };
   });
   segBtns.forEach(function(b){
-    b.onclick = function(){ setGroup(b.dataset.group, false); };
+    b.onclick = function(){
+      setGroup(b.dataset.group, false);
+      if(window.fbTrack){
+        fbTrack('MenuView', {menu_type: b.dataset.group}, true);
+        fbTrack('ViewContent', {content_category: 'menu', content_name: b.dataset.group + ' menu'});
+      }
+      if(window.track) track('menu_group', {group: b.dataset.group});
+    };
   });
   window.__setMenuGroup = setGroup;
   setGroup(window.__menuGroup, false);
@@ -2154,6 +2184,10 @@ document.querySelectorAll('[data-menugroup]').forEach(function(a){
     var m = document.getElementById('menu');
     if(m) m.scrollIntoView({behavior:'smooth'});
     if(window.track) track('menu_group', {group: a.dataset.menugroup});
+    if(window.fbTrack){
+      fbTrack('MenuView', {menu_type: a.dataset.menugroup}, true);
+      fbTrack('ViewContent', {content_category: 'menu', content_name: a.dataset.menugroup + ' menu'});
+    }
   });
 });
 
@@ -2416,7 +2450,10 @@ document.addEventListener('click', function(e){
           : a.closest('#sheet') ? 'order_sheet'
           : a.closest('.visit') ? 'visit'
           : 'other';
-  if(a.href.indexOf('resos.com') > -1) track('reserve_click', {location: loc});
+  if(a.href.indexOf('resos.com') > -1){
+    track('reserve_click', {location: loc});
+    if(window.fbTrack) fbTrack('Schedule', {location: loc});
+  }
   else if(a.href.indexOf('tel:') === 0) track('call_click', {location: loc});
   else if(a.href.indexOf('maps.google') > -1) track('map_click', {location: loc});
   else if(a.href.indexOf('instagram.com') > -1) track('instagram_click', {location: loc});
