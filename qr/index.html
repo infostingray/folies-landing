@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>OFôlies</title>
+<style>
+  html,body{height:100%;margin:0}
+  body{
+    display:flex;align-items:center;justify-content:center;
+    background:#143128;color:#F7EFE0;
+    font-family:Georgia,'Times New Roman',serif;
+  }
+  .w{letter-spacing:.34em;text-indent:.34em;font-size:20px;opacity:0;animation:a .9s .15s ease forwards}
+  @keyframes a{to{opacity:1}}
+</style>
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1644172166643880');
+
+(function(){
+  var evid1 = Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,8);
+  var evid2 = Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,8);
+
+  // browser channel (queued; sent once the library loads)
+  fbq('trackCustom', 'QRScanWebsite', {src: 'qr'}, {eventID: evid1});
+  fbq('trackCustom', 'QRScanWebsiteOffline', {src: 'qr', currency: 'USD'}, {eventID: evid2});
+
+  // server channel (fires immediately; keepalive survives the redirect)
+  var send = function(name, evid, extra){
+    var body = {event_name: name, event_id: evid, url: location.href, custom_data: extra || {}};
+    try{
+      var m = document.cookie.match(/(?:^|; )_fbp=([^;]*)/);
+      if(m) body.fbp = decodeURIComponent(m[1]);
+    }catch(e){}
+    try{
+      fetch('https://ofolies-dash.silent-snowflake-d859.workers.dev/fb', {
+        method: 'POST', keepalive: true,
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(body)
+      }).catch(function(){});
+    }catch(e){}
+  };
+  send('QRScanWebsite', evid1, {src: 'qr'});
+  send('QRScanWebsiteOffline', evid2, {src: 'qr', currency: 'USD'});
+
+  // forward to the site once the pixel library has flushed (max 1.6s)
+  var t0 = Date.now();
+  (function go(){
+    var ready = window.fbq && fbq.callMethod;
+    if(ready || Date.now() - t0 > 1600){
+      setTimeout(function(){ location.replace('/'); }, ready ? 350 : 0);
+    } else setTimeout(go, 120);
+  })();
+})();
+</script>
+</head>
+<body>
+  <div class="w">OF&Ocirc;LIES</div>
+  <noscript><meta http-equiv="refresh" content="0;url=/"></noscript>
+</body>
+</html>
