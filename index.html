@@ -2463,7 +2463,7 @@ document.addEventListener('click', function(e){
           : 'other';
   if(a.href.indexOf('resos.com') > -1){
     track('reserve_click', {location: loc});
-    if(window.fbTrack) fbTrack('Schedule', {location: loc});
+    if(window.fbTrack) fbTrack('ViewContent', {location: loc});
   }
   else if(a.href.indexOf('tel:') === 0){
     track('call_click', {location: loc});
