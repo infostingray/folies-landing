@@ -10,9 +10,9 @@
     "maps": "https://maps.google.com/?q=Zaarour+Club+Lebanon"
   },
   "hours": {
-    "openLabel": "Daily · 5 PM - Late",
-    "openHour": 17,
-    "closeHour": 1
+    "openLabel": "Daily · 4 PM - 12 AM",
+    "openHour": 16,
+    "closeHour": 0
   },
   "events": [
     {
@@ -22,7 +22,7 @@
       "dj": "Pierre G",
       "tags": [
         "Melodic House",
-        "6 PM - Late"
+        "5 PM"
       ],
       "url": "https://ofolies.resos.com/"
     },
@@ -31,6 +31,30 @@
       "label": "Sun Jul",
       "name": "World Cup Final",
       "dj": "",
+      "tags": [],
+      "url": "https://ofolies.resos.com/"
+    },
+    {
+      "day": "24",
+      "label": "Fri Jul",
+      "name": "Sunset Memories",
+      "dj": "Tony H",
+      "tags": [],
+      "url": "https://ofolies.resos.com/"
+    },
+    {
+      "day": "25",
+      "label": "Sat Jul",
+      "name": "Sunset Memories",
+      "dj": "Pierre G",
+      "tags": [],
+      "url": "https://ofolies.resos.com/"
+    },
+    {
+      "day": "26",
+      "label": "Sun Jul",
+      "name": "Sunset Memories",
+      "dj": "Nour Nemri & The Band",
       "tags": [],
       "url": "https://ofolies.resos.com/"
     }
