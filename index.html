@@ -52,7 +52,7 @@ function fbTrack(n, p, custom){
   }catch(e){}
 }
 fbTrack('PageView');
-fbTrack('QRScanWebsite', {}, true);
+if(/[?&]src=qr(&|$)/.test(location.search)) fbTrack('QRScanWebsite', {}, true);
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1644172166643880&ev=PageView&noscript=1"
