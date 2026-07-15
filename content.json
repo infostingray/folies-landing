@@ -18,8 +18,8 @@
     {
       "day": "18",
       "label": "Sat Jul",
-      "name": "Golden Hour Session",
-      "dj": "Yussef K",
+      "name": "Grand Openeing",
+      "dj": "Pierre G",
       "tags": [
         "Melodic House",
         "6 PM - Late"
@@ -29,23 +29,9 @@
     {
       "day": "19",
       "label": "Sun Jul",
-      "name": "Sunset High",
-      "dj": "DJ Nino",
-      "tags": [
-        "Afro House",
-        "7 PM - Late"
-      ],
-      "url": "https://ofolies.resos.com/"
-    },
-    {
-      "day": "20",
-      "label": "Mon Jul",
-      "name": "Acoustic Sundown",
-      "dj": "Live Band · Unplugged",
-      "tags": [
-        "Live Music",
-        "Chill"
-      ],
+      "name": "World Cup Final",
+      "dj": "",
+      "tags": [],
       "url": "https://ofolies.resos.com/"
     }
   ],
@@ -216,79 +202,98 @@
       "items": [
         {
           "name": "Aperol Spritz",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Negroni",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Paloma",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Classic Margarita",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Spicy Margarita",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Tommy Margarita",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Espresso Martini",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Tomatini",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Hugo Spritz",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Sangria Rose",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Mojito",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Moscow Mule",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Old Fashioned",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Dry Martini",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Dirty Martini",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Bloody Mary",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Daiquiri",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Gin Basil",
-          "price": 11
+          "price": 11,
+          "desc": ""
         },
         {
           "name": "Passion Martini",
-          "price": 11
+          "price": 11,
+          "desc": ""
         }
       ]
     },
@@ -300,31 +305,38 @@
       "items": [
         {
           "name": "Virgin Jamaica",
-          "price": 7
+          "price": 7,
+          "desc": ""
         },
         {
           "name": "Virgin Mary",
-          "price": 7
+          "price": 7,
+          "desc": ""
         },
         {
           "name": "Virgin Mojito",
-          "price": 7
+          "price": 7,
+          "desc": ""
         },
         {
           "name": "Virgin Piña Colada",
-          "price": 7
+          "price": 7,
+          "desc": ""
         },
         {
           "name": "Passion Fruit",
-          "price": 7
+          "price": 7,
+          "desc": ""
         },
         {
           "name": "Minted Lemonade",
-          "price": 7
+          "price": 7,
+          "desc": ""
         },
         {
           "name": "Lemonade",
-          "price": 7
+          "price": 7,
+          "desc": ""
         }
       ]
     },
@@ -503,7 +515,8 @@
               "label": "Bottle",
               "price": 45
             }
-          ]
+          ],
+          "desc": ""
         },
         {
           "name": "Astoria Tiamo- White",
@@ -586,7 +599,8 @@
               "label": "Bottle",
               "price": 120
             }
-          ]
+          ],
+          "desc": ""
         },
         {
           "name": "Gordon’s",
@@ -612,7 +626,8 @@
               "label": "Bottle",
               "price": 90
             }
-          ]
+          ],
+          "desc": ""
         },
         {
           "name": "Beluga",
@@ -677,7 +692,8 @@
               "label": "Bottle",
               "price": 200
             }
-          ]
+          ],
+          "desc": ""
         },
         {
           "name": "Tito's",
@@ -712,7 +728,8 @@
               "label": "Bottle",
               "price": 160
             }
-          ]
+          ],
+          "desc": ""
         },
         {
           "name": "Camus XO",
@@ -725,7 +742,8 @@
               "label": "Bottle",
               "price": 350
             }
-          ]
+          ],
+          "desc": ""
         },
         {
           "name": "Chivas 12",
@@ -808,7 +826,8 @@
               "label": "Bottle",
               "price": 120
             }
-          ]
+          ],
+          "desc": ""
         },
         {
           "name": "Macallan 12",
@@ -849,7 +868,8 @@
               "label": "Bottle",
               "price": 130
             }
-          ]
+          ],
+          "desc": ""
         },
         {
           "name": "The Singleton 12",
@@ -862,7 +882,8 @@
               "label": "Bottle",
               "price": 120
             }
-          ]
+          ],
+          "desc": ""
         },
         {
           "name": "Glenfiddich 12",
@@ -875,7 +896,8 @@
               "label": "Bottle",
               "price": 125
             }
-          ]
+          ],
+          "desc": ""
         },
         {
           "name": "Glenfiddich 15",
@@ -888,7 +910,8 @@
               "label": "Bottle",
               "price": 170
             }
-          ]
+          ],
+          "desc": ""
         },
         {
           "name": "Jack Daniel's",
@@ -915,7 +938,8 @@
               "label": "Bottle",
               "price": 135
             }
-          ]
+          ],
+          "desc": ""
         },
         {
           "name": "J&B",
@@ -942,7 +966,8 @@
               "label": "Bottle",
               "price": 220
             }
-          ]
+          ],
+          "desc": ""
         },
         {
           "name": "Monkey Shoulder",
@@ -1131,7 +1156,8 @@
               "label": "Bottle",
               "price": 220
             }
-          ]
+          ],
+          "desc": ""
         },
         {
           "name": "Patron Añejo",
@@ -1144,7 +1170,8 @@
               "label": "Bottle",
               "price": 240
             }
-          ]
+          ],
+          "desc": ""
         },
         {
           "name": "Patron XO Café",
@@ -1157,7 +1184,8 @@
               "label": "Bottle",
               "price": 150
             }
-          ]
+          ],
+          "desc": ""
         },
         {
           "name": "Jose Cuervo Gold",
@@ -1189,27 +1217,33 @@
       "items": [
         {
           "name": "Soft Drink",
-          "price": 4
+          "price": 4,
+          "desc": ""
         },
         {
           "name": "Pink Grape Fruit Soda",
-          "price": 5
+          "price": 5,
+          "desc": ""
         },
         {
           "name": "Red Bull",
-          "price": 7
+          "price": 7,
+          "desc": ""
         },
         {
           "name": "S Pellegrino",
-          "price": 4
+          "price": 4,
+          "desc": ""
         },
         {
           "name": "Water Big",
-          "price": 4
+          "price": 4,
+          "desc": ""
         },
         {
           "name": "Water Small",
-          "price": 2
+          "price": 2,
+          "desc": ""
         }
       ]
     }
