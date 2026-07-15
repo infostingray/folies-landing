@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- GENERATED offline-tracking clone of index.html. Do not edit by hand;
+     regenerate with gen_qr.py after any change to the main page. -->
+<base href="/">
 <meta name="robots" content="noindex, nofollow">
-<title>OFôlies</title>
-<style>
-  html,body{height:100%;margin:0}
-  body{
-    display:flex;align-items:center;justify-content:center;
-    background:#143128;color:#F7EFE0;
-    font-family:Georgia,'Times New Roman',serif;
-  }
-  .w{letter-spacing:.34em;text-indent:.34em;font-size:20px;opacity:0;animation:a .9s .15s ease forwards}
-  @keyframes a{to{opacity:1}}
-</style>
+<link rel="canonical" href="https://ofolies.com/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>OFôlies Sunset Lounge, Zaarour</title>
+<meta name="description" content="OFôlies, a sunset lounge at 1,700m in Zaarour, Mount Lebanon. Golden-hour terrace, cocktails, food and curated music, daily 5 PM till late. We are not far, we are just higher. Book a table.">
+<meta name="theme-color" content="#143128">
+<meta property="og:title" content="OFôlies Sunset Lounge, Zaarour">
+<meta property="og:description" content="We are not far, we are just HIGHER. Menu & reservations.">
+<meta property="og:url" content="https://ofolies.com/">
+<meta property="og:image" content="https://ofolies.com/assets/sunset.jpg">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-91BVYFY215"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-91BVYFY215');
+function track(n,p){ try{ gtag('event', n, p||{}); }catch(e){} }
+</script>
+<!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -25,43 +35,2452 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1644172166643880');
+function fbTrack(n, p, custom){
+  try{
+    n = n + 'Offline'; /* offline page: every event is the custom Offline twin */
+    var evid = Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
+    if(window.fbq){
+      fbq('trackCustom', n, p||{}, {eventID: evid});
+    }
+    var ck = function(k){
+      var m = document.cookie.match(new RegExp('(?:^|; )' + k + '=([^;]*)'));
+      return m ? decodeURIComponent(m[1]) : undefined;
+    };
+    fetch('https://ofolies-dash.silent-snowflake-d859.workers.dev/fb', {
+      method: 'POST', keepalive: true,
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        event_name: n, event_id: evid, url: 'https://ofolies.com/qr/',
+        fbp: ck('_fbp'), fbc: ck('_fbc'), custom_data: p || {}
+      })
+    }).catch(function(){});
+  }catch(e){}
+}
+fbTrack('PageView');
+fbTrack('QRScanWebsite', {src: 'qr', currency: 'USD'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1644172166643880&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel -->
 
-(function(){
-  var evid2 = Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,8);
+<script type="application/ld+json" id="ldjson">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "OFôlies",
+  "alternateName": "OFôlies Sunset Lounge",
+  "description": "A high-altitude sunset lounge in Zaarour, Mount Lebanon; food, cocktails and curated music at 1,700m. We are not far, we are just higher.",
+  "url": "https://ofolies.com/",
+  "image": "https://ofolies.com/assets/sunset.jpg",
+  "servesCuisine": ["Lebanese", "International"],
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Zaarour",
+    "addressRegion": "Mount Lebanon",
+    "addressCountry": "LB"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "17:00",
+    "closes": "01:00"
+  },
+  "acceptsReservations": "https://ofolies.resos.com/",
+  "sameAs": ["https://www.instagram.com/ofoliesss/"]
+}
+</script>
+<link rel="preload" as="image" href="assets/sunset.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Italiana&family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pine:#143128;
+  --forest:#1E4437;
+  --forest-line:#2A5646;
+  --terracotta:#D9532F;
+  --coral:#EF7A4E;
+  --peach:#F5B78C;
+  --blush:#FBD9BC;
+  --cream:#F7EFE0;
+  --cream-deep:#F0E5D0;
+  --ink:#22201B;
+  --display:'Marcellus', serif;
+  --thin:'Italiana', serif;
+  --body:'Hanken Grotesk', system-ui, sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--pine);color:var(--cream);overflow-x:hidden}
+body.locked{overflow:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:var(--body);border:none;background:none;cursor:pointer;color:inherit}
 
-  // browser channel (queued; sent once the library loads)
-  fbq('trackCustom', 'QRScanWebsiteOffline', {src: 'qr', currency: 'USD'}, {eventID: evid2});
+#sunbar{
+  position:fixed;top:0;left:0;height:3px;width:0%;z-index:900;
+  background:linear-gradient(90deg,var(--peach),var(--coral),var(--terracotta));
+  box-shadow:0 0 10px rgba(239,122,78,.7);
+  transition:width .15s linear;
+}
 
-  // server channel (fires immediately; keepalive survives the redirect)
-  var send = function(name, evid, extra){
-    var body = {event_name: name, event_id: evid, url: location.href, custom_data: extra || {}};
-    try{
-      var m = document.cookie.match(/(?:^|; )_fbp=([^;]*)/);
-      if(m) body.fbp = decodeURIComponent(m[1]);
-    }catch(e){}
-    try{
-      fetch('https://ofolies-dash.silent-snowflake-d859.workers.dev/fb', {
-        method: 'POST', keepalive: true,
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(body)
-      }).catch(function(){});
-    }catch(e){}
-  };
-  send('QRScanWebsiteOffline', evid2, {src: 'qr', currency: 'USD'});
+/* ============================================================
+   PRELOADER — LIGHT THE TERRACE (real photo comes alive)
+   ============================================================ */
+#loader{
+  position:fixed;inset:0;z-index:1000;
+  overflow:hidden;touch-action:none;cursor:grab;
+  user-select:none;-webkit-user-select:none;
+  background:var(--pine);
+  transition:opacity .9s ease, visibility .9s ease;
+}
+#loader:active{cursor:grabbing}
+#loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.ld-photo{
+  position:absolute;inset:0;
+  background:url('assets/sunset.jpg') center 38%/cover no-repeat;
+  filter:brightness(1.08) saturate(.92);
+  transform:scale(1.06);
+  will-change:filter, transform;
+}
+.ld-night{
+  position:absolute;inset:0;opacity:0;pointer-events:none;
+  background:linear-gradient(180deg, rgba(10,14,40,.85) 0%, rgba(24,20,56,.65) 45%, rgba(15,39,33,.5) 100%);
+}
+.ld-warm{
+  position:absolute;inset:0;opacity:0;
+  background:
+    radial-gradient(120% 70% at 50% 30%, rgba(245,154,85,.35), transparent 60%),
+    linear-gradient(180deg, rgba(58,36,80,.35) 0%, rgba(217,83,47,.18) 55%, rgba(251,217,188,.15) 100%);
+  mix-blend-mode:screen;pointer-events:none;
+}
+.ld-vig{
+  position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 100% at 50% 45%, transparent 55%, rgba(15,39,33,.75) 100%);
+}
+.ld-stars{position:absolute;inset:0;pointer-events:none}
+.ld-star{
+  position:absolute;width:2px;height:2px;border-radius:50%;
+  background:#FFF3D6;opacity:0;
+  animation:twinkle 2.6s ease-in-out infinite;
+}
+.ld-sun{
+  position:absolute;left:50%;top:0;
+  width:96px;height:96px;margin-left:-48px;border-radius:50%;
+  background:radial-gradient(circle at 36% 30%, #FFFFF6 0%, #FFF2CC 26%, #FFD98F 54%, #FBAA5C 78%, #F0813F 100%);
+  box-shadow:
+    inset -8px -12px 24px rgba(224,100,45,.5),
+    inset 6px 8px 16px rgba(255,255,240,.6),
+    0 0 34px 12px rgba(255,224,150,.8),
+    0 0 100px 45px rgba(245,154,85,.4);
+  will-change:transform;z-index:5;
+}
+.ld-sun::before{
+  content:"";position:absolute;inset:-46px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,236,180,.5) 0%, rgba(255,200,120,.18) 45%, transparent 70%);
+  animation:halo 3s ease-in-out infinite;
+  pointer-events:none;
+}
+.ld-sun::after{
+  content:"";position:absolute;inset:-40px;border-radius:50%;
+  background:repeating-conic-gradient(rgba(255,240,200,.4) 0deg 5deg, transparent 5deg 26deg);
+  -webkit-mask:radial-gradient(circle, transparent 44%, #000 50%, transparent 74%);
+  mask:radial-gradient(circle, transparent 44%, #000 50%, transparent 74%);
+  animation:spin 26s linear infinite;
+  pointer-events:none;
+}
+@keyframes halo{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.12);opacity:1}}
+#loader.grabbed .ld-sun{
+  box-shadow:
+    inset -8px -12px 24px rgba(224,100,45,.5),
+    inset 6px 8px 16px rgba(255,255,240,.7),
+    0 0 55px 20px rgba(255,224,150,.95),
+    0 0 160px 75px rgba(245,154,85,.55);
+}
+#loader.grabbed .ld-sun::before{animation-duration:1.2s}
+.ld-brand{position:absolute;top:max(26px, env(safe-area-inset-top));left:0;right:0;text-align:center;z-index:6}
+.ld-brand .mark{
+  font-family:var(--display);font-size:26px;letter-spacing:.4em;text-indent:.4em;
+  color:var(--cream);text-shadow:0 2px 20px rgba(15,39,33,.8);
+}
+.ld-brand .sub{
+  margin-top:6px;font-size:9px;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--peach);text-indent:.4em;
+}
+.ld-hint{
+  position:absolute;left:50%;bottom:calc(38px + env(safe-area-inset-bottom));
+  transform:translateX(-50%);
+  text-align:center;z-index:6;
+  font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:#fff;
+  background:linear-gradient(120deg,var(--terracotta),var(--coral));
+  padding:14px 22px;border-radius:999px;
+  box-shadow:0 10px 30px -6px rgba(217,83,47,.7), 0 0 0 0 rgba(239,122,78,.5);
+  animation:hintpulse 2s ease-in-out infinite;
+  white-space:nowrap;
+  transition:opacity .4s ease;
+}
+@keyframes hintpulse{
+  0%,100%{box-shadow:0 10px 30px -6px rgba(217,83,47,.7), 0 0 0 0 rgba(239,122,78,.55)}
+  50%{box-shadow:0 10px 30px -6px rgba(217,83,47,.7), 0 0 0 14px rgba(239,122,78,0)}
+}
+.ld-hint .arrow{
+  display:inline-block;margin-left:10px;width:11px;height:11px;
+  border-right:2.5px solid #fff;border-bottom:2.5px solid #fff;
+  transform:rotate(45deg) translate(-1px,-1px);
+  animation:nudge 1.4s ease-in-out infinite;
+  vertical-align:2px;
+}
+#loader.grabbed .ld-hint{opacity:0}
+.ld-progress{
+  position:absolute;top:50%;right:18px;z-index:6;
+  width:2px;height:110px;margin-top:-55px;
+  background:rgba(255,255,255,.22);border-radius:2px;
+}
+.ld-progress i{position:absolute;left:0;right:0;top:0;height:0%;background:var(--cream);border-radius:2px;display:block}
+.ld-higher{
+  position:absolute;inset:0;z-index:7;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;pointer-events:none;
+  opacity:0;transform:scale(.92);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.22,1,.36,1);
+}
+#loader.fin .ld-higher{opacity:1;transform:none}
+.ld-higher small{font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--blush);text-shadow:0 1px 14px rgba(15,39,33,.9)}
+.ld-higher b{
+  display:block;margin-top:8px;
+  font-family:var(--thin);font-weight:400;
+  font-size:clamp(58px,18vw,110px);
+  letter-spacing:.14em;text-indent:.14em;
+  color:var(--cream);text-shadow:0 0 70px rgba(245,154,85,.95), 0 0 24px rgba(251,217,188,.6);
+}
+#loader.fin .ld-hint,#loader.fin .ld-progress{opacity:0}
+.burst{
+  position:absolute;width:6px;height:6px;border-radius:50%;z-index:8;
+  background:var(--blush);pointer-events:none;
+  animation:flyout .9s ease-out forwards;
+}
+@keyframes flyout{
+  from{opacity:1;transform:translate(0,0) scale(1)}
+  to{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.2)}
+}
 
-  // forward to the site once the pixel library has flushed (max 1.6s)
-  var t0 = Date.now();
-  (function go(){
-    var ready = window.fbq && fbq.callMethod;
-    if(ready || Date.now() - t0 > 1600){
-      setTimeout(function(){ location.replace('/'); }, ready ? 350 : 0);
-    } else setTimeout(go, 120);
-  })();
+#annc{
+  display:none;
+  background:linear-gradient(120deg,var(--terracotta),var(--coral));
+  color:#fff;text-align:center;
+  padding:12px 20px;
+  font-size:12.5px;font-weight:700;letter-spacing:.08em;
+}
+#annc.show{display:block}
+
+/* ============================================================
+   ETCHED WALL
+   ============================================================ */
+.wall{position:relative;background:var(--forest)}
+.wall::before{
+  content:"";position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='340' viewBox='0 0 340 340'%3E%3Cg fill='none' stroke='%232A5646' stroke-width='1.4' stroke-linecap='round'%3E%3Cpath d='M40 300 Q60 210 55 130 M55 130 Q30 150 22 185 M55 132 Q80 148 88 182 M53 160 Q34 172 30 200 M56 160 Q76 174 80 202 M52 195 Q38 205 36 228 M56 196 Q72 206 74 230'/%3E%3Cpath d='M250 60 Q248 130 260 190 M258 100 Q233 96 216 78 M259 100 Q283 94 297 74 M260 135 Q236 132 222 116 M261 135 Q285 130 297 112 M262 168 Q242 166 230 152 M263 168 Q283 164 293 148'/%3E%3Cpath d='M120 40 Q160 60 200 42 M132 46 Q140 30 136 18 M158 54 Q168 40 166 26 M184 50 Q196 38 196 24'/%3E%3Cpath d='M300 250 Q290 290 300 330 M298 272 Q282 268 274 256 M299 272 Q314 266 320 254 M297 300 Q283 297 276 286 M298 300 Q312 295 318 284'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:340px 340px;opacity:.55;pointer-events:none;
+}
+.wall>*{position:relative}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  min-height:100vh;min-height:100svh;
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
+  padding:clamp(20px,6vw,48px) 24px 56px;
+  text-align:center;
+}
+.hero-top,.hero-brand,.tagline,.hero-cta,.scroll-hint{opacity:0}
+.ready .hero-top{animation:fadeDown .9s .15s ease forwards}
+.ready .arch-wrap{animation:archIn 1.2s .3s cubic-bezier(.22,1,.36,1) forwards}
+.ready .hero-brand{animation:fadeUp 1s .7s ease forwards}
+.ready .tagline{animation:fadeUp 1s 1.2s ease forwards}
+.ready .hero-cta{animation:fadeUp 1s .95s ease forwards}
+.ready .scroll-hint{animation:fadeUp 1s 1.5s ease forwards}
+.hero-top{
+  width:100%;display:flex;align-items:center;justify-content:center;
+  margin-bottom:clamp(20px,5vh,40px);
+}
+.sun-chip{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--display);
+  font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cream);
+  border:1px solid rgba(245,183,140,.45);
+  background:rgba(15,39,33,.5);
+  padding:11px 20px;border-radius:999px;
+}
+.sun-chip::before{
+  content:"";width:9px;height:9px;border-radius:50%;flex:none;
+  background:radial-gradient(circle at 38% 32%, #FFF3D6, #F59A55);
+  box-shadow:0 0 10px rgba(245,154,85,.9);
+  animation:chipglow 2.2s ease-in-out infinite;
+}
+@keyframes chipglow{0%,100%{box-shadow:0 0 6px rgba(245,154,85,.6)}50%{box-shadow:0 0 14px rgba(245,154,85,1)}}
+
+/* the arch — a live window onto the real terrace */
+.arch-wrap{
+  width:min(80vw,335px);
+  aspect-ratio:720/960;
+  min-height:400px;
+  position:relative;
+  opacity:0;transform:translateY(24px) scale(.97);
+  filter:drop-shadow(0 26px 40px rgba(0,0,0,.45));
+}
+.arch-osvg{
+  position:absolute;inset:0;z-index:10;pointer-events:none;
+}
+.arch-osvg img{display:block;width:100%;height:100%}
+.arch{
+  position:absolute;inset:0;
+  overflow:hidden;
+  touch-action:pan-y;cursor:ew-resize;
+  background:linear-gradient(180deg,#5b3a6e,#e2653f 60%,#fbc98a);
+  border-radius:50% / 50%;
+  -webkit-mask-image:url('assets/o-hole-x3.png');
+  mask-image:url('assets/o-hole-x3.png');
+  -webkit-mask-size:100% 100%;
+  mask-size:100% 100%;
+  -webkit-mask-position:0 0;
+  mask-position:0 0;
+  -webkit-mask-repeat:no-repeat;
+  mask-repeat:no-repeat;
+}
+.arch-pan{
+  position:absolute;top:0;bottom:0;left:-6%;width:112%;
+  will-change:transform;
+}
+.arch-pan img{
+  width:100%;height:100%;object-fit:cover;object-position:50% 35%;
+  animation:kenburns 26s ease-in-out infinite alternate;
+  will-change:filter;
+}
+.arch-warmlayer,.arch-nightlayer,.arch-starlayer{
+  position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;
+}
+.arch-warmlayer{
+  background:
+    radial-gradient(110% 65% at 50% 38%, rgba(245,154,85,.42), transparent 62%),
+    linear-gradient(180deg, rgba(138,60,92,.25) 0%, rgba(217,83,47,.18) 55%, rgba(251,217,188,.12) 100%);
+  mix-blend-mode:screen;
+}
+.arch-nightlayer{
+  background:linear-gradient(180deg, rgba(12,16,44,.75) 0%, rgba(26,22,58,.55) 45%, rgba(20,49,40,.35) 100%);
+}
+.arch-starlayer{
+  background-image:radial-gradient(1.5px 1.5px at 20% 15%, #FFF3D6 50%, transparent 51%),
+    radial-gradient(1px 1px at 65% 8%, #FFF3D6 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 82% 22%, #FFF3D6 50%, transparent 51%),
+    radial-gradient(1px 1px at 38% 26%, #FFF3D6 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 50% 12%, #FFF3D6 50%, transparent 51%),
+    radial-gradient(1px 1px at 10% 30%, #FFF3D6 50%, transparent 51%),
+    radial-gradient(1px 1px at 90% 35%, #FFF3D6 50%, transparent 51%);
+  animation:twinkle 3.2s ease-in-out infinite;
+}
+.arch-neon{
+  position:absolute;top:20%;left:0;right:0;z-index:4;
+  text-align:center;pointer-events:none;
+  font-family:var(--thin);font-size:clamp(22px,6.8vw,32px);
+  letter-spacing:.28em;text-indent:.28em;
+  color:#FFDFAE;opacity:0;
+  text-shadow:0 0 6px #FBC377, 0 0 18px #EF7A4E, 0 0 38px #D9532F, 0 0 70px #D9532F;
+}
+.arch-neon.flick{animation:neonflick .9s steps(2,jump-none) 1}
+@keyframes neonflick{0%{opacity:.1}25%{opacity:.9}40%{opacity:.2}60%{opacity:1}75%{opacity:.5}100%{opacity:1}}
+.arch-time{
+  position:absolute;top:9%;left:50%;transform:translateX(-50%);z-index:6;
+  font-family:var(--display);
+  font-size:15px;letter-spacing:.16em;
+  color:var(--cream);
+  background:rgba(15,39,33,.55);
+  border:1px solid rgba(247,239,224,.3);
+  padding:8px 16px;border-radius:999px;
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  pointer-events:none;white-space:nowrap;
+  text-shadow:0 1px 8px rgba(15,39,33,.8);
+}
+.arch-track{
+  position:absolute;left:25%;right:25%;bottom:12%;z-index:5;height:22px;
+  pointer-events:none;
+}
+.arch-track::before{
+  content:"";position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;
+  background:linear-gradient(90deg, rgba(247,239,224,.7), rgba(245,154,85,.8), rgba(12,16,44,.9));
+  border-radius:2px;
+}
+.arch-knob{
+  position:absolute;top:50%;left:0;width:18px;height:18px;
+  margin:-9px 0 0 -9px;border-radius:50%;
+  background:radial-gradient(circle at 40% 35%, #FFFBEE, #FBC377);
+  box-shadow:0 0 12px rgba(255,222,150,.9), 0 0 26px rgba(245,154,85,.5);
+}
+.arch-track .sunicon,.arch-track .moonicon{
+  position:absolute;top:-16px;font-size:11px;color:rgba(247,239,224,.9);
+}
+.arch-track .sunicon{left:-4px}
+.arch-track .moonicon{right:-4px}
+#emberCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+.arch-grad{
+  position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:linear-gradient(180deg, rgba(20,49,40,.15) 0%, transparent 30%, transparent 70%, rgba(15,39,33,.45) 100%);
+}
+.arch-badge{
+  position:absolute;left:50%;bottom:19%;transform:translateX(-50%);z-index:5;
+  font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--cream);pointer-events:none;white-space:nowrap;
+  background:rgba(15,39,33,.55);
+  border:1px solid rgba(247,239,224,.3);
+  padding:8px 15px;border-radius:999px;
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  animation:badgepulse 2.4s ease-in-out infinite;
+  transition:opacity .6s ease;
+}
+@keyframes badgepulse{0%,100%{box-shadow:0 0 0 0 rgba(245,154,85,.45)}50%{box-shadow:0 0 0 9px rgba(245,154,85,0)}}
+.ghost-finger{
+  position:absolute;bottom:calc(12% - 6px);left:30%;z-index:6;
+  width:30px;height:30px;border-radius:50%;
+  background:radial-gradient(circle at 40% 35%, rgba(255,255,255,.95), rgba(255,255,255,.35));
+  box-shadow:0 0 16px rgba(255,240,210,.8);
+  opacity:0;pointer-events:none;
+}
+.ghost-finger.play{animation:ghostswipe 2.6s ease-in-out 1 forwards}
+@keyframes ghostswipe{
+  0%{opacity:0;left:28%}
+  12%{opacity:.95;transform:scale(.85)}
+  50%{left:66%}
+  62%{left:66%}
+  88%{left:34%;opacity:.95}
+  100%{left:34%;opacity:0}
+}
+.hero-brand{margin-top:clamp(24px,4.5vh,40px)}
+.hero-brand h1{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(34px,10.5vw,58px);
+  letter-spacing:.26em;text-indent:.26em;
+  color:var(--cream);line-height:1;
+}
+.hero-brand .accent{color:var(--coral)}
+.hero-brand p.place{
+  margin-top:10px;font-size:12px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--peach);text-indent:.34em;
+}
+.tagline{margin-top:clamp(24px,4.5vh,40px)}
+.tagline p{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);opacity:.8}
+.tagline .higher{
+  font-family:var(--thin);
+  font-size:clamp(56px,17vw,88px);line-height:.95;
+  letter-spacing:.12em;text-indent:.12em;
+  display:block;margin-top:6px;
+  background:linear-gradient(100deg,var(--cream) 30%,var(--peach) 55%,var(--coral) 80%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero-cta{
+  margin-top:clamp(22px,4vh,36px);
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+  width:100%;
+}
+.menu-duo{display:flex;gap:12px;width:100%;max-width:400px}
+.duo{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;
+  padding:24px 10px 21px;border-radius:22px;
+  position:relative;overflow:hidden;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.duo:active{transform:scale(.96)}
+.duo b{
+  font-family:var(--display);font-weight:400;
+  font-size:19px;letter-spacing:.22em;text-indent:.22em;text-transform:uppercase;
+}
+.duo small{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+.duo::after{
+  content:"";position:absolute;top:0;bottom:0;left:-70%;width:45%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);
+  transform:skewX(-18deg);
+  animation:sheen 4.5s ease-in-out infinite;
+}
+.duo-drinks::after{animation-delay:2.2s}
+@keyframes sheen{0%,55%,100%{left:-70%}30%{left:130%}}
+.duo-food{
+  background:linear-gradient(135deg,var(--terracotta),var(--coral));
+  color:#fff;
+  box-shadow:0 16px 34px -12px rgba(217,83,47,.65);
+}
+.duo-drinks{
+  background:var(--cream);
+  color:var(--forest);
+  box-shadow:0 16px 34px -14px rgba(0,0,0,.5);
+}
+.book-mini{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 24px;border-radius:999px;
+  border:1px solid rgba(247,239,224,.4);
+  color:var(--cream);
+  font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  transition:transform .25s ease, background .25s ease;
+}
+.book-mini:active{transform:scale(.96)}
+.book-mini svg{width:14px;height:14px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:15px 26px;border-radius:999px;
+  font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.btn:active{transform:scale(.96)}
+.btn-fill{
+  background:linear-gradient(120deg,var(--terracotta),var(--coral));
+  color:#fff;box-shadow:0 14px 30px -10px rgba(217,83,47,.55);
+}
+.btn-ghost{border:1px solid rgba(247,239,224,.35);color:var(--cream)}
+.scroll-hint{
+  margin-top:auto;padding-top:34px;
+  font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--peach);
+}
+.scroll-hint::after{
+  content:"";display:block;width:1px;height:34px;margin:10px auto 0;
+  background:linear-gradient(var(--peach),transparent);
+  animation:drip 2s ease-in-out infinite;
+}
+
+/* ============================================================
+   TILE STRIP
+   ============================================================ */
+.tiles{
+  height:34px;background-color:var(--cream);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='34' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' fill='%23F7EFE0'/%3E%3Cg fill='none' stroke='%23D9532F' stroke-width='1'%3E%3Cpath d='M17 3 L31 17 L17 31 L3 17 Z'/%3E%3Ccircle cx='17' cy='17' r='4.5'/%3E%3Cpath d='M17 0 V6 M17 28 V34 M0 17 H6 M28 17 H34'/%3E%3C/g%3E%3Cg fill='%231E4437'%3E%3Ccircle cx='0' cy='0' r='2.6'/%3E%3Ccircle cx='34' cy='0' r='2.6'/%3E%3Ccircle cx='0' cy='34' r='2.6'/%3E%3Ccircle cx='34' cy='34' r='2.6'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:34px 34px;
+  border-top:3px solid var(--terracotta);
+  border-bottom:3px solid var(--terracotta);
+}
+
+/* ============================================================
+   GALLERY
+   ============================================================ */
+.gallery{padding:60px 0 64px}
+.g-head{text-align:center;padding:0 24px;margin-bottom:28px}
+.g-head .eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--coral);font-weight:600}
+.g-head h2{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(28px,8vw,40px);letter-spacing:.1em;color:var(--cream);margin-top:10px;
+}
+.g-track{
+  display:flex;gap:16px;overflow-x:auto;
+  padding:10px 24px 26px;
+  scroll-snap-type:x mandatory;scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.g-track::-webkit-scrollbar{display:none}
+.g-card{
+  flex:0 0 min(76vw,320px);
+  scroll-snap-align:center;
+  border-radius:22px;overflow:hidden;position:relative;
+  transform:scale(.94) rotate(-.6deg);
+  transition:transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s ease;
+  box-shadow:0 18px 40px -18px rgba(0,0,0,.6);
+  border:1px solid rgba(247,239,224,.14);
+}
+.g-card:nth-child(2n){transform:scale(.94) rotate(.6deg)}
+.g-card.center{transform:scale(1) rotate(0deg);box-shadow:0 26px 54px -18px rgba(0,0,0,.7)}
+.g-card img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.g-card figcaption{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:38px 16px 14px;
+  background:linear-gradient(transparent, rgba(15,39,33,.9));
+  font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--cream);
+}
+.g-dots{display:flex;justify-content:center;gap:7px}
+.g-dots i{width:6px;height:6px;border-radius:50%;background:rgba(247,239,224,.3);transition:all .3s}
+.g-dots i.on{background:var(--coral);width:18px;border-radius:4px}
+
+/* ============================================================
+   MENU
+   ============================================================ */
+.menu{background:var(--cream);color:var(--ink);padding:56px 0 60px;position:relative}
+.menu-head{text-align:center;padding:0 24px;margin-bottom:26px}
+.menu-head .eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--terracotta);font-weight:600}
+.menu-head h2{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(34px,9vw,46px);letter-spacing:.12em;color:var(--forest);margin-top:10px;
+}
+.menu-head p{margin-top:10px;font-size:14px;color:#6b665c}
+.menu-tip{
+  margin:14px auto 0;display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;color:var(--forest);
+  background:rgba(30,68,55,.08);
+  border:1px dashed rgba(30,68,55,.3);
+  padding:9px 16px;border-radius:999px;
+}
+.menu-nav{
+  position:sticky;top:0;z-index:40;
+  background:rgba(247,239,224,.94);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(30,68,55,.12);
+  padding-top:12px;
+}
+.seg{
+  display:flex;max-width:340px;margin:0 20px;margin-left:auto;margin-right:auto;width:calc(100% - 40px);
+  border:1.5px solid rgba(30,68,55,.35);border-radius:999px;
+  padding:4px;background:rgba(30,68,55,.05);
+}
+.seg button{
+  flex:1;padding:11px 10px;border-radius:999px;
+  font-family:var(--display);font-size:14px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--forest);transition:all .3s ease;
+}
+.seg button.on{
+  background:var(--forest);color:var(--cream);
+  box-shadow:0 6px 16px -6px rgba(30,68,55,.5);
+}
+.chips{
+  display:flex;gap:10px;overflow-x:auto;
+  padding:12px 24px 14px;
+  scrollbar-width:none;
+}
+.chip[data-hidden]{display:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;padding:10px 18px;border-radius:999px;
+  border:1px solid rgba(30,68,55,.3);color:var(--forest);
+  font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  transition:all .25s ease;
+}
+.chip.active{background:var(--forest);color:var(--cream);border-color:var(--forest)}
+.menu-section{max-width:620px;margin:0 auto;padding:44px 20px 0;scroll-margin-top:70px}
+.menu.tabbed .menu-section{display:none}
+.menu.tabbed .menu-section.active{display:block;animation:secIn .45s ease}
+@keyframes secIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.sec-title{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.sec-title h3{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(15px,4.5vw,26px);letter-spacing:.09em;text-transform:uppercase;
+  color:var(--forest);white-space:nowrap;
+}
+.sec-title::before,.sec-title::after{
+  content:"";height:1px;flex:1;min-width:22px;
+  background:linear-gradient(90deg,transparent,var(--terracotta));
+}
+.sec-title::after{background:linear-gradient(90deg,var(--terracotta),transparent)}
+.sec-note{text-align:center;font-size:12.5px;color:#8a8375;margin-bottom:22px;font-style:italic}
+.item{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 12px;margin:0 -12px;
+  border-bottom:1px dashed rgba(30,68,55,.18);
+  border-radius:14px;
+  opacity:0;transform:translateY(14px);
+  transition:opacity .6s ease, transform .6s ease, background .3s ease;
+  cursor:pointer;position:relative;
+}
+.item.in{opacity:1;transform:none}
+.item:active{background:rgba(217,83,47,.06)}
+.item.picked{background:rgba(217,83,47,.08)}
+.item.picked::before{
+  content:"";position:absolute;left:0;top:12px;bottom:12px;width:3px;
+  background:var(--terracotta);border-radius:3px;
+}
+.item-body{flex:1}
+.item-name{font-weight:600;font-size:15.5px;color:var(--ink);letter-spacing:.01em}
+.item-desc{margin-top:4px;font-size:13px;line-height:1.5;color:#7b7568}
+.item-price{font-family:var(--display);font-size:16px;color:var(--terracotta);white-space:nowrap}
+.pick-dot{
+  flex:none;width:26px;height:26px;border-radius:50%;
+  border:1.5px solid rgba(30,68,55,.35);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;line-height:1;color:transparent;
+  transition:all .25s cubic-bezier(.34,1.56,.64,1);
+}
+.item.picked .pick-dot{
+  background:var(--terracotta);border-color:var(--terracotta);
+  color:#fff;transform:scale(1.1);
+}
+#salads .item-price{display:none}
+#salads .vp{display:none}
+.trio-bar{
+  position:sticky;top:118px;z-index:30;
+  display:flex;align-items:center;gap:10px;
+  margin:14px 0 4px;padding:11px 14px;
+  background:var(--forest);color:var(--cream);
+  border-radius:16px;
+  box-shadow:0 10px 24px -12px rgba(20,49,40,.55);
+}
+.trio-bar .tb-txt{flex:1;min-width:0}
+.trio-bar .tb-t{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.trio-bar .tb-s{font-size:10.5px;color:rgba(247,239,224,.75);margin-top:2px}
+.trio-slots{display:flex;gap:6px}
+.trio-slot{
+  width:26px;height:26px;border-radius:50%;
+  border:1.5px dashed rgba(247,239,224,.5);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:11px;
+}
+.trio-slot.f{border-style:solid;background:var(--terracotta);border-color:var(--terracotta);color:#fff}
+.trio-x{
+  flex:none;width:24px;height:24px;border-radius:50%;
+  border:1px solid rgba(247,239,224,.4);color:var(--cream);font-size:11px;
+  display:none;
+}
+.trio-bar.has .trio-x{display:block}
+.trio-n{
+  flex:none;display:none;align-items:center;gap:5px;
+  background:var(--terracotta);color:#fff;
+  border-radius:999px;padding:4px 8px 4px 10px;
+  font-size:12px;font-weight:700;
+}
+.item.in-trio .trio-n{display:inline-flex}
+.item.in-trio .pick-dot{display:none}
+.trio-n button{
+  width:16px;height:16px;border-radius:50%;
+  background:rgba(255,255,255,.25);color:#fff;
+  font-size:10px;line-height:1;
+}
+@keyframes trioshake{0%,100%{transform:none}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.item.shake{animation:trioshake .3s ease}
+.qty-step{
+  display:none;align-items:center;gap:2px;flex:none;
+}
+.item.picked .qty-step{display:inline-flex}
+.item.picked .pick-dot{display:none}
+.qs-btn{
+  width:27px;height:27px;border-radius:50%;
+  border:1.5px solid var(--terracotta);color:var(--terracotta);
+  font-size:15px;font-weight:700;line-height:1;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.qs-btn:active{background:var(--terracotta);color:#fff;transform:scale(.92)}
+.qs-n{
+  min-width:22px;text-align:center;
+  font-family:var(--display);font-size:15.5px;color:var(--terracotta);
+}
+.sh-row .qty-step{display:inline-flex;margin-right:2px}
+.sh-row .qs-btn{width:24px;height:24px;font-size:13px}
+.sh-row .qs-n{min-width:18px;font-size:14px}
+.spark{
+  position:fixed;width:7px;height:7px;border-radius:50%;z-index:400;
+  pointer-events:none;
+  animation:sparkfly .7s ease-out forwards;
+}
+@keyframes sparkfly{
+  from{opacity:1;transform:translate(0,0) scale(1)}
+  to{opacity:0;transform:translate(var(--dx),var(--dy)) scale(.1)}
+}
+.float-price{
+  position:absolute;right:44px;top:6px;
+  font-size:12px;font-weight:700;color:var(--terracotta);
+  animation:floatup .8s ease-out forwards;pointer-events:none;
+}
+@keyframes floatup{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(-26px)}}
+.variant{display:inline-flex;gap:8px;margin-top:8px}
+.variant button{
+  font-size:12.5px;font-weight:700;letter-spacing:.04em;
+  padding:9px 16px;border-radius:999px;
+  border:1.5px solid rgba(30,68,55,.3);color:var(--forest);
+  transition:all .25s ease;
+}
+.variant button .vp{font-family:var(--display);font-weight:400;font-size:13.5px;color:var(--terracotta);margin-left:2px}
+.variant button.on{background:var(--terracotta);border-color:var(--terracotta);color:#fff}
+.variant button.on .vp{color:#fff}
+.variant button.on::before{content:"✓ ";font-weight:800}
+.badge{
+  display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--coral);border:1px solid var(--coral);border-radius:999px;
+  padding:2.5px 8px;margin-left:8px;vertical-align:2px;
+}
+.menu-outro{
+  text-align:center;margin-top:54px;padding:0 24px;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#8a8375;
+}
+.menu-wave{position:relative;line-height:0}
+.menu-wave svg{display:block;width:100%;height:auto}
+
+/* ============================================================
+   ORDER TRAY & SHEET
+   ============================================================ */
+#tray{
+  position:fixed;left:50%;bottom:calc(88px + env(safe-area-inset-bottom));
+  transform:translate(-50%,30px);
+  opacity:0;visibility:hidden;pointer-events:none;
+  z-index:120;
+  display:flex;align-items:center;gap:10px;
+  background:var(--forest);color:var(--cream);
+  padding:12px 18px;border-radius:999px;
+  box-shadow:0 18px 40px -12px rgba(15,39,33,.6);
+  border:1px solid rgba(247,239,224,.18);
+  font-size:13px;font-weight:600;letter-spacing:.04em;
+  transition:transform .45s cubic-bezier(.22,1,.36,1), opacity .35s ease, visibility .35s;
+  white-space:nowrap;cursor:pointer;
+}
+#tray.show{transform:translate(-50%,0);opacity:1;visibility:visible;pointer-events:auto}
+#tray.ready{background:linear-gradient(120deg,var(--terracotta),var(--coral));border-color:transparent}
+#tray b{font-family:var(--display);color:var(--peach);font-weight:400}
+#tray.ready b{color:#fff}
+#tray .star{color:var(--coral)}
+#tray.ready .star{color:#fff}
+#sheet{
+  position:fixed;left:0;right:0;bottom:0;z-index:200;
+  background:var(--cream);color:var(--ink);
+  border-radius:24px 24px 0 0;
+  padding:22px 24px calc(24px + env(safe-area-inset-bottom));
+  transform:translateY(105%);
+  transition:transform .45s cubic-bezier(.22,1,.36,1);
+  box-shadow:0 -20px 60px rgba(15,39,33,.35);
+  max-height:76vh;display:flex;flex-direction:column;
+}
+#sheet.open{transform:none}
+#sheetveil{
+  position:fixed;inset:0;z-index:190;background:rgba(15,39,33,.5);
+  opacity:0;visibility:hidden;transition:opacity .4s ease, visibility .4s;
+}
+#sheetveil.open{opacity:1;visibility:visible}
+.sh-grip{width:44px;height:4px;border-radius:4px;background:rgba(30,68,55,.25);margin:0 auto 16px}
+.sh-title{font-family:var(--display);font-size:20px;letter-spacing:.08em;color:var(--forest);text-align:center}
+.sh-sub{text-align:center;font-size:12px;color:#8a8375;margin-top:4px;min-height:16px}
+.sh-list{margin-top:16px;overflow-y:auto;flex:1}
+.sh-row{
+  display:flex;align-items:center;gap:10px;
+  padding:11px 0;border-bottom:1px dashed rgba(30,68,55,.15);
+  font-size:14px;
+}
+.sh-row .n{flex:1;font-weight:600}
+.sh-row .p{font-family:var(--display);color:var(--terracotta)}
+.sh-row .x{
+  width:26px;height:26px;border-radius:50%;flex:none;
+  border:1px solid rgba(30,68,55,.25);color:#8a8375;
+  font-size:13px;line-height:1;
+}
+.sh-total{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:16px 0 6px;
+  font-weight:700;font-size:15px;color:var(--forest);
+}
+.sh-total .p{font-family:var(--display);font-size:22px;color:var(--terracotta);font-weight:400}
+.sh-actions{display:flex;gap:10px;margin-top:10px}
+.sh-actions .btn{flex:1;padding:14px 10px;font-size:12px}
+.sh-upsell{
+  display:none;align-items:center;gap:12px;
+  margin-top:12px;padding:12px 14px;
+  border:1.5px dashed rgba(217,83,47,.5);
+  background:rgba(245,183,140,.14);
+  border-radius:16px;
+}
+.sh-upsell.show{display:flex}
+.sh-upsell .u-body{flex:1;min-width:0}
+.sh-upsell .u-lbl{font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--terracotta)}
+.sh-upsell .u-name{margin-top:3px;font-weight:700;font-size:14px;color:var(--ink)}
+.sh-upsell .u-name span{font-family:var(--display);font-weight:400;color:var(--terracotta);margin-left:6px}
+.sh-upsell .u-desc{
+  margin-top:3px;font-size:11.5px;line-height:1.45;color:#7b7568;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.sh-upsell .u-add{
+  flex:none;padding:11px 18px;border-radius:999px;
+  background:linear-gradient(120deg,var(--terracotta),var(--coral));color:#fff;
+  font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  box-shadow:0 8px 18px -8px rgba(217,83,47,.6);
+  transition:transform .2s;
+}
+.sh-upsell .u-add:active{transform:scale(.94)}
+.sh-upsell .u-x{
+  flex:none;width:22px;height:22px;border-radius:50%;
+  color:#a89f8f;font-size:11px;line-height:1;
+  border:1px solid rgba(30,68,55,.2);
+  align-self:flex-start;margin-left:-4px;
+}
+.sh-note{
+  margin-top:14px;text-align:center;
+  font-size:13px;color:var(--forest);
+  background:rgba(30,68,55,.07);
+  border:1px dashed rgba(30,68,55,.28);
+  border-radius:14px;padding:12px 14px;
+}
+.sh-links{display:flex;justify-content:center;gap:18px;margin-top:14px}
+.sh-links button, .sh-links a{color:#8a8375;text-decoration:underline;font-size:12px}
+
+
+/* ============================================================
+   EVENTS — upcoming sunsets & DJs
+   ============================================================ */
+.events{padding:64px 0 70px}
+.ev-head{text-align:center;padding:0 24px;margin-bottom:30px}
+.ev-head .eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--coral);font-weight:600}
+.ev-head h2{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(28px,8vw,40px);letter-spacing:.1em;color:var(--cream);margin-top:10px;
+}
+.ev-list{max-width:560px;margin:0 auto;padding:0 20px;display:flex;flex-direction:column;gap:14px}
+.ev-card{
+  display:flex;align-items:center;gap:16px;
+  border:1px solid rgba(247,239,224,.16);
+  background:rgba(15,39,33,.5);
+  border-radius:20px;padding:16px 18px;
+  position:relative;overflow:hidden;
+}
+.ev-card::before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:4px;
+  background:linear-gradient(var(--peach),var(--terracotta));
+}
+.ev-date{
+  flex:none;text-align:center;min-width:52px;
+  padding-right:14px;border-right:1px dashed rgba(247,239,224,.2);
+}
+.ev-date b{display:block;font-family:var(--display);font-size:26px;font-weight:400;color:var(--peach);line-height:1}
+.ev-date span{display:block;margin-top:4px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(247,239,224,.65)}
+.ev-info{flex:1;text-align:left}
+.ev-name{font-weight:700;font-size:15px;color:var(--cream);letter-spacing:.02em}
+.ev-dj{margin-top:4px;font-size:12.5px;color:var(--peach)}
+.ev-tags{margin-top:8px;display:flex;gap:6px;flex-wrap:wrap}
+.ev-tags i{
+  font-style:normal;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid rgba(245,183,140,.45);color:var(--peach);
+  border-radius:999px;padding:3px 9px;
+}
+.ev-go{
+  flex:none;width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(120deg,var(--terracotta),var(--coral));
+  color:#fff;font-size:16px;
+  box-shadow:0 8px 20px -8px rgba(217,83,47,.6);
+}
+.ev-note{text-align:center;margin-top:22px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:rgba(247,239,224,.5)}
+
+/* ============================================================
+   VISIT
+   ============================================================ */
+.visit{
+  padding:70px 24px 84px;text-align:center;position:relative;
+  background:linear-gradient(rgba(15,39,33,.82), rgba(20,49,40,.94)), url('assets/terrace.jpg') center 30%/cover no-repeat;
+}
+.visit h2{
+  font-family:var(--display);font-weight:400;
+  font-size:clamp(30px,8.5vw,42px);letter-spacing:.14em;color:var(--cream);
+}
+.visit .sub{margin-top:10px;font-size:13.5px;color:var(--peach);letter-spacing:.06em}
+.status{
+  margin-top:16px;display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  border:1px solid rgba(247,239,224,.25);border-radius:999px;
+  padding:9px 16px;color:var(--cream);
+  background:rgba(15,39,33,.5);
+}
+.status .led{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulse 1.8s ease-in-out infinite}
+.status.closed .led{background:var(--coral);animation:none}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.5)}50%{box-shadow:0 0 0 7px rgba(74,222,128,0)}}
+.facts{margin:34px auto 0;max-width:560px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fact{
+  border:1px solid rgba(247,239,224,.16);border-radius:18px;
+  padding:20px 14px;background:rgba(15,39,33,.55);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+}
+.fact .k{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--peach)}
+.fact .v{margin-top:8px;font-family:var(--display);font-size:clamp(17px,4.6vw,21px);color:var(--cream);line-height:1.25}
+.visit-actions{
+  margin-top:32px;display:flex;flex-direction:column;gap:12px;
+  max-width:420px;margin-left:auto;margin-right:auto;
+}
+.visit-actions .btn{width:100%}
+.socials{margin-top:36px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--peach)}
+.socials a{color:var(--cream);border-bottom:1px solid var(--coral);padding-bottom:2px}
+footer{
+  padding:26px 24px calc(96px + env(safe-area-inset-bottom));
+  text-align:center;font-size:11px;letter-spacing:.14em;
+  color:rgba(247,239,224,.45);
+  border-top:1px solid rgba(247,239,224,.1);
+  background:var(--pine);
+}
+footer .credit{margin-top:14px;letter-spacing:.14em;font-size:11px;display:flex;align-items:center;justify-content:center;gap:8px}
+footer .credit img{height:13px;display:block;opacity:.6;transition:opacity .25s}
+footer .credit a:hover img{opacity:1}
+footer .credit a{border:none;padding:0}
+footer .credit a{color:var(--peach);border-bottom:1px solid rgba(245,183,140,.5);padding-bottom:1px}
+
+/* ============================================================
+   DOCK
+   ============================================================ */
+.dock{
+  position:fixed;left:0;right:0;bottom:0;z-index:100;
+  display:flex;gap:10px;
+  padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+  background:rgba(20,49,40,.85);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-top:1px solid rgba(247,239,224,.12);
+  transform:translateY(110%);
+  transition:transform .45s cubic-bezier(.22,1,.36,1);
+}
+.dock.show{transform:none}
+.dock a{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:7px;
+  padding:14px 6px;border-radius:14px;
+  font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+}
+.dock .d-reserve{background:linear-gradient(120deg,var(--terracotta),var(--coral));color:#fff}
+.dock .d-call,.dock .d-map{border:1px solid rgba(247,239,224,.3);color:var(--cream)}
+.dock svg{width:15px;height:15px;flex:none}
+
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+@keyframes fadeUp{to{opacity:1;transform:none}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:none}}
+@keyframes archIn{to{opacity:1;transform:none}}
+@keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.14)}}
+@keyframes drip{0%,100%{transform:scaleY(.4);transform-origin:top;opacity:.4}50%{transform:scaleY(1);opacity:1}}
+@keyframes twinkle{0%,100%{opacity:.1}50%{opacity:.9}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes nudge{0%,100%{transform:rotate(45deg) translate(0,0)}50%{transform:rotate(45deg) translate(4px,4px)}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  #loader{display:none}
+  .hero-top,.arch,.hero-brand,.tagline,.hero-cta,.scroll-hint{opacity:1;transform:none}
+  .item,.reveal{opacity:1;transform:none}
+  .dock{transform:none}
+}
+@media (min-width:700px){
+  .facts{grid-template-columns:repeat(4,1fr)}
+  .visit-actions{flex-direction:row}
+  .g-track{justify-content:center}
+  .dock{max-width:560px;left:50%;transform:translate(-50%,110%);border-radius:20px 20px 0 0}
+  .dock.show{transform:translate(-50%,0)}
+  #sheet{max-width:520px;left:50%;transform:translate(-50%,105%);border-radius:24px 24px 0 0}
+  #sheet.open{transform:translate(-50%,0)}
+}
+</style>
+</head>
+<body class="locked">
+<script>
+/* always open at the top — no hash jumps, no scroll restoration, no smooth animation */
+if('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if(location.hash){ history.replaceState(null, '', location.pathname + location.search); }
+try{ if(location.pathname.indexOf('/qr') === 0) history.replaceState(null, '', '/'); }catch(e){}
+window.__pinTop = function(){
+  var h = document.documentElement;
+  var prev = h.style.scrollBehavior;
+  h.style.scrollBehavior = 'auto';
+  window.scrollTo(0,0);
+  h.style.scrollBehavior = prev;
+};
+window.__pinTop();
+window.addEventListener('pageshow', window.__pinTop);
+(function guardLoop(t0){
+  t0 = t0 || performance.now();
+  if(document.body && document.body.classList.contains('locked')) window.__pinTop();
+  if(performance.now() - t0 < 2500) requestAnimationFrame(function(){ guardLoop(t0); });
 })();
 </script>
-</head>
-<body>
-  <div class="w">OF&Ocirc;LIES</div>
-  <noscript><meta http-equiv="refresh" content="0;url=/"></noscript>
+
+<div id="sunbar"></div>
+
+<!-- ============ PRELOADER : LIGHT THE TERRACE ============ -->
+<div id="loader" aria-label="Drag the sun down to set it">
+  <div class="ld-photo" id="ldPhoto"></div>
+  <div class="ld-warm" id="ldWarm"></div>
+  <div class="ld-night" id="ldNight"></div>
+  <div class="ld-vig"></div>
+  <div class="ld-stars" id="ldStars"></div>
+  <div class="ld-sun" id="ldSun"></div>
+  <div class="ld-brand">
+    <div class="mark">OFÔLIES</div>
+    <div class="sub">Zaarour · Sunset Lounge</div>
+  </div>
+  <div class="ld-progress"><i id="ldBar"></i></div>
+  <div class="ld-hint" id="ldHint">Drag the sun down to enter<span class="arrow"></span></div>
+  <div class="ld-higher">
+    <small>We are not far, we are just</small>
+    <b>HIGHER</b>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<header class="hero wall" id="top">
+  <div class="hero-top">
+    <span id="sunsetChip" class="sun-chip">Sunset lounge</span>
+  </div>
+
+  <div class="arch-wrap" aria-hidden="true">
+  <div class="arch" id="arch">
+    <div class="arch-pan" id="archPan">
+      <img src="assets/sunset.jpg" alt="" id="archImg">
+    </div>
+    <div class="arch-warmlayer" id="archWarm"></div>
+    <div class="arch-nightlayer" id="archNight"></div>
+    <div class="arch-starlayer" id="archStars"></div>
+    <div class="arch-neon" id="archNeon">OFÔLIES</div>
+    <div class="arch-grad"></div>
+    <canvas id="emberCanvas"></canvas>
+    <div class="arch-time" id="archTime">5:00 PM</div>
+    <div class="arch-track"><span class="sunicon">☀</span><span class="moonicon">☾</span><i class="arch-knob" id="archKnob"></i></div>
+    <div class="arch-badge" id="archBadge">Slide across the sky</div>
+    <div class="ghost-finger" id="ghostFinger"></div>
+  </div>
+  <div class="arch-osvg">
+    <img src="assets/o-ring-x3.png" alt="">
+  </div>
+  </div>
+
+  <div class="hero-brand">
+    <h1>OF<span class="accent">Ô</span>LIES</h1>
+    <p class="place">Sunset Lounge</p>
+  </div>
+
+  <div class="hero-cta">
+    <div class="menu-duo">
+      <a class="duo duo-food" href="#menu" data-menugroup="food">
+        <b>Food</b>
+        <small>Salads · Raw · Hot Bites</small>
+      </a>
+      <a class="duo duo-drinks" href="#menu" data-menugroup="drinks">
+        <b>Drinks</b>
+        <small>Cocktails · Wine · Spirits</small>
+      </a>
+    </div>
+    <a class="book-mini" href="https://ofolies.resos.com/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      Book a table
+    </a>
+  </div>
+
+  <div class="tagline">
+    <p>We are not far, we are just</p>
+    <span class="higher">HIGHER</span>
+  </div>
+
+</header>
+
+<div id="annc"></div>
+
+<div class="tiles" aria-hidden="true"></div>
+<!-- ============ EVENTS ============ -->
+<section class="events wall" id="events">
+  <div class="ev-head reveal">
+    <div class="eyebrow">Events &amp; DJs</div>
+    <h2>Upcoming Sunsets</h2>
+  </div>
+  <div class="ev-list">
+    <!-- TODO: keep these updated weekly — date / name / dj / tags -->
+    <a class="ev-card reveal" href="https://ofolies.resos.com/" target="_blank" rel="noopener">
+      <div class="ev-date"><b>18</b><span>Sat Jul</span></div>
+      <div class="ev-info">
+        <div class="ev-name">Golden Hour Sessions</div>
+        <div class="ev-dj">Yussef K</div>
+        <div class="ev-tags"><i>Melodic House</i><i>6 PM - Late</i></div>
+      </div>
+      <div class="ev-go">→</div>
+    </a>
+    <a class="ev-card reveal" href="https://ofolies.resos.com/" target="_blank" rel="noopener">
+      <div class="ev-date"><b>19</b><span>Sun Jul</span></div>
+      <div class="ev-info">
+        <div class="ev-name">Sunset High</div>
+        <div class="ev-dj">DJ Nino</div>
+        <div class="ev-tags"><i>Afro House</i><i>7 PM - Late</i></div>
+      </div>
+      <div class="ev-go">→</div>
+    </a>
+    <a class="ev-card reveal" href="https://ofolies.resos.com/" target="_blank" rel="noopener">
+      <div class="ev-date"><b>20</b><span>Mon Jul</span></div>
+      <div class="ev-info">
+        <div class="ev-name">Acoustic Sundown</div>
+        <div class="ev-dj">Live Band · Unplugged</div>
+        <div class="ev-tags"><i>Live Music</i><i>Chill</i></div>
+      </div>
+      <div class="ev-go">→</div>
+    </a>
+  </div>
+  <p class="ev-note reveal">Table fills fast at sunset, book ahead</p>
+</section>
+
+<div class="tiles" aria-hidden="true"></div>
+
+<!-- ============ MENU ============ -->
+<main class="menu" id="menu">
+  <div class="menu-head reveal">
+    <div class="eyebrow">The Menu</div>
+    <h2>Made to enjoy<br>at sunset</h2>
+    <div class="menu-tip">✦&nbsp; Tap what tempts you, build your shortlist</div>
+  </div>
+
+  <div class="menu-nav" id="menuNav">
+  <div class="seg" id="seg" role="tablist" aria-label="Food or drinks">
+    <button class="on" data-group="food">Food</button>
+    <button data-group="drinks">Drinks</button>
+  </div>
+  <nav class="chips" id="chips" aria-label="Menu categories">
+    <button class="chip active" data-target="salads">Trio Salads</button>
+    <button class="chip" data-target="raw">Raw Seafood</button>
+    <button class="chip" data-target="bites">Hot Bites</button>
+  </nav>
+  </div>
+
+  <section class="menu-section" id="salads">
+    <div class="sec-title"><h3>Choice of Trio Salads</h3></div>
+    <p class="sec-note">Crisp, cold, and made for golden hour</p>
+    <div class="item" data-name="Quinoa &amp; Smoked Salmon Salad" data-price="22">
+      <div class="item-body">
+        <div class="item-name">Quinoa &amp; Smoked Salmon Salad</div>
+        <div class="item-desc">Quinoa, smoked salmon, avocado, cherry tomatoes, cucumber, lemon dressing</div>
+      </div>
+      <div class="item-price">$22</div>
+      <div class="pick-dot">✓</div>
+    </div>
+    <div class="item no-toggle" data-name="Caesar Salad" data-variant="1">
+      <div class="item-body">
+        <div class="item-name">Caesar Salad</div>
+        <div class="item-desc">Romaine lettuce, parmesan, croutons, caesar dressing</div>
+        <div class="variant">
+          <button data-name="Caesar Salad (Chicken)" data-price="12">Chicken <span class="vp">$12</span></button>
+          <button data-name="Caesar Salad (Shrimp)" data-price="15">Shrimp <span class="vp">$15</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="item" data-name="Goat Cheese Salad" data-price="14">
+      <div class="item-body">
+        <div class="item-name">Goat Cheese Salad</div>
+        <div class="item-desc">Mixed greens, goat cheese, walnuts, beetroot, honey dressing</div>
+      </div>
+      <div class="item-price">$14</div>
+      <div class="pick-dot">✓</div>
+    </div>
+    <div class="item" data-name="Kani Crab Salad" data-price="13">
+      <div class="item-body">
+        <div class="item-name">Kani Crab Salad</div>
+        <div class="item-desc">Kani crab, mango, cucumber, avocado, sesame dressing</div>
+      </div>
+      <div class="item-price">$13</div>
+      <div class="pick-dot">✓</div>
+    </div>
+  </section>
+
+  <section class="menu-section" id="raw">
+    <div class="sec-title"><h3>Raw Seafood</h3></div>
+    <p class="sec-note">Bright, citrusy, straight from the cold bar</p>
+    <div class="item" data-name="Shrimp Ceviche" data-price="18">
+      <div class="item-body">
+        <div class="item-name">Shrimp Ceviche</div>
+        <div class="item-desc">Shrimp, lime, red onion, cilantro, chili, leche de tigre</div>
+      </div>
+      <div class="item-price">$18</div>
+      <div class="pick-dot">✓</div>
+    </div>
+    <div class="item" data-name="Salmon Tataki" data-price="24">
+      <div class="item-body">
+        <div class="item-name">Salmon Tataki</div>
+        <div class="item-desc">Seared salmon, ponzu sauce, sesame, micro greens</div>
+      </div>
+      <div class="item-price">$24</div>
+      <div class="pick-dot">✓</div>
+    </div>
+  </section>
+
+  <section class="menu-section" id="bites">
+    <div class="sec-title"><h3>Assortment of Hot Bites</h3></div>
+    <p class="sec-note">To share or not</p>
+    <div class="item" data-name="Fried Curly Corn" data-price="8">
+      <div class="item-body"><div class="item-name">Fried Curly Corn</div></div>
+      <div class="item-price">$8</div><div class="pick-dot">✓</div>
+    </div>
+    <div class="item" data-name="Spicy Edamame" data-price="9">
+      <div class="item-body"><div class="item-name">Spicy Edamame</div></div>
+      <div class="item-price">$9</div><div class="pick-dot">✓</div>
+    </div>
+    <div class="item" data-name="Baked Baby Potatoes" data-price="8">
+      <div class="item-body"><div class="item-name">Baked Baby Potatoes</div></div>
+      <div class="item-price">$8</div><div class="pick-dot">✓</div>
+    </div>
+    <div class="item" data-name="Risotto Arancini" data-price="14">
+      <div class="item-body"><div class="item-name">Risotto Arancini</div></div>
+      <div class="item-price">$14</div><div class="pick-dot">✓</div>
+    </div>
+    <div class="item" data-name="Crispy Chicken Fingers" data-price="12">
+      <div class="item-body"><div class="item-name">Crispy Chicken Fingers</div></div>
+      <div class="item-price">$12</div><div class="pick-dot">✓</div>
+    </div>
+    <div class="item" data-name="Crispy Shrimp with Pineapple Chutney" data-price="15">
+      <div class="item-body"><div class="item-name">Crispy Shrimp with Pineapple Chutney</div></div>
+      <div class="item-price">$15</div><div class="pick-dot">✓</div>
+    </div>
+    <div class="item" data-name="Loaded Nachos" data-price="12">
+      <div class="item-body"><div class="item-name">Loaded Nachos</div></div>
+      <div class="item-price">$12</div><div class="pick-dot">✓</div>
+    </div>
+    <div class="item" data-name="Ribeye Bites with Red Caviar" data-price="34">
+      <div class="item-body">
+        <div class="item-name">Ribeye Bites with Red Caviar<span class="badge">Signature</span></div>
+      </div>
+      <div class="item-price">$34</div><div class="pick-dot">✓</div>
+    </div>
+    <div class="item" data-name="Truffle Fries" data-price="9">
+      <div class="item-body"><div class="item-name">Truffle Fries</div></div>
+      <div class="item-price">$9</div><div class="pick-dot">✓</div>
+    </div>
+    <div class="item" data-name="Trio Slider Burgers" data-price="16">
+      <div class="item-body"><div class="item-name">Trio Slider Burgers</div></div>
+      <div class="item-price">$16</div><div class="pick-dot">✓</div>
+    </div>
+  </section>
+
+  <p class="menu-outro">Fresh ingredients · Made to enjoy at sunset</p>
+
+  <div class="menu-wave" aria-hidden="true">
+    <svg viewBox="0 0 375 130" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0 55 Q70 25 140 46 T280 40 T375 26 L375 130 L0 130 Z" fill="#F5B78C" opacity=".55"/>
+      <path d="M0 78 Q80 48 160 68 T310 62 T375 50 L375 130 L0 130 Z" fill="#EF7A4E" opacity=".8"/>
+      <path d="M0 100 Q90 74 180 92 T375 80 L375 130 L0 130 Z" fill="#D9532F"/>
+    </svg>
+  </div>
+</main>
+
+
+<div class="tiles" aria-hidden="true"></div>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery wall">
+  <div class="g-head reveal">
+    <div class="eyebrow">The Terrace</div>
+    <h2>Real place. Real sunsets.</h2>
+  </div>
+  <div class="g-track" id="gtrack">
+    <figure class="g-card">
+      <img src="assets/sunset.jpg" alt="Sunset evening at Fôlies terrace" loading="lazy">
+      <figcaption>Golden hour · every evening</figcaption>
+    </figure>
+    <figure class="g-card">
+      <img src="assets/bar.jpg" alt="The tiled bar at Fôlies" loading="lazy">
+      <figcaption>The tile bar · front row to the sky</figcaption>
+    </figure>
+    <figure class="g-card">
+      <img src="assets/terrace.jpg" alt="Fôlies terrace wide view" loading="lazy">
+      <figcaption>1,700 m above the noise</figcaption>
+    </figure>
+  </div>
+  <div class="g-dots" id="gdots"><i class="on"></i><i></i><i></i></div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<section class="visit" id="reserve">
+  <h2 class="reveal">Find us up here</h2>
+  <p class="sub reveal">Zaarour, Mount Lebanon, 20 minutes above the noise.</p>
+  <div class="status reveal" id="status"><span class="led"></span><span id="statusText">Sunset lounge</span></div>
+
+  <div class="facts reveal">
+    <div class="fact"><div class="k">Altitude</div><div class="v">~1,700 m</div></div>
+    <div class="fact"><div class="k">Golden hour</div><div class="v" id="sunsetTime">Every evening</div></div>
+    <div class="fact"><div class="k">Open</div><div class="v">Daily · 5 PM - Late</div></div>
+    <div class="fact"><div class="k">Vibes</div><div class="v">Guaranteed</div></div>
+  </div>
+
+  <div class="visit-actions reveal">
+    <!-- TODO: replace with the exact Resos booking URL -->
+    <a class="btn btn-fill" href="https://ofolies.resos.com/" target="_blank" rel="noopener">Book a table online</a>
+    <!-- TODO: replace 961XXXXXXXX with the real number -->
+    <a class="btn btn-ghost" href="tel:+961XXXXXXXX">Call us</a>
+    <a class="btn btn-ghost" href="https://maps.google.com/?q=Zaarour+Club+Lebanon" target="_blank" rel="noopener">Get directions</a>
+  </div>
+
+  <p class="socials reveal">Follow the sunset · <a href="https://www.instagram.com/ofoliesss/" target="_blank" rel="noopener">@ofoliesss</a></p>
+</section>
+
+<footer>
+  OFÔLIES · SUNSET LOUNGE · ZAAROUR
+  <div class="credit">© 2026
+    <a href="https://swottm.com" target="_blank" rel="noopener" aria-label="Swot Creative Hub">
+      <img src="https://swottm.com/assets/images/logo-white.svg" alt="Swot Creative Hub" onerror="this.outerHTML='Swot Creative Hub'">
+    </a>
+  </div>
+</footer>
+
+<!-- ============ ORDER TRAY & SHEET ============ -->
+<div id="tray"><span class="star">✦</span>&nbsp;<span id="trayLabel"><span id="trayCount">0</span> picks · <b id="trayTotal">$0</b></span></div>
+<div id="sheetveil"></div>
+<div id="sheet" role="dialog" aria-label="Your order">
+  <div class="sh-grip"></div>
+  <div class="sh-title">Your Order, Rehearsed</div>
+  <div class="sh-sub" id="shHint"></div>
+  <div class="sh-list" id="shList"></div>
+  <div class="sh-total"><span>Total</span><span class="p" id="shTotal">$0</span></div>
+  <div class="sh-upsell" id="shUpsell">
+    <div class="u-body">
+      <div class="u-lbl" id="uLbl">Goes well with</div>
+      <div class="u-name" id="uName"></div>
+      <div class="u-desc" id="uDesc"></div>
+    </div>
+    <button class="u-add" id="uAdd">Add</button>
+    <button class="u-x" id="uDismiss" aria-label="No thanks">✕</button>
+  </div>
+  <div class="sh-actions">
+    <button class="btn btn-fill" id="shClose">I'll keep it open </button>
+  </div>
+  <div class="sh-note" style="margin-top:12px">Keep this screen open; when the waiter arrives, you'll order before the sun even moves</div>
+  <div class="sh-links">
+    <button id="shClear">Clear all</button>
+  </div>
+</div>
+
+<!-- ============ DOCK ============ -->
+<nav class="dock" id="dock" aria-label="Quick actions">
+  <a class="d-reserve" href="https://ofolies.resos.com/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+    Book
+  </a>
+  <a class="d-call" href="tel:+961XXXXXXXX">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.5 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>
+    Call
+  </a>
+  <a class="d-map" href="https://maps.google.com/?q=Zaarour+Club+Lebanon" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+    Map
+  </a>
+</nav>
+
+<script>
+/* failsafe: never leave the page locked */
+setTimeout(function(){
+  document.body.classList.remove('locked');
+  document.body.classList.add('ready');
+}, 8000);
+
+/* ============================================================
+   PRELOADER : LIGHT THE TERRACE
+   ============================================================ */
+(function(){
+  var loader = document.getElementById('loader');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function unlock(){
+    document.body.classList.remove('locked');
+    document.body.classList.add('ready');
+    if(window.__pinTop) window.__pinTop();
+    try{ initArch(); }catch(e){}
+  }
+  if(reduced || !loader || getComputedStyle(loader).display === 'none'){
+    if(loader) loader.remove();
+    unlock();
+    return;
+  }
+  var sun = document.getElementById('ldSun');
+  var photo = document.getElementById('ldPhoto');
+  var warm = document.getElementById('ldWarm');
+  var bar = document.getElementById('ldBar');
+  var stars = document.getElementById('ldStars');
+  var p = 0, done = false, lastInput = performance.now(), dragging = false;
+  var t0 = performance.now();
+
+  for(var i=0;i<30;i++){
+    var s = document.createElement('i');
+    s.className = 'ld-star';
+    s.style.left = (Math.random()*100)+'%';
+    s.style.top = (Math.random()*40)+'%';
+    s.style.animationDelay = (Math.random()*2.6)+'s';
+    s.style.width = s.style.height = (1.5+Math.random()*2)+'px';
+    stars.appendChild(s);
+  }
+
+  function yFor(prog){
+    var h = loader.clientHeight;
+    return h*0.13 + prog*(h*0.52);
+  }
+  var nightL = document.getElementById('ldNight');
+  function render(){
+    sun.style.transform = 'translateY(' + yFor(p) + 'px) scale(' + (1 - p*0.25) + ')';
+    sun.style.opacity = Math.max(0, 1 - Math.max(0,(p-0.82))*5.5); // sun slips behind the ridge
+    // day -> golden hour -> dark dusk
+    var golden = Math.max(0, 1 - Math.abs(p-0.55)*2.6);
+    var bright = 1.08 - p*0.66;
+    var sat = 0.92 + golden*0.38;
+    photo.style.filter = 'brightness('+bright.toFixed(3)+') saturate('+sat.toFixed(3)+') contrast('+(1+p*0.08).toFixed(3)+')';
+    photo.style.transform = 'scale(' + (1.06 - p*0.04) + ')';
+    warm.style.opacity = golden.toFixed(3);
+    nightL.style.opacity = Math.max(0,(p-0.58)*2.1).toFixed(3);
+    stars.style.opacity = Math.max(0, (p-0.55)*2.4);
+    bar.style.height = (p*100)+'%';
+    if(p >= 1 && !done) complete();
+  }
+  function setP(v){ p = Math.max(0, Math.min(1, v)); render(); }
+
+  function complete(){
+    done = true;
+    if(window.track) track('sun_set_complete');
+    loader.classList.add('fin');
+    if(navigator.vibrate) navigator.vibrate([25,40,25]);
+    setTimeout(function(){
+      loader.classList.add('done');
+      unlock();
+      setTimeout(function(){ loader.remove(); }, 1000);
+    }, 1200);
+  }
+  function progFromY(clientY){
+    var h = loader.clientHeight;
+    return (clientY - h*0.13 - 46) / (h*0.52);
+  }
+  loader.addEventListener('pointerdown', function(e){
+    if(done) return;
+    dragging = true;
+    lastInput = performance.now();
+    loader.classList.add('grabbed');
+    try{ loader.setPointerCapture(e.pointerId); }catch(err){}
+    setP(progFromY(e.clientY));
+  });
+  loader.addEventListener('pointermove', function(e){
+    if(!dragging || done) return;
+    lastInput = performance.now();
+    setP(progFromY(e.clientY));
+  });
+  loader.addEventListener('pointerup', function(){
+    dragging = false;
+    loader.classList.remove('grabbed');
+  });
+  function tick(now){
+    if(done) return;
+    if(now - t0 > 8000){ setP(1); return; }
+    if(!dragging && now - lastInput > 3000){ setP(p + 0.004); }
+    requestAnimationFrame(tick);
+  }
+  render();
+  requestAnimationFrame(tick);
+})();
+
+/* ============================================================
+   HERO ARCH — real photo, pan / tilt / embers
+   ============================================================ */
+var archInited = false;
+function initArch(){
+  if(archInited) return;
+  archInited = true;
+  var arch = document.getElementById('arch');
+  var pan = document.getElementById('archPan');
+  var canvas = document.getElementById('emberCanvas');
+
+  // --- scrub the sky : afternoon -> sunset -> night ---
+  var img = document.getElementById('archImg');
+  var warm = document.getElementById('archWarm');
+  var night = document.getElementById('archNight');
+  var starsL = document.getElementById('archStars');
+  var neon = document.getElementById('archNeon');
+  var timeChip = document.getElementById('archTime');
+  var knob = document.getElementById('archKnob');
+  var track = arch.querySelector('.arch-track');
+  var ph = 0, phT = 0, neonOn = false;
+  var tiltT = 0, tiltY = 0;
+
+  function fmtTime(ph){
+    var mins = 17*60 + ph*6*60; // 5:00 PM -> 11:00 PM
+    var h = Math.floor(mins/60), m = Math.round(mins%60);
+    if(m===60){h++;m=0;}
+    var hh = ((h+11)%12)+1;
+    return hh + ':' + String(m).padStart(2,'0') + ' PM';
+  }
+  function renderSky(){
+    var golden = Math.max(0, 1 - Math.abs(ph-0.55)*2.6);
+    img.style.filter = 'brightness(' + (1.12 - ph*0.6).toFixed(3) + ')'
+      + ' saturate(' + (0.95 + golden*0.35).toFixed(3) + ')'
+      + ' contrast(' + (1 + ph*0.08).toFixed(3) + ')';
+    warm.style.opacity = golden.toFixed(3);
+    night.style.opacity = Math.max(0,(ph-0.6)*2.2).toFixed(3);
+    starsL.style.opacity = Math.max(0,(ph-0.65)*2.6).toFixed(3);
+    var nv = Math.max(0,(ph-0.72)*3.4);
+    neon.style.opacity = Math.min(1,nv).toFixed(3);
+    if(nv > 0.4 && !neonOn){ neonOn = true; neon.classList.add('flick'); }
+    if(nv <= 0.05) { neonOn = false; neon.classList.remove('flick'); }
+    timeChip.textContent = fmtTime(ph);
+    if(track){ knob.style.left = (ph*100)+'%'; }
+  }
+
+  var scrubbing = false;
+  function phFromX(clientX){
+    var r = arch.getBoundingClientRect();
+    return (clientX - r.left) / r.width;
+  }
+  var scrubTracked = false;
+  arch.addEventListener('pointerdown', function(e){
+    if(!scrubTracked){ scrubTracked = true; if(window.track) track('sky_scrub'); }
+    scrubbing = true;
+    phT = Math.max(0, Math.min(1, phFromX(e.clientX)));
+    hideBadge();
+  });
+  window.addEventListener('pointermove', function(e){
+    if(!scrubbing) return;
+    phT = Math.max(0, Math.min(1, phFromX(e.clientX)));
+  });
+  window.addEventListener('pointerup', function(){ scrubbing = false; });
+  window.addEventListener('deviceorientation', function(e){
+    if(e.beta == null) return;
+    tiltT = Math.max(-2.5, Math.min(2.5, (e.beta-45)/45*2.5));
+  });
+
+  // cinematic intro: the sky drifts to golden hour by itself
+  var introT0 = performance.now();
+  var userTouched = false;
+  arch.addEventListener('pointerdown', function(){ userTouched = true; }, {once:true});
+  function intro(now){
+    var k = Math.min(1, (now-introT0)/2600);
+    var e = 1-Math.pow(1-k,3);
+    if(!scrubbing) phT = e*0.55;
+    if(k < 1) requestAnimationFrame(intro);
+    else demoScrub();
+  }
+  function demoScrub(){
+    var seen = false;
+    try{ seen = sessionStorage.getItem('skyDemo') === '1'; }catch(e){}
+    if(seen || userTouched) return;
+    try{ sessionStorage.setItem('skyDemo','1'); }catch(e){}
+    var gf = document.getElementById('ghostFinger');
+    if(!gf) return;
+    gf.classList.add('play');
+    var d0 = performance.now();
+    (function wiggle(now){
+      if(userTouched || scrubbing){ phT = 0.55; return; }
+      var k = (now - d0)/2600;
+      if(k >= 1){ phT = 0.55; return; }
+      var w = k < 0.5 ? (k/0.5) : (1-(k-0.5)/0.5);
+      phT = 0.55 + w*0.28;
+      requestAnimationFrame(wiggle);
+    })(d0);
+    setTimeout(function(){ gf.remove(); }, 3000);
+  }
+  renderSky();
+  requestAnimationFrame(intro);
+
+  var badge = document.getElementById('archBadge');
+  function hideBadge(){ if(badge){ badge.style.opacity = 0; } }
+  setTimeout(hideBadge, 8000);
+
+  // --- embers over the photo ---
+  var ctx = canvas.getContext('2d');
+  var W, H, DPR = Math.min(window.devicePixelRatio || 1, 2);
+  function size(){
+    W = arch.clientWidth; H = arch.clientHeight;
+    canvas.width = W*DPR; canvas.height = H*DPR;
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+  }
+  size();
+  window.addEventListener('resize', size);
+
+  var N = 34, embers = [];
+  for(var i=0;i<N;i++){
+    embers.push({
+      x: Math.random(), y: Math.random(),
+      r: 0.8 + Math.random()*1.8,
+      s: 0.0004 + Math.random()*0.0011,
+      w: Math.random()*Math.PI*2,
+      o: 0.3 + Math.random()*0.6
+    });
+  }
+  var visible = true;
+  new IntersectionObserver(function(en){ visible = en[0].isIntersecting; },{threshold:0}).observe(arch);
+
+  var t = 0, shoot = null;
+  function loop(){
+    requestAnimationFrame(loop);
+    if(!visible) return;
+    t += 0.016;
+    // ease the sky phase & tilt
+    ph += (phT - ph)*0.09;
+    tiltY += (tiltT - tiltY)*0.07;
+    pan.style.transform = 'translateY(' + tiltY + '%)';
+    renderSky();
+
+    ctx.clearRect(0,0,W,H);
+    // pulsing warm glow where the real sun sits — strongest at golden hour
+    var golden = Math.max(0, 1 - Math.abs(ph-0.55)*2.6);
+    var gx = W*0.5, gy = H*0.40;
+    var pulse = (0.12 + golden*0.3) + Math.sin(t*1.3)*0.07;
+    var grad = ctx.createRadialGradient(gx,gy,4,gx,gy,W*0.42);
+    grad.addColorStop(0,'rgba(255,235,190,'+pulse+')');
+    grad.addColorStop(0.4,'rgba(245,154,85,'+(pulse*0.4)+')');
+    grad.addColorStop(1,'rgba(245,154,85,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0,0,W,H);
+    // embers
+    for(var i=0;i<N;i++){
+      var e = embers[i];
+      e.y -= e.s;
+      e.w += 0.02;
+      if(e.y < -0.05){ e.y = 1.05; e.x = Math.random(); }
+      var ex = (e.x + Math.sin(e.w)*0.012)*W + panX/100*W*0.5;
+      var ey = e.y*H;
+      var tw = e.o * (0.35 + Math.sin(t*2 + i)*0.35) * (0.5 + ph*0.9);
+      ctx.beginPath();
+      ctx.arc(ex, ey, e.r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(251,217,188,'+tw.toFixed(3)+')';
+      ctx.fill();
+    }
+    // shooting star at night
+    if(ph > 0.72){
+      if(!shoot && Math.random() < 0.004){
+        shoot = {x: 0.15+Math.random()*0.5, y: 0.06+Math.random()*0.14, k: 0};
+      }
+      if(shoot){
+        shoot.k += 0.035;
+        var sx = shoot.x*W + shoot.k*W*0.5;
+        var sy = shoot.y*H + shoot.k*H*0.22;
+        var fade = Math.sin(Math.min(1,shoot.k)*Math.PI);
+        ctx.strokeStyle = 'rgba(255,243,214,'+(0.85*fade).toFixed(3)+')';
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        ctx.moveTo(sx, sy);
+        ctx.lineTo(sx - W*0.09, sy - H*0.038);
+        ctx.stroke();
+        if(shoot.k >= 1) shoot = null;
+      }
+    }else{
+      shoot = null;
+    }
+  }
+  loop();
+}
+
+/* ============================================================
+   ORDER FLOW — tap dishes → send on WhatsApp / share
+   ============================================================ */
+(function(){
+  var picks = {};
+  try{ picks = JSON.parse(sessionStorage.getItem('foliesPicks')||'{}'); }catch(e){ picks={}; }
+  Object.keys(picks).forEach(function(k){
+    if(typeof picks[k] === 'number') picks[k] = {p: picks[k], g: 'food'};
+  });
+  var tray = document.getElementById('tray');
+  var trayCount = document.getElementById('trayCount');
+  var trayTotal = document.getElementById('trayTotal');
+  var trayLabel = document.getElementById('trayLabel');
+  var sheet = document.getElementById('sheet');
+  var veil = document.getElementById('sheetveil');
+  var shList = document.getElementById('shList');
+  var shTotal = document.getElementById('shTotal');
+  var shHint = document.getElementById('shHint');
+
+  function save(){ try{ sessionStorage.setItem('foliesPicks', JSON.stringify(picks)); }catch(e){} }
+  function count(){ var n=0; for(var k in picks) n += (picks[k].q || 1); return n; }
+  function total(){ var t=0; for(var k in picks) t += picks[k].p * (picks[k].q || 1); return t; }
+  function countGroup(g){ var n=0; for(var k in picks) if(picks[k].g === g) n++; return n; }
+
+  // ---- pairing brain: suggest what actually works together ----
+  function findItem(name){
+    var items = document.querySelectorAll('.item[data-price]');
+    for(var i=0;i<items.length;i++){ if(items[i].dataset.name === name) return items[i]; }
+    return null;
+  }
+  function lastPickOf(group){
+    var keys = Object.keys(picks);
+    for(var i=keys.length-1;i>=0;i--){ if(picks[keys[i]].g === group) return keys[i]; }
+    return null;
+  }
+  function secOf(name){
+    if(picks[name] && picks[name].s) return picks[name].s;
+    var el = findItem(name);
+    var sec = el && el.closest('.menu-section');
+    return sec ? sec.id : '';
+  }
+  function shortName(name){
+    return name.replace(/\s*\(.*\)$/,'').split(' ').slice(0,3).join(' ');
+  }
+  var SPIRIT_SECS = ['gin','vodka','whiskey','rum','tequila'];
+  function pairFor(name, group){
+    var sec = secOf(name) || '';
+    var n = name.toLowerCase();
+    if(group === 'food'){
+      if(n.indexOf('ribeye') > -1) return ['Cuba Cigar','Mango Mai Kai','Island Lightning'];
+      if(sec === 'raw') return ['Lady Pink','Island Lightning','Golden Peach'];
+      if(sec === 'salads') return ['Golden Peach','Lady Pink','O Sommet Kumquat'];
+      // hot bites: beer first, then bright cocktails
+      return ['Almaza','Beirut Beer','Heineken','Corona','Island Lightning','Mango Mai Kai'];
+    }
+    // drinks -> food
+    if(sec === 'beer') return ['Loaded Nachos','Trio Slider Burgers','Crispy Chicken Fingers'];
+    if(sec === 'bubbles') return ['Shrimp Ceviche','Salmon Tataki','Kani Crab Salad'];
+    if(sec === 'wine') return ['Goat Cheese Salad','Salmon Tataki','Ribeye Bites with Red Caviar'];
+    if(SPIRIT_SECS.indexOf(sec) > -1) return ['Ribeye Bites with Red Caviar','Loaded Nachos','Spicy Edamame'];
+    if(sec === 'soft' || sec === 'mocktails') return ['Trio Slider Burgers','Loaded Nachos','Truffle Fries'];
+    // cocktails & house cocktails
+    return ['Spicy Edamame','Truffle Fries','Crispy Shrimp with Pineapple Chutney','Shrimp Ceviche'];
+  }
+  var currentSugg = null;
+  function pickSuggestion(){
+    var f = countGroup('food'), dr = countGroup('drinks');
+    if(count() === 0) return null;
+    var anchor, wantGroup, lbl;
+    if(f > 0 && dr === 0){ anchor = lastPickOf('food'); wantGroup = 'drinks'; }
+    else if(dr > 0 && f === 0){ anchor = lastPickOf('drinks'); wantGroup = 'food'; }
+    else return null;
+    if(!anchor) return null;
+    var cands = pairFor(anchor, wantGroup === 'drinks' ? 'food' : 'drinks');
+    for(var i=0;i<cands.length;i++){
+      var nm = cands[i];
+      if(picks[nm]) continue;
+      var el = findItem(nm);
+      if(!el) continue;
+      var sec2 = el.closest('.menu-section');
+      if(sec2 && sec2.getAttribute('data-group') !== wantGroup) continue;
+      return { name: nm, price: parseInt(el.dataset.price,10),
+               lbl: 'Pairs with the ' + shortName(anchor), el: el };
+    }
+    return null;
+  }
+  function upsellMuted(){
+    try{
+      if(sessionStorage.getItem('upsellOff') === '1') return true;
+      if(parseInt(sessionStorage.getItem('upsellSeen')||'0',10) >= 3) return true;
+    }catch(e){}
+    return false;
+  }
+  function upsell(){
+    var box = document.getElementById('shUpsell');
+    if(!box) return;
+    if(upsellMuted()){ box.classList.remove('show'); return; }
+    if(currentSugg && picks[currentSugg.name]) currentSugg = null;
+    if(currentSugg){
+      var secEl = currentSugg.el && currentSugg.el.closest ? currentSugg.el.closest('.menu-section') : null;
+      var sg = secEl ? secEl.getAttribute('data-group') : 'food';
+      var f0 = countGroup('food'), d0 = countGroup('drinks');
+      var wantG = (f0 > 0 && d0 === 0) ? 'drinks' : (d0 > 0 && f0 === 0) ? 'food' : null;
+      if(!wantG || sg !== wantG) currentSugg = null;
+    }
+    if(!currentSugg) currentSugg = pickSuggestion();
+    if(!currentSugg){ box.classList.remove('show'); return; }
+    var f2 = countGroup('food'), dr2 = countGroup('drinks');
+    var qty = 1, lbl = currentSugg.lbl;
+    if(dr2 === 0 && f2 >= 2){
+      qty = Math.min(f2, 4);
+      lbl = 'For the table; one each?';
+    }
+    currentSugg.qty = qty;
+    document.getElementById('uLbl').textContent = lbl;
+    var un = document.getElementById('uName');
+    un.innerHTML = '';
+    var nEl = document.createElement('b');
+    nEl.textContent = (qty > 1 ? qty + '\u00d7 ' : '') + currentSugg.name;
+    var pEl = document.createElement('span'); pEl.textContent = '$' + (currentSugg.price * qty);
+    un.appendChild(nEl); un.appendChild(pEl);
+    var descEl = currentSugg.el.querySelector('.item-desc');
+    document.getElementById('uDesc').textContent = descEl ? descEl.textContent : '';
+    document.getElementById('uDesc').style.display = descEl ? '' : 'none';
+    document.getElementById('uAdd').textContent = qty > 1 ? 'Add ' + qty : 'Add';
+    box.classList.add('show');
+  }
+  document.getElementById('uDismiss').addEventListener('click', function(){
+    try{ sessionStorage.setItem('upsellOff','1'); }catch(e){}
+    document.getElementById('shUpsell').classList.remove('show');
+    if(window.track) track('upsell_dismiss', {});
+  });
+  document.getElementById('uAdd').addEventListener('click', function(){
+    if(!currentSugg) return;
+    var s = currentSugg; currentSugg = null;
+    toggle(s.name, s.price, s.el);
+    if(picks[s.name] && s.qty > 1) picks[s.name].q = s.qty;
+    try{ sessionStorage.setItem('upsellSeen','0'); }catch(e){}
+    save(); sync(); syncDom();
+    if(window.track) track('upsell_add', {dish: s.name, price: s.price, qty: s.qty || 1});
+  });
+  function hintFor(n, t){
+    if(n === 0) return 'Tap what tempts you, the list builds itself';
+    var f = countGroup('food'), dr = countGroup('drinks');
+    if(dr > 0 && f === 0){
+      if(n === 1) return 'One for the sunset; add a bite to go with it?';
+      return 'Liquid golden hour; some bites on the side?';
+    }
+    if(f > 0 && dr === 0){
+      if(n === 1) return 'Solo bite? Bold. Add something to share, maybe';
+      if(t >= 60) return 'Now THAT is a sunset feast; the waiter will be impressed';
+      return 'Good start, something to sip with that?';
+    }
+    if(t >= 60) return 'Food, drinks, altitude; a full sunset production';
+    return 'Balanced. Food, drinks, sunset; you know what you\u2019re doing';
+  }
+  function sync(){
+    var n = count(), t = total();
+    trayCount.textContent = n;
+    trayTotal.textContent = '$' + t;
+    tray.classList.toggle('show', n > 0);
+    tray.classList.toggle('ready', n >= 2);
+    trayLabel.innerHTML = n >= 2
+      ? '<span id="trayCount">'+n+'</span> picks · <b id="trayTotal">$'+t+'</b> tell your waiter'
+      : '<span id="trayCount">'+n+'</span> pick'+(n===1?'':'s')+' · <b id="trayTotal">$'+t+'</b>';
+    shHint.textContent = hintFor(n, t);
+    upsell();
+    shList.innerHTML = '';
+    Object.keys(picks).forEach(function(name){
+      var row = document.createElement('div');
+      row.className = 'sh-row';
+      var q = picks[name].q || 1;
+      row.innerHTML = '<span class="n"></span><span class="p">$'+(picks[name].p*q)+'</span><button class="x" aria-label="Remove">✕</button>';
+      row.querySelector('.n').textContent = name;
+      var menuEl = null;
+      var all = document.querySelectorAll('.item[data-price]');
+      for(var ii=0;ii<all.length;ii++){ if(all[ii].dataset.name === name){ menuEl = all[ii]; break; } }
+      row.insertBefore(makeStep(name, menuEl), row.querySelector('.p'));
+      row.querySelector('.qs-n').textContent = q;
+      row.querySelector('.x').addEventListener('click', function(){
+        delete picks[name];
+        save(); sync(); syncDom();
+        if(count()===0) closeSheet();
+      });
+      shList.appendChild(row);
+    });
+    shTotal.textContent = '$' + t;
+  }
+  function setQty(name, q, el){
+    if(!picks[name]) return;
+    if(q <= 0){ delete picks[name]; }
+    else{
+      picks[name].q = Math.min(q, 12);
+      if(el) floatPrice(el, picks[name].p);
+    }
+    save(); sync(); syncDom();
+    if(count() === 0 && sheet.classList.contains('open')) closeSheet();
+  }
+  function makeStep(name, el){
+    var w = document.createElement('span');
+    w.className = 'qty-step';
+    var minus = document.createElement('button'); minus.className='qs-btn'; minus.textContent='\u2212';
+    var num = document.createElement('span'); num.className='qs-n';
+    var plus = document.createElement('button'); plus.className='qs-btn'; plus.textContent='+';
+    minus.addEventListener('click', function(e){ e.stopPropagation(); setQty(name, (picks[name]?picks[name].q||1:1)-1, null); });
+    plus.addEventListener('click', function(e){ e.stopPropagation(); setQty(name, (picks[name]?picks[name].q||1:1)+1, el); });
+    w.appendChild(minus); w.appendChild(num); w.appendChild(plus);
+    return w;
+  }
+  function syncDom(){
+    document.querySelectorAll('.item[data-price]').forEach(function(it){
+      var nm = it.dataset.name;
+      var on = !!picks[nm];
+      it.classList.toggle('picked', on);
+      var step = it.querySelector('.qty-step');
+      if(on){
+        if(!step){
+          step = makeStep(nm, it);
+          var dot = it.querySelector('.pick-dot');
+          if(dot) it.insertBefore(step, dot); else it.appendChild(step);
+        }
+        step.querySelector('.qs-n').textContent = picks[nm].q || 1;
+      }else if(step){ step.remove(); }
+    });
+    document.querySelectorAll('.variant button').forEach(function(b){
+      b.classList.toggle('on', !!picks[b.dataset.name]);
+    });
+    document.querySelectorAll('.item.no-toggle').forEach(function(it){
+      var any = Array.prototype.some.call(it.querySelectorAll('.variant button'), function(b){ return !!picks[b.dataset.name]; });
+      it.classList.toggle('picked', any);
+    });
+  }
+  function floatPrice(item, price){
+    var f = document.createElement('span');
+    f.className = 'float-price';
+    f.textContent = '+$'+price;
+    item.appendChild(f);
+    setTimeout(function(){ f.remove(); }, 850);
+  }
+  function sparkle(x, y){
+    var colors = ['#D9532F','#EF7A4E','#F5B78C','#1E4437'];
+    for(var i=0;i<10;i++){
+      var s = document.createElement('span');
+      s.className = 'spark';
+      s.style.left = x+'px'; s.style.top = y+'px';
+      s.style.background = colors[i%4];
+      var a = Math.random()*Math.PI*2, d = 26+Math.random()*44;
+      s.style.setProperty('--dx', (Math.cos(a)*d)+'px');
+      s.style.setProperty('--dy', (Math.sin(a)*d)+'px');
+      document.body.appendChild(s);
+      setTimeout(function(el){ return function(){ el.remove(); }; }(s), 750);
+    }
+  }
+  var lastTap = {x:0,y:0};
+  document.addEventListener('pointerdown', function(e){ lastTap.x = e.clientX; lastTap.y = e.clientY; }, {passive:true});
+  function toggle(name, price, el){
+    if(picks[name]){ delete picks[name]; }
+    else{
+      var sec = el && el.closest ? el.closest('.menu-section') : null;
+      var grp = (sec && sec.getAttribute('data-group')) || 'food';
+      picks[name] = {p: price, g: grp, s: sec ? sec.id : ''};
+      if(el) floatPrice(el, price);
+      sparkle(lastTap.x, lastTap.y);
+      if(window.track) track('dish_picked', {dish: name, price: price});
+      if(window.fbTrack) fbTrack('AddToWishlist', {content_name: name, value: price, currency: 'USD'});
+      if(navigator.vibrate) navigator.vibrate(12);
+    }
+    save(); sync(); syncDom();
+  }
+
+  var trio = [];
+  function trioCount(name){ var c=0; trio.forEach(function(x){ if(x.name===name) c++; }); return c; }
+  function trioBar(){
+    var sec = document.getElementById('salads');
+    if(!sec) return null;
+    var bar = sec.querySelector('.trio-bar');
+    if(!bar){
+      bar = document.createElement('div');
+      bar.className = 'trio-bar';
+      bar.innerHTML = '<div class="tb-txt"><div class="tb-t">Build your trio · $18</div><div class="tb-s"></div></div>'
+        + '<div class="trio-slots"><span class="trio-slot"></span><span class="trio-slot"></span><span class="trio-slot"></span></div>'
+        + '<button class="trio-x" aria-label="Reset trio">✕</button>';
+      var note = sec.querySelector('.sec-note');
+      (note || sec.querySelector('.sec-title')).insertAdjacentElement('afterend', bar);
+      bar.querySelector('.trio-x').addEventListener('click', function(e){
+        e.stopPropagation();
+        trio = [];
+        trioRender();
+      });
+    }
+    return bar;
+  }
+  function trioRender(){
+    var bar = trioBar();
+    if(!bar) return;
+    var slots = bar.querySelectorAll('.trio-slot');
+    slots.forEach(function(s, i){
+      var p = trio[i];
+      s.classList.toggle('f', !!p);
+      s.textContent = p ? p.name.charAt(0) : '';
+    });
+    bar.querySelector('.tb-s').textContent = trio.length === 0
+      ? 'Pick any 3 salads; same one max twice'
+      : trio.length + ' of 3 picked';
+    bar.classList.toggle('has', trio.length > 0);
+    document.querySelectorAll('#salads .item').forEach(function(it){
+      var names = [it.dataset.name];
+      it.querySelectorAll('.variant button').forEach(function(b){ names.push(b.dataset.name); });
+      var c = 0; names.forEach(function(nm){ c += trioCount(nm); });
+      it.classList.toggle('in-trio', c > 0);
+      var badge = it.querySelector('.trio-n');
+      if(c > 0){
+        if(!badge){
+          badge = document.createElement('span');
+          badge.className = 'trio-n';
+          badge.innerHTML = '<span class="tn-c"></span><button aria-label="Remove one">−</button>';
+          badge.querySelector('button').addEventListener('click', function(e){
+            e.stopPropagation();
+            for(var i=trio.length-1;i>=0;i--){
+              if(names.indexOf(trio[i].name) > -1){ trio.splice(i,1); break; }
+            }
+            trioRender();
+          });
+          var dot = it.querySelector('.pick-dot');
+          if(dot) it.insertBefore(badge, dot); else it.appendChild(badge);
+        }
+        badge.querySelector('.tn-c').textContent = '\u00d7' + c;
+      } else if(badge){ badge.remove(); }
+    });
+  }
+  function trioTap(name, price, el){
+    if(trioCount(name) >= 2){
+      el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake');
+      return;
+    }
+    trio.push({name: name});
+    sparkle(lastTap.x, lastTap.y);
+    if(navigator.vibrate) navigator.vibrate(12);
+    if(trio.length >= 3){
+      var parts = {}, t = 18;
+      trio.forEach(function(x){ parts[x.name] = (parts[x.name]||0) + 1; });
+      var label = 'Trio: ' + Object.keys(parts).map(function(k){
+        return k.replace(/ Salad$/,'').replace('Caesar Salad ','Caesar ') + (parts[k]>1 ? ' \u00d7'+parts[k] : '');
+      }).join(', ');
+      if(picks[label]) picks[label].q = (picks[label].q || 1) + 1;
+      else picks[label] = {p: t, g: 'food', s: 'salads', q: 1};
+      trio = [];
+      if(window.track) track('dish_picked', {dish: label, price: t});
+      if(window.fbTrack) fbTrack('AddToWishlist', {content_name: label, value: t, currency: 'USD'});
+      save(); sync(); syncDom();
+    }
+    trioRender();
+  }
+  function bindItems(){
+    document.querySelectorAll('.item[data-price]').forEach(function(it){
+      it.addEventListener('click', function(){
+        if(it.closest('#salads')) trioTap(it.dataset.name, parseInt(it.dataset.price,10), it);
+        else toggle(it.dataset.name, parseInt(it.dataset.price,10), it);
+      });
+    });
+    document.querySelectorAll('.variant button').forEach(function(b){
+      b.addEventListener('click', function(e){
+        e.stopPropagation();
+        var host = b.closest('.item');
+        if(b.closest('#salads')) trioTap(b.dataset.name, parseInt(b.dataset.price,10), host);
+        else toggle(b.dataset.name, parseInt(b.dataset.price,10), host);
+      });
+    });
+  }
+  bindItems();
+  trioRender();
+  window.__menu = { bindItems: function(){ bindItems(); trioRender(); }, refresh: function(){ sync(); syncDom(); } };
+
+  function openSheet(){
+    try{
+      if(document.getElementById('shUpsell').classList.contains('show')){
+        sessionStorage.setItem('upsellSeen', String(parseInt(sessionStorage.getItem('upsellSeen')||'0',10) + 1));
+      }
+    }catch(e){} sheet.classList.add('open'); veil.classList.add('open'); }
+  function closeSheet(){ sheet.classList.remove('open'); veil.classList.remove('open'); }
+  tray.addEventListener('click', openSheet);
+  veil.addEventListener('click', closeSheet);
+  document.getElementById('shClose').addEventListener('click', closeSheet);
+  document.getElementById('shClear').addEventListener('click', function(){
+    picks = {}; save(); sync(); syncDom(); closeSheet();
+  });
+
+
+
+  sync(); syncDom();
+})();
+
+/* ============================================================
+   PAGE BEHAVIOUR
+   ============================================================ */
+var io = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+},{threshold:.1});
+document.querySelectorAll('.reveal,.item').forEach(function(el){ io.observe(el); });
+
+var dock = document.getElementById('dock');
+var hero = document.querySelector('.hero');
+new IntersectionObserver(function(en){
+  dock.classList.toggle('show', !en[0].isIntersecting);
+},{threshold:.2}).observe(hero);
+
+var DRINK_RE = /cocktail|mocktail|beer|wine|bubbl|gin|vodka|whiskey|rum|tequila|soft|shisha|coffee|tea/i;
+window.__menuGroup = 'food';
+window.__initMenuNav = function(){
+  var menu = document.querySelector('.menu');
+  var chips = document.querySelectorAll('.chip');
+  var secs = document.querySelectorAll('.menu-section');
+  var segBtns = document.querySelectorAll('.seg button');
+  if(!secs.length) return;
+  menu.classList.add('tabbed');
+  function groupOf(el){
+    return el.getAttribute('data-group') || (DRINK_RE.test(el.id || el.dataset.target || '') ? 'drinks' : 'food');
+  }
+  function activate(id, scroll){
+    secs.forEach(function(s){
+      var on = s.id === id;
+      s.classList.toggle('active', on);
+      if(on) s.querySelectorAll('.item').forEach(function(it){ it.classList.add('in'); });
+    });
+    chips.forEach(function(c){
+      c.classList.toggle('active', c.dataset.target === id);
+      if(c.dataset.target === id && c.scrollIntoView) c.scrollIntoView({inline:'center', block:'nearest', behavior:'smooth'});
+    });
+    if(scroll){
+      var top = document.getElementById('menu').getBoundingClientRect().top + window.scrollY;
+      if(window.scrollY > top) window.scrollTo({top: top, behavior:'smooth'});
+    }
+  }
+  function setGroup(g, scroll){
+    window.__menuGroup = g;
+    segBtns.forEach(function(b){ b.classList.toggle('on', b.dataset.group === g); });
+    var first = null;
+    chips.forEach(function(c){
+      var inG = groupOf(c) === g;
+      if(inG) c.removeAttribute('data-hidden'); else c.setAttribute('data-hidden','1');
+      if(inG && !first) first = c.dataset.target;
+    });
+    var activeSec = document.querySelector('.menu-section.active');
+    if(!activeSec || groupOf(activeSec) !== g){
+      if(first) activate(first, !!scroll);
+    } else if(scroll){
+      activate(activeSec.id, true);
+    }
+  }
+  chips.forEach(function(c){
+    c.onclick = function(){ activate(c.dataset.target, true); };
+  });
+  segBtns.forEach(function(b){
+    b.onclick = function(){
+      setGroup(b.dataset.group, false);
+      if(window.track) track('menu_group', {group: b.dataset.group});
+    };
+  });
+  window.__setMenuGroup = setGroup;
+  setGroup(window.__menuGroup, false);
+};
+window.__initMenuNav();
+// hero Food / Drinks buttons
+document.querySelectorAll('[data-menugroup]').forEach(function(a){
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    if(window.__setMenuGroup) window.__setMenuGroup(a.dataset.menugroup, false);
+    var m = document.getElementById('menu');
+    if(m) m.scrollIntoView({behavior:'smooth'});
+    if(window.track) track('menu_group', {group: a.dataset.menugroup});
+  });
+});
+
+window.__initGallery = function(){
+  var track = document.getElementById('gtrack');
+  var cards = track.querySelectorAll('.g-card');
+  var dots = document.getElementById('gdots').querySelectorAll('i');
+  var cio = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      e.target.classList.toggle('center', e.intersectionRatio > 0.7);
+      if(e.intersectionRatio > 0.7){
+        var idx = Array.prototype.indexOf.call(cards, e.target);
+        dots.forEach(function(d,i){ d.classList.toggle('on', i===idx); });
+      }
+    });
+  },{root:track, threshold:[0.7]});
+  cards.forEach(function(c){ cio.observe(c); });
+};
+window.__initGallery();
+
+(function(){
+  var bar = document.getElementById('sunbar');
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if(ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      bar.style.width = (max > 0 ? (h.scrollTop/max)*100 : 0) + '%';
+      ticking = false;
+    });
+  },{passive:true});
+})();
+
+(function(){
+  try{
+    var lat=33.98, lng=35.72;
+    var now=new Date();
+    var start=new Date(now.getFullYear(),0,0);
+    var day=Math.floor((now-start)/864e5);
+    var rad=Math.PI/180;
+    var decl=23.45*Math.sin(rad*(360/365)*(day-81));
+    var ha=Math.acos(-Math.tan(lat*rad)*Math.tan(decl*rad))/rad;
+    var sunsetUTC=(12-(lng/15))+ha/15;
+    var local=sunsetUTC+3;
+    var h=Math.floor(local), m=Math.round((local-h)*60);
+    if(m===60){h++;m=0;}
+    var hh=((h+11)%12)+1;
+    var t=hh+':'+String(m).padStart(2,'0')+' PM';
+    document.getElementById('sunsetTime').textContent='Sunset ~ '+t;
+    // golden hour countdown
+    var sunsetMins = Math.floor(local*60);
+    var nowMins = now.getHours()*60 + now.getMinutes();
+    var diff = sunsetMins - nowMins;
+    var chip = document.getElementById('sunsetChip');
+    var hrNow = now.getHours();
+    if(hrNow >= 1 && hrNow < 5){
+      chip.textContent = 'After hours · under the stars';
+    }else if(diff > 45){
+      var hh2 = Math.floor(diff/60), mm2 = diff%60;
+      chip.textContent = 'Golden hour in ' + (hh2>0? hh2+'h ' : '') + mm2 + 'm';
+    }else if(diff > -40){
+      chip.textContent = 'Golden hour now';
+    }else{
+      chip.textContent = 'Sunset was ' + t + ' · the night is just warming up';
+    }
+    var hr = now.getHours();
+    var open = (hr >= 17 || hr < 1);
+    var st = document.getElementById('status');
+    var stT = document.getElementById('statusText');
+    if(open){ stT.textContent = 'Open now · until late'; }
+    else{ st.classList.add('closed'); stT.textContent = 'Opens today at 5 PM'; }
+  }catch(e){}
+})();
+</script>
+
+<script>
+/* ============================================================
+   CONTENT HYDRATION — everything editable lives in content.json
+   (edited by the client via the Swot Portal dashboard)
+   ============================================================ */
+(function(){
+  function esc(s){ var d=document.createElement('div'); d.textContent=s==null?'':String(s); return d.innerHTML; }
+  fetch('content.json?t=' + Date.now())
+    .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    .then(function(C){
+      try{
+        // ---- photo cache-busting ----
+        if(C.photosVersion){
+          var pv = '?v=' + C.photosVersion;
+          document.querySelectorAll('img[src^="assets/sunset.jpg"], img[src^="assets/bar.jpg"], img[src^="assets/terrace.jpg"]').forEach(function(im){
+            im.src = im.src.split('?')[0] + pv;
+          });
+          var vs = document.querySelector('.visit');
+          if(vs) vs.style.backgroundImage = 'linear-gradient(rgba(15,39,33,.82), rgba(20,49,40,.94)), url(assets/terrace.jpg' + pv + ')';
+          var lp = document.querySelector('.ld-photo');
+          if(lp) lp.style.backgroundImage = 'url(assets/sunset.jpg' + pv + ')';
+        }
+        // ---- contact ----
+        if(C.contact){
+          if(C.contact.phone && C.contact.phone.indexOf('X') === -1){
+            document.querySelectorAll('a[href^="tel:"]').forEach(function(a){ a.href='tel:'+C.contact.phone.replace(/\s/g,''); });
+          }
+          if(C.contact.resos) document.querySelectorAll('a[href*="resos.com"]').forEach(function(a){ a.href=C.contact.resos; });
+          if(C.contact.instagram) document.querySelectorAll('a[href*="instagram.com"]').forEach(function(a){ a.href=C.contact.instagram; });
+          if(C.contact.maps) document.querySelectorAll('a[href*="maps.google"]').forEach(function(a){ a.href=C.contact.maps; });
+        }
+        // ---- announcement ----
+        if(C.announcement && C.announcement.show && C.announcement.text){
+          var an = document.getElementById('annc');
+          an.textContent = C.announcement.text;
+          an.classList.add('show');
+        }
+        // ---- hours ----
+        if(C.hours){
+          document.querySelectorAll('.fact').forEach(function(f){
+            var k = f.querySelector('.k');
+            if(k && /open/i.test(k.textContent)) f.querySelector('.v').textContent = C.hours.openLabel || '';
+          });
+          var st = document.getElementById('status'), stT = document.getElementById('statusText');
+          if(st && stT){
+            var hr = new Date().getHours();
+            var o = C.hours.openHour!=null?C.hours.openHour:17, c = C.hours.closeHour!=null?C.hours.closeHour:2;
+            var open = c < o ? (hr >= o || hr < c) : (hr >= o && hr < c);
+            var disp = ((o+11)%12)+1;
+            st.classList.toggle('closed', !open);
+            stT.textContent = open ? 'Open now · until late' : ('Opens today at ' + disp + (o>=12?' PM':' AM'));
+          }
+        }
+        // ---- gallery ----
+        if(C.gallery && C.gallery.length){
+          var pv2 = C.photosVersion ? ('?v='+C.photosVersion) : '';
+          var gt = document.getElementById('gtrack');
+          var gd = document.getElementById('gdots');
+          if(gt && gd){
+            gt.innerHTML = C.gallery.map(function(g){
+              return '<figure class="g-card"><img src="'+esc(g.file)+pv2+'" alt="'+esc(g.caption||'OF\u00f4lies Zaarour')+'" loading="lazy">'
+                + '<figcaption>'+esc(g.caption||'')+'</figcaption></figure>';
+            }).join('');
+            gd.innerHTML = C.gallery.map(function(_,i){ return '<i'+(i===0?' class="on"':'')+'></i>'; }).join('');
+            if(window.__initGallery) window.__initGallery();
+          }
+        }
+        // ---- structured data (live graph: venue + events) ----
+        try{
+          var MONTHS = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+          var pad = function(x){ return (x<10?'0':'')+x; };
+          var venue = {
+            "@type": "Restaurant",
+            "@id": "https://ofolies.com/#venue",
+            "name": "OF\u00f4lies",
+            "description": "A high-altitude sunset lounge in Zaarour, Mount Lebanon; food, cocktails and curated music at 1,700m.",
+            "url": "https://ofolies.com/",
+            "image": "https://ofolies.com/assets/sunset.jpg",
+            "servesCuisine": ["Lebanese","International"],
+            "priceRange": "$$",
+            "address": {"@type":"PostalAddress","addressLocality":"Zaarour","addressRegion":"Mount Lebanon","addressCountry":"LB"},
+            "acceptsReservations": (C.contact && C.contact.resos) || "https://ofolies.resos.com/",
+            "sameAs": [(C.contact && C.contact.instagram) || "https://www.instagram.com/ofoliesss/"]
+          };
+          if(C.contact && C.contact.phone && C.contact.phone.indexOf('X') === -1) venue.telephone = C.contact.phone;
+          if(C.hours && C.hours.openHour != null){
+            venue.openingHoursSpecification = {
+              "@type":"OpeningHoursSpecification",
+              "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": pad(C.hours.openHour)+":00",
+              "closes": pad(C.hours.closeHour)+":00"
+            };
+          }
+          var graph = [venue];
+          (C.events||[]).forEach(function(ev){
+            var m = (ev.label||'').toLowerCase().match(/jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec/);
+            var dnum = parseInt(ev.day,10);
+            if(!m || !dnum) return;
+            var now2 = new Date();
+            var y = now2.getFullYear();
+            if(MONTHS[m[0]] < now2.getMonth() - 1) y++;
+            var evObj = {
+              "@type": "Event",
+              "name": ev.name + (ev.dj ? ' \u00b7 ' + ev.dj : ''),
+              "startDate": y + '-' + pad(MONTHS[m[0]]+1) + '-' + pad(dnum) + 'T18:00:00+03:00',
+              "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+              "eventStatus": "https://schema.org/EventScheduled",
+              "location": {"@id": "https://ofolies.com/#venue"},
+              "organizer": {"@id": "https://ofolies.com/#venue"},
+              "offers": {"@type":"Offer","url": ev.url || "https://ofolies.resos.com/", "availability":"https://schema.org/InStock"}
+            };
+            if(ev.dj) evObj.performer = {"@type":"PerformingGroup","name": ev.dj};
+            graph.push(evObj);
+          });
+          var ldEl = document.getElementById('ldjson');
+          if(ldEl) ldEl.textContent = JSON.stringify({"@context":"https://schema.org","@graph": graph});
+        }catch(e){}
+        // ---- events ----
+        if(C.events && C.events.length){
+          var list = document.querySelector('.ev-list');
+          if(list){
+            list.innerHTML = C.events.map(function(e){
+              return '<a class="ev-card reveal in" href="'+esc(e.url||(C.contact&&C.contact.resos)||'#')+'" target="_blank" rel="noopener">'
+                + '<div class="ev-date"><b>'+esc(e.day)+'</b><span>'+esc(e.label)+'</span></div>'
+                + '<div class="ev-info"><div class="ev-name">'+esc(e.name)+'</div>'
+                + '<div class="ev-dj">'+esc(e.dj)+'</div>'
+                + '<div class="ev-tags">'+(e.tags||[]).map(function(t){return '<i>'+esc(t)+'</i>';}).join('')+'</div></div>'
+                + '<div class="ev-go">→</div></a>';
+            }).join('');
+          }
+        }
+        // ---- menu (sections fully dynamic) ----
+        if(C.menu && C.menu.length){
+          var chipsNav = document.getElementById('chips');
+          if(chipsNav){
+            var grpOf = function(sec){ return sec.group || (/cocktail|mocktail|beer|wine|bubbl|gin|vodka|whiskey|rum|tequila|soft|shisha|coffee|tea/i.test(sec.id) ? 'drinks' : 'food'); };
+            chipsNav.innerHTML = C.menu.map(function(sec, i){
+              return '<button class="chip'+(i===0?' active':'')+'" data-target="'+esc(sec.id)+'" data-group="'+grpOf(sec)+'">'+esc(sec.chip||sec.title)+'</button>';
+            }).join('');
+          }
+          var itemHTML = function(it){
+            if(it.variants && it.variants.length){
+              var vbtns = it.variants.map(function(v){
+                return '<button data-name="'+esc(it.name)+' ('+esc(v.label)+')" data-price="'+(v.price|0)+'">'+esc(v.label)+' <span class="vp">$'+(v.price|0)+'</span></button>';
+              }).join('');
+              return '<div class="item no-toggle in" data-name="'+esc(it.name)+'" data-variant="1"><div class="item-body">'
+                + '<div class="item-name">'+esc(it.name)+(it.badge?'<span class="badge">'+esc(it.badge)+'</span>':'')+'</div>'
+                + (it.desc?'<div class="item-desc">'+esc(it.desc)+'</div>':'')
+                + '<div class="variant">'+vbtns+'</div></div></div>';
+            }
+            return '<div class="item in" data-name="'+esc(it.name)+'" data-price="'+(it.price|0)+'"><div class="item-body">'
+              + '<div class="item-name">'+esc(it.name)+(it.badge?'<span class="badge">'+esc(it.badge)+'</span>':'')+'</div>'
+              + (it.desc?'<div class="item-desc">'+esc(it.desc)+'</div>':'')
+              + '</div><div class="item-price">$'+(it.price|0)+'</div><div class="pick-dot">✓</div></div>';
+          };
+          var secsHTML = C.menu.map(function(sec){
+            return '<section class="menu-section" id="'+esc(sec.id)+'" data-group="'+grpOf(sec)+'">'
+              + '<div class="sec-title"><h3>'+esc(sec.title)+'</h3></div>'
+              + (sec.note?'<p class="sec-note">'+esc(sec.note)+'</p>':'')
+              + (sec.items||[]).map(itemHTML).join('')
+              + '</section>';
+          }).join('');
+          document.querySelectorAll('.menu-section').forEach(function(s){ s.remove(); });
+          var outro = document.querySelector('.menu-outro');
+          if(outro) outro.insertAdjacentHTML('beforebegin', secsHTML);
+          if(window.__initMenuNav) window.__initMenuNav();
+          if(window.__menu){ window.__menu.bindItems(); window.__menu.refresh(); }
+        }
+      }catch(err){ console.warn('hydrate section failed', err); }
+    })
+    .catch(function(){ /* no content.json — static fallback stays */ });
+})();
+</script>
+
+<script>
+/* ---- GA4 conversion events ---- */
+document.addEventListener('click', function(e){
+  var a = e.target.closest('a');
+  if(!a || !a.href) return;
+  var loc = a.closest('.dock') ? 'dock'
+          : a.closest('.hero') ? 'hero'
+          : a.closest('.events') ? 'events'
+          : a.closest('#sheet') ? 'order_sheet'
+          : a.closest('.visit') ? 'visit'
+          : 'other';
+  if(a.href.indexOf('resos.com') > -1){
+    track('reserve_click', {location: loc});
+    if(window.fbTrack) fbTrack('ViewContent', {location: loc});
+  }
+  else if(a.href.indexOf('tel:') === 0){
+    track('call_click', {location: loc});
+    if(window.fbTrack) fbTrack('Contact', {location: loc});
+  }
+  else if(a.href.indexOf('maps.google') > -1){
+    track('map_click', {location: loc});
+    if(window.fbTrack) fbTrack('FindLocation', {location: loc});
+  }
+  else if(a.href.indexOf('instagram.com') > -1) track('instagram_click', {location: loc});
+}, {passive:true});
+</script>
 </body>
 </html>
