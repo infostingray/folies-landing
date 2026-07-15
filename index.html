@@ -52,6 +52,7 @@ function fbTrack(n, p, custom){
   }catch(e){}
 }
 fbTrack('PageView');
+fbTrack('QRScanWebsite', {}, true);
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1644172166643880&ev=PageView&noscript=1"
@@ -2183,10 +2184,6 @@ window.__initMenuNav = function(){
   segBtns.forEach(function(b){
     b.onclick = function(){
       setGroup(b.dataset.group, false);
-      if(window.fbTrack){
-        fbTrack('MenuView', {menu_type: b.dataset.group}, true);
-        fbTrack('ViewContent', {content_category: 'menu', content_name: b.dataset.group + ' menu'});
-      }
       if(window.track) track('menu_group', {group: b.dataset.group});
     };
   });
@@ -2202,10 +2199,6 @@ document.querySelectorAll('[data-menugroup]').forEach(function(a){
     var m = document.getElementById('menu');
     if(m) m.scrollIntoView({behavior:'smooth'});
     if(window.track) track('menu_group', {group: a.dataset.menugroup});
-    if(window.fbTrack){
-      fbTrack('MenuView', {menu_type: a.dataset.menugroup}, true);
-      fbTrack('ViewContent', {content_category: 'menu', content_name: a.dataset.menugroup + ' menu'});
-    }
   });
 });
 
