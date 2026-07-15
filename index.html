@@ -53,15 +53,24 @@ function fbTrack(n, p, custom){
 }
 fbTrack('PageView');
 if(/[?&]src=qr(&|$)/.test(location.search)){
-  fbTrack('QRScanWebsite', {}, true);
-  fbTrack('QRScanWebsiteOffline', {currency: 'USD'}, true);
-  /* tracking captured; clean the address bar so copies/shares are the bare URL */
-  try{
-    var _sp = new URLSearchParams(location.search);
-    _sp.delete('src');
-    var _q = _sp.toString();
-    history.replaceState(null, '', location.pathname + (_q ? '?' + _q : ''));
-  }catch(e){}
+  fbTrack('QRScanWebsite', {src: 'qr'}, true);
+  fbTrack('QRScanWebsiteOffline', {src: 'qr', currency: 'USD'}, true);
+  /* clean the address bar only AFTER the pixel library has loaded and
+     stamped the tagged URL; the preloader hides the URL bar window anyway */
+  var __cleanQr = function(){
+    try{
+      var _sp = new URLSearchParams(location.search);
+      _sp.delete('src');
+      var _q = _sp.toString();
+      history.replaceState(null, '', location.pathname + (_q ? '?' + _q : ''));
+    }catch(e){}
+  };
+  var __qrT0 = Date.now();
+  (function __waitPixel(){
+    var lib = window.fbq && fbq.callMethod; /* real library replaces the stub */
+    if(lib || Date.now() - __qrT0 > 6000){ setTimeout(__cleanQr, 800); }
+    else setTimeout(__waitPixel, 200);
+  })();
 }
 </script>
 <noscript><img height="1" width="1" style="display:none"
