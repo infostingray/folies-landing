@@ -43,7 +43,7 @@ export default {
     if (url.pathname.endsWith("/fb")) {
       const ALLOWED_EVENTS = [
   "PageView", "ViewContent", "AddToWishlist", "Contact", "FindLocation",
-  "PageViewOffline", "QRScanWebsiteOffline", "ViewContentOffline",
+  "QRScanWebsiteOffline", "ViewContentOffline",
   "AddToWishlistOffline", "ContactOffline", "FindLocationOffline",
 ];
       if (!ALLOWED_EVENTS.includes(body.event_name)) return json({ ok: false, error: "Event not allowed" }, 400);
