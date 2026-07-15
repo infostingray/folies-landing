@@ -2465,8 +2465,14 @@ document.addEventListener('click', function(e){
     track('reserve_click', {location: loc});
     if(window.fbTrack) fbTrack('Schedule', {location: loc});
   }
-  else if(a.href.indexOf('tel:') === 0) track('call_click', {location: loc});
-  else if(a.href.indexOf('maps.google') > -1) track('map_click', {location: loc});
+  else if(a.href.indexOf('tel:') === 0){
+    track('call_click', {location: loc});
+    if(window.fbTrack) fbTrack('Contact', {location: loc});
+  }
+  else if(a.href.indexOf('maps.google') > -1){
+    track('map_click', {location: loc});
+    if(window.fbTrack) fbTrack('FindLocation', {location: loc});
+  }
   else if(a.href.indexOf('instagram.com') > -1) track('instagram_click', {location: loc});
 }, {passive:true});
 </script>
