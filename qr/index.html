@@ -37,6 +37,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1644172166643880');
 function fbTrack(n, p, custom){
   try{
+    if(n === 'PageView') return; /* no PageViewOffline; QRScanWebsiteOffline is the load event */
     n = n + 'Offline'; /* offline page: every event is the custom Offline twin */
     var evid = Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
     if(window.fbq){
