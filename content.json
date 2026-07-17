@@ -1285,12 +1285,8 @@
       ]
     }
   ],
-  "photosVersion": 1784286933144,
+  "photosVersion": 1784287104533,
   "gallery": [
-    {
-      "file": "assets/sunset.jpg",
-      "caption": "Golden hour · every evening"
-    },
     {
       "file": "assets/terrace.jpg",
       "caption": "1,700 m above the noise"
@@ -1298,6 +1294,10 @@
     {
       "file": "assets/gallery-1784286924512.jpg",
       "caption": "The tile bar · front row to the sky"
+    },
+    {
+      "file": "assets/gallery-1784287098892.jpg",
+      "caption": "New photo; edit this caption"
     }
   ]
 }
