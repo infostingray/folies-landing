@@ -1567,14 +1567,16 @@ function initArch(){
     return hh + ':' + String(m).padStart(2,'0') + ' PM';
   }
   function renderSky(){
-    var golden = Math.max(0, 1 - Math.abs(ph-0.55)*2.6);
-    img.style.filter = 'brightness(' + (1.12 - ph*0.6).toFixed(3) + ')'
-      + ' saturate(' + (0.95 + golden*0.35).toFixed(3) + ')'
-      + ' contrast(' + (1 + ph*0.08).toFixed(3) + ')';
+    /* real Zaarour timing: golden peaks ~7:40 PM (ph .45), night lands by ~8:45 (ph .62) */
+    var golden = Math.max(0, 1 - Math.abs(ph-0.45)*3.2);
+    var nightK = Math.max(0, Math.min(1, (ph-0.47)*2.6));
+    img.style.filter = 'brightness(' + (1.10 - ph*0.55 - nightK*0.25).toFixed(3) + ')'
+      + ' saturate(' + (0.95 + golden*0.35 - nightK*0.25).toFixed(3) + ')'
+      + ' contrast(' + (1 + ph*0.08 + nightK*0.06).toFixed(3) + ')';
     warm.style.opacity = golden.toFixed(3);
-    night.style.opacity = Math.max(0,(ph-0.6)*2.2).toFixed(3);
-    starsL.style.opacity = Math.max(0,(ph-0.65)*2.6).toFixed(3);
-    var nv = Math.max(0,(ph-0.72)*3.4);
+    night.style.opacity = Math.min(1, Math.max(0,(ph-0.45)*2.4)).toFixed(3);
+    starsL.style.opacity = Math.min(1, Math.max(0,(ph-0.55)*2.8)).toFixed(3);
+    var nv = Math.max(0,(ph-0.58)*3.4);
     neon.style.opacity = Math.min(1,nv).toFixed(3);
     if(nv > 0.4 && !neonOn){ neonOn = true; neon.classList.add('flick'); }
     if(nv <= 0.05) { neonOn = false; neon.classList.remove('flick'); }
@@ -1611,7 +1613,7 @@ function initArch(){
   function intro(now){
     var k = Math.min(1, (now-introT0)/2600);
     var e = 1-Math.pow(1-k,3);
-    if(!scrubbing) phT = e*0.55;
+    if(!scrubbing) phT = e*0.45;
     if(k < 1) requestAnimationFrame(intro);
     else demoScrub();
   }
@@ -1625,11 +1627,11 @@ function initArch(){
     gf.classList.add('play');
     var d0 = performance.now();
     (function wiggle(now){
-      if(userTouched || scrubbing){ phT = 0.55; return; }
+      if(userTouched || scrubbing){ phT = 0.45; return; }
       var k = (now - d0)/2600;
-      if(k >= 1){ phT = 0.55; return; }
+      if(k >= 1){ phT = 0.45; return; }
       var w = k < 0.5 ? (k/0.5) : (1-(k-0.5)/0.5);
-      phT = 0.55 + w*0.28;
+      phT = 0.45 + w*0.33;
       requestAnimationFrame(wiggle);
     })(d0);
     setTimeout(function(){ gf.remove(); }, 3000);
