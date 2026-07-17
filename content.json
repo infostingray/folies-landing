@@ -1285,7 +1285,7 @@
       ]
     }
   ],
-  "photosVersion": 1784289305588,
+  "photosVersion": 1784289327061,
   "gallery": [
     {
       "file": "assets/gallery-1784286924512.jpg",
@@ -1293,6 +1293,10 @@
     },
     {
       "file": "assets/gallery-1784289269606.jpg",
+      "caption": "The Chef’s Table · front row to the flavor"
+    },
+    {
+      "file": "assets/gallery-1784289321728.jpg",
       "caption": "New photo; edit this caption"
     }
   ]
