@@ -149,10 +149,10 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 .ld-night{
   position:absolute;inset:0;opacity:0;pointer-events:none;
   background:linear-gradient(180deg,
-    rgba(3,6,18,.97) 0%,
-    rgba(5,10,26,.92) 34%,
-    rgba(9,16,36,.78) 60%,
-    rgba(10,24,30,.58) 100%);
+    rgba(6,10,28,.88) 0%,
+    rgba(9,14,36,.8) 36%,
+    rgba(13,22,44,.64) 62%,
+    rgba(12,28,34,.48) 100%);
 }
 .ld-warm{
   position:absolute;inset:0;opacity:0;
@@ -377,10 +377,10 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 }
 .arch-nightlayer{
   background:linear-gradient(180deg,
-    rgba(3,6,18,.97) 0%,
-    rgba(5,10,26,.92) 32%,
-    rgba(9,16,36,.78) 58%,
-    rgba(10,24,30,.55) 100%);
+    rgba(6,10,28,.88) 0%,
+    rgba(9,14,36,.8) 34%,
+    rgba(13,22,44,.64) 60%,
+    rgba(12,28,34,.45) 100%);
 }
 .arch-starlayer{
   background-image:radial-gradient(1.5px 1.5px at 20% 15%, #FFF3D6 50%, transparent 51%),
@@ -1499,7 +1499,7 @@ setTimeout(function(){
     // day -> golden hour -> dark dusk
     var golden = Math.max(0, 1 - Math.abs(p-0.5)*2.8);
     var nightK = Math.max(0, Math.min(1, (p-0.52)*2.4));
-    var bright = 1.08 - p*0.62 - nightK*0.24;
+    var bright = 1.08 - p*0.62 - nightK*0.14;
     var sat = 0.92 + golden*0.38 - nightK*0.25;
     photo.style.filter = 'brightness('+bright.toFixed(3)+') saturate('+sat.toFixed(3)+') contrast('+(1+p*0.08+nightK*0.06).toFixed(3)+')';
     photo.style.transform = 'scale(' + (1.06 - p*0.04) + ')';
@@ -1587,7 +1587,7 @@ function initArch(){
     /* real Zaarour timing: golden peaks ~7:40 PM (ph .45), night lands by ~8:45 (ph .62) */
     var golden = Math.max(0, 1 - Math.abs(ph-0.45)*3.2);
     var nightK = Math.max(0, Math.min(1, (ph-0.47)*2.6));
-    img.style.filter = 'brightness(' + (1.10 - ph*0.55 - nightK*0.25).toFixed(3) + ')'
+    img.style.filter = 'brightness(' + (1.10 - ph*0.55 - nightK*0.15).toFixed(3) + ')'
       + ' saturate(' + (0.95 + golden*0.35 - nightK*0.25).toFixed(3) + ')'
       + ' contrast(' + (1 + ph*0.08 + nightK*0.06).toFixed(3) + ')';
     warm.style.opacity = golden.toFixed(3);
