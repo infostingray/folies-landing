@@ -141,7 +141,11 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 }
 .ld-night{
   position:absolute;inset:0;opacity:0;pointer-events:none;
-  background:linear-gradient(180deg, rgba(10,14,40,.85) 0%, rgba(24,20,56,.65) 45%, rgba(15,39,33,.5) 100%);
+  background:linear-gradient(180deg,
+    rgba(3,6,18,.97) 0%,
+    rgba(5,10,26,.92) 34%,
+    rgba(9,16,36,.78) 60%,
+    rgba(10,24,30,.58) 100%);
 }
 .ld-warm{
   position:absolute;inset:0;opacity:0;
@@ -1485,14 +1489,15 @@ setTimeout(function(){
     sun.style.transform = 'translateY(' + yFor(p) + 'px) scale(' + (1 - p*0.25) + ')';
     sun.style.opacity = Math.max(0, 1 - Math.max(0,(p-0.82))*5.5); // sun slips behind the ridge
     // day -> golden hour -> dark dusk
-    var golden = Math.max(0, 1 - Math.abs(p-0.55)*2.6);
-    var bright = 1.08 - p*0.66;
-    var sat = 0.92 + golden*0.38;
-    photo.style.filter = 'brightness('+bright.toFixed(3)+') saturate('+sat.toFixed(3)+') contrast('+(1+p*0.08).toFixed(3)+')';
+    var golden = Math.max(0, 1 - Math.abs(p-0.5)*2.8);
+    var nightK = Math.max(0, Math.min(1, (p-0.52)*2.4));
+    var bright = 1.08 - p*0.62 - nightK*0.24;
+    var sat = 0.92 + golden*0.38 - nightK*0.25;
+    photo.style.filter = 'brightness('+bright.toFixed(3)+') saturate('+sat.toFixed(3)+') contrast('+(1+p*0.08+nightK*0.06).toFixed(3)+')';
     photo.style.transform = 'scale(' + (1.06 - p*0.04) + ')';
     warm.style.opacity = golden.toFixed(3);
-    nightL.style.opacity = Math.max(0,(p-0.58)*2.1).toFixed(3);
-    stars.style.opacity = Math.max(0, (p-0.55)*2.4);
+    nightL.style.opacity = Math.min(1, Math.max(0,(p-0.5)*2.6)).toFixed(3);
+    stars.style.opacity = Math.max(0, (p-0.5)*2.6);
     bar.style.height = (p*100)+'%';
     if(p >= 1 && !done) complete();
   }
