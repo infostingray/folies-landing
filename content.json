@@ -188,6 +188,24 @@
       ]
     },
     {
+      "id": "pizza",
+      "chip": "Pizza",
+      "title": "Pizza",
+      "note": "Hand made dough, stretched to order",
+      "items": [
+        {
+          "name": "Margherita Pizza",
+          "desc": "Hand made dough, tomato sauce, mozzarella",
+          "price": 14
+        },
+        {
+          "name": "Pepperoni Pizza",
+          "desc": "Hand made dough, tomato sauce, mozzarella, pepperoni",
+          "price": 16
+        }
+      ]
+    },
+    {
       "id": "house-cocktails",
       "chip": "House Cocktails",
       "title": "House Cocktails",
