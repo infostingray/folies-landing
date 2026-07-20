@@ -29,7 +29,53 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1644172166643880');
+/* ---- identity kit: maximizes Event Match Quality ---- */
+function __ck(k){
+  var m = document.cookie.match(new RegExp('(?:^|; )' + k + '=([^;]*)'));
+  return m ? decodeURIComponent(m[1]) : undefined;
+}
+function __store(k, v){
+  try{ localStorage.setItem(k, v); }catch(e){}
+  try{ document.cookie = k + '=' + encodeURIComponent(v) + ';path=/;max-age=63072000;SameSite=Lax'; }catch(e){}
+}
+function __get(k){
+  try{ var v = localStorage.getItem(k); if(v) return v; }catch(e){}
+  return __ck(k);
+}
+var __eid = (function(){
+  var v = __get('of_eid');
+  if(!v){
+    v = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+      : Date.now().toString(36) + '-' + Math.random().toString(36).slice(2,12);
+    __store('of_eid', v);
+  }
+  return v;
+})();
+function __fbp(){
+  var v = __ck('_fbp');
+  if(v){ __store('of_fbp', v); return v; }
+  v = __get('of_fbp');
+  if(!v){
+    v = 'fb.1.' + Date.now() + '.' + Math.floor(Math.random()*1e10);
+    __store('of_fbp', v);
+  }
+  return v;
+}
+function __fbc(){
+  var v = __ck('_fbc');
+  if(v){ __store('of_fbc', v); return v; }
+  try{
+    var m = location.search.match(/[?&]fbclid=([^&#]+)/);
+    if(m){
+      v = 'fb.1.' + Date.now() + '.' + decodeURIComponent(m[1]);
+      __store('of_fbc', v);
+      return v;
+    }
+  }catch(e){}
+  return __get('of_fbc');
+}
+__fbc(); /* capture any ad click id immediately, before the pixel loads */
+fbq('init', '1644172166643880', {external_id: __eid});
 function fbTrack(n, p, custom){
   try{
     var evid = Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 8);
@@ -37,16 +83,13 @@ function fbTrack(n, p, custom){
       custom ? fbq('trackCustom', n, p||{}, {eventID: evid})
              : fbq('track', n, p||{}, {eventID: evid});
     }
-    var ck = function(k){
-      var m = document.cookie.match(new RegExp('(?:^|; )' + k + '=([^;]*)'));
-      return m ? decodeURIComponent(m[1]) : undefined;
-    };
     fetch('https://ofolies-dash.silent-snowflake-d859.workers.dev/fb', {
       method: 'POST', keepalive: true,
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         event_name: n, event_id: evid, url: location.href,
-        fbp: ck('_fbp'), fbc: ck('_fbc'), custom_data: p || {}
+        external_id: __eid, fbp: __fbp(), fbc: __fbc(),
+        custom_data: p || {}
       })
     }).catch(function(){});
   }catch(e){}
