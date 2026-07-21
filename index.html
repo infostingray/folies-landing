@@ -2430,12 +2430,26 @@ window.__initGallery();
           });
           var st = document.getElementById('status'), stT = document.getElementById('statusText');
           if(st && stT){
-            var hr = new Date().getHours();
+            var nowD = new Date();
+            var hr = nowD.getHours();
             var o = C.hours.openHour!=null?C.hours.openHour:17, c = C.hours.closeHour!=null?C.hours.closeHour:2;
-            var open = c < o ? (hr >= o || hr < c) : (hr >= o && hr < c);
-            var disp = ((o+11)%12)+1;
+            var closed = C.hours.closedDays || [];
+            var day = nowD.getDay();
+            var evenDay = (c < o && hr < c) ? (day + 6) % 7 : day;
+            var dayClosed = closed.indexOf(evenDay) > -1;
+            var open = !dayClosed && (c < o ? (hr >= o || hr < c) : (hr >= o && hr < c));
+            var disp = ((o+11)%12)+1 + (o>=12?' PM':' AM');
+            var NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+            var msg;
+            if(open){ msg = 'Open now · until late'; }
+            else if(closed.indexOf(day) > -1){
+              var nx = day;
+              for(var i3=1;i3<=7;i3++){ if(closed.indexOf((day+i3)%7) === -1){ nx = (day+i3)%7; break; } }
+              msg = 'Closed today · back ' + NAMES[nx] + ' at ' + disp;
+            }
+            else{ msg = 'Opens today at ' + disp; }
             st.classList.toggle('closed', !open);
-            stT.textContent = open ? 'Open now · until late' : ('Opens today at ' + disp + (o>=12?' PM':' AM'));
+            stT.textContent = msg;
           }
         }
         // ---- gallery ----
@@ -2452,6 +2466,42 @@ window.__initGallery();
             if(window.__initGallery) window.__initGallery();
           }
         }
+        // ---- structured data: live Event graph from the Portal ----
+        try{
+          var MONTHS2 = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
+          var pad2 = function(x){ return (x<10?'0':'')+x; };
+          var graph2 = [];
+          (C.events||[]).forEach(function(ev){
+            var m = (ev.label||'').toLowerCase().match(/jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec/);
+            var dnum = parseInt(ev.day,10);
+            if(!m || !dnum) return;
+            var now2 = new Date();
+            var y = now2.getFullYear();
+            if(MONTHS2[m[0]] < now2.getMonth() - 1) y++;
+            var evObj = {
+              "@type": "Event",
+              "name": ev.name + (ev.dj ? ' \u00b7 ' + ev.dj : ''),
+              "startDate": y + '-' + pad2(MONTHS2[m[0]]+1) + '-' + pad2(dnum) + 'T18:00:00+03:00',
+              "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+              "eventStatus": "https://schema.org/EventScheduled",
+              "location": {"@id": "https://ofolies.com/#venue"},
+              "organizer": {"@id": "https://ofolies.com/#venue"},
+              "offers": {"@type":"Offer","url": ev.url || (C.contact && C.contact.resos) || "https://ofolies.resos.com/", "availability":"https://schema.org/InStock"}
+            };
+            if(ev.dj) evObj.performer = {"@type":"PerformingGroup","name": ev.dj};
+            graph2.push(evObj);
+          });
+          if(graph2.length){
+            var ldEv = document.getElementById('ldevents');
+            if(!ldEv){
+              ldEv = document.createElement('script');
+              ldEv.type = 'application/ld+json';
+              ldEv.id = 'ldevents';
+              document.head.appendChild(ldEv);
+            }
+            ldEv.textContent = JSON.stringify({"@context":"https://schema.org","@graph": graph2});
+          }
+        }catch(e){}
         // ---- events ----
         if(C.events && C.events.length){
           var list = document.querySelector('.ev-list');
