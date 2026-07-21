@@ -2434,6 +2434,24 @@ window.__initGallery();
             stT.textContent = open ? 'Open now · until late' : ('Opens today at ' + disp + (o>=12?' PM':' AM'));
           }
         }
+          # strip schema from the /qr/ clone
+import re
+html = re.sub(r'<!-- LDJSON-START -->.*?<!-- LDJSON-END -->', '', html, flags=re.DOTALL)
+
+# noindex the clone
+html = html.replace('</head>',
+  '<meta name="robots" content="noindex, nofollow">\n</head>', 1)
+        <section id="faq">
+  <h2>Good to know</h2>
+  <h3>Where is Ô Folies?</h3>
+  <p>In Zaarour, Mount Lebanon, near Zaarour Club — around 40 minutes from Beirut.</p>
+  <h3>What time should I arrive for sunset?</h3>
+  <p>Arrive between 6:00 and 6:30 PM in summer to catch golden hour before the sun sets behind the mountains.</p>
+  <h3>Do I need a reservation?</h3>
+  <p>Walk-ins are welcome, but tables go fast on weekends — book at [FILL: Resos URL].</p>
+  <h3>Is there food?</h3>
+  <p>[FILL: one line on the menu.]</p>
+</section>
         // ---- gallery ----
         if(C.gallery && C.gallery.length){
           var pv2 = C.photosVersion ? ('?v='+C.photosVersion) : '';
@@ -2448,6 +2466,14 @@ window.__initGallery();
             if(window.__initGallery) window.__initGallery();
           }
         }
+        <section id="about">
+  <h2>About Ô Folies</h2>
+  <p>Ô Folies is a sunset lounge in Zaarour, Mount Lebanon, perched at
+  around 1,700 meters above sea level — about 40 minutes from Beirut.
+  Guests arrive for golden hour and stay into the night: signature
+  cocktails, food, and DJ sets as the sun drops behind the mountains.
+  Open [FILL: days], with table reservations recommended on weekends.</p>
+</section>
         // ---- structured data (live graph: venue + events) ----
         try{
           var MONTHS = {jan:0,feb:1,mar:2,apr:3,may:4,jun:5,jul:6,aug:7,sep:8,oct:9,nov:10,dec:11};
