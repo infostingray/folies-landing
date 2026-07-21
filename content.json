@@ -12,29 +12,9 @@
   "hours": {
     "openLabel": "Wed - Sun · 5 PM - 1 AM",
     "openHour": 17,
-    "closeHour": 1,
-    "closedDays": [
-      1,
-      2
-    ]
+    "closeHour": 1
   },
   "events": [
-    {
-      "day": "18",
-      "label": "Sat Jul",
-      "name": "Grand Openeing",
-      "dj": "Pierre G",
-      "tags": [],
-      "url": "https://ofolies.resos.com/"
-    },
-    {
-      "day": "19",
-      "label": "Sun Jul",
-      "name": "World Cup Final",
-      "dj": "Big Screen and Live Dj",
-      "tags": [],
-      "url": "https://ofolies.resos.com/"
-    },
     {
       "day": "24",
       "label": "Fri Jul",
@@ -55,7 +35,7 @@
       "day": "26",
       "label": "Sun Jul",
       "name": "Sunset Memories",
-      "dj": "Nour Nemri & The Band",
+      "dj": "Jad B2B Tarek",
       "tags": [],
       "url": "https://ofolies.resos.com/"
     },
