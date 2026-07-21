@@ -994,11 +994,12 @@ button{font-family:var(--body);border:none;background:none;cursor:pointer;color:
 }
 .visit .sub{margin-top:10px;font-size:13.5px;color:var(--peach);letter-spacing:.06em}
 .status{
-  margin-top:16px;display:inline-flex;align-items:center;gap:8px;
-  font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  margin-top:16px;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
   border:1px solid rgba(247,239,224,.25);border-radius:999px;
-  padding:9px 16px;color:var(--cream);
+  padding:9px 18px;color:var(--cream);
   background:rgba(15,39,33,.5);
+  text-align:center;max-width:88%;
 }
 .status .led{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulse 1.8s ease-in-out infinite}
 .status.closed .led{background:var(--coral);animation:none}
@@ -2317,6 +2318,7 @@ window.__initGallery();
     var nowMins = now.getHours()*60 + now.getMinutes();
     var diff = sunsetMins - nowMins;
     var chip = document.getElementById('sunsetChip');
+    if(window.__closedChip){ chip.textContent = window.__closedChip; return; }
     var hrNow = now.getHours();
     if(hrNow >= 1 && hrNow < 5){
       chip.textContent = 'After hours · under the stars';
@@ -2392,13 +2394,16 @@ window.__initGallery();
             var dayClosed = closed.indexOf(evenDay) > -1;
             var open = !dayClosed && (c < o ? (hr >= o || hr < c) : (hr >= o && hr < c));
             var disp = ((o+11)%12)+1 + (o>=12?' PM':' AM');
-            var NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+            var NAMES = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
             var msg;
             if(open){ msg = 'Open now · until late'; }
             else if(closed.indexOf(day) > -1){
               var nx = day;
               for(var i3=1;i3<=7;i3++){ if(closed.indexOf((day+i3)%7) === -1){ nx = (day+i3)%7; break; } }
-              msg = 'Closed today · back ' + NAMES[nx] + ' at ' + disp;
+              msg = 'Closed · back ' + NAMES[nx] + ' ' + disp;
+              window.__closedChip = 'Closed tonight · back ' + NAMES[nx];
+              var ch2 = document.getElementById('sunsetChip');
+              if(ch2) ch2.textContent = window.__closedChip;
             }
             else{ msg = 'Opens today at ' + disp; }
             st.classList.toggle('closed', !open);
