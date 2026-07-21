@@ -12,7 +12,11 @@
   "hours": {
     "openLabel": "Wed - Sun · 5 PM - 1 AM",
     "openHour": 17,
-    "closeHour": 1
+    "closeHour": 1,
+    "closedDays": [
+      1,
+      2
+    ]
   },
   "events": [
     {
