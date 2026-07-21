@@ -1,5 +1,23 @@
 User-agent: *
 Allow: /
-Disallow: /dashboard.html
+Disallow: /qr/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /qr/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /qr/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /qr/
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
 
 Sitemap: https://ofolies.com/sitemap.xml
