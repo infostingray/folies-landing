@@ -10,9 +10,9 @@
     "maps": "https://maps.app.goo.gl/oMym9nBUvu3PdqgNA"
   },
   "hours": {
-    "openLabel": "Daily · 4 PM - 12 AM",
-    "openHour": 16,
-    "closeHour": 0
+    "openLabel": "Wed - Sun · 4 PM - 1 AM",
+    "openHour": 17,
+    "closeHour": 1
   },
   "events": [
     {
