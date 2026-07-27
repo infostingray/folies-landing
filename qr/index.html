@@ -2365,7 +2365,7 @@ window.__initGallery();
           }
           if(C.contact.resos) document.querySelectorAll('a[href*="resos.com"]').forEach(function(a){ a.href=C.contact.resos; });
           if(C.contact.instagram) document.querySelectorAll('a[href*="instagram.com"]').forEach(function(a){ a.href=C.contact.instagram; });
-          if(C.contact.maps) document.querySelectorAll('a[href*="maps.google"]').forEach(function(a){ a.href=C.contact.maps; });
+          if(C.contact.maps) document.querySelectorAll('a[href*="maps.google"], a[href*="maps.app.goo.gl"], a[href*="goo.gl/maps"]').forEach(function(a){ a.href=C.contact.maps; });
         }
         // ---- announcement ----
         if(C.announcement && C.announcement.show && C.announcement.text){
@@ -2532,7 +2532,7 @@ document.addEventListener('click', function(e){
     track('call_click', {location: loc});
     if(window.fbTrack) fbTrack('Contact', {location: loc});
   }
-  else if(a.href.indexOf('maps.google') > -1){
+  else if(/maps\.google|maps\.app\.goo\.gl|goo\.gl\/maps|waze\.com/.test(a.href)){
     track('map_click', {location: loc});
     if(window.fbTrack) fbTrack('GetDirections', {location: loc}, true);
   }
