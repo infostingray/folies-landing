@@ -42,9 +42,9 @@ export default {
     // ---- Meta Conversions API relay (public; no passcode) ----
     if (url.pathname.endsWith("/fb")) {
       const ALLOWED_EVENTS = [
-  "PageView", "ViewContent", "AddToWishlist", "Contact", "FindLocation",
+  "PageView", "ViewContent", "AddToWishlist", "Contact", "GetDirections",
   "QRScanWebsiteOffline", "ViewContentOffline",
-  "AddToWishlistOffline", "ContactOffline", "FindLocationOffline",
+  "AddToWishlistOffline", "ContactOffline", "GetDirectionsOffline",
 ];
       if (!ALLOWED_EVENTS.includes(body.event_name)) return json({ ok: false, error: "Event not allowed" }, 400);
       if (!env.META_CAPI_TOKEN) return json({ ok: false, error: "CAPI not configured" }, 500);
