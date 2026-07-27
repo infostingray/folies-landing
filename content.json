@@ -16,43 +16,21 @@
   },
   "events": [
     {
-      "day": "24",
-      "label": "Fri Jul",
-      "name": "Sunset Memories",
-      "dj": "Tony H",
-      "tags": [],
-      "url": "https://ofolies.resos.com/"
-    },
-    {
-      "day": "25",
-      "label": "Sat Jul",
-      "name": "Sunset Memories",
-      "dj": "Pierre G",
-      "tags": [],
-      "url": "https://ofolies.resos.com/"
-    },
-    {
-      "day": "26",
-      "label": "Sun Jul",
-      "name": "Sunset Memories",
-      "dj": "Jad B2B Tarek",
-      "tags": [],
-      "url": "https://ofolies.resos.com/"
-    },
-    {
-      "day": "31",
-      "label": "Fri Jul",
-      "name": "Sunset Memories",
-      "dj": "Nichee",
-      "tags": [],
-      "url": "https://ofolies.resos.com/"
-    },
-    {
       "day": "1",
       "label": "Sat Aug",
-      "name": "Sunset Memories",
-      "dj": "Stvn Vs Ace",
+      "name": "Sunset Series",
+      "dj": "Stvn B2B Ace",
       "tags": [],
+      "url": "https://ofolies.resos.com/"
+    },
+    {
+      "day": "2",
+      "label": "Sun Aug",
+      "name": "Sunset Series",
+      "dj": "Zwén",
+      "tags": [
+        "Supported By Gaby Zgheib"
+      ],
       "url": "https://ofolies.resos.com/"
     }
   ],
