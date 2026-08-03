@@ -16,21 +16,19 @@
   },
   "events": [
     {
-      "day": "1",
+      "day": "8",
       "label": "Sat Aug",
       "name": "Sunset Series",
-      "dj": "Stvn B2B Ace",
+      "dj": "DJ Pierre G",
       "tags": [],
       "url": "https://ofolies.resos.com/"
     },
     {
-      "day": "2",
+      "day": "9",
       "label": "Sun Aug",
       "name": "Sunset Series",
-      "dj": "Zwén",
-      "tags": [
-        "Supported By Gaby Zgheib"
-      ],
+      "dj": "DJ Neenoo",
+      "tags": [],
       "url": "https://ofolies.resos.com/"
     }
   ],
