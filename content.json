@@ -16,6 +16,14 @@
   },
   "events": [
     {
+      "day": "7",
+      "label": "Fri Aug",
+      "name": "Sunset Series",
+      "dj": "Gaby Zgheib",
+      "tags": [],
+      "url": "https://ofolies.resos.com/"
+    },
+    {
       "day": "8",
       "label": "Sat Aug",
       "name": "Sunset Series",
@@ -28,14 +36,6 @@
       "label": "Sun Aug",
       "name": "Sunset Series",
       "dj": "Neenoo",
-      "tags": [],
-      "url": "https://ofolies.resos.com/"
-    },
-    {
-      "day": "7",
-      "label": "Fri Aug",
-      "name": "Sunset Series",
-      "dj": "Gaby Zgheib",
       "tags": [],
       "url": "https://ofolies.resos.com/"
     }
