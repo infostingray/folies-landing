@@ -19,7 +19,7 @@
       "day": "8",
       "label": "Sat Aug",
       "name": "Sunset Series",
-      "dj": "DJ Pierre G",
+      "dj": "Pierre G",
       "tags": [],
       "url": "https://ofolies.resos.com/"
     },
@@ -27,7 +27,15 @@
       "day": "9",
       "label": "Sun Aug",
       "name": "Sunset Series",
-      "dj": "DJ Neenoo",
+      "dj": "Neenoo",
+      "tags": [],
+      "url": "https://ofolies.resos.com/"
+    },
+    {
+      "day": "7",
+      "label": "Fri Aug",
+      "name": "Sunset Series",
+      "dj": "Gaby Zgheib",
       "tags": [],
       "url": "https://ofolies.resos.com/"
     }
