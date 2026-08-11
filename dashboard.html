@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Swot Portal · OFôlies</title>
+<title>stingray taste · OFôlies Portal</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,6 +38,19 @@ button,input,textarea{font-family:var(--body)}
 .wrap{max-width:680px;margin:0 auto;padding:26px 18px 130px}
 
 /* login */
+.wordmark{
+  display:inline-flex;align-items:baseline;gap:7px;
+  font-weight:800;letter-spacing:.02em;line-height:1;
+  user-select:none;
+}
+.wordmark .wm-s{color:#fff;font-size:26px}
+.wordmark .wm-t{
+  font-size:26px;
+  background:linear-gradient(100deg,#FFB25E 0%,#FF7A3C 45%,#F0452B 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.wordmark.wm-small .wm-s,.wordmark.wm-small .wm-t{font-size:17px}
+#gate .wordmark{margin-bottom:18px}
 #gate{max-width:380px;margin:16vh auto 0;text-align:center;padding:0 22px}
 #gate img{height:26px;margin:0 auto 8px;display:block}
 #gate .fallback{font-weight:700;letter-spacing:.3em;font-size:18px;display:none}
@@ -175,8 +188,7 @@ footer{margin-top:26px;text-align:center;font-size:10px;letter-spacing:.18em;col
 
 <!-- ============ LOGIN GATE ============ -->
 <div id="gate">
-  <img src="https://swottm.com/assets/images/logo-white.svg" alt="Swot" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-  <div class="fallback">SWOT</div>
+  <div class="wordmark"><span class="wm-s">stingray</span><span class="wm-t">taste</span></div>
   <h1>Portal</h1>
   <p>OFôlies · Sunset Lounge, content manager</p>
   <input id="pass" type="password" placeholder="••••••" autocomplete="current-password">
@@ -188,8 +200,7 @@ footer{margin-top:26px;text-align:center;font-size:10px;letter-spacing:.18em;col
 <div id="app" class="hidden">
   <div class="topbar">
     <div class="tb-left">
-      <img src="https://swottm.com/assets/images/logo-white.svg" alt="Swot" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-      <div class="fallback" style="display:none">SWOT</div>
+      <div class="wordmark wm-small"><span class="wm-s">stingray</span><span class="wm-t">taste</span></div>
       <div class="divider"></div>
       <div class="portal">Portal</div>
     </div>
@@ -269,7 +280,7 @@ footer{margin-top:26px;text-align:center;font-size:10px;letter-spacing:.18em;col
     </div>
 
     <a class="preview" href="index.html" target="_blank" rel="noopener">↗ Open the live site</a>
-    <footer>Swot Creative Hub · Portal v2</footer>
+    <footer>stingray taste · a Swot Creative Hub product</footer>
   </div>
 
   <div class="savebar">
