@@ -38,20 +38,9 @@ button,input,textarea{font-family:var(--body)}
 .wrap{max-width:680px;margin:0 auto;padding:26px 18px 130px}
 
 /* login */
-.wordmark{
-  display:inline-flex;align-items:baseline;line-height:1;
-  user-select:none;letter-spacing:.01em;
-}
-.wordmark .wm-s{color:#fff;font-weight:800;font-size:26px}
-.wordmark .wm-dot{
-  font-weight:800;font-size:26px;margin:0 1px;
-  background:linear-gradient(100deg,#FFB25E 0%,#FF7A3C 45%,#F0452B 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.wordmark .wm-t{color:#fff;font-family:var(--serif);font-style:italic;font-weight:400;font-size:28px;margin-left:9px;letter-spacing:.01em}
-.wordmark.wm-small .wm-s,.wordmark.wm-small .wm-dot{font-size:17px}
-.wordmark.wm-small .wm-t{font-size:19px;margin-left:6px}
-#gate .wordmark{margin-bottom:18px}
+.wm-logo{height:30px;width:auto;display:block}
+.wm-logo-small{height:19px}
+#gate .wm-logo{height:36px;margin:0 auto 18px}
 #gate{max-width:380px;margin:16vh auto 0;text-align:center;padding:0 22px}
 #gate img{height:26px;margin:0 auto 8px;display:block}
 #gate .fallback{font-weight:700;letter-spacing:.3em;font-size:18px;display:none}
@@ -189,7 +178,7 @@ footer{margin-top:26px;text-align:center;font-size:10px;letter-spacing:.18em;col
 
 <!-- ============ LOGIN GATE ============ -->
 <div id="gate">
-  <div class="wordmark"><span class="wm-s">stingray</span><span class="wm-dot">.</span><span class="wm-t">taste</span></div>
+  <img class="wm-logo" src="assets/stingray-taste-w.png" alt="stingray taste">
   <h1>Portal</h1>
   <p>OFôlies · Sunset Lounge, content manager</p>
   <input id="pass" type="password" placeholder="••••••" autocomplete="current-password">
@@ -201,7 +190,7 @@ footer{margin-top:26px;text-align:center;font-size:10px;letter-spacing:.18em;col
 <div id="app" class="hidden">
   <div class="topbar">
     <div class="tb-left">
-      <div class="wordmark wm-small"><span class="wm-s">stingray</span><span class="wm-dot">.</span><span class="wm-t">taste</span></div>
+      <img class="wm-logo wm-logo-small" src="assets/stingray-taste-w.png" alt="stingray taste">
       <div class="divider"></div>
       <div class="portal">Portal</div>
     </div>
