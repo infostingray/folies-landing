@@ -24,7 +24,15 @@
       "url": "https://ofolies.resos.com/"
     },
     {
-      "day": "15",
+      "day": "21",
+      "label": "Fri Aug",
+      "name": "Sunset Series",
+      "dj": "Gaby Zgheib",
+      "tags": [],
+      "url": "https://ofolies.resos.com/"
+    },
+    {
+      "day": "22",
       "label": "Sat Aug",
       "name": "Sunset Series",
       "dj": "Pierre G",
@@ -32,10 +40,10 @@
       "url": "https://ofolies.resos.com/"
     },
     {
-      "day": "16",
+      "day": "23",
       "label": "Sun Aug",
-      "name": "Sunset Series",
-      "dj": "Nour Nimri",
+      "name": "Niche",
+      "dj": "",
       "tags": [],
       "url": "https://ofolies.resos.com/"
     }
